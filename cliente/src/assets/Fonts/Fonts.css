@@ -1,80 +1,80 @@
 @font-face {
-  font-family: "MyriadProRegular";
-  src: url("./MyriadProRegular.ttf") format(truetype);
+  font-family: 'MyriadProRegular';
+  src: url('./MyriadProRegular.ttf') format(truetype);
 }
 @font-face {
-  font-family: "TahomaRegular";
-  src: url("./TahomaRegular.ttf") format(truetype);
+  font-family: 'TahomaRegular';
+  src: url('./TahomaRegular.ttf') format(truetype);
 }
 @font-face {
-  font-family: "KarbonRegular";
-  src: url("./Karbon-Regular.ttf") format("truetype");
+  font-family: 'KarbonRegular';
+  src: url('./Karbon-Regular.ttf') format('truetype');
 }
 @font-face {
-  font-family: "TestKarbonBold";
-  src: url("./TestKarbon-Bold.otf") format("opentype");
+  font-family: 'TestKarbonBold';
+  src: url('./TestKarbon-Bold.otf') format('opentype');
 }
 @font-face {
-  font-family: "TestKarbonBoldItalic";
-  src: url("./TestKarbon-BoldItalic.otf") format("opentype");
+  font-family: 'TestKarbonBoldItalic';
+  src: url('./TestKarbon-BoldItalic.otf') format('opentype');
 }
 @font-face {
-  font-family: "TestKarbonHairline";
-  src: url("./TestKarbon-Hairline.otf") format("opentype");
+  font-family: 'TestKarbonHairline';
+  src: url('./TestKarbon-Hairline.otf') format('opentype');
 }
 @font-face {
-  font-family: "TestKarbonHairlineItalic";
-  src: url("./TestKarbon-HairlineItalic.otf") format("opentype");
+  font-family: 'TestKarbonHairlineItalic';
+  src: url('./TestKarbon-HairlineItalic.otf') format('opentype');
 }
 @font-face {
-  font-family: "TestKarbonLight";
-  src: url("./TestKarbon-Light.otf") format("opentype");
+  font-family: 'TestKarbonLight';
+  src: url('./TestKarbon-Light.otf') format('opentype');
 }
 @font-face {
-  font-family: "TestKarbonLightItalic";
-  src: url("./TestKarbon-LightItalic.otf") format("opentype");
+  font-family: 'TestKarbonLightItalic';
+  src: url('./TestKarbon-LightItalic.otf') format('opentype');
 }
 @font-face {
-  font-family: "TestKarbonMedium";
-  src: url("./TestKarbon-Medium.otf") format("opentype");
+  font-family: 'TestKarbonMedium';
+  src: url('./TestKarbon-Medium.otf') format('opentype');
 }
 @font-face {
-  font-family: "TestKarbonMediumItalic";
-  src: url("./TestKarbon-MediumItalic.otf") format("opentype");
+  font-family: 'TestKarbonMediumItalic';
+  src: url('./TestKarbon-MediumItalic.otf') format('opentype');
 }
 @font-face {
-  font-family: "TestKarbonRegular";
-  src: url("./TestKarbon-Regular.otf") format("opentype");
+  font-family: 'TestKarbonRegular';
+  src: url('./TestKarbon-Regular.otf') format('opentype');
 }
 @font-face {
-  font-family: "TestKarbonRegularItalic";
-  src: url("./TestKarbon-RegularItalic.otf") format("opentype");
+  font-family: 'TestKarbonRegularItalic';
+  src: url('./TestKarbon-RegularItalic.otf') format('opentype');
 }
 @font-face {
-  font-family: "TestKarbonSemiBold";
-  src: url("./TestKarbon-Semibold.otf") format("opentype");
+  font-family: 'TestKarbonSemiBold';
+  src: url('./TestKarbon-Semibold.otf') format('opentype');
 }
 @font-face {
-  font-family: "TestKarbonSemiBoldItalic";
-  src: url("./TestKarbon-SemiboldItalic.otf") format("opentype");
+  font-family: 'TestKarbonSemiBoldItalic';
+  src: url('./TestKarbon-SemiboldItalic.otf') format('opentype');
 }
 @font-face {
-  font-family: "TestKarbonThin";
-  src: url("./TestKarbon-Thin.otf") format("opentype");
+  font-family: 'TestKarbonThin';
+  src: url('./TestKarbon-Thin.otf') format('opentype');
 }
 @font-face {
-  font-family: "TestKarbonThinItalic";
-  src: url("./TestKarbon-ThinItalic.otf") format("opentype");
+  font-family: 'TestKarbonThinItalic';
+  src: url('./TestKarbon-ThinItalic.otf') format('opentype');
 }
 @font-face {
-  font-family: "MuseoSans";
-  src: url("./MuseoSans.ttf") format("truetype");
+  font-family: 'MuseoSans';
+  src: url('./MuseoSans.ttf') format('truetype');
 }
 @font-face {
-  font-family: "LeelawadeeRegular";
-  src: url("./LeelawadeeRegular.ttf") format("truetype");
+  font-family: 'LeelawadeeRegular';
+  src: url('./LeelawadeeRegular.ttf') format('truetype');
 }
 @font-face {
-  font-family: "GilroyBold";
-  src: url("./Gilroy-Bold.ttf") format("truetype");
+  font-family: 'GilroyBold';
+  src: url('./Gilroy-Bold.ttf') format('truetype');
 }

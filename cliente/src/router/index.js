@@ -8,7 +8,7 @@ const router = createRouter({
       path: '/',
       name: 'inicio',
       component: VistaInicio
-    },
+    }
     // {
     //   path: '/about',
     //   name: 'about',

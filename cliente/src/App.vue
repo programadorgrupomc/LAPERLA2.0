@@ -1,5 +1,5 @@
 <script setup>
-import HeaderWeb from './components/General/HeaderWeb.vue';
+import HeaderWeb from './components/General/HeaderWeb.vue'
 </script>
 
 <template>
@@ -11,9 +11,7 @@ import HeaderWeb from './components/General/HeaderWeb.vue';
     <RouterView />
   </main>
 
-  <footer>
-    aca ira el footer
-  </footer>
+  <footer>aca ira el footer</footer>
 </template>
 
 <style scoped></style>
