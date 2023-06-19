@@ -1,10 +1,12 @@
 <script setup>
-import HeaderWeb from './components/General/HeaderWeb.vue'
+// import HeaderWeb from './components/General/HeaderWeb.vue'
+import headerPerla from './components/General/headerold/headerPerla.vue';
 </script>
 
 <template>
   <header>
-    <HeaderWeb />
+    <!-- <HeaderWeb /> -->
+    <headerPerla />
   </header>
 
   <main>
