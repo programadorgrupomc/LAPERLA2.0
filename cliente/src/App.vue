@@ -5,7 +5,7 @@ import headerPerla from './components/General/headerold/headerPerla.vue';
 </script>
 
 <template>
-  <header>
+  <header class="lg:fixed w-full z-50">
     <!-- <HeaderWeb /> -->
     <headerPerla />
   </header>

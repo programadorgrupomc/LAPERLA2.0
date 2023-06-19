@@ -20,21 +20,21 @@ export default {
 .video-es {
     width: 100%;
     height: 90vh;
-    object-fit: fill;
+    object-fit: none;
     display: none;
 }
 
 .video-ta {
     width: 100%;
     height: 90vh;
-    object-fit: fill;
+    object-fit: none;
     display: none;
 }
 
 .video-mo {
     width: 100%;
     height: 90vh;
-    object-fit: fill;
+    object-fit: none;
 }
 
 @media (min-width: 768px) {
