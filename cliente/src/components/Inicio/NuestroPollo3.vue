@@ -1,26 +1,16 @@
 <template>
     <div class="np1 flex flex-col lg:flex-row justify-center">
-        <div class="lado1 flex flex-col lg:items-center justify-center lg:justify-around">
+        <div class="lado1 flex flex-col lg:items-center justify-around lg:justify-around">
             <div class="np1-contenedor  flex flex-col justify-center items-center lg:items-start">
-                <p class="titulo text-center lg:text-left">IDENTIDAD</p>
-                <p class="texto text-center lg:text-left">Su buen color y voluminosidad es el sello del Pollo Perla.</p>
+                <p class="titulo text-center lg:text-left">JUGOSIDAD</p>
+                <p class="texto text-center lg:text-left">Satisfaciendo el gusto más exigente por su suavidad y jugosidad.
+                </p>
             </div>
             <div class="np1-contenedor lg:hidden flex justify-center items-center">
                 <div class="relative">
                     <div class="circulo-fondo">
                     </div>
-                    <img src="../../assets/Inicio/imgcont1.jpg" class="absolute img-circulo shadow-2xl" alt="img-circulo">
-                </div>
-            </div>
-            <div class="np1-contenedor flex justify-center items-center">
-                <div class="contenedor-1 relative">
-                    <img src="../../assets/Inicio/CarnePollo.png" class="img-1 relative" alt="carne-pollo">
-                    <img src="../../assets/Inicio/Row1.svg" class="row-1 relative" alt="row-1">
-                    <div class="indicador relative flex flex-col justify-center items-center">
-                        <p>Pechuga</p>
-                        <p class="porcentaje">35%</p>
-                        <p>Del Pollo</p>
-                    </div>
+                    <img src="../../assets/Inicio/imgcont3.jpg" class="absolute img-circulo shadow-2xl" alt="img-circulo">
                 </div>
             </div>
         </div>
@@ -29,7 +19,7 @@
                 <div class="relative">
                     <div class="circulo-fondo">
                     </div>
-                    <img src="../../assets/Inicio/imgcont1.jpg" class="absolute img-circulo shadow-2xl" alt="img-circulo">
+                    <img src="../../assets/Inicio/imgcont3.jpg" class="absolute img-circulo shadow-2xl" alt="img-circulo">
                 </div>
             </div>
         </div>
@@ -88,7 +78,7 @@ export default {
 .circulo-fondo {
     width: 25vh;
     height: 25vh;
-    background-color: #FFCD00;
+    background-color: #8A67BF;
     border-radius: 50%;
 }
 

@@ -1,55 +1,40 @@
 <template>
-    <div class="np1 flex flex-col lg:flex-row justify-center">
-        <div class="lado1 flex flex-col lg:items-center justify-center lg:justify-around">
-            <div class="np1-contenedor  flex flex-col justify-center items-center lg:items-start">
-                <p class="titulo text-center lg:text-left">IDENTIDAD</p>
-                <p class="texto text-center lg:text-left">Su buen color y voluminosidad es el sello del Pollo Perla.</p>
-            </div>
-            <div class="np1-contenedor lg:hidden flex justify-center items-center">
-                <div class="relative">
-                    <div class="circulo-fondo">
-                    </div>
-                    <img src="../../assets/Inicio/imgcont1.jpg" class="absolute img-circulo shadow-2xl" alt="img-circulo">
-                </div>
-            </div>
-            <div class="np1-contenedor flex justify-center items-center">
-                <div class="contenedor-1 relative">
-                    <img src="../../assets/Inicio/CarnePollo.png" class="img-1 relative" alt="carne-pollo">
-                    <img src="../../assets/Inicio/Row1.svg" class="row-1 relative" alt="row-1">
-                    <div class="indicador relative flex flex-col justify-center items-center">
-                        <p>Pechuga</p>
-                        <p class="porcentaje">35%</p>
-                        <p>Del Pollo</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="np2 flex flex-col lg:flex-row justify-center">
         <div class="hidden lado2 lg:flex lg:items-center lg:justify-center">
-            <div class="np1-contenedor np1-contenedorlg relative lg:flex justify-center items-center">
+            <div class="np2-contenedor np2-contenedorlg relative lg:flex justify-center items-center">
                 <div class="relative">
                     <div class="circulo-fondo">
                     </div>
-                    <img src="../../assets/Inicio/imgcont1.jpg" class="absolute img-circulo shadow-2xl" alt="img-circulo">
+                    <img src="../../assets/Inicio/imgcont2.jpg" class="absolute img-circulo shadow-2xl" alt="img-circulo">
                 </div>
             </div>
         </div>
+        <div class="lado1 flex flex-col lg:items-center justify-around lg:justify-around">
+            <div class="np2-contenedor  flex flex-col justify-center items-center lg:items-end">
+                <p class="titulo text-center lg:text-right">FIRMEZA</p>
+                <p class="texto text-center lg:text-right">Carne de buena consistencia y excelente textura y fibra muscular.
+                </p>
+            </div>
+            <div class="np2-contenedor lg:hidden flex justify-center items-center">
+                <div class="relative">
+                    <div class="circulo-fondo">
+                    </div>
+                    <img src="../../assets/Inicio/imgcont2.jpg" class="absolute img-circulo shadow-2xl" alt="img-circulo">
+                </div>
+            </div>
+
+        </div>
+
 
     </div>
 </template>
 <script>
-import { gsap } from 'gsap';
-
-
 export default {
-    data() {
-        return {
 
-        }
-    }
 }
 </script>
 <style scoped>
-.np1 {
+.np2 {
     padding: 2%;
     width: 100%;
     min-width: 250px;
@@ -64,9 +49,9 @@ export default {
     border: #471D7C solid;
 }
 
-.np1-contenedor {
-    height: 30%;
-    max-height: 30%;
+.np2-contenedor {
+    height: 33%;
+    max-height: 33%;
 }
 
 .titulo {
@@ -88,7 +73,7 @@ export default {
 .circulo-fondo {
     width: 25vh;
     height: 25vh;
-    background-color: #FFCD00;
+    background-color: #EBDAC0;
     border-radius: 50%;
 }
 
@@ -97,23 +82,24 @@ export default {
     height: 22vh;
     width: 22vh;
     border-radius: 50%;
-    right: -5%;
+    right: 12.5%;
     bottom: -5%;
 }
 
-.contenedor-1 {
+.contenedor-2 {
     height: 100%;
 }
 
 .img-1 {
-    height: 80%;
-    left: -40%;
+    height: 60%;
+    left: -30%;
+    top: 10%;
 }
 
 .row-1 {
-    height: 35%;
-    top: -40%;
-    right: -25%;
+    height: 22%;
+    top: -20%;
+    right: -28%;
 }
 
 .indicador {
@@ -123,7 +109,7 @@ export default {
     color: #471D7C;
     -webkit-text-stroke: #471D7C 0.1vh;
     height: 25%;
-    top: -60%;
+    top: -20%;
     right: -50%;
 }
 
@@ -141,7 +127,7 @@ export default {
 
 @media (min-width: 1024px) {
 
-    .np1-contenedor {
+    .np2-contenedor {
         min-height: 200px;
     }
 
@@ -171,26 +157,28 @@ export default {
     }
 
     .img-1 {
-        height: 26vw;
+        height: 10vw;
+        top: 10vw;
+        transform: translateX(150%);
     }
 
     .row-1 {
-        height: 6vw;
-        top: -12.5vw;
-        right: -20%;
+        height: 4vw;
+        top: 2vw;
+        right: 25%;
     }
 
     .indicador {
-        font-size: 1.5vw;
+        font-size: 2vw;
         right: -20%;
-        top: -15.5vw;
+        top: 5vw;
     }
 
     .porcentaje {
         font-size: 6vw;
     }
 
-    .contenedor-1 {
+    .contenedor-2 {
         top: -60%;
     }
 }
