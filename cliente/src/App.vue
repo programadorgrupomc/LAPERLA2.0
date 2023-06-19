@@ -1,6 +1,7 @@
 <script setup>
 // import HeaderWeb from './components/General/HeaderWeb.vue'
 import headerPerla from './components/General/headerold/headerPerla.vue';
+// import footerPerla from './components/General/headerold/footerPerla.vue';
 </script>
 
 <template>
@@ -13,7 +14,9 @@ import headerPerla from './components/General/headerold/headerPerla.vue';
     <RouterView />
   </main>
 
-  <footer>aca ira el footer</footer>
+  <footer>
+    <!-- <footerPerla /> -->
+  </footer>
 </template>
 
 <style scoped></style>

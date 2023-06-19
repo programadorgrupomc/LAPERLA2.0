@@ -125,8 +125,6 @@
     </div>
 </template>
 <script>
-import { useFooterStore } from '../../stores/General/footerStore';
-
 export default {
     name: 'FooterPerla',
     data() {

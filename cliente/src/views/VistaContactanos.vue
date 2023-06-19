@@ -1,6 +1,6 @@
 <template>
     <div>
-        recetario
+        contactanos
     </div>
 </template>
 <script>

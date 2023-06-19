@@ -1,6 +1,6 @@
 <template>
     <div>
-        recetario
+        noticias
     </div>
 </template>
 <script>

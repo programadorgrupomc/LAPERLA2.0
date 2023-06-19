@@ -38,7 +38,7 @@
                     <p class="">{{ titulo5 }}</p>
                 </a>
             </router-link>
-            <router-link to="/contact" custom v-slot="{ navigate }">
+            <router-link to="/contactanos" custom v-slot="{ navigate }">
                 <a @click="navigate" role="link" class="itemH item-nav-ceis" href="">
                     <p class="vineta puntitoceis">●</p>
                     <p class="">{{ titulo6 }}</p>
@@ -229,7 +229,7 @@ export default {
     padding-right: 1%;
     padding-left: 1%;
     padding-top: 2%;
-    width: 30%;
+    width: 35%;
     text-decoration: none;
 }
 

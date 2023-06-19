@@ -109,14 +109,14 @@ export default {
 }
 
 .indicador {
-    color: #471D7C;
-    height: 25%;
-    top: -60%;
-    right: -50%;
     font-size: 2.5vh;
     font-family: "KarbonRegular";
     line-height: 1;
+    color: #471D7C;
     -webkit-text-stroke: #471D7C 0.1vh;
+    height: 25%;
+    top: -60%;
+    right: -50%;
 }
 
 .porcentaje {
@@ -132,8 +132,8 @@ export default {
 }
 
 @media (min-width: 1024px) {
-   
-    .np1-contenedor{
+
+    .np1-contenedor {
         min-height: 200px;
     }
 
@@ -152,28 +152,29 @@ export default {
     }
 
     .circulo-fondo {
-        height: 60vh;
-        width: 60vh;
+        height: 35vw;
+        width: 35vw;
     }
 
     .img-circulo {
-        width: 50vh;
-        height: 50vh;
+        width: 30vw;
+        height: 30vw;
     }
 
     .img-1 {
-        height: 180%;
+        height: 26vw;
     }
 
     .row-1 {
-        height: 50%;
-        top: -80%;
+        height: 6vw;
+        top: -8.5vw;
+        right: -20%;
     }
 
     .indicador {
         font-size: 1.5vw;
-        right: -30%;
-        top: -100%;
+        right: -20%;
+        top: -11.5vw;
     }
 
     .porcentaje {
