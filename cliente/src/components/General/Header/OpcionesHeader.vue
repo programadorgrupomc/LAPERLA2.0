@@ -1,13 +1,14 @@
 <template>
-  <div class="opciones">
+  <div class="opciones lg:flex">
     <div v-for="opcion in opciones" :key="opcion.id" class="opciones-opcion flex">
-      <img src="../../../assets/General/circle.svg" class="opcion-circle hidden" alt="circle-svg" />
+      <img src="../../../assets/General/circle.svg" class="opcion-circle hidden lg:block" alt="circle-svg" />
       <p class="opcion">{{ opcion.opcion }}</p>
     </div>
   </div>
 </template>
 
 <script>
+
 export default {
   data() {
     return {
@@ -20,6 +21,9 @@ export default {
         { id: '6', opcion: 'Contáctanos', ruta: '' }
       ]
     }
+  },
+  components: {
+
   }
 }
 </script>
@@ -38,5 +42,36 @@ export default {
   font-weight: bold;
   color: #471d7c;
   -webkit-text-stroke: #471d7c 0.5vw;
+}
+
+@media (min-width: 1024px) {
+  .opciones {
+    background-color: #ebdac0;
+    min-height: auto;
+    height: 8vh;
+    max-height: 90px;
+    width: 100%;
+    padding: 1%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .opciones-opcion {
+    background-color: darkgoldenrod;
+    margin: 0.5%;
+  }
+
+  .opcion {
+    font-family: 'KarbonRegular';
+    font-size: 1.5vw;
+    font-weight: bold;
+    color: #471d7c;
+    -webkit-text-stroke: #471d7c 0.05vw;
+  }
+
+  .opcion-circle {
+    width: 0.8vw;
+  }
 }
 </style>

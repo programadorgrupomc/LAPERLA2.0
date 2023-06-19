@@ -2,7 +2,7 @@
     <div class="np1 flex flex-col lg:flex-row justify-center">
         <div class="lado1 flex flex-col lg:items-center justify-center lg:justify-around">
             <div class="np1-contenedor  flex flex-col justify-center items-center lg:items-start">
-                <p class="titulo text-center lg:text-left">INICIO</p>
+                <p class="titulo text-center lg:text-left">IDENTIDAD</p>
                 <p class="texto text-center lg:text-left">Su buen color y voluminosidad es el sello del Pollo Perla.</p>
             </div>
             <div class="np1-contenedor lg:hidden flex justify-center items-center">
@@ -132,9 +132,9 @@ export default {
 }
 
 @media (min-width: 1024px) {
+   
     .np1-contenedor{
         min-height: 200px;
-
     }
 
     .lado1,
@@ -147,21 +147,22 @@ export default {
     }
 
     .texto {
+        padding-top: 5%;
         font-size: 1.5vw;
     }
 
     .circulo-fondo {
-        height: 55vh;
-        width: 55vh;
+        height: 60vh;
+        width: 60vh;
     }
 
     .img-circulo {
-        width: 48vh;
-        height: 48vh;
+        width: 50vh;
+        height: 50vh;
     }
 
     .img-1 {
-        height: 170%;
+        height: 180%;
     }
 
     .row-1 {
@@ -170,13 +171,13 @@ export default {
     }
 
     .indicador {
-        font-size: 2vw;
-        right: -35%;
+        font-size: 1.5vw;
+        right: -30%;
         top: -100%;
     }
 
     .porcentaje {
-        font-size: 5vw;
+        font-size: 6vw;
     }
 
     .contenedor-1 {

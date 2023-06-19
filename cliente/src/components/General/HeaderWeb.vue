@@ -1,9 +1,12 @@
 <template>
-  <div class="header flex items-center justify-between p-1">
-    <div class="header-logo">
+  <div class="header flex items-center justify-between p-1 lg:relative lg:justify-center">
+    <div class="header-logo lg:absolute">
       <LogoHeader />
     </div>
-    <div class="header-boton">
+    <div class="hidden lg:flex lg:w-full">
+      <OpcionesHeader />
+    </div>
+    <div class="header-boton lg:hidden">
       <BotonHeader @estadoBoton="manejarMenu" />
     </div>
   </div>
@@ -47,7 +50,8 @@ export default {
 }
 
 .header-logo {
-  height: 90%;
+  padding-left: 2%;
+  height: 80%;
   width: auto;
 }
 
@@ -72,5 +76,19 @@ export default {
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s;
+}
+
+@media (min-width: 1024px) {
+  .header {
+    min-height: auto;
+    height: 5.5vw;
+    max-height: 500px;
+    width: 100%;
+    min-width: 250px;
+  }
+
+  .header-logo {
+    padding-left: 0%;
+  }
 }
 </style>
