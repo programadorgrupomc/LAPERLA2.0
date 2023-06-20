@@ -37,7 +37,8 @@
 </template>
 <script>
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/all';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 gsap.registerPlugin(ScrollTrigger);
 
 export default {
@@ -52,7 +53,7 @@ export default {
                 scrollTrigger: {
                     trigger: ".np1",
                     start: "top top",
-                    end: "+=700%",
+                    end: "+=500%",
                     scrub: 1.1,
                     markers: true,
                     pin: true,
