@@ -122,7 +122,9 @@ export default {
     width: 60%;
     font-family: "TestKarbonMedium";
     font-size: 5vh;
+    line-height: normal;
     color: #471D7C;
+    padding-bottom: 2%;
     -webkit-text-stroke: #471D7C 0.1vh;
 }
 
