@@ -1,25 +1,26 @@
 <template>
-    <div class="np2 flex flex-col lg:flex-row justify-center">
+    <div class="np4 flex flex-col lg:flex-row justify-center">
         <div class="hidden lado2 lg:flex lg:items-center lg:justify-center">
-            <div class="np2-contenedor np2-contenedorlg relative lg:flex justify-center items-center">
+            <div class="np4-contenedor np4-contenedorlg relative lg:flex justify-center items-center">
                 <div class="relative">
-                    <div class="circulo-fondo">
+                    <div class="circulo-fondo4">
                     </div>
-                    <img src="../../assets/Inicio/imgcont2.jpg" class="absolute img-circulo shadow-2xl" alt="img-circulo">
+                    <img src="../../assets/Inicio/imgcont2.jpg" class="absolute img-circulo4 shadow-2xl" alt="img-circulo4">
                 </div>
             </div>
         </div>
         <div class="lado1 flex flex-col lg:items-center justify-around lg:justify-around">
-            <div class="np2-contenedor  flex flex-col justify-center items-center lg:items-end">
-                <p class="titulo text-center lg:text-right">FIRMEZA</p>
-                <p class="texto text-center lg:text-right">Carne de buena consistencia y excelente textura y fibra muscular.
+            <div class="np4-contenedor contenedor-texto4  flex flex-col justify-center items-center lg:items-end">
+                <p class="titulo text-center lg:text-right">SABOR Y AROMA</p>
+                <p class="texto text-center lg:text-right">Su sabor único permite preparar variedad de potajes deleitando tu
+                    paladar.
                 </p>
             </div>
-            <div class="np2-contenedor lg:hidden flex justify-center items-center">
+            <div class="np4-contenedor lg:hidden flex justify-center items-center">
                 <div class="relative">
-                    <div class="circulo-fondo">
+                    <div class="circulo-fondo4">
                     </div>
-                    <img src="../../assets/Inicio/imgcont2.jpg" class="absolute img-circulo shadow-2xl" alt="img-circulo">
+                    <img src="../../assets/Inicio/imgcont2.jpg" class="absolute img-circulo4 shadow-2xl" alt="img-circulo4">
                 </div>
             </div>
 
@@ -29,12 +30,75 @@
     </div>
 </template>
 <script>
-export default {
+import { gsap } from 'gsap';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+gsap.registerPlugin(ScrollTrigger);
+export default {
+    data() {
+        return {
+
+        }
+    },
+    methods: {
+        animacionNp4() {
+            const lineaTiempo = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".np4",
+                    start: "top top",
+                    end: "+=500%",
+                    scrub: 1.1,
+                    markers: true,
+                    pin: true,
+                    //pinSpacing: false,
+                    onStart: () => {
+                        ScrollTrigger.refresh();
+                    },
+                    onComplete: () => {
+                        ScrollTrigger.refresh();
+                    },
+                }
+            });
+            lineaTiempo.from(".img-circulo4", {
+                opacity: 0,
+                scale: 7,
+            });
+            lineaTiempo.from(".circulo-fondo4", {
+                delay: 0.2,
+                opacity: 0
+            }, 0);
+            lineaTiempo.from(".contenedor-texto4", {
+                scale: 0.9,
+                opacity: 0,
+                xPercent: 50,
+                yPercent: -50,
+                // duration: 2,
+            });
+            lineaTiempo.to(".img-circulo4", {
+                bottom: "0%",
+                right: "5%",
+            }, "1");
+            lineaTiempo.to(".circulo-fondo4", {
+                scale: 1.2,
+            }, 1);
+        },
+        actualizarAnimacion() {
+            // Actualiza la animación cuando cambie el tamaño de la ventana
+            ScrollTrigger.refresh();
+            window.addEventListener('resize', this.actualizarAnimacion);
+        },
+    },
+    mounted() {
+        this.animacionNp4();
+    },
+    beforeUnmount() {
+        // Remueve el evento resize al desmontar el componente
+        window.removeEventListener('resize', this.actualizarAnimacion);
+    },
 }
 </script>
 <style scoped>
-.np2 {
+.np4 {
     padding: 2%;
     width: 100%;
     min-width: 250px;
@@ -49,7 +113,7 @@ export default {
     border: #471D7C solid;
 }
 
-.np2-contenedor {
+.np4-contenedor {
     height: 33%;
     max-height: 33%;
 }
@@ -70,14 +134,14 @@ export default {
     -webkit-text-stroke: #471D7C 0.1vh;
 }
 
-.circulo-fondo {
+.circulo-fondo4 {
     width: 25vh;
     height: 25vh;
     background-color: #EBDAC0;
     border-radius: 50%;
 }
 
-.img-circulo {
+.img-circulo4 {
     background-color: transparent;
     height: 22vh;
     width: 22vh;
@@ -127,7 +191,7 @@ export default {
 
 @media (min-width: 1024px) {
 
-    .np2-contenedor {
+    .np4-contenedor {
         min-height: 200px;
     }
 
@@ -139,6 +203,7 @@ export default {
 
     .titulo {
         font-size: 4vw;
+        line-height: normal;
     }
 
     .texto {
@@ -146,12 +211,12 @@ export default {
         font-size: 1.5vw;
     }
 
-    .circulo-fondo {
+    .circulo-fondo4 {
         height: 35vw;
         width: 35vw;
     }
 
-    .img-circulo {
+    .img-circulo4 {
         width: 30vw;
         height: 30vw;
     }

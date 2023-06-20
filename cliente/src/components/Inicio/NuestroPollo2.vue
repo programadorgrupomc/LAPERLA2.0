@@ -3,30 +3,30 @@
         <div class="hidden lado2 lg:flex lg:items-center lg:justify-center">
             <div class="np2-contenedor np2-contenedorlg relative lg:flex justify-center items-center">
                 <div class="relative">
-                    <div class="circulo-fondo">
+                    <div class="circulo-fondo2">
                     </div>
-                    <img src="../../assets/Inicio/imgcont2.jpg" class="absolute img-circulo shadow-2xl" alt="img-circulo">
+                    <img src="../../assets/Inicio/imgcont2.jpg" class="absolute img-circulo2 shadow-2xl" alt="img-circulo2">
                 </div>
             </div>
         </div>
         <div class="lado1 flex flex-col lg:items-center justify-center lg:justify-around">
-            <div class="np2-contenedor  flex flex-col justify-center items-center lg:items-end">
+            <div class="np2-contenedor contenedor-texto2 flex flex-col justify-center items-center lg:items-end">
                 <p class="titulo text-center lg:text-right">FIRMEZA</p>
                 <p class="texto text-center lg:text-right">Carne de buena consistencia y excelente textura y fibra muscular.
                 </p>
             </div>
             <div class="np2-contenedor lg:hidden flex justify-center items-center">
                 <div class="relative">
-                    <div class="circulo-fondo">
+                    <div class="circulo-fondo2">
                     </div>
-                    <img src="../../assets/Inicio/imgcont2.jpg" class="absolute img-circulo shadow-2xl" alt="img-circulo">
+                    <img src="../../assets/Inicio/imgcont2.jpg" class="absolute img-circulo2 shadow-2xl" alt="img-circulo2">
                 </div>
             </div>
             <div class="np2-contenedor flex justify-center items-center">
                 <div class="contenedor-2 relative">
-                    <img src="../../assets/Inicio/ProteinaC2.svg" class="img-1 relative" alt="carne-pollo">
-                    <img src="../../assets/Inicio/Row2.svg" class="row-1 relative" alt="row-1">
-                    <div class="indicador relative flex flex-col justify-center items-center">
+                    <img src="../../assets/Inicio/ProteinaC2.svg" class="imgNp-2 relative" alt="carne-pollo">
+                    <img src="../../assets/Inicio/Row2.svg" class="rowNp-2 relative" alt="rowNp-2">
+                    <div class="indicador2 relative flex flex-col justify-center items-center">
                         <p>Gran fuente proteica.</p>
                     </div>
                 </div>
@@ -37,8 +37,82 @@
     </div>
 </template>
 <script>
-export default {
+import { gsap } from 'gsap';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+gsap.registerPlugin(ScrollTrigger);
+export default {
+    data() {
+        return {
+
+        }
+    },
+    methods: {
+        animacionNp2() {
+            const lineadetiempo2 = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".np2",
+                    start: "top top",
+                    end: "+=500%",
+                    scrub: 1.1,
+                    markers: true,
+                    pin: true,
+                    //pinSpacing: false,
+                    onStart: () => {
+                        ScrollTrigger.refresh();
+                    },
+                    onComplete: () => {
+                        ScrollTrigger.refresh();
+                    },
+                }
+            });
+            lineadetiempo2.from(".img-circulo2", {
+                opacity: 0,
+                scale: 7,
+            });
+            lineadetiempo2.from(".circulo-fondo2", {
+                delay: 0.2,
+                opacity: 0
+            }, 0);
+            lineadetiempo2.from(".contenedor-texto2", {
+                scale: 0.9,
+                opacity: 0,
+                xPercent: 50,
+                yPercent: -50,
+                // duration: 2,
+            });
+            lineadetiempo2.to(".img-circulo2", {
+                bottom: "0%",
+                right: "5%",
+            }, "1");
+            lineadetiempo2.to(".circulo-fondo2", {
+                scale: 1.2,
+            }, 1);
+            lineadetiempo2.from(".imgNp-2", {
+                xPercent: 600,
+            });
+            lineadetiempo2.from(".rowNp-2", {
+                opacity: 0,
+                y: 200,
+            });
+            lineadetiempo2.from(".indicador2", {
+                opacity: 0,
+                y: 200,
+            })
+        },
+        actualizarAnimacion() {
+            // Actualiza la animación cuando cambie el tamaño de la ventana
+            ScrollTrigger.refresh();
+            window.addEventListener('resize', this.actualizarAnimacion);
+        },
+    },
+    mounted() {
+        this.animacionNp2();
+    },
+    beforeUnmount() {
+        // Remueve el evento resize al desmontar el componente
+        window.removeEventListener('resize', this.actualizarAnimacion);
+    },
 }
 </script>
 <style scoped>
@@ -78,14 +152,14 @@ export default {
     -webkit-text-stroke: #471D7C 0.1vh;
 }
 
-.circulo-fondo {
+.circulo-fondo2 {
     width: 25vh;
     height: 25vh;
     background-color: #FF7439;
     border-radius: 50%;
 }
 
-.img-circulo {
+.img-circulo2 {
     background-color: transparent;
     height: 22vh;
     width: 22vh;
@@ -98,19 +172,19 @@ export default {
     height: 100%;
 }
 
-.img-1 {
+.imgNp-2 {
     height: 60%;
     left: -35%;
     top: 10%;
 }
 
-.row-1 {
+.rowNp-2 {
     height: 22%;
     top: -20%;
     right: -28%;
 }
 
-.indicador {
+.indicador2 {
     font-size: 2.5vh;
     font-family: "KarbonRegular";
     line-height: 1;
@@ -154,29 +228,29 @@ export default {
         font-size: 1.5vw;
     }
 
-    .circulo-fondo {
+    .circulo-fondo2 {
         height: 35vw;
         width: 35vw;
     }
 
-    .img-circulo {
+    .img-circulo2 {
         width: 30vw;
         height: 30vw;
     }
 
-    .img-1 {
+    .imgNp-2 {
         height: 10vw;
         top: 10vw;
         transform: translateX(150%);
     }
 
-    .row-1 {
+    .rowNp-2 {
         height: 4vw;
         top: 2vw;
         right: 25%;
     }
 
-    .indicador {
+    .indicador2 {
         font-size: 2vw;
         right: -20%;
         top: 5vw;
