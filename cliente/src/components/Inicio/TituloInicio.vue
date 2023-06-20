@@ -21,6 +21,7 @@ export default {
     padding-bottom: 5%;
     padding-top: 5%;
     width: 100%;
+    height: 40vw;
 }
 
 .ttl1 {
@@ -45,6 +46,7 @@ export default {
         padding-left: 5%;
         padding-bottom: 8%;
         width: 100%;
+        height: 25vw;
     }
 
     .ttl1 {

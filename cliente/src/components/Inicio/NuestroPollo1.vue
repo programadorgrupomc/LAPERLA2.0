@@ -89,7 +89,7 @@ export default {
                 scale: 1.2,
             }, 1);
             lineaTiempo.from(".imgNp-1", {
-                xPercent: -180,
+                xPercent: -300,
             });
             lineaTiempo.from(".rowNp-1", {
                 opacity: 0,

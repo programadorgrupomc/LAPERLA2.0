@@ -1,6 +1,6 @@
 <script setup>
 import HeroInicio from '../components/Inicio/HeroInicio.vue';
-import TituloInicio from '../components/Inicio/tituloInicio.vue';
+import TituloInicio from '../components/Inicio/TituloInicio.vue';
 import NuestroPollo1 from '../components/Inicio/NuestroPollo1.vue'
 import NuestroPollo2 from '../components/Inicio/NuestroPollo2.vue';
 import NuestroPollo3 from '../components/Inicio/NuestroPollo3.vue';
@@ -25,8 +25,9 @@ import NuestroProcesos from '../components/Inicio/NuestroProcesos.vue';
   min-width: 250px;
   overflow: hidden;
 }
+
 @media (min-width: 1024px) {
-  .vista-inicio{
+  .vista-inicio {
     padding-top: 12vh;
   }
 }
