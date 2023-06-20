@@ -2,6 +2,7 @@
   <div class="logo flex justify-center items-center relative">
     <img src="../../../assets/General/logo-laperla.png" class="logo-img w-full h-full" alt="logo-laperla" />
     <img src="../../../assets/General/star-logo-laperla.png" class="logo-star-img absolute" alt="star-logo-laperla" />
+    
   </div>
 </template>
 

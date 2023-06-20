@@ -103,6 +103,7 @@ export default {
 
 .contenedor-1 {
     height: 100%;
+    width: 25vh;
 }
 
 .img-1 {
@@ -191,6 +192,7 @@ export default {
     }
 
     .contenedor-1 {
+        width: auto;
         top: -60%;
     }
 }
