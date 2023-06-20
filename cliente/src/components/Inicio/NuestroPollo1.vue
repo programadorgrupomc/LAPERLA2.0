@@ -1,7 +1,7 @@
 <template>
     <div class="np1 flex flex-col lg:flex-row justify-center">
         <div class="lado1 flex flex-col lg:items-center justify-center lg:justify-around">
-            <div class="np1-contenedor  flex flex-col justify-center items-center lg:items-start">
+            <div class="np1-contenedor contenedor-texto flex flex-col justify-center items-center lg:items-start">
                 <p class="titulo text-center lg:text-left">IDENTIDAD</p>
                 <p class="texto text-center lg:text-left">Su buen color y voluminosidad es el sello del Pollo Perla.</p>
             </div>
@@ -33,18 +33,67 @@
                 </div>
             </div>
         </div>
-
     </div>
 </template>
 <script>
 import { gsap } from 'gsap';
-
+import { ScrollTrigger } from 'gsap/all';
+gsap.registerPlugin(ScrollTrigger);
 
 export default {
     data() {
         return {
 
         }
+    },
+    methods: {
+        animacionNp1() {
+            const lineaTiempo = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".np1",
+                    start: "top top",
+                    end: "+=350%",
+                    scrub: 1.1,
+                    markers: true,
+                    pin: true,
+                }
+            });
+            lineaTiempo.from(".img-circulo", {
+                opacity: 0,
+                scale: 7,
+            });
+            lineaTiempo.from(".circulo-fondo", {
+                opacity: 0
+            }, 0);
+            lineaTiempo.from(".contenedor-texto", {
+                scale: 0.9,
+                opacity: 0,
+                xPercent: -50,
+                yPercent: -50,
+                // duration: 2,
+            });
+            lineaTiempo.to(".img-circulo", {
+                bottom: "0%",
+                right: "5%",
+            }, "1");
+            lineaTiempo.to(".circulo-fondo", {
+                scale: 1.2,
+            }, 1);
+            lineaTiempo.from(".img-1", {
+                xPercent: -180,
+            });
+            lineaTiempo.from(".row-1", {
+                opacity: 0,
+                y: 200,
+            });
+            lineaTiempo.from(".indicador", {
+                opacity: 0,
+                y: 200,
+            })
+        },
+    },
+    mounted() {
+        this.animacionNp1();
     }
 }
 </script>
