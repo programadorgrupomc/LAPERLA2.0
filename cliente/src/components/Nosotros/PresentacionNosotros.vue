@@ -81,8 +81,12 @@ export default {
     </div>
 </template>
 <style scoped>
+.stark{
+    height: 280vw;
+}
 .contenedor-nosotros {
-    height: 90vw;
+    height: 100vw;
+
 }
 
 .ellipse {
@@ -122,6 +126,11 @@ export default {
 .imgnpend {
     width: 15vw;
     left: 18%;
+}
+@media (min-width: 768px) {
+    .stark{
+        height: 220vw;
+    }
 }
 
 @media (min-width: 5120px) {

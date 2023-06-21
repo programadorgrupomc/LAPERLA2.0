@@ -1,9 +1,7 @@
 <template>
     <div class="vista-nosotros">
-        <!-- <PresentacionNosotros /> -->
-        <div class="h-96">
-
-        </div>
+        <PresentacionNosotros />
+        <!-- <div class="h-96"> -->
         <LineaDeTiempo />
         <CulturaOrganizacional />
     </div>
@@ -21,9 +19,10 @@ export default {
 }
 </script>
 <style scoped>
-.vista-nosotros{
+.vista-nosotros {
     overflow: hidden;
 }
+
 @media (min-width: 1024px) {
     .vista-nosotros {
         padding-top: 12vh;
