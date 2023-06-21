@@ -4,20 +4,23 @@
             <p class="titulo text-right">NUESTRA HISTORIA</p>
         </div>
         <div v-for="(time, index) in data" :key="index"
-            class="linea-contenido flex flex-col items-start justify-center relative ">
+            class="linea-contenido flex flex-col items-start justify-center relative " :class="'linea-contenido' + index">
             <div class="contenido flex-col flex justify-around lg:flex-row lg:items-center">
                 <div class="contenido-txt-img flex flex-col lg:flex-row lg:items-center">
                     <div class="txt">
-                        <h1 class="txt-h1 flex justify-center items-center lg:justify-end">{{ time.titulo }}</h1>
-                        <p class="txt-p m-auto lg:m-0 flex justify-center items-center">{{ time.contenido }}</p>
+                        <h1 class="txt-h1 flex justify-center items-center lg:justify-end" :class="'txt-h1' + index">{{
+                            time.titulo }}</h1>
+                        <p class="txt-p m-auto lg:m-0 flex justify-center items-center" :class="'txt-p' + index">{{
+                            time.contenido }}</p>
                     </div>
-                    <div class="img m-auto"><img src="../../assets/Nosotros/imgtimel1.png" class="img-tl" alt=""></div>
+                    <div class="img m-auto"><img src="../../assets/Nosotros/imgtimel1.png" class="img-tl"
+                            :class="'img-tl' + index" alt=""></div>
                 </div>
-                <div class="year flex justify-center items-center">
+                <div class="year flex justify-center items-center" :class="'year' + index">
                     <p class="h-full flex items-center">2018</p>
                 </div>
             </div>
-            <div class="linea shadow-2xl absolute flex justify-center items-center">
+            <div class="linea shadow-2xl absolute flex justify-center items-center" :class="'linea' + index">
                 <img v-if="index === 0" class="punta absolute top-0" src="../../assets/Nosotros/TriangleTimeLine.svg"
                     alt="">
                 <img class="elipse" src="../../assets/Nosotros/ElipseTimeLine.svg" alt="">
@@ -41,125 +44,155 @@ export default {
                     titulo: "MEJOR POLLO DEL NORTE",
                     contenido: "Todo este esfuerzo permitió convertirnos en el mejor pollo que se produce en Trujillo distribuyéndonos diariamente en las zonas Barranca, Casma, Huarmey, Chimbote, Chiclayo, Piura y Cajamarca. Y también es llevado por compradores particulares hasta la ciudad de Lima.",
                 },
-                // {
-                //     titulo: "MODERNIZACIÓN DEL AMBIENTE",
-                //     contenido: "Con el paso del tiempo compra terrenos para instalar una nueva planta de Incubación con maquinaria moderna de esa época, también moderniza su planta de alimento balanceado para una buena elaboración de los alimentos que producían.",
-                // },
-                // {
-                //     titulo: "NOMBRE LA PERLA S.A.C.",
-                //     contenido: "Allí por el año 1986, después de sobrevivir a las graves crisis avícolas comerciales de esa época, decide cambiar la razón social a Molino La Perla SAC e incursiona en la crianza de pollos de carne; en donde empieza a construir galpones para su crianza en diversas zonas como Santo Domingo, Vía de Evitamiento, Tablazo de Huanchaco.",
-                // },
-                // {
-                //     titulo: "FUNDACIÓN DE LA PERLA",
-                //     contenido: "Ingeniero Ramón Ganoza Calderón en el mes de octubre del año 1961 funda la empresa Avícola La Perla, donde con poco capital invierte en la compra de unos pequeños terrenos muy rústicos en esa época, y empieza a criar reproductoras de pollo carne de la línea genética Hubbard de USA.",
-                // },
+                {
+                    titulo: "MODERNIZACIÓN DEL AMBIENTE",
+                    contenido: "Con el paso del tiempo compra terrenos para instalar una nueva planta de Incubación con maquinaria moderna de esa época, también moderniza su planta de alimento balanceado para una buena elaboración de los alimentos que producían.",
+                },
+                {
+                    titulo: "NOMBRE LA PERLA S.A.C.",
+                    contenido: "Allí por el año 1986, después de sobrevivir a las graves crisis avícolas comerciales de esa época, decide cambiar la razón social a Molino La Perla SAC e incursiona en la crianza de pollos de carne; en donde empieza a construir galpones para su crianza en diversas zonas como Santo Domingo, Vía de Evitamiento, Tablazo de Huanchaco.",
+                },
+                {
+                    titulo: "FUNDACIÓN DE LA PERLA",
+                    contenido: "Ingeniero Ramón Ganoza Calderón en el mes de octubre del año 1961 funda la empresa Avícola La Perla, donde con poco capital invierte en la compra de unos pequeños terrenos muy rústicos en esa época, y empieza a criar reproductoras de pollo carne de la línea genética Hubbard de USA.",
+                },
             ]
         }
     },
     methods: {
-        animacionLineaDeTiempoEs() {
-            const lineaTiempoTl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: ".linea-contenido",
-                    start: "center center",
-                    end: "+=500%",
-                    scrub: 1.1,
-                    pin: true,
-                    //markers: true,
-                    //pinSpacing: false,
-                    onStart: () => {
-                        ScrollTrigger.refresh();
-                    },
-                    onComplete: () => {
-                        ScrollTrigger.refresh();
-                    },
+        animacionLineaDeTiempoEs(i) {
+            for (let u = 0; u < i; u++) {
+                const lineaTiempoTl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: ".linea-contenido" + u,
+                        start: "center center",
+                        end: "+=500%",
+                        scrub: 1.1,
+                        pin: true,
+                        //markers: true,
+                        //pinSpacing: false,
+                        onStart: () => {
+                            ScrollTrigger.refresh();
+                        },
+                        onComplete: () => {
+                            ScrollTrigger.refresh();
+                        },
+                    }
+                });
+                if (u === 0) {
+                    lineaTiempoTl.fromTo(".linea" + u, {
+                        opacity: 0,
+                        yPercent: 200,
+                        right: "50%",
+                        height: "90vh"
+                    }, {
+                        opacity: 1,
+                        yPercent: 0,
+                        right: "50%",
+                        height: "95vh"
+                    });
+                    lineaTiempoTl.to(".linea" + u, {
+                        right: "20%",
+                    }, "1");
+                } else {
+                    lineaTiempoTl.fromTo(".linea", {
+                        right: "20%",
+                        height: "100vh"
+                    }, {
+                        right: "20%",
+                        height: "100vh"
+                    })
+                };
+                lineaTiempoTl.from(".img-tl" + u, {
+                    delay: 0.5,
+                    opacity: 0,
+                    xPercent: -100,
+                    scale: 9,
+                }, 1);
+                lineaTiempoTl.from(".txt-h1" + u, {
+                    opacity: 0,
+                    xPercent: -200,
+                });
+                lineaTiempoTl.from(".txt-p" + u, {
+                    opacity: 0,
+                    xPercent: -200,
+                });
+                lineaTiempoTl.from(".year" + u, {
+                    opacity: 0,
+                    xPercent: 200,
+                });
+            }
+        },
+        animacionLineadeTiempomobile(i) {
+            for (let u = 0; u < i; u++) {
+                const lineaTiempoTl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: ".linea-contenido" + u,
+                        start: "center center",
+                        end: "+=300%",
+                        scrub: 1.1,
+                        pin: true,
+                        // markers: true,
+                        //pinSpacing: false,
+                        onStart: () => {
+                            ScrollTrigger.refresh();
+                        },
+                        onComplete: () => {
+                            ScrollTrigger.refresh();
+                        },
+                    }
+                });
+                if (u === 0) {
+                    lineaTiempoTl.fromTo(".linea" + u, {
+                        opacity: 0,
+                        yPercent: 200,
+                        right: "50%",
+                        height: "95vh"
+                    }, {
+                        opacity: 1,
+                        yPercent: 0,
+                        right: "50%",
+                        height: "95vh"
+                    });
+                    lineaTiempoTl.to(".linea" + u, {
+                        right: "5%",
+                    }, "1");
+                } else {
+                    lineaTiempoTl.fromTo(".linea", {
+                        right: "5%",
+                        height: "100vh"
+                    }, {
+                        right: "5%",
+                        height: "100vh"
+                    })
                 }
-            });
-            lineaTiempoTl.fromTo(".linea", {
-                opacity: 0,
-                yPercent: 200,
-                right: "50%"
-            }, {
-                opacity: 1,
-                yPercent: 0,
-                right: "50%"
-            });
-            lineaTiempoTl.to(".linea", {
-                right: "20%",
-            }, "1");
-            lineaTiempoTl.from(".img-tl", {
-                delay: 0.5,
-                opacity: 0,
-                xPercent: -100,
-                scale: 9,
-            }, 1);
-            lineaTiempoTl.from(".txt-h1", {
-                opacity: 0,
-                xPercent: -200,
-            });
-            lineaTiempoTl.from(".txt-p", {
-                opacity: 0,
-                xPercent: -200,
-            });
-            lineaTiempoTl.from(".year", {
-                opacity: 0,
-                xPercent: 200,
-            });
+
+                lineaTiempoTl.from(".txt-h1" + u, {
+                    opacity: 0,
+                    xPercent: -200,
+                }, 1);
+                lineaTiempoTl.from(".txt-p" + u, {
+                    opacity: 0,
+                    xPercent: -200,
+                });
+                lineaTiempoTl.from(".img-tl" + u, {
+                    opacity: 0,
+                    xPercent: -200,
+                    scale: 2,
+                });
+                lineaTiempoTl.from(".year" + u, {
+                    opacity: 0,
+                    xPercent: -200,
+                });
+            }
 
         },
-        animacionLineadeTiempomobile() {
-            const lineaTiempoTl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: ".linea-contenido",
-                    start: "center center",
-                    end: "+=300%",
-                    scrub: 1.1,
-                    pin: true,
-                    // markers: true,
-                    //pinSpacing: false,
-                    onStart: () => {
-                        ScrollTrigger.refresh();
-                    },
-                    onComplete: () => {
-                        ScrollTrigger.refresh();
-                    },
-                }
-            });
-            lineaTiempoTl.fromTo(".linea", {
-                opacity: 0,
-                yPercent: 200,
-                right: "50%"
-            }, {
-                opacity: 1,
-                yPercent: 0,
-                right: "50%"
-            });
-            lineaTiempoTl.to(".linea", {
-                right: "5%",
-            }, "1");
-            lineaTiempoTl.from(".txt-h1", {
-                opacity: 0,
-                xPercent: -200,
-            }, 1);
-            lineaTiempoTl.from(".txt-p", {
-                opacity: 0,
-                xPercent: -200,
-            });
-            lineaTiempoTl.from(".img-tl", {
-                opacity: 0,
-                xPercent: -200,
-                scale: 2,
-            });
-            lineaTiempoTl.from(".year", {
-                opacity: 0,
-                xPercent: -200,
-            });
-        },
-        manejarAnimaciones(){
-            if (window.innerWidth > 1024){
-                this.animacionLineaDeTiempoEs();
-            }else{
-                this.animacionLineadeTiempomobile();
+        manejarAnimaciones() {
+            var iteracion = this.data.length;
+            if (window.innerWidth > 1024) {
+                this.animacionLineaDeTiempoEs(iteracion);
+            } else {
+                this.animacionLineadeTiempomobile(iteracion);
             }
         },
         actualizarAnimacion() {
@@ -181,6 +214,7 @@ export default {
 .linea-tiempo {
     border: #463725 solid;
     height: 100%;
+    padding-bottom: 15%;
 }
 
 .linea-titulo {
@@ -237,13 +271,13 @@ export default {
     border: #fdfdfd solid;
     color: #463725;
     font-family: "KarbonRegular";
-    font-size: 2.8vh;
+    font-size: 4.8vw;
     text-align: justify;
 }
 
 .img {
     height: auto;
-    width: 25vw;
+    width: 25vh;
     border: #ebc20e solid;
 }
 
@@ -283,6 +317,7 @@ export default {
     .linea-tiempo {
         border: #463725 solid;
         height: 100%;
+        padding-bottom: 10%;
     }
 
     .linea-titulo {
@@ -323,7 +358,7 @@ export default {
 
     .txt {
         border: #3bf466 solid;
-        height: 100%;
+        height: 80%;
         width: 90%;
     }
 
@@ -359,7 +394,7 @@ export default {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        border-radius: 1vw;
+        border-radius: 0vw;
     }
 
     .year {
