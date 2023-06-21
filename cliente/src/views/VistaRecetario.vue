@@ -13,7 +13,7 @@ export default {
 </script>
 <style scoped>
 @media (min-width: 1024px) {
-    .vista-recetario{
+    .vista-recetario {
         padding-top: 12vh;
     }
 }
