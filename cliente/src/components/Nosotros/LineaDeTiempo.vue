@@ -8,10 +8,10 @@
             <div class="contenido flex-col flex justify-around lg:flex-row lg:items-center">
                 <div class="contenido-txt-img flex flex-col lg:flex-row lg:items-center">
                     <div class="txt">
-                        <h1 class="flex justify-center items-center lg:justify-end">{{ time.titulo }}</h1>
-                        <p class="m-auto lg:m-0 flex justify-center items-center">{{ time.contenido }}</p>
+                        <h1 class="txt-h1 flex justify-center items-center lg:justify-end">{{ time.titulo }}</h1>
+                        <p class="txt-p m-auto lg:m-0 flex justify-center items-center">{{ time.contenido }}</p>
                     </div>
-                    <div class="img m-auto"><img src="../../assets/Nosotros/imgtimel1.png" class="" alt=""></div>
+                    <div class="img m-auto"><img src="../../assets/Nosotros/imgtimel1.png" class="img-tl" alt=""></div>
                 </div>
                 <div class="year flex justify-center items-center">
                     <p class="h-full flex items-center">2018</p>
@@ -41,31 +41,31 @@ export default {
                     titulo: "MEJOR POLLO DEL NORTE",
                     contenido: "Todo este esfuerzo permitió convertirnos en el mejor pollo que se produce en Trujillo distribuyéndonos diariamente en las zonas Barranca, Casma, Huarmey, Chimbote, Chiclayo, Piura y Cajamarca. Y también es llevado por compradores particulares hasta la ciudad de Lima.",
                 },
-                {
-                    titulo: "MODERNIZACIÓN DEL AMBIENTE",
-                    contenido: "Con el paso del tiempo compra terrenos para instalar una nueva planta de Incubación con maquinaria moderna de esa época, también moderniza su planta de alimento balanceado para una buena elaboración de los alimentos que producían.",
-                },
-                {
-                    titulo: "NOMBRE LA PERLA S.A.C.",
-                    contenido: "Allí por el año 1986, después de sobrevivir a las graves crisis avícolas comerciales de esa época, decide cambiar la razón social a Molino La Perla SAC e incursiona en la crianza de pollos de carne; en donde empieza a construir galpones para su crianza en diversas zonas como Santo Domingo, Vía de Evitamiento, Tablazo de Huanchaco.",
-                },
-                {
-                    titulo: "FUNDACIÓN DE LA PERLA",
-                    contenido: "Ingeniero Ramón Ganoza Calderón en el mes de octubre del año 1961 funda la empresa Avícola La Perla, donde con poco capital invierte en la compra de unos pequeños terrenos muy rústicos en esa época, y empieza a criar reproductoras de pollo carne de la línea genética Hubbard de USA.",
-                },
+                // {
+                //     titulo: "MODERNIZACIÓN DEL AMBIENTE",
+                //     contenido: "Con el paso del tiempo compra terrenos para instalar una nueva planta de Incubación con maquinaria moderna de esa época, también moderniza su planta de alimento balanceado para una buena elaboración de los alimentos que producían.",
+                // },
+                // {
+                //     titulo: "NOMBRE LA PERLA S.A.C.",
+                //     contenido: "Allí por el año 1986, después de sobrevivir a las graves crisis avícolas comerciales de esa época, decide cambiar la razón social a Molino La Perla SAC e incursiona en la crianza de pollos de carne; en donde empieza a construir galpones para su crianza en diversas zonas como Santo Domingo, Vía de Evitamiento, Tablazo de Huanchaco.",
+                // },
+                // {
+                //     titulo: "FUNDACIÓN DE LA PERLA",
+                //     contenido: "Ingeniero Ramón Ganoza Calderón en el mes de octubre del año 1961 funda la empresa Avícola La Perla, donde con poco capital invierte en la compra de unos pequeños terrenos muy rústicos en esa época, y empieza a criar reproductoras de pollo carne de la línea genética Hubbard de USA.",
+                // },
             ]
         }
     },
     methods: {
-        animacionLineadeTiempo() {
+        animacionLineaDeTiempoEs() {
             const lineaTiempoTl = gsap.timeline({
                 scrollTrigger: {
                     trigger: ".linea-contenido",
                     start: "center center",
-                    end: "+=300%",
+                    end: "+=500%",
                     scrub: 1.1,
                     pin: true,
-                    markers: true,
+                    //markers: true,
                     //pinSpacing: false,
                     onStart: () => {
                         ScrollTrigger.refresh();
@@ -86,12 +86,95 @@ export default {
             });
             lineaTiempoTl.to(".linea", {
                 right: "20%",
-            })
-        }
+            }, "1");
+            lineaTiempoTl.from(".img-tl", {
+                delay: 0.5,
+                opacity: 0,
+                xPercent: -100,
+                scale: 9,
+            }, 1);
+            lineaTiempoTl.from(".txt-h1", {
+                opacity: 0,
+                xPercent: -200,
+            });
+            lineaTiempoTl.from(".txt-p", {
+                opacity: 0,
+                xPercent: -200,
+            });
+            lineaTiempoTl.from(".year", {
+                opacity: 0,
+                xPercent: 200,
+            });
+
+        },
+        animacionLineadeTiempomobile() {
+            const lineaTiempoTl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".linea-contenido",
+                    start: "center center",
+                    end: "+=300%",
+                    scrub: 1.1,
+                    pin: true,
+                    // markers: true,
+                    //pinSpacing: false,
+                    onStart: () => {
+                        ScrollTrigger.refresh();
+                    },
+                    onComplete: () => {
+                        ScrollTrigger.refresh();
+                    },
+                }
+            });
+            lineaTiempoTl.fromTo(".linea", {
+                opacity: 0,
+                yPercent: 200,
+                right: "50%"
+            }, {
+                opacity: 1,
+                yPercent: 0,
+                right: "50%"
+            });
+            lineaTiempoTl.to(".linea", {
+                right: "5%",
+            }, "1");
+            lineaTiempoTl.from(".txt-h1", {
+                opacity: 0,
+                xPercent: -200,
+            }, 1);
+            lineaTiempoTl.from(".txt-p", {
+                opacity: 0,
+                xPercent: -200,
+            });
+            lineaTiempoTl.from(".img-tl", {
+                opacity: 0,
+                xPercent: -200,
+                scale: 2,
+            });
+            lineaTiempoTl.from(".year", {
+                opacity: 0,
+                xPercent: -200,
+            });
+        },
+        manejarAnimaciones(){
+            if (window.innerWidth > 1024){
+                this.animacionLineaDeTiempoEs();
+            }else{
+                this.animacionLineadeTiempomobile();
+            }
+        },
+        actualizarAnimacion() {
+            // Actualiza la animación cuando cambie el tamaño de la ventana
+            ScrollTrigger.refresh();
+            window.addEventListener('resize', this.actualizarAnimacion);
+        },
     },
     mounted() {
-        this.animacionLineadeTiempo();
-    }
+        this.manejarAnimaciones();
+    },
+    beforeUnmount() {
+        // Remueve el evento resize al desmontar el componente
+        window.removeEventListener('resize', this.actualizarAnimacion);
+    },
 }
 </script>
 <style scoped>
@@ -102,7 +185,7 @@ export default {
 
 .linea-titulo {
     padding: 2%;
-
+    height: auto;
 }
 
 .titulo {
@@ -154,13 +237,13 @@ export default {
     border: #fdfdfd solid;
     color: #463725;
     font-family: "KarbonRegular";
-    font-size: 4.8vw;
+    font-size: 2.8vh;
     text-align: justify;
 }
 
 .img {
     height: auto;
-    width: 80%;
+    width: 25vw;
     border: #ebc20e solid;
 }
 

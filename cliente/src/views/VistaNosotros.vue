@@ -21,6 +21,9 @@ export default {
 }
 </script>
 <style scoped>
+.vista-nosotros{
+    overflow: hidden;
+}
 @media (min-width: 1024px) {
     .vista-nosotros {
         padding-top: 12vh;
