@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="vista-work">
         work
     </div>
 </template>
@@ -8,4 +8,8 @@ export default {
 
 }
 </script>
-<style scoped></style>
+<style scoped>
+.vista-work{
+    padding-top: 12vh;
+}
+</style>
