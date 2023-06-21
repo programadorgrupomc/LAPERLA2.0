@@ -1,16 +1,22 @@
 <template>
     <div class="vista-nosotros">
-        <PresentacionNosotros />
+        <!-- <PresentacionNosotros /> -->
+        <div class="h-96">
+
+        </div>
+        <LineaDeTiempo />
         <CulturaOrganizacional />
     </div>
 </template>
 <script>
 import PresentacionNosotros from '../components/Nosotros/PresentacionNosotros.vue';
 import CulturaOrganizacional from '../components/Nosotros/CulturaOrganizacional.vue';
+import LineaDeTiempo from '../components/Nosotros/LineaDeTiempo.vue';
 export default {
     components: {
         PresentacionNosotros,
         CulturaOrganizacional,
+        LineaDeTiempo,
     }
 }
 </script>
