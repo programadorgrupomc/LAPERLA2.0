@@ -1,13 +1,20 @@
 <template>
-    <div>
-        noticias
+    <div class="vista-noticias">
+        <NoticiasNoticia />
     </div>
 </template>
 <script>
-export default{
-
+import NoticiasNoticia from '../components/Noticias/NoticiasNoticia.vue';
+export default {
+    components: {
+        NoticiasNoticia,
+    }
 }
 </script>
 <style scoped>
-
+@media (min-width: 1024px) {
+    .vista-noticias {
+        padding-top: 12vh;
+    }
+}
 </style>
