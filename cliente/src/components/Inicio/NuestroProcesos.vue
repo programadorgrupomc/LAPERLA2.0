@@ -121,10 +121,8 @@ export default {
         animatioenNp(obj) {
 
             if (window.innerWidth > 1024) {
-                //animacion independiente
-                var i;
 
-                for (i = 0; i < obj; i++) {
+                for (let i = 0; i < obj; i++) {
                     const tlnp = gsap.timeline({
                         scrollTrigger: {
                             trigger: ".npani" + i,
@@ -132,7 +130,7 @@ export default {
                             end: "center center",
                             toggleActions: "restart none none none",
                             scrub: 1.2,
-                            markers: true,
+                            // markers: true,
                             onStart: () => {
                                 ScrollTrigger.refresh();
                             },

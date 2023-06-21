@@ -48,7 +48,7 @@ export default {
                     start: "top top",
                     end: "+=500%",
                     scrub: 1.1,
-                    markers: true,
+                    // markers: true,
                     pin: true,
                     //pinSpacing: false,
                     onStart: () => {

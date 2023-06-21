@@ -69,7 +69,7 @@ export default {
                         end: "+=500%",
                         scrub: 1.1,
                         pin: true,
-                        markers: true,
+                        // markers: true,
                         //pinSpacing: false,
                         onStart: () => {
                             ScrollTrigger.refresh();
@@ -134,7 +134,7 @@ export default {
                         end: "+=200%",
                         scrub: 1.1,
                         pin: true,
-                        // markers: true,
+                        // // markers: true,
                         //pinSpacing: false,
                         onStart: () => {
                             ScrollTrigger.refresh();
@@ -316,11 +316,23 @@ export default {
     transform: scale(3.5);
 }
 
+@media (min-width: 768px) {
+    .txt p {
+        height: auto;
+        width: 95%;
+        border: #fdfdfd solid;
+        color: #463725;
+        font-family: "KarbonRegular";
+        font-size: 3.8vw;
+        text-align: justify;
+    }
+}
+
 @media (min-width: 1024px) {
     .linea-tiempo {
         border: #463725 solid;
         height: 100%;
-        padding-bottom: 10%;
+        padding-bottom: 13vw;
     }
 
     .linea-titulo {
@@ -374,7 +386,6 @@ export default {
         font-size: 2vw;
         -webkit-text-stroke: #463725 0.1vh;
         text-align: right;
-        background-color: #3bf466;
     }
 
     .txt p {
