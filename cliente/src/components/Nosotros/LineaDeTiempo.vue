@@ -210,6 +210,7 @@ export default {
     },
 }
 </script>
+
 <style scoped>
 .linea-tiempo {
     border: #463725 solid;
