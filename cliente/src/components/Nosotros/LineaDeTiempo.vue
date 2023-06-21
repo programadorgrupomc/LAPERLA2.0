@@ -69,7 +69,7 @@ export default {
                         end: "+=500%",
                         scrub: 1.1,
                         pin: true,
-                        //markers: true,
+                        markers: true,
                         //pinSpacing: false,
                         onStart: () => {
                             ScrollTrigger.refresh();
@@ -95,10 +95,12 @@ export default {
                         right: "20%",
                     }, "1");
                 } else {
-                    lineaTiempoTl.fromTo(".linea", {
+                    lineaTiempoTl.fromTo(".linea" + u, {
+                        duration: 0,
                         right: "20%",
                         height: "100vh"
                     }, {
+                        duration: 0,
                         right: "20%",
                         height: "100vh"
                     })
@@ -129,7 +131,7 @@ export default {
                     scrollTrigger: {
                         trigger: ".linea-contenido" + u,
                         start: "center center",
-                        end: "+=300%",
+                        end: "+=200%",
                         scrub: 1.1,
                         pin: true,
                         // markers: true,
