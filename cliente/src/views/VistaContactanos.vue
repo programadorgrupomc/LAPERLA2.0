@@ -18,12 +18,13 @@ export default {
 }   
 </script>
 <style scoped>
-.vista-contactanos{
+.vista-contactanos {
     background-color: #FCF5EB;
 }
+
 @media (min-width: 1024px) {
     .vista-contactanos {
-    padding-top: 12vh;
-}
+        padding-top: 12vh;
+    }
 }
 </style>
