@@ -4,31 +4,35 @@
             <h1 class="title-noticias lg:text-right">NOTICIAS</h1>
         </div>
 
-        <router-link to="/noticias/descnot" custom v-slot="{ navigate }">
-            <div v-for="(not, index) in noticiasData" :key="index" @click="navigate" role="link"
-                class="cont-noticia lg:flex  transition-all">
-                <div class="cont-imgn">
-                    <img loading="lazy" class="lg:w-full h-full object-cover transition-all"
-                        src="../../assets/Noticias/imgnot1(4).jpg" :alt="not.imgehero" />
-                </div>
-                <div class="cont-text flex flex-col justify-center" :class="{
-                    'lg:order-none': index % 2 === 0,
-                    'lg:order-first': index % 2 === 1
-                }">
-                    <div class="icon-noticiasvg flex justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-journals"
-                            viewBox="0 0 16 16">
-                            <path
-                                d="M5 0h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2 2 2 0 0 1-2 2H3a2 2 0 0 1-2-2h1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1H1a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v9a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1H3a2 2 0 0 1 2-2z" />
-                            <path
-                                d="M1 6v-.5a.5.5 0 0 1 1 0V6h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V9h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 2.5v.5H.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1H2v-.5a.5.5 0 0 0-1 0z" />
-                        </svg>
+
+        <div v-for="(not, index) in noticiasData" :key="index">
+            <router-link :to="`/noticia/desc/${not.id}`">
+                <div class="cont-noticia lg:flex  transition-all">
+                    <div class="cont-imgn">
+                        <img loading="lazy" class="lg:w-full h-full object-cover transition-all"
+                            src="../../assets/Noticias/imgnot1(4).jpg" :alt="not.imgehero" />
                     </div>
-                    <h1 class="text-center">{{ not.titulo }}</h1>
-                    <p class="text-justify lg:text-center">{{ not.descripcion }}</p>
+                    <div class="cont-text flex flex-col justify-center" :class="{
+                        'lg:order-none': index % 2 === 0,
+                        'lg:order-first': index % 2 === 1
+                    }">
+                        <div class="icon-noticiasvg flex justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-journals"
+                                viewBox="0 0 16 16">
+                                <path
+                                    d="M5 0h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2 2 2 0 0 1-2 2H3a2 2 0 0 1-2-2h1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1H1a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v9a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1H3a2 2 0 0 1 2-2z" />
+                                <path
+                                    d="M1 6v-.5a.5.5 0 0 1 1 0V6h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V9h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 2.5v.5H.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1H2v-.5a.5.5 0 0 0-1 0z" />
+                            </svg>
+                        </div>
+                        <h1 class="text-center">{{ not.titulo }}</h1>
+                        <p class="text-justify lg:text-center">{{ not.descripcion }}</p>
+                    </div>
                 </div>
-            </div>
-        </router-link>
+
+            </router-link>
+        </div>
+
 
         <StartButton class="mt-8" />
     </div>
@@ -41,21 +45,25 @@ export default {
         return {
             noticiasData: [
                 {
+                    id: '1',
                     imghero: 'Hola',
                     titulo: 'DÍA DEL TRABAJADOR',
                     descripcion: 'En Molino La Perla conmemoramos a nivel mundial al movimiento obrero y la fuerza laboral, como movimiento reivindicativo de diferentes causas relacionadas con el trabajo.'
                 },
                 {
+                    id: '2',
                     imghero: 'Hola',
                     titulo: 'DÍA DE LA MUJER',
                     descripcion: 'Conmemoramos el 8 de marzo de 1908, un suceso transcendental que marcó la historia del trabajo y la lucha sindical en el mundo entero: 129 mujeres murieron en un incendio en la fábrica Cotton, de Nueva York.'
                 },
                 {
+                    id: '3',
                     imghero: 'Hola',
                     titulo: 'DÍA DEL AGRADECIMIENTO AL GALPONERO',
                     descripcion: 'Celebramos a nuestros granjeros de Molino La Perla y de nuestra nación, y el importante papel que desempeñan en nuestra vida diaria.'
                 },
                 {
+                    id: '4',
                     imghero: 'Hola',
                     titulo: 'DÍA DEL CAMPESINO',
                     descripcion: 'El campesino, agricultor o ganadero, hace producir con su trabajo y esfuerzo la tierra y los animales, recursos que nos fueron brindados y que son mundialmente conocidos, porque representan una mayor fuente de riqueza.'

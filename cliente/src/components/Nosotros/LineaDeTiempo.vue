@@ -215,7 +215,7 @@ export default {
 
 <style scoped>
 .linea-tiempo {
-    border: #463725 solid;
+    /* border: #463725 solid; */
     height: 100%;
     padding-bottom: 15%;
 }
@@ -237,11 +237,11 @@ export default {
     padding: 4%;
     width: 100%;
     height: 90vh;
-    border: #471D7C solid;
+    /* border: #471D7C solid; */
 }
 
 .contenido {
-    border: #f9089d solid;
+    /* border: #f9089d solid; */
     width: 80vw;
     height: 100%;
 }
@@ -249,18 +249,18 @@ export default {
 .contenido-txt-img {
     height: 88%;
     max-height: 90%;
-    border: #cf551d solid;
+    /* border: #cf551d solid; */
     margin: 2%;
     padding: 2%;
 }
 
 .txt {
-    border: #3bf466 solid;
+    /* border: #3bf466 solid; */
 }
 
 .txt h1 {
 
-    border: #7c2b1b solid;
+    /* border: #7c2b1b solid; */
     color: #463725;
     font-family: "KarbonRegular";
     font-size: 5.5vw;
@@ -271,7 +271,7 @@ export default {
 .txt p {
     height: auto;
     width: 95%;
-    border: #fdfdfd solid;
+    /* border: #fdfdfd solid; */
     color: #463725;
     font-family: "KarbonRegular";
     font-size: 4.8vw;
@@ -281,19 +281,19 @@ export default {
 .img {
     height: auto;
     width: 25vh;
-    border: #ebc20e solid;
+    /* border: #ebc20e solid; */
 }
 
 .img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 3vw;
+    /* border-radius: 3vw; */
 }
 
 .year {
     height: 8%;
-    border: #8135df solid;
+    /* border: #8135df solid; */
     margin: 2%;
     font-family: "KarbonRegular";
     font-size: 10vw;
@@ -320,7 +320,7 @@ export default {
     .txt p {
         height: auto;
         width: 95%;
-        border: #fdfdfd solid;
+        /* border: #fdfdfd solid; */
         color: #463725;
         font-family: "KarbonRegular";
         font-size: 3.8vw;
@@ -330,7 +330,7 @@ export default {
 
 @media (min-width: 1024px) {
     .linea-tiempo {
-        border: #463725 solid;
+        /* border: #463725 solid; */
         height: 100%;
         padding-bottom: 13vw;
     }
@@ -354,25 +354,25 @@ export default {
         padding-bottom: 5%;
         width: 100%;
         height: 100%;
-        border: #471D7C solid;
+        /* border: #471D7C solid; */
     }
 
     .contenido {
-        border: #f9089d solid;
+        /* border: #f9089d solid; */
         width: 100%;
         height: 100%;
     }
 
     .contenido-txt-img {
         height: 90%;
-        border: #cf551d solid;
+        /* border: #cf551d solid; */
         margin: 1%;
         width: 70%;
         padding: 2%;
     }
 
     .txt {
-        border: #3bf466 solid;
+        /* border: #3bf466 solid; */
         height: 80%;
         width: 90%;
     }
@@ -380,18 +380,19 @@ export default {
     .txt h1 {
         height: 20%;
         width: 80%;
-        border: #7c2b1b solid;
+        /* border: #7c2b1b solid; */
         color: #463725;
         font-family: "KarbonRegular";
         font-size: 2vw;
         -webkit-text-stroke: #463725 0.1vh;
         text-align: right;
+        padding-bottom: 5%;
     }
 
     .txt p {
         height: 80%;
         width: 80%;
-        border: #fdfdfd solid;
+        /* border: #fdfdfd solid; */
         color: #463725;
         font-family: "KarbonRegular";
         font-size: 1.2vw;
@@ -401,19 +402,19 @@ export default {
     .img {
         height: 100%;
         width: 30%;
-        border: #ebc20e solid;
+        /* border: #ebc20e solid; */
     }
 
     .img img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        border-radius: 0vw;
+        /* border-radius: 0vw; */
     }
 
     .year {
         height: 80%;
-        border: #8135df solid;
+        /* border: #8135df solid; */
         margin: 2%;
         font-family: "KarbonRegular";
         font-size: 3vw;

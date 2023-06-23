@@ -87,7 +87,7 @@ export default {
 }
 
 .recetario-titulo {
-    border: solid;
+    /* border: solid; */
     padding: 2%;
 }
 
@@ -99,7 +99,7 @@ export default {
 
 .recetario-recetas {
     height: auto;
-    border: solid white;
+    /* border: solid white; */
     display: flex;
 }
 
@@ -109,7 +109,7 @@ export default {
 }
 
 .receta {
-    border: #cfb9ea solid;
+    /* border: #cfb9ea solid; */
     height: 20%;
     margin-bottom: 6%;
 }
@@ -121,7 +121,7 @@ export default {
     }
 
     .recetario-titulo {
-        border: solid;
+        /* border: solid; */
         padding: 0.1%;
         padding-left: 5%;
         height: 20%;
@@ -137,8 +137,9 @@ export default {
         height: auto;
         margin: auto;
         width: 80%;
-        border: solid white;
+        /* border: solid white; */
         display: flex;
+        max-width: 3000px;
     }
 
     .recetas {
@@ -147,7 +148,7 @@ export default {
     }
 
     .receta {
-        border: #cfb9ea solid;
+        /* border: #cfb9ea solid; */
         height: 20%;
         margin-bottom: 6%;
     }

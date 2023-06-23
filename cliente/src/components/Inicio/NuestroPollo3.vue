@@ -108,7 +108,7 @@ export default {
     width: 100%;
     min-width: 250px;
     min-height: 90vh;
-    border: #471D7C solid;
+    /* border: #471D7C solid; */
 }
 
 .np3-contenedor {
@@ -195,7 +195,7 @@ export default {
     .lado1,
     .lado2 {
         width: 35%;
-        border: #471D7C solid;
+        /* border: #471D7C solid; */
     }
 
     .titulo {

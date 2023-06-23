@@ -10,25 +10,28 @@
         <!-- items de nuestros procesos -->
 
         <!-- Items Iteractivos -->
-        <div v-for="(npro, index) in nuestrosPro" :key="index" class="item-np lg:flex " :class="{
+        <div v-for="(npro, index) in nuestrosPro" :key="index" class="item-np flex flex-col lg:flex lg:flex-row" :class="{
             'bg-FondoNp1': index % 2 == 0,
             'bg-FondoNp2': index % 2 == 1,
         }, 'npani' + index">
             <!-- imagen -->
-            <div class="cont-imgnp h-auto flex justify-center bg-gray-400 lg:w-1/2" :class="'npimgani' + index">
-                <img loading="lazy" class="h-full w-full object-cover" :src="npro.image" :alt="npro.alt" />
+            <div class="cont-imgnp h-auto flex justify-center lg:w-1/2" :class="'npimgani' + index">
+                <img class="h-full w-full object-cover imgnpgen py-6" :src="npro.image" :class="{
+                    'lg:pl-0': index % 2 == 0,
+                    'lg:pr-0': index % 2 == 1,
+                }" />
             </div>
             <!-- contenido cuerpo -->
-            <div class="cont-textnp p-14 flex flex-col justify-center lg:w-2/4 lg:px-24" :class="{
+            <div class="cont-textnp p-14 flex flex-col justify-center lg:w-2/4 lg:px-24 order-first" :class="{
                 'lg:order-none': index % 2 == 0,
                 'lg:order-first': index % 2 == 1,
             }, 'nptextani' + index">
-                <div class="ttlnpe text-NaranjaPerla text-3xl  break-words">
+                <div class="ttlnpe text-NaranjaPerla text-3xl lg:text-4xl break-words">
                     <p class="md:text-6xl" :class="{
                         'text-right': index % 2 == 0,
                         'text-left': index % 2 == 1,
                     }">
-                        {{ npro.title }}
+                        Etapa {{ index + 1 }}
                     </p>
                 </div>
                 <div class="ttlnpp text-AzulPerla text-5xl md:text-8xl py-5 lg:text-7xl break-words"
@@ -46,11 +49,12 @@
                     </p>
                 </div>
             </div>
-            <div class="w-1" :class="{ 'hidden': index != 2, }"><img loading="lazy" class="img-decor relative"
-                    src="@/assets/Inicio/starnpR.png" alt=""></div>
-            <div class="w-1" :class="{ 'hidden': index != 4, }"><img loading="lazy" class="img-decor2 relative"
-                    src="@/assets/Inicio/starnpR.png" alt="">
-            </div>
+
+            <!-- <div class="w-1" :class="{ 'hidden': index != 2, }"><img class="img-decor relative"
+                    src="@/assets/HomeAssets/NpAss/starnpR.png" alt=""></div>
+            <div class="w-1" :class="{ 'hidden': index != 4, }"><img class="img-decor2 relative"
+                    src="@/assets/HomeAssets/NpAss/starnpR.png" alt="">
+            </div> -->
         </div>
     </div>
 </template>
@@ -130,7 +134,7 @@ export default {
                             end: "center center",
                             toggleActions: "restart none none none",
                             scrub: 1.2,
-                            // markers: true,
+                            //markers: true,
                             onStart: () => {
                                 ScrollTrigger.refresh();
                             },
@@ -263,6 +267,15 @@ export default {
 </script>
 
 <style scoped>
+.item-np {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.173);
+}
+
+.cont-imgnp {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+
 .cont-ttlnp h1 {
     font-family: "TestKarbonSemiBold";
 }
@@ -297,17 +310,13 @@ export default {
 }
 
 @media (min-width:1024px) {
+    .cont-imgnp {
+        background-color: rgba(0, 0, 0, 0);
+    }
+
 
     .cont-ttlnp h1 {
         font-size: 7vw;
-    }
-
-    .ttlnpe {
-        font-size: 2vw;
-    }
-
-    .ttlnpp {
-        font-size: 5vw;
     }
 
     .cont-ttlnp {
@@ -345,7 +354,6 @@ export default {
         line-height: normal;
     }
 
-
     .img-decor {
         scale: 150;
         left: -90vw;
@@ -357,4 +365,5 @@ export default {
         left: -10vw;
         top: -0.25%;
     }
-}</style>
+}
+</style>

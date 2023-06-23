@@ -50,7 +50,7 @@ const router = createRouter({
       component: () => import('../views/VistaContactanos.vue')
     },
 
-    //Rutas Secundarias Recetas Y noticias Y Trabajos.
+    //Rutas Secundarias Recetas Y noticias Y Trabajos a y codigo de etica.
     {
       path: '/receta/desc/:id',
       name: 'recetasdesc',
@@ -58,13 +58,35 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../components/Recetario/DescReceta.vue')
-    }
+    },
+    {
+      path: '/noticia/desc/:id',
+      name: 'noticiadesc',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../components/Noticias/DescripcionNoticia.vue')
+    },
+    {
+      path: '/work/ce/',
+      name: 'workce',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../components/Work/DescripcionCe.vue')
+    },
+    {
+      path: '/work/descwork/:id',
+      name: 'descwork',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../components/Work/DescripcionWork.vue')
+    },
   ],
   scrollBehavior(to, from, savedPosition) {
-    return { top: 0 };
+    return { top: 0 }
   }
 })
-
-
 
 export default router

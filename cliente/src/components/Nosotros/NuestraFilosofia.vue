@@ -303,22 +303,26 @@ export default {
 
 @media (min-width: 1024px) {
   .ttlnf {
-    padding-top: 3%;
+    padding-top: 5%;
     font-size: 5vw;
     font-weight: bold;
     padding-left: 10%;
+    /* border: black solid; */
   }
 
   .conttrianglegen {
-    transform: scale(0.75);
+    transform: scale(0.70) translateY(-8vh);
+    /* border: black solid; */
   }
 
   .imgtr {
     width: 6.5vw;
+    /* border: black solid; */
   }
 
   .conttritem1 {
     padding-top: 5%;
+    /* border: black solid; */
   }
 
   .conttritem1 p {
@@ -327,15 +331,18 @@ export default {
     padding-bottom: 2%;
     padding-left: 2.5%;
     padding-right: 2.5%;
+    /* border: black solid; */
   }
 
   .ttlfilosofia {
     font-size: 2.5vw;
+    /* border: black solid; */
   }
 
   .conttritem2 ul {
     font-size: 1.35vw;
     width: 60%;
+    /* border: black solid; */
   }
 
   .conttritem3 p {
@@ -344,10 +351,12 @@ export default {
     padding-bottom: 1%;
     padding-left: 1%;
     padding-right: 1%;
+    /* border: black solid; */
   }
 
   .conttritem3 {
     padding-top: 5%;
+    /* border: black solid; */
   }
 }
 
@@ -359,7 +368,7 @@ export default {
   }
 
   .conttrianglegen {
-    transform: scale(0.75);
+    transform: scale(0.68) translateY(-8vh);
   }
 
   .imgtr {
