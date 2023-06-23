@@ -1,7 +1,7 @@
 <script setup>
 // import HeaderWeb from './components/General/HeaderWeb.vue'
 import headerPerla from './components/General/headerold/headerPerla.vue';
-// import footerPerla from './components/General/headerold/footerPerla.vue';
+import footerPerla from './components/General/headerold/footerPerla.vue';
 // import FooterWeb from './components/General/FooterWeb.vue';
 </script>
 
@@ -16,7 +16,7 @@ import headerPerla from './components/General/headerold/headerPerla.vue';
   </main>
 
   <footer>
-    <!-- <footerPerla /> -->
+    <footerPerla />
     <!-- <FooterWeb/> -->
   </footer>
 </template>

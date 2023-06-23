@@ -14,7 +14,7 @@ export default {
 
   data() {
     return {
-      codigoEtica: '',
+      codigoEtica: 'Conoce sobre la filosofía de Molino La Perla',
     }
   },
   methods: {

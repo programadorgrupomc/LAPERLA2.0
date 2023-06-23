@@ -1,4 +1,3 @@
-
 <template>
     <div>
         <!-- footer -->
@@ -7,9 +6,9 @@
             <div class="logofooterh flex justify-center items-center px-8 pt-8 lg:w-2/4 lg:scale-125">
                 <div class="img-footergroup relative w-96">
                     <img loading="lazy" class="img-logofoo" @mouseenter="hover = true" @mouseleave="hover = false"
-                        :class="{ 'img-logofoovue': hover }" src="@/assets/HeaderS/logoaperlafooter.png" alt="logofoo">
+                        :class="{ 'img-logofoovue': hover }" src="@/assets/General/logo-laperla-footer.png" alt="logofoo">
                     <img loading="lazy" class="relative star-mor star-basfoo w-8 h-8" :class="{ 'star-basfoovue': hover }"
-                        src="@/assets/HeaderS/brillologofooter.png" alt="starfoo">
+                        src="@/assets/General/star-logo-footer.png" alt="starfoo">
                     <div class="relative eye-orange ojo-perla rounded-full" :class="{ 'ojo-perlavue': hover }">
                     </div>
                 </div>
@@ -126,12 +125,14 @@
 </template>
 <script>
 export default {
-    name: 'FooterPerla',
+
     data() {
         return {
             hover: false,
             footerData: [],
-            rsData: [],
+            rsData: [
+
+            ],
             itemsHeader: null,
             titulo1: 'INICIO',
             titulo2: 'NOSOTROS',
@@ -166,19 +167,12 @@ export default {
         }
     },
     mounted() {
-        const footerStore = useFooterStore();
-        footerStore.fetchData().then(() => {
-            this.footerData = footerStore.data;
-        });
-        footerStore.fetchDatars().then(() => {
-            this.rsData = footerStore.rsdata;
-        });
+
 
     }
 }
 </script>
 <style scoped>
-
 .copy-content {
     height: 8vh;
 }

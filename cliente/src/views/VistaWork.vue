@@ -2,7 +2,7 @@
     <div class="vista-work">
         <HeroWork />
         <PresentacionWork />
-        <CodigoEtica/>
+        <CodigoEtica />
     </div>
 </template>
 <script>
@@ -13,7 +13,7 @@ export default {
     components: {
         HeroWork,
         PresentacionWork,
-        CodigoEtica
+        CodigoEtica,
     }
 }
 </script>

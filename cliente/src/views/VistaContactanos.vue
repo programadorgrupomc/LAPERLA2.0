@@ -5,10 +5,12 @@
         <ContactanosDirecciones />
     </div>
 </template>
+
 <script>
 import ContactanosFormulario from '../components/Contactanos/ContactanosFormulario.vue';
 import ContactanosDirecciones from '../components/Contactanos/ContactanosDirecciones.vue';
 import ContactanosMapa from '../components/Contactanos/ContactanosMapa.vue';
+
 export default {
     components: {
         ContactanosFormulario,
@@ -17,6 +19,7 @@ export default {
     }
 }   
 </script>
+
 <style scoped>
 .vista-contactanos {
     background-color: #FCF5EB;
@@ -27,4 +30,5 @@ export default {
         padding-top: 12vh;
     }
 }
+
 </style>

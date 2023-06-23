@@ -3,14 +3,17 @@
         <RecetasRecetario />
     </div>
 </template>
+
 <script>
 import RecetasRecetario from '../components/Recetario/RecetasRecetario.vue';
+
 export default {
     components: {
-        RecetasRecetario
+        RecetasRecetario,
     }
 }
 </script>
+
 <style scoped>
 @media (min-width: 1024px) {
     .vista-recetario {
