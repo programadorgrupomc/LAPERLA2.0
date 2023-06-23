@@ -7,6 +7,7 @@
     <NuestroPollo3 />
     <NuestroPollo4 />
     <NuestroProcesos />
+    <!-- <ButtomDesliza class="fixed bottom-0 right-0 z-50"/> -->
   </main>
 </template>
 
@@ -18,6 +19,7 @@ import NuestroPollo2 from '../components/Inicio/NuestroPollo2.vue';
 import NuestroPollo3 from '../components/Inicio/NuestroPollo3.vue';
 import NuestroPollo4 from '../components/Inicio/NuestroPollo4.vue';
 import NuestroProcesos from '../components/Inicio/NuestroProcesos.vue';
+import ButtomDesliza from '../components/General/ButtomDesliza.vue';
 </script>
 
 <style scoped>

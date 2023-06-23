@@ -40,8 +40,8 @@
                 </router-link>
 
                 <div v-if="footerData" class="flex flex-col items-center lg:items-end">
-                    <div class="flex w-full justify-end">
-                        <span v-for="itemfo in footerData" class="flex lg:text-right lg:pr-2">{{ itemfo.telefono }}</span>
+                    <div class="flex justify-center">
+                        <span v-for="itemfo in footerData" class="flex">{{ itemfo.telefono }} &nbsp; &nbsp;</span>
                         <svg xmlns="http://www.w3.org/2000/svg" class="svg-directions" viewBox="0 0 27.169 27.213">
                             <path id="Icon_feather-phone" data-name="Icon feather-phone"
                                 d="M26.315,20.365v3.492a2.328,2.328,0,0,1-2.537,2.328,23.033,23.033,0,0,1-10.044-3.573A22.7,22.7,0,0,1,6.75,15.628,23.033,23.033,0,0,1,3.177,5.537,2.328,2.328,0,0,1,5.493,3H8.985a2.328,2.328,0,0,1,2.328,2,14.944,14.944,0,0,0,.815,3.27,2.328,2.328,0,0,1-.524,2.456l-1.478,1.478a18.622,18.622,0,0,0,6.983,6.983l1.478-1.478a2.328,2.328,0,0,1,2.456-.524,14.944,14.944,0,0,0,3.27.815,2.328,2.328,0,0,1,2,2.363Z"
@@ -50,8 +50,8 @@
                         </svg>
 
                     </div>
-                    <div class="flex w-full justify-end py-1">
-                        <span v-for="itemfo in footerData" class="flex lg:text-right lg:pr-2">{{ itemfo.correo }}</span>
+                    <div class="flex justify-center py-1">
+                        <span v-for="itemfo in footerData" class="flex">{{ itemfo.correo }} &nbsp; &nbsp;</span>
                         <svg xmlns="http://www.w3.org/2000/svg" class="svg-directions" viewBox="0 0 27.703 22.162">
                             <path id="Icon_material-mail-outline" data-name="Icon material-mail-outline"
                                 d="M27.932,6H5.77A2.767,2.767,0,0,0,3.014,8.77L3,25.392a2.778,2.778,0,0,0,2.77,2.77H27.932a2.778,2.778,0,0,0,2.77-2.77V8.77A2.778,2.778,0,0,0,27.932,6Zm0,19.392H5.77V11.541l11.081,6.926,11.081-6.926ZM16.851,15.7,5.77,8.77H27.932Z"
@@ -59,9 +59,10 @@
                         </svg>
 
                     </div>
-                    <div class="flex w-full justify-end">
-                        <span v-for="itemfo in footerData" class="flex lg:text-right lg:pr-4">{{ itemfo.location }}
-                            </span>
+                    <div class="flex justify-center">
+                        <span v-for="itemfo in footerData" class="flex lg:pl-14">{{ itemfo.location }}
+                            &nbsp;
+                            &nbsp;</span>
                         <svg xmlns="http://www.w3.org/2000/svg" class="svg-directions" viewBox="0 0 22.642 27.073">
                             <g id="Icon_feather-map-pin" data-name="Icon feather-map-pin" transform="translate(1.35 1.35)">
                                 <path id="Trazado_26" data-name="Trazado 26"
@@ -131,7 +132,7 @@ export default {
             footerData: [
                 {telefono:'(044) 256487'},
                 {correo:'informes@molinolaperla.com'},
-                {location:'John F. Kennedy N° 189 Urb. La Perla - Trujillo'},
+                {location:'John F. Kennedy N° 189'},
             ],
             rsData: [
                 { rs: 'facebook' },
@@ -318,8 +319,6 @@ export default {
     .dir-perla {
         font-family: 'LeelawadeeRegular';
         -webkit-text-stroke: 0.1vw #471d7c;
-        width: 30%;
-        padding-right: 2%;
     }
 
     .dir-perla a {
@@ -366,9 +365,12 @@ export default {
         width: 2vw;
     }
 
+    .dir-perla{
+        margin-right: 5%;
+
+    }
     .svg-directions {
         width: 1.2vw;
-        
     }
 
     .star-mor {
@@ -386,13 +388,13 @@ export default {
         font-size: 1.2vw;
         font-family: 'LeelawadeeRegular';
         -webkit-text-stroke: 0.08vw #471d7c;
-        
     }
 
     .dir-perla span {
         font-size: 1.2vw;
         line-height: normal;
         -webkit-text-stroke: 0.03vw #471d7c;
+        
     }
 
     .eye-orange {
