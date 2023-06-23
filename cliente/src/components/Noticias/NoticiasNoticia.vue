@@ -128,6 +128,7 @@ export default {
 .cont-text {
     font-family: 'KarbonRegular';
     padding: 5%;
+    height: 50vh;
 }
 
 .cont-text h1 {

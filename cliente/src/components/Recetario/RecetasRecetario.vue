@@ -49,30 +49,30 @@ export default {
                     imagen: receta1Image,
                     // Otros detalles de la receta
                 },
-                {
-                    id: 5,
-                    nombre: "Receta 5",
-                    imagen: receta1Image,
-                    // Otros detalles de la receta
-                },
-                {
-                    id: 6,
-                    nombre: "Receta 6",
-                    imagen: receta1Image,
-                    // Otros detalles de la receta
-                },
-                {
-                    id: 7,
-                    nombre: "Receta 7",
-                    imagen: receta1Image,
-                    // Otros detalles de la receta
-                },
-                {
-                    id: 8,
-                    nombre: "Receta 8",
-                    imagen: receta1Image,
-                    // Otros detalles de la receta
-                },
+                // {
+                //     id: 5,
+                //     nombre: "Receta 5",
+                //     imagen: receta1Image,
+                //     // Otros detalles de la receta
+                // },
+                // {
+                //     id: 6,
+                //     nombre: "Receta 6",
+                //     imagen: receta1Image,
+                //     // Otros detalles de la receta
+                // },
+                // {
+                //     id: 7,
+                //     nombre: "Receta 7",
+                //     imagen: receta1Image,
+                //     // Otros detalles de la receta
+                // },
+                // {
+                //     id: 8,
+                //     nombre: "Receta 8",
+                //     imagen: receta1Image,
+                //     // Otros detalles de la receta
+                // },
                 // Agrega más objetos de recetas si es necesario
             ]
         };
@@ -110,7 +110,7 @@ export default {
 
 .receta {
     /* border: #cfb9ea solid; */
-    height: 20%;
+    height: 40%;
     margin-bottom: 6%;
 }
 
@@ -149,7 +149,8 @@ export default {
 
     .receta {
         /* border: #cfb9ea solid; */
-        height: 20%;
+        height: 40%;
+        min-height: 39%;
         margin-bottom: 6%;
     }
 

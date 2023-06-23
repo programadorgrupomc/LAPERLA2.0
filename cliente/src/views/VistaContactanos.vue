@@ -1,6 +1,6 @@
 <template>
-    <div class="vista-contactanos">
-        <ContactanosFormulario />
+    <div class="vista-contactanos bg-FondoPerla">
+        <ContactanosFormulario class="bg-FondoPerla"/>
         <ContactanosMapa />
         <ContactanosDirecciones />
     </div>

@@ -37,7 +37,7 @@
         <router-link to="/work" custom v-slot="{ navigate }">
           <a @click="navigate" role="link" href="" class="item-menu">{{ titulo5 }}</a>
         </router-link>
-        <router-link to="/contact" custom v-slot="{ navigate }">
+        <router-link to="/contactanos" custom v-slot="{ navigate }">
           <a @click="navigate" role="link" href="" class="item-menu">{{ titulo6 }}</a>
         </router-link>
       </div>
@@ -98,11 +98,17 @@ export default {
           opacity: 0
         });
       });
-    }
+    },
+    resetShowMenu() {
+      this.showMenu = false;
+    },
   },
   mounted() {
     this.btnAnimado();
     this.animarDesplegable();
+    this.$router.afterEach(() => {
+      this.resetShowMenu();
+    });
   }
 };
 </script>
