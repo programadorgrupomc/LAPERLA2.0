@@ -3,17 +3,20 @@
         <PresentacionNosotros />
         <!-- <div class="h-96"> -->
         <LineaDeTiempo />
+        <NuestraFilosofia />
         <CulturaOrganizacional />
     </div>
 </template>
 <script>
 import PresentacionNosotros from '../components/Nosotros/PresentacionNosotros.vue';
 import CulturaOrganizacional from '../components/Nosotros/CulturaOrganizacional.vue';
+import NuestraFilosofia from '../components/Nosotros/NuestraFilosofia.vue';
 import LineaDeTiempo from '../components/Nosotros/LineaDeTiempo.vue';
 export default {
     components: {
         PresentacionNosotros,
         CulturaOrganizacional,
+        NuestraFilosofia,
         LineaDeTiempo,
     }
 }

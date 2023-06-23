@@ -5,9 +5,13 @@
         </div>
         <div class="recetario-recetas ">
             <div class="recetas columns-2">
-                <div v-for="receta in recetas" :key="receta.id" class="receta">
-                    <img :src="receta.imagen" class="w-full h-full object-cover" alt="">
-                    <!-- <p>{{ receta.nombre }}</p> -->
+                <div v-for="receta in recetas" :key="receta.id" class="receta ">
+                    <router-link :to="`/receta/desc/${receta.id}`">
+                        <div class="w-full h-full relative flex justify-center items-center">
+                            <img :src="receta.imagen" class="w-full h-full object-cover" alt="">
+                            <p class="receta-titulo absolute text-white">{{ receta.nombre }}</p>
+                        </div>
+                    </router-link>
                 </div>
             </div>
         </div>
@@ -28,44 +32,44 @@ export default {
                     // Otros detalles de la receta
                 },
                 {
-                    id: 1,
-                    nombre: "Receta 1",
+                    id: 2,
+                    nombre: "Receta 2",
                     imagen: receta1Image,
                     // Otros detalles de la receta
                 },
                 {
-                    id: 1,
-                    nombre: "Receta 1",
+                    id: 3,
+                    nombre: "Receta 3",
                     imagen: receta1Image,
                     // Otros detalles de la receta
                 },
                 {
-                    id: 1,
-                    nombre: "Receta 1",
+                    id: 4,
+                    nombre: "Receta 4",
                     imagen: receta1Image,
                     // Otros detalles de la receta
                 },
                 {
-                    id: 1,
-                    nombre: "Receta 1",
+                    id: 5,
+                    nombre: "Receta 5",
                     imagen: receta1Image,
                     // Otros detalles de la receta
                 },
                 {
-                    id: 1,
-                    nombre: "Receta 1",
+                    id: 6,
+                    nombre: "Receta 6",
                     imagen: receta1Image,
                     // Otros detalles de la receta
                 },
                 {
-                    id: 1,
-                    nombre: "Receta 1",
+                    id: 7,
+                    nombre: "Receta 7",
                     imagen: receta1Image,
                     // Otros detalles de la receta
                 },
                 {
-                    id: 1,
-                    nombre: "Receta 1",
+                    id: 8,
+                    nombre: "Receta 8",
                     imagen: receta1Image,
                     // Otros detalles de la receta
                 },
@@ -146,6 +150,10 @@ export default {
         border: #cfb9ea solid;
         height: 20%;
         margin-bottom: 6%;
+    }
+
+    .receta-titulo {
+        font-size: 3vw;
     }
 }
 </style>
