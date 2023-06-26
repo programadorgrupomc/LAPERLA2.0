@@ -1,19 +1,24 @@
 <template>
     <div>
-        <video muted autoplay loop preload="auto" class="video-es">
+        <video muted loop preload="auto" class="video-es" @loadedmetadata="playVideo('video-es')" playsinline>
             <source src="../../assets/Inicio/ReelEscritorio.mp4" type="video/mp4">
         </video>
-        <video muted autoplay loop preload="auto" class="video-ta">
+        <video muted loop preload="auto" class="video-ta" @loadedmetadata="playVideo('video-ta')" playsinline>
             <source src="../../assets/Inicio/ReelTablet.mp4" type="video/mp4">
         </video>
-        <video muted autoplay loop preload="auto" class="video-mo">
+        <video muted loop preload="auto" class="video-mo" @loadedmetadata="playVideo('video-mo')" playsinline>
             <source src="../../assets/Inicio/ReelMobile.mp4" type="video/mp4">
         </video>
     </div>
 </template>
 <script>
 export default {
-
+    methods: {
+        playVideo(className) {
+            const video = document.getElementsByClassName(className)[0];
+            video.play();
+        }
+    }
 }
 </script>
 <style scoped>

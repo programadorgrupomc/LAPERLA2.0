@@ -17,7 +17,7 @@
                             :class="'img-tl' + index" alt=""></div>
                 </div>
                 <div class="year flex justify-center items-center" :class="'year' + index">
-                    <p class="h-full flex items-center">2018</p>
+                    <p class="h-full flex items-center">{{ time.año }}</p>
                 </div>
             </div>
             <div class="linea shadow-2xl absolute flex justify-center items-center" :class="'linea' + index">
@@ -43,18 +43,22 @@ export default {
                 {
                     titulo: "MEJOR POLLO DEL NORTE",
                     contenido: "Todo este esfuerzo permitió convertirnos en el mejor pollo que se produce en Trujillo distribuyéndonos diariamente en las zonas Barranca, Casma, Huarmey, Chimbote, Chiclayo, Piura y Cajamarca. Y también es llevado por compradores particulares hasta la ciudad de Lima.",
+                    año: '2018'
                 },
                 {
                     titulo: "MODERNIZACIÓN DEL AMBIENTE",
                     contenido: "Con el paso del tiempo compra terrenos para instalar una nueva planta de Incubación con maquinaria moderna de esa época, también moderniza su planta de alimento balanceado para una buena elaboración de los alimentos que producían.",
+                    año: '19995'
                 },
                 {
                     titulo: "NOMBRE LA PERLA S.A.C.",
                     contenido: "Allí por el año 1986, después de sobrevivir a las graves crisis avícolas comerciales de esa época, decide cambiar la razón social a Molino La Perla SAC e incursiona en la crianza de pollos de carne; en donde empieza a construir galpones para su crianza en diversas zonas como Santo Domingo, Vía de Evitamiento, Tablazo de Huanchaco.",
+                    año: '1986'
                 },
                 {
                     titulo: "FUNDACIÓN DE LA PERLA",
                     contenido: "Ingeniero Ramón Ganoza Calderón en el mes de octubre del año 1961 funda la empresa Avícola La Perla, donde con poco capital invierte en la compra de unos pequeños terrenos muy rústicos en esa época, y empieza a criar reproductoras de pollo carne de la línea genética Hubbard de USA.",
+                    año: '1961'
                 },
             ]
         }

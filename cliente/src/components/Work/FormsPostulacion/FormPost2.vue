@@ -185,7 +185,7 @@ export default {
 </script>
 <template>
     <div class="bg-FondoPerla">
-        <div id="form1" class="form1 lg:pt-24" v-show="currentForm === 1">
+        <div id="form1" class="form1    " v-show="currentForm === 1">
             <div class="barraavance bg-FondoPerla flex justify-center items-center col-span-4">
                 <div class="av1" style="background-color: #E2D6C5;"></div>
                 <div class="av2" style="background-color: #F5EDE1;"></div>
@@ -201,7 +201,7 @@ export default {
                 </div>
             </div>
         </div>
-        <div id="form2" class="form2 lg:pt-24" v-show="currentForm === 2">
+        <div id="form2" class="form2    " v-show="currentForm === 2">
             <div class="barraavance bg-FondoPerla flex justify-center items-center col-span-4">
                 <div class="av1" style="background-color: #E2D6C5;"></div>
                 <div class="av2" style="background-color: #E2D6C5;"></div>
@@ -222,7 +222,7 @@ export default {
                 </div>
             </div>
         </div>
-        <div id="form3" class="form3 lg:pt-24" v-show="currentForm === 3">
+        <div id="form3" class="form3    " v-show="currentForm === 3">
             <div class="barraavance bg-FondoPerla flex justify-center items-center col-span-4">
                 <div class="av1" style="background-color: #E2D6C5;"></div>
                 <div class="av2" style="background-color: #E2D6C5;"></div>
@@ -243,7 +243,7 @@ export default {
                 </div>
             </div>
         </div>
-        <div id="form4" class="form4 lg:pt-24" v-show="currentForm === 4">
+        <div id="form4" class="form4    " v-show="currentForm === 4">
             <div class="barraavance bg-FondoPerla flex justify-center items-center col-span-4">
                 <div class="av1" style="background-color: #E2D6C5;"></div>
                 <div class="av2" style="background-color: #E2D6C5;"></div>
@@ -409,6 +409,13 @@ export default {
 
 @media (min-width: 1024px) {
 
+    .form1,
+    .form2,
+    .form3,
+    .form4 {
+        padding-top: 10vh;
+    }
+
     .back-form2,
     .back-form3,
     .back-form4 {
@@ -501,5 +508,5 @@ export default {
         padding-right: 8%;
         padding-bottom: 5%;
     }
-}
-</style>
+
+}</style>

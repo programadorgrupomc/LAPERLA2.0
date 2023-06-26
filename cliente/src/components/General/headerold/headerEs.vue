@@ -22,7 +22,9 @@
             </router-link>
         </div>
         <div class="parte2">
-            <logo-header />
+            <router-link to="/">
+                <logo-header />
+            </router-link>
         </div>
         <div class="parte3">
 
@@ -192,7 +194,6 @@ export default {
             i6.addEventListener("mouseenter", () => animation61.play());
             i6.addEventListener("mouseleave", () => animation61.reverse());
         },
-
     },
 };
 </script>

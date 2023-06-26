@@ -4,6 +4,8 @@
 
 <template>
   <main>
-    Vista Inicial
+    <div>
+      Vista Inicial
+    </div>
   </main>
 </template>

@@ -189,6 +189,7 @@ label {
 
     .contenedorformMo {
         padding: 4%;
+        padding-top: 1%;
         padding-left: 15%;
         padding-right: 15%;
     }
