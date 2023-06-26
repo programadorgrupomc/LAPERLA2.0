@@ -48,7 +48,7 @@ export default {
                 {
                     titulo: "MODERNIZACIÓN DEL AMBIENTE",
                     contenido: "Con el paso del tiempo compra terrenos para instalar una nueva planta de Incubación con maquinaria moderna de esa época, también moderniza su planta de alimento balanceado para una buena elaboración de los alimentos que producían.",
-                    año: '19995'
+                    año: '1995'
                 },
                 {
                     titulo: "NOMBRE LA PERLA S.A.C.",

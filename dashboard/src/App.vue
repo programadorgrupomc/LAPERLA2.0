@@ -3,9 +3,13 @@
 </script>
 
 <template>
-  <RouterView />
+  <div class="boss">
+    <RouterView />
+  </div>
 </template>
 
 <style scoped>
-
+.boss {
+  background-color: #FCF5EB;
+}
 </style>

@@ -78,3 +78,7 @@
   font-family: 'GilroyBold';
   src: url('./Gilroy-Bold.ttf') format('truetype');
 }
+@font-face {
+  font-family: 'BRSonomaRegular';
+  src: url('./BRSonoma-Regular.otf') format('opentype');
+}
