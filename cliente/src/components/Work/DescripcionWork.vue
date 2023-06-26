@@ -76,7 +76,7 @@
                         </ul>
                     </div>
                     <div class="cont-salary">
-                        <p class="salary-work font-KarbonRegular text-right text-AzulPerla">Sueldo: S/.8600</p>
+                        <!-- <p class="salary-work font-KarbonRegular text-right text-AzulPerla">Sueldo: S/.8600</p> -->
                     </div>
                 </div>
             </div>
