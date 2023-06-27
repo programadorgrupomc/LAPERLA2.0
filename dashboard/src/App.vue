@@ -1,6 +1,4 @@
-<script setup>
-
-</script>
+<script setup></script>
 
 <template>
   <div class="boss">
@@ -10,6 +8,6 @@
 
 <style scoped>
 .boss {
-  background-color: #FCF5EB;
+  background-color: #fcf5eb;
 }
 </style>

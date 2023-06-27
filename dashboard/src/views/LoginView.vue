@@ -8,12 +8,12 @@
 </template>
 
 <script>
-import LogoLogin from '../components/Login/LogoLogin.vue';
-import LoginForm from '../components/Login/LoginForm.vue';
+import LogoLogin from '../components/Login/LogoLogin.vue'
+import LoginForm from '../components/Login/LoginForm.vue'
 export default {
   data() {
     return {
-      showform: false,
+      showform: false
     }
   },
   components: {
@@ -23,12 +23,12 @@ export default {
   methods: {
     showformf() {
       setTimeout(() => {
-        this.showform = true;
-      }, 2500);
+        this.showform = true
+      }, 2500)
     }
   },
   mounted() {
-    this.showformf();
+    this.showformf()
   }
 }
 </script>
@@ -41,7 +41,7 @@ export default {
 
 .fade-enter-from,
 .fade-leave-to {
-  opacity: 0; 
+  opacity: 0;
 }
 
 .vista-login {
@@ -50,7 +50,7 @@ export default {
   margin: auto;
   max-width: 90%;
   min-width: 250px;
-  background-color: #FCF5EB;
+  background-color: #fcf5eb;
 }
 
 @media (min-width: 768px) {
@@ -59,7 +59,7 @@ export default {
     min-height: 600px;
     margin: auto;
     max-width: 80%;
-    background-color: #FCF5EB;
+    background-color: #fcf5eb;
   }
 }
 </style>

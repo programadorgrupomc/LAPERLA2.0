@@ -7,13 +7,13 @@
 <script>
 export default {
   mounted() {
-    const script = document.createElement('script');
-    script.src = 'https://www.google.com/recaptcha/api.js';
-    document.head.appendChild(script);
+    const script = document.createElement('script')
+    script.src = 'https://www.google.com/recaptcha/api.js'
+    document.head.appendChild(script)
   },
   methods: {
     onSubmit(token) {
-      document.getElementById("demo-form").submit();
+      document.getElementById('demo-form').submit()
     }
   }
 }

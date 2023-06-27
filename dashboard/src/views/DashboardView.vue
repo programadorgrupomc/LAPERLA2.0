@@ -1,31 +1,35 @@
-
-
 <template>
   <div class="cont-dash">
     <div class="barra-sup relative">
       <BarraSuperior />
-      <button class="absolute h-full top-0 lg:hidden" @click="showbarranavegacionf"><img class="h-4/6"
-          src="../assets/Dashboard/General/justify.svg" alt=""></button>
-      <button class="hidden lg:block absolute h-full top-0"><img class="h-3/5" src="../assets/Dashboard/General/home.svg"
-          alt=""></button>
+      <button class="absolute h-full top-0 lg:hidden" type="button" @click="showbarranavegacionf">
+        <img class="h-4/6" src="../assets/Dashboard/General/justify.svg" alt="" />
+      </button>
+      <button class="hidden lg:block absolute h-full top-0">
+        <img class="h-3/5" src="../assets/Dashboard/General/home.svg" alt="" />
+      </button>
     </div>
     <div class="cont-barcon lg:flex lg:justify-center lg:items-center">
       <div class="barra-nav">
-        <BarraNavegacion v-show="showbarranavegacion" class="absolute w-full lg:relative" />
+        <BarraNavegacion
+          v-show="showbarranavegacion"
+          class="absolute z-50 w-full lg:relative"
+          @estadocam="actualizarbarra"
+        />
       </div>
       <div class="contenido">
-        contenido
+        <RouterView />
       </div>
     </div>
   </div>
 </template>
 <script>
-import BarraNavegacion from '../components/Dashboard/General/BarraNavegacion.vue';
-import BarraSuperior from '../components/Dashboard/General/BarraSuperior.vue';
+import BarraNavegacion from '../components/Dashboard/General/BarraNavegacion.vue'
+import BarraSuperior from '../components/Dashboard/General/BarraSuperior.vue'
 export default {
   data() {
     return {
-      showbarranavegacion: false,
+      showbarranavegacion: false
     }
   },
   components: {
@@ -34,20 +38,28 @@ export default {
   },
   methods: {
     showbarranavegacionf() {
-      this.showbarranavegacion = !this.showbarranavegacion;
+      this.showbarranavegacion = !this.showbarranavegacion
+    },
+    actualizarbarra(valor) {
+      this.showbarranavegacion = valor
+      if (window.innerWidth > 1024) {
+        this.showbarranavegacion = true
+      }
     }
   },
   mounted() {
     //mantener activo el navbar
     if (window.innerWidth > 1024) {
-      this.showbarranavegacion = true;
+      this.showbarranavegacion = true
     }
   }
 }
 </script>
 <style scoped>
 .cont-dash {
+  min-height: 390px;
   height: 100vh;
+  min-width: 200px;
   width: 100vw;
 }
 
@@ -71,14 +83,12 @@ export default {
   }
 
   .barra-nav {
-    width: 20%;
+    width: 22%;
     height: 100%;
-    background-color: aqua;
   }
 
   .contenido {
-    background-color: greenyellow;
-    width: 80%;
+    width: 78%;
     height: 100%;
   }
 }
