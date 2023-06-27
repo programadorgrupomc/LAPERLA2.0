@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="bg-yellow-300 ">
         Barra de navegacion
     </div>
 </template>
@@ -8,4 +8,6 @@ export default {
 
 }
 </script>
-<style scoped></style>
+<style scoped>
+
+</style>
