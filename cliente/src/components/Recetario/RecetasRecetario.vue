@@ -9,7 +9,7 @@
                     <router-link :to="`/receta/desc/${receta.id}`">
                         <div class="w-full h-full relative flex justify-center items-center">
                             <img :src="receta.imagen" class="w-full h-full object-cover" alt="">
-                            <p class="receta-titulo absolute text-white">{{ receta.nombre }}</p>
+                            <p class="receta-titulo font-bold text-center absolute text-white">{{ receta.nombre }}</p>
                         </div>
                     </router-link>
                 </div>
@@ -27,7 +27,7 @@ export default {
             recetas: [
                 {
                     id: 1,
-                    nombre: "Receta 1",
+                    nombre: "POLLO DORADO EN SALSA DE SÉSAMO",
                     imagen: receta1Image,
                     // Otros detalles de la receta
                 },
