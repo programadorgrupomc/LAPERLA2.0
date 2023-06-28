@@ -4,14 +4,14 @@
       src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7-d5qr9WzS926jiHDPlYrCL01Eb0M8C8c4w&usqp=CAU"
       alt="img perfil"
     />
-    <img
-      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7-d5qr9WzS926jiHDPlYrCL01Eb0M8C8c4w&usqp=CAU"
+    <img class="border border-white p-1"
+      src="../../../assets/Dashboard/General/pregunta.svg"
       alt="img help"
     />
   </div>
 </template>
 <script>
-export default {}
+export default {} 
 </script>
 <style scoped>
 .cont-options {

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="137.964" height="177.109" viewBox="0 0 137.964 177.109">
+  <g id="Grupo_117" data-name="Grupo 117" transform="translate(-307.266 -3045.224)">
+    <g id="Elipse_10" data-name="Elipse 10" transform="matrix(0.966, 0.259, -0.259, 0.966, 347.721, 3045.224)" fill="#f9b298" stroke="#e29689" stroke-width="8">
+      <ellipse cx="50.474" cy="78.154" rx="50.474" ry="78.154" stroke="none"/>
+      <ellipse cx="50.474" cy="78.154" rx="46.474" ry="74.154" fill="none"/>
+    </g>
+    <path id="Trazado_38" data-name="Trazado 38" d="M0,0,81.41,29.172" transform="matrix(0.966, 0.259, -0.259, 0.966, 356.236, 3073.212)" fill="none" stroke="#e29689" stroke-width="5"/>
+    <line id="Línea_1" data-name="Línea 1" x2="91.179" y2="32.564" transform="matrix(0.966, 0.259, -0.259, 0.966, 344.073, 3091.866)" fill="none" stroke="#e29689" stroke-width="5"/>
+    <line id="Línea_2" data-name="Línea 2" x2="93.622" y2="33.378" transform="matrix(0.966, 0.259, -0.259, 0.966, 333.245, 3113.406)" fill="none" stroke="#e29689" stroke-width="5"/>
+    <line id="Línea_3" data-name="Línea 3" x2="86.295" y2="32.564" transform="matrix(0.966, 0.259, -0.259, 0.966, 327.134, 3136.211)" fill="none" stroke="#e29689" stroke-width="5"/>
+    <line id="Línea_4" data-name="Línea 4" x2="61.872" y2="21.981" transform="matrix(0.966, 0.259, -0.259, 0.966, 327.202, 3167.413)" fill="none" stroke="#e29689" stroke-width="5"/>
+    <line id="Línea_5" data-name="Línea 5" x2="44.776" y2="15.468" transform="matrix(0.966, 0.259, -0.259, 0.966, 382.707, 3060.92)" fill="none" stroke="#e29689" stroke-width="5"/>
+  </g>
+</svg>

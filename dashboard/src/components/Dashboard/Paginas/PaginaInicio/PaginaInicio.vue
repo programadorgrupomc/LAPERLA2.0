@@ -5,26 +5,27 @@
         </div>
         <div class="cont-components w-full h-full">
             <componentHero />
+            <NuestroPollo1/>
         </div>
     </div>
 </template>
 <script>
 import BotonesCrud from '../../General/BotonesCrud.vue';
 import componentHero from './Componentes/componentHero.vue';
+import NuestroPollo1 from './Componentes/NuestroPollo1.vue';
 export default {
     components: {
         BotonesCrud,
-        componentHero
+        componentHero,
+        NuestroPollo1
     }
 }
 </script>
 <style scoped>
-.cont-components {
-    /* padding: 1%; */
-}
+
 
 .cont-btn {
-    height: auto;
+    height: 7vh;
     width: auto;
     bottom: 10%;
     right: 1%;
