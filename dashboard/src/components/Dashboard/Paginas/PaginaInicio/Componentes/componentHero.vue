@@ -18,6 +18,9 @@
         <div class="popup absolute bg-amber-300" v-if="showEditPopup">
             edicion de imagen
         </div>
+        <div class="absolute  bottom-2 z-40">
+            <input type="text" class="bg-red-50 border border-black rounded-3xl">
+        </div>
     </div>
 </template>
 <script>
