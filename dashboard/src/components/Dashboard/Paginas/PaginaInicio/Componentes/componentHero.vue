@@ -15,13 +15,13 @@
             <iframe :src="previewUrl" v-else-if="isPDF" class="h-screen lg:h-full w-full"></iframe>
             <div v-else>Archivo no compatible</div>
         </div>
-        <div class="popup bg-amber-300" v-if="showEditPopup">
+        <div class="popup absolute bg-amber-300" v-if="showEditPopup">
             edicion de imagen
         </div>
     </div>
 </template>
 <script>
-import FileUploader from '../../../General/FileUploader.vue'
+// import FileUploader from '../../../General/FileUploader.vue'
 export default {
     data() {
         return {
@@ -34,7 +34,7 @@ export default {
         };
     },
     components: {
-        FileUploader,
+        // FileUploader,
     },
     methods: {
         handleFileChange(event) {
