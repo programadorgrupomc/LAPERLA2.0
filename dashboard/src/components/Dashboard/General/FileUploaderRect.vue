@@ -1,11 +1,11 @@
 <template>
     <div class="w-full h-full relative">
-        <div v-if="previewUrl" class="absolute z-40 lg:z-50 w-full h-full cont-btn">
-            <button @click="">Nuevo</button>
+        <div v-if="previewUrl" class="absolute z-40 lg:z-50 w-full cont-btn">
+            <button @click="nuevoClick">Nuevo</button>
             <button v-if="!showEditPopup" @click="showEditPopup = true">Editar</button>
             <button v-if="showEditPopup" @click="showEditPopup = false">Cancelar</button>
         </div>
-        <div class="relative h-screen z-30 w-full lg:h-full flex justify-center items-center" v-if="!previewUrl">
+        <div class="relative h-full z-30 w-full lg:h-full flex justify-center items-center" v-if="!previewUrl">
             <img class="absolute" src="../../../assets/Dashboard/General/IconoLoadVideo.svg" alt="">
             <input type="file" @change="handleFileChange" class="bg-black h-1/4 w-1/4 opacity-0" />
         </div>
@@ -74,15 +74,27 @@ export default {
                 this.fileLoaded = false;
             }
         },
+        nuevoClick() {
+            // Restablecer o reiniciar las propiedades relacionadas con la imagen aquí
+            this.previewUrl = '';
+            this.isImage = false;
+            this.isVideo = false;
+            this.isPDF = false;
+            this.fileLoaded = false;
+        },
     },
 };
 </script>
   
 <style scoped>
 .cont-btn {
+    height: auto;
+
+    bottom: 0%;
     display: flex;
     justify-content: center;
     align-items: flex-end;
+    padding-bottom: 2%;
 }
 
 .cont-btn button {
@@ -97,7 +109,8 @@ export default {
 }
 
 .popup {
-    top: 50%;
-    left: 50%;
+    height: 100%;
+    width: 100%;
+    top: 0%;
 }
 </style>

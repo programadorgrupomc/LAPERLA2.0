@@ -5,7 +5,11 @@
         </div>
         <div class="cont-components w-full h-full">
             <componentHero />
-            <NuestroPollo1/>
+            <NuestroPollo1 />
+            <NuestroPollo2 />
+            <NuestroPollo3 />
+            <NuestroPollo4 />
+            <NuestroProcesos />
         </div>
     </div>
 </template>
@@ -13,19 +17,30 @@
 import BotonesCrud from '../../General/BotonesCrud.vue';
 import componentHero from './Componentes/componentHero.vue';
 import NuestroPollo1 from './Componentes/NuestroPollo1.vue';
+import NuestroPollo2 from './Componentes/NuestroPollo2.vue';
+import NuestroPollo3 from './Componentes/NuestroPollo3.vue';
+import NuestroPollo4 from './Componentes/NuestroPollo4.vue';
+import NuestroProcesos from './Componentes/NuestroProcesos.vue';
+
 export default {
     components: {
         BotonesCrud,
         componentHero,
-        NuestroPollo1
+        NuestroPollo1,
+        NuestroPollo2,
+        NuestroPollo3,
+        NuestroPollo4,
+        NuestroProcesos
     }
 }
 </script>
 <style scoped>
-
+.cont-components {
+    background-color: #FCF5EB;
+}
 
 .cont-btn {
-    height: 7vh;
+    height: auto;
     width: auto;
     bottom: 10%;
     right: 1%;
@@ -39,6 +54,7 @@ export default {
 @media (min-width: 1024px) {
     .cont-btn {
         width: 30vh;
+        height: 7vh;
         top: 0%;
         right: 15vw;
     }

@@ -8,7 +8,7 @@
                     del Pollo Perla.</p>
             </div>
             <div class="np1-contenedor lg:hidden flex justify-center items-center">
-                <div class="relative overflow-hidden">
+                <div class="relative ">
                     <div class="circulo-fondo1">
                     </div>
                     <!-- <img src="../../assets/Inicio/imgcont1.jpg" class="absolute img-circulo1 shadow-2xl" alt="img-circulo1"> -->
@@ -28,7 +28,7 @@
                     <div class="indicador1 relative flex flex-col justify-center items-center">
                         <p>Pechuga</p>
                         <p contenteditable="true" class="porcentaje border">35%</p>
-                        <p>Del Pollo</p>
+                        <p>Del Pollo</p>    
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                     <div class="circulo-fondo1">
                     </div>
                     <!-- <img src="../../assets/Inicio/imgcont1.jpg" class="absolute img-circulo1 shadow-2xl" alt="img-circulo1"> -->
-                    <div class="absolute img-circulo1 shadow-2xl">
+                    <div class="absolute img-circulo1 shadow-2xl ">
                         <FileUploaderDef class="rounded-full"/>
                     </div>
                 </div>

@@ -1,10 +1,10 @@
 <template>
     <div class="cont-ch w-full h-full">
-        <FileUploaderDef />
+        <FileUploaderRect />
     </div>
 </template>
 <script>
-import FileUploaderDef from '../../../General/FileUploaderDef.vue';
+import FileUploaderRect from '../../../General/FileUploaderRect.vue';
 export default {
     methods: {
         playVideo(className) {
@@ -13,13 +13,14 @@ export default {
         }
     },
     components: {
-        FileUploaderDef,
+        FileUploaderRect,
     }
 }
 </script>
 <style scoped>
 .cont-ch {
     max-height: 100vh;
+    height: 100vh;
 }
 
 .video-es {

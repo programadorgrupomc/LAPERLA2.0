@@ -1,13 +1,8 @@
 <template>
   <div class="cont-options flex items-center justify-end">
-    <img
-      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7-d5qr9WzS926jiHDPlYrCL01Eb0M8C8c4w&usqp=CAU"
-      alt="img perfil"
-    />
-    <img class="border border-white p-1"
-      src="../../../assets/Dashboard/General/pregunta.svg"
-      alt="img help"
-    />
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7-d5qr9WzS926jiHDPlYrCL01Eb0M8C8c4w&usqp=CAU"
+      alt="img perfil" />
+    <img class="border border-white p-1" src="../../../assets/Dashboard/General/pregunta.svg" alt="img help" />
   </div>
 </template>
 <script>

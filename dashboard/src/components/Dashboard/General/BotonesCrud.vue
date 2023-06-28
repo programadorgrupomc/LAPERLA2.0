@@ -40,6 +40,7 @@ export default {
     margin-right: 1vh;
     padding: 1vh;
     color: white;
+    font-size: 2vh;
     font-family: "TahomaRegular";
 }
 
