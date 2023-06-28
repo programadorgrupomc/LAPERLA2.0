@@ -1,6 +1,6 @@
 <template>
   <div class="cont-dash">
-    <div class="barra-sup relative">
+    <div class="barra-sup z-50 relative">
       <BarraSuperior />
       <button class="absolute h-full top-0 lg:hidden" type="button" @click="showbarranavegacionf">
         <img class="h-4/6" src="../assets/Dashboard/General/justify.svg" alt="" />
@@ -11,11 +11,8 @@
     </div>
     <div class="cont-barcon lg:flex lg:justify-center lg:items-center">
       <div class="barra-nav">
-        <BarraNavegacion
-          v-show="showbarranavegacion"
-          class="absolute z-50 w-full lg:relative"
-          @estadocam="actualizarbarra"
-        />
+        <BarraNavegacion v-show="showbarranavegacion" class="absolute z-50 w-full lg:relative"
+          @estadocam="actualizarbarra" />
       </div>
       <div class="contenido">
         <RouterView />
