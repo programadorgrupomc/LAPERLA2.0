@@ -1,10 +1,10 @@
 <template>
     <div class="botones-crud flex flex-col lg:flex-row justify-center items-center">
-        <button class="flex justify-center items-center">
+        <button @click="guardar" class="flex justify-center items-center">
             <img class="w-full h-full lg:hidden" src="../../../assets/Dashboard/General/Guardar.svg" alt="">
             <p class="hidden lg:block">Guardar</p>
         </button>
-        <button class="flex justify-center items-center">
+        <button @click="restaurar" class="flex justify-center items-center">
             <img class="w-full h-full lg:hidden" src="../../../assets/Dashboard/General/escoba.svg" alt="">
             <p class="hidden lg:block">Restaurar</p>
         </button>
@@ -19,7 +19,24 @@ export default {
     methods: {
         retroceder() {
             this.$router.go(-1);
-        }
+        },
+        guardar() {
+            const rpta = window.confirm("Esta seguro de guardar los datos!");
+            if (rpta) {
+                alert("No se encontro Servidor!")
+            } else {
+                alert("Error en datos, Revisar!")
+            }
+        },
+        restaurar() {
+            const rpta = window.confirm("Esta seguro de restaurar los datos!");
+            if (rpta) {
+                location.reload();
+                alert("No se encontro Servidor!")
+            } else {
+                alert("Error en Funcion, Revisar!")
+            }
+        },
     }
 }
 </script>
@@ -42,6 +59,11 @@ export default {
     color: white;
     font-size: 2vh;
     font-family: "TahomaRegular";
+}
+
+.botones-crud button:hover {
+    background-color: #9B886F;
+    transform: scale(1.1);
 }
 
 @media (min-width: 1024px) {

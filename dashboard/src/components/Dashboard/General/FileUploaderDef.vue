@@ -17,11 +17,12 @@
         </div>
         <!-- proveso de editar la imagen -->
         <div class="popup absolute bg-amber-300" v-if="showEditPopup">
-            Ediciion de la Imagen
+            <FileUploader />
         </div>
     </div>
 </template>
 <script>
+import FileUploader from './FileUploader.vue';
 export default {
     data() {
         return {
@@ -34,7 +35,7 @@ export default {
         };
     },
     components: {
-
+        FileUploader
     },
     methods: {
         nuevoClick() {
