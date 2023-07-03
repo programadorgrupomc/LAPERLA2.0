@@ -69,6 +69,10 @@ export default {
 </script>
     
 <style>
+.upload-example{
+    height: 100%;
+   transform: scale(0.85);
+}
 .upload-example-cropper {
     border: solid 1px #EEE;
     min-height: 300px;
@@ -76,6 +80,7 @@ export default {
     width: 100%;
     background-color: rgba(255, 255, 255, 0.484);
     border-radius: 2vw;
+    
 }
 
 .button-wrapper {
