@@ -1,93 +1,84 @@
 <script>
-import {
-  DraggableElement,
-  DraggableArea,
-  StencilPreview,
-  ResizeEvent,
-} from "vue-advanced-cropper";
+import { DraggableElement, DraggableArea, StencilPreview, ResizeEvent } from 'vue-advanced-cropper'
 
 export default {
   components: {
     StencilPreview,
     DraggableArea,
-    DraggableElement,
+    DraggableElement
   },
   props: {
     image: {
-      type: Object,
+      type: Object
     },
     coordinates: {
-      type: Object,
+      type: Object
     },
     transitions: {
-      type: Object,
+      type: Object
     },
     stencilCoordinates: {
-      type: Object,
-    },
+      type: Object
+    }
   },
   computed: {
     style() {
-      const { height, width, left, top } = this.stencilCoordinates;
+      const { height, width, left, top } = this.stencilCoordinates
       const style = {
         width: `${width}px`,
         height: `${height}px`,
-        transform: `translate(${left}px, ${top}px)`,
-      };
-      if (this.transitions && this.transitions.enabled) {
-        style.transition = `${this.transitions.time}ms ${this.transitions.timingFunction}`;
+        transform: `translate(${left}px, ${top}px)`
       }
-      return style;
-    },
+      if (this.transitions && this.transitions.enabled) {
+        style.transition = `${this.transitions.time}ms ${this.transitions.timingFunction}`
+      }
+      return style
+    }
   },
   methods: {
     onMove(moveEvent) {
-      this.$emit("move", moveEvent);
+      this.$emit('move', moveEvent)
     },
     onMoveEnd() {
-      this.$emit("move-end");
+      this.$emit('move-end')
     },
     onResize(dragEvent) {
-      const shift = dragEvent.shift();
+      const shift = dragEvent.shift()
 
-      const widthResize = shift.left;
-      const heightResize = -shift.top;
+      const widthResize = shift.left
+      const heightResize = -shift.top
 
       this.$emit(
-        "resize",
+        'resize',
         new ResizeEvent(
           {
             left: widthResize,
             right: widthResize,
             top: heightResize,
-            bottom: heightResize,
+            bottom: heightResize
           },
           {
-            compensate: true,
+            compensate: true
           }
         )
-      );
+      )
     },
     onResizeEnd() {
-      this.$emit("resize-end");
+      this.$emit('resize-end')
     },
     aspectRatios() {
       return {
         minimum: 1,
-        maximum: 1,
-      };
-    },
-  },
-};
+        maximum: 1
+      }
+    }
+  }
+}
 </script>
 
 <template>
   <div class="circle-stencil" :style="style">
-    <draggable-element
-      class="circle-stencil__handler"
-      @drag="onResize"
-      @drag-end="onResizeEnd"
-    >
+    <draggable-element class="circle-stencil__handler" @drag="onResize" @drag-end="onResizeEnd">
       <svg
         class="circle-stencil__icon"
         xmlns="http://www.w3.org/2000/svg"
@@ -139,5 +130,4 @@ export default {
   border-radius: 50%;
   overflow: hidden;
 }
-
 </style>

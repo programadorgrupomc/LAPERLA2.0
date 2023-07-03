@@ -7,14 +7,21 @@
       </button>
       <button class="hidden lg:block absolute h-full top-0">
         <router-link to="/dashboard">
-          <img  class="h-3/5 hover:scale-110 transition-all" src="../assets/Dashboard/General/home.svg" alt="" />
+          <img
+            class="h-3/5 hover:scale-110 transition-all"
+            src="../assets/Dashboard/General/home.svg"
+            alt=""
+          />
         </router-link>
       </button>
     </div>
     <div class="cont-barcon lg:flex lg:justify-center lg:items-center">
       <div class="barra-nav">
-        <BarraNavegacion v-show="showbarranavegacion" class="absolute z-50 w-full lg:relative"
-          @estadocam="actualizarbarra" />
+        <BarraNavegacion
+          v-show="showbarranavegacion"
+          class="absolute z-50 w-full lg:relative"
+          @estadocam="actualizarbarra"
+        />
       </div>
       <div class="contenido">
         <RouterView />
@@ -51,7 +58,7 @@ export default {
     if (window.innerWidth > 1024) {
       this.showbarranavegacion = true
     }
-    document.title = 'Dashboard';
+    document.title = 'Dashboard'
   }
 }
 </script>

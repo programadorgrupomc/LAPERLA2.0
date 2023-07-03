@@ -30,7 +30,7 @@ const router = createRouter({
         {
           path: 'paginas',
           name: 'paginas',
-          component: PaginasView,
+          component: PaginasView
         },
         {
           path: 'paginas/inicio',
@@ -68,4 +68,4 @@ const router = createRouter({
   ]
 })
 
-export default router;
+export default router

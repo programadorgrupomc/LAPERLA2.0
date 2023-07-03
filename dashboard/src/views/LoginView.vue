@@ -29,7 +29,7 @@ export default {
   },
   mounted() {
     this.showformf()
-    document.title = 'Login';
+    document.title = 'Login'
   }
 }
 </script>
