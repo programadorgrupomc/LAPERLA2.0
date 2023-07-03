@@ -6,7 +6,9 @@
         <img class="h-4/6" src="../assets/Dashboard/General/justify.svg" alt="" />
       </button>
       <button class="hidden lg:block absolute h-full top-0">
-        <img class="h-3/5" src="../assets/Dashboard/General/home.svg" alt="" />
+        <router-link to="/dashboard">
+          <img  class="h-3/5 hover:scale-110 transition-all" src="../assets/Dashboard/General/home.svg" alt="" />
+        </router-link>
       </button>
     </div>
     <div class="cont-barcon lg:flex lg:justify-center lg:items-center">
