@@ -1,12 +1,12 @@
 <template>
     <div class="w-full h-full relative">
-        <div v-if="previewUrl" class="absolute z-40 lg:z-50 w-full cont-btn">
+        <div v-if="!showEditPopup && previewUrl" class="absolute z-40 lg:z-50 w-full cont-btn">
             <button @click="nuevoClick">Nuevo</button>
-            <button v-if="!showEditPopup" @click="showEditPopup = true">Editar</button>
-            <button v-if="showEditPopup" @click="showEditPopup = false">Cancelar</button>
+            <!-- <button v-if="!showEditPopup" @click="showEditPopup = true">Editar</button>
+            <button v-if="showEditPopup" @click="showEditPopup = false">Cancelar</button> -->
         </div>
         <div class="relative h-full z-30 w-full lg:h-full flex justify-center items-center" v-if="!previewUrl">
-            <img class="absolute" src="../../../assets/Dashboard/General/IconoLoadVideo.svg" alt="">
+            <img  class="absolute loadicon" src="../../../assets/Dashboard/General/IconoLoadVideo.svg" alt="">
             <input type="file" @change="handleFileChange" class="bg-black h-1/4 w-1/4 opacity-0" />
         </div>
         <div v-if="previewUrl" class="h-full w-full">
@@ -15,13 +15,13 @@
             <iframe :src="previewUrl" v-else-if="isPDF" class="h-screen lg:h-full w-full"></iframe>
             <div v-else>Archivo no compatible</div>
         </div>
-        <div class="popup absolute bg-amber-300" v-if="showEditPopup">
-            edicion de imagen
+        <div class="popup absolute z-50" v-if="showEditPopup && !isVideo && !isPDF">
+            <FileUploaderCrect :image="this.previewUrl" class=" " @imagecroped="actualizarimagen" />
         </div>
     </div>
 </template>
 <script>
-// import FileUploader from '../../../General/FileUploader.vue'
+import FileUploaderCrect from './FileUploaderCrect.vue';
 export default {
     data() {
         return {
@@ -34,10 +34,12 @@ export default {
         };
     },
     components: {
-        // FileUploader,
+        FileUploaderCrect,
     },
     methods: {
         handleFileChange(event) {
+            // preguntar antes de abrir el input
+            
             const file = event.target.files[0];
 
             if (file) {
@@ -66,12 +68,14 @@ export default {
 
                 reader.readAsDataURL(file);
                 this.fileLoaded = true;
+                this.showEditPopup = true;
             } else {
                 this.previewUrl = '';
                 this.isImage = false;
                 this.isVideo = false;
                 this.isPDF = false;
                 this.fileLoaded = false;
+                this.showEditPopup = true;
             }
         },
         nuevoClick() {
@@ -82,6 +86,10 @@ export default {
             this.isPDF = false;
             this.fileLoaded = false;
         },
+        actualizarimagen(valor) {
+            this.previewUrl = valor;
+            this.showEditPopup = false;
+        }
     },
 };
 </script>
@@ -112,5 +120,35 @@ export default {
     height: 100%;
     width: 100%;
     top: 0%;
+}
+.loadicon{
+    animation: myAnim 2s ease 0s infinite normal forwards;
+}
+@keyframes myAnim {
+	0% {
+		animation-timing-function: ease-out;
+		transform: scale(1);
+		transform-origin: center center;
+	}
+
+	10% {
+		animation-timing-function: ease-in;
+		transform: scale(0.91);
+	}
+
+	17% {
+		animation-timing-function: ease-out;
+		transform: scale(0.98);
+	}
+
+	33% {
+		animation-timing-function: ease-in;
+		transform: scale(0.87);
+	}
+
+	45% {
+		animation-timing-function: ease-out;
+		transform: scale(1);
+	}
 }
 </style>

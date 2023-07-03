@@ -1,5 +1,6 @@
 import './assets/main.css'
 import './assets/Fonts/Fonts.css'
+import 'boxicons'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'

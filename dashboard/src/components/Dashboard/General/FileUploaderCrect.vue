@@ -2,7 +2,7 @@
     <v-card width="auto">
         <div class="upload-example">
             <Cropper ref="cropper" class="upload-example-cropper" :src="image"
-                :stencil-component="$options.components.Stencil" />
+                />
             <div class="button-wrapper">
                 <!-- <span class="button" @click="$refs.file.click()">
                     <input type="file" ref="file" @change="uploadImage($event)" accept="image/*" />
@@ -19,15 +19,14 @@
 <script>
 import { Cropper } from "vue-advanced-cropper";
 import "vue-advanced-cropper/dist/style.css";
-import Stencil from './Stencil.vue'
+
 
 export default {
     name: "vueImageCropperExample",
     components: {
         Cropper,
-        Stencil
+
     },
-    props: {},
     data() {
         return {
             cropperOptions: {
@@ -73,7 +72,7 @@ export default {
 .upload-example-cropper {
     border: solid 1px #EEE;
     min-height: 300px;
-    height: 50vh;
+    height: 10vh;
     width: 100%;
     background-color: rgba(255, 255, 255, 0.484);
     border-radius: 2vw;
