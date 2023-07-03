@@ -72,7 +72,7 @@ export default {
 .upload-example-cropper {
     border: solid 1px #EEE;
     min-height: 300px;
-    height: 10vh;
+    height: 100%;
     width: 100%;
     background-color: rgba(255, 255, 255, 0.484);
     border-radius: 2vw;
