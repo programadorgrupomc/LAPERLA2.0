@@ -4,12 +4,12 @@
       <BotonesCrud class="btn-crud" />
     </div>
     <div class="cont-components w-full h-full">
-      <componentHero />
-      <NuestroPollo1 />
-      <NuestroPollo2 />
-      <NuestroPollo3 />
-      <NuestroPollo4 />
-      <NuestroProcesos />
+      <componentHero class="border"/>
+      <NuestroPollo1 class="border"/>
+      <NuestroPollo2 class="border"/>
+      <NuestroPollo3 class="border"/>
+      <NuestroPollo4 class="border"/>
+      <NuestroProcesos class="border"/>
     </div>
   </div>
 </template>
