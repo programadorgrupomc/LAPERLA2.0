@@ -1,6 +1,6 @@
 <template>
     <div class="contendorPages">
-        <div v-for="pag in pages" class="itempages w-full bg-azulbsPerla flex justify-between transition-all">
+        <div v-for="pag in pages" :key="pag.id" class="itempages w-full bg-azulbsPerla flex justify-between transition-all">
             <p class="ttl-item font-MyriadProRegular">{{ pag.name }}</p>
             <div class="relative flex">
                 <button class="btn-open" @click="pag.isOpen = !pag.isOpen" aria-haspopup="true" :aria-expanded="pag.isOpen">

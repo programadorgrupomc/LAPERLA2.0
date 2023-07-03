@@ -27,7 +27,6 @@ export default {
         Cropper,
         Stencil
     },
-    props: {},
     data() {
         return {
             cropperOptions: {

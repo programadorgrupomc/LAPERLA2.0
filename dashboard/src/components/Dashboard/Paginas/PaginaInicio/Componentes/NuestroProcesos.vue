@@ -66,12 +66,12 @@
     </div>
 </template>
 <script>
-import imagen1 from "@/assets/Inicio/imgnp.jpeg";
-import imagen2 from "@/assets/Inicio/imgnp (1).jpeg";
-import imagen3 from "@/assets/Inicio/imgnp (2).jpeg";
-import imagen4 from "@/assets/Inicio/imgnp (3).jpeg";
-import imagen5 from "@/assets/Inicio/imgnp (4).jpg";
-import imagen6 from "@/assets/Inicio/imgnp (4).jpg";
+// import imagen1 from "@/assets/Inicio/imgnp.jpeg";
+// import imagen2 from "@/assets/Inicio/imgnp (1).jpeg";
+// import imagen3 from "@/assets/Inicio/imgnp (2).jpeg";
+// import imagen4 from "@/assets/Inicio/imgnp (3).jpeg";
+// import imagen5 from "@/assets/Inicio/imgnp (4).jpg";
+// import imagen6 from "@/assets/Inicio/imgnp (4).jpg";
 
 import FileUploaderRect from '../../../General/FileUploaderRect.vue';
 
@@ -84,42 +84,42 @@ export default {
                     title: "Etapa 1",
                     subtitle: "Reproducción",
                     text: "Nuestras granjas reproductoras están construidas en lugares ideales, aislados con temperatura moderada y cuentan con alta bioseguridad que ayudarán a tener un huevo fértil de calidad.",
-                    image: imagen1,
+                    image: '',
                     alt: "imagen 1",
                 },
                 {
                     title: "Etapa 2",
                     subtitle: "Incubación",
                     text: "Contamos con una sala de incubación, en la cual los huevos son colocados en bandejas y supervisados constantemente para su correcto desarrollo.",
-                    image: imagen2,
+                    image: '',
                     alt: "imagen 2",
                 },
                 {
                     title: "Etapa 3",
                     subtitle: "Alimentación",
                     text: "Producimos su alimento con equipos de alta tecnología, utilizando materias primas e insumos rigurosamente seleccionados.",
-                    image: imagen3,
+                    image: '',
                     alt: "imagen 3",
                 },
                 {
                     title: "Etapa 4",
                     subtitle: "Pollo de Engorde",
                     text: "Le proveemos a nuestras aves alimentos nutritivos para su crecimiento y desarrollo, obteniendo un pollo de excelente rendimiento y buena calidad.",
-                    image: imagen4,
+                    image: '',
                     alt: "imagen 4",
                 },
                 {
                     title: "Etapa 5",
                     subtitle: "Centro de Beneficio",
                     text: "El proceso final de nuestras aves es una etapa muy importante para garantizar la calidad de nuestro producto.",
-                    image: imagen5,
+                    image: '',
                     alt: "imagen 5",
                 },
                 {
                     title: "Etapa 6",
                     subtitle: "Distribución",
                     text: "Contamos con una moderna flota de camiones para la distribución del pollo Perla, para estar siempre atentos a las necesidades de nuestros clientes.",
-                    image: imagen6,
+                    image: '',
                     alt: "imagen 6",
                 },
             ],
