@@ -68,10 +68,10 @@ export default {
 };
 </script>
     
-<style>
+<style scoped>
 .upload-example{
     height: 100%;
-   transform: scale(0.85);
+   transform: scale(0.75);
 }
 .upload-example-cropper {
     border: solid 1px #EEE;

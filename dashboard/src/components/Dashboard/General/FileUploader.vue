@@ -68,7 +68,7 @@ export default {
 };
 </script>
     
-<style>
+<style scoped>
 .upload-example-cropper {
     border: solid 1px #EEE;
     min-height: 300px;

@@ -114,7 +114,7 @@ export default {
   </div>
 </template>
 
-<style>
+<style scoped>
 .circle-stencil {
   border-radius: 50%;
   cursor: move;
