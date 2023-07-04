@@ -5,7 +5,7 @@
         ref="cropper"
         class="upload-example-cropper"
         :src="image"
-        :stencil-component="$options.components.Stencil"
+        :stencil-component="$options.components.StencilFup"
       />
       <div class="button-wrapper">
         <!-- <span class="button" @click="$refs.file.click()">
@@ -22,13 +22,13 @@
 <script>
 import { Cropper } from 'vue-advanced-cropper'
 import 'vue-advanced-cropper/dist/style.css'
-import Stencil from './Stencil.vue'
+import StencilFup from './StencilFup.vue'
 
 export default {
   name: 'vueImageCropperExample',
   components: {
     Cropper,
-    Stencil
+    StencilFup
   },
   data() {
     return {

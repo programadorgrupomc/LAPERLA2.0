@@ -1,7 +1,7 @@
 <template>
   <div class="w-full h-full relative">
     <div v-if="!showEditPopup && previewUrl" class="absolute z-40 lg:z-50 w-full h-full cont-btn">
-      <button @click="nuevoClick">Nuevo</button>
+      <button @click="nuevoClick">Reemplazar</button>
       <!-- <button v-if="!showEditPopup" @click="showEditPopup = true">Editar</button>
             <button v-if="showEditPopup" @click="showEditPopup = false">Cancelar</button> -->
     </div>
@@ -94,6 +94,7 @@ export default {
       }
     },
     handleProcess: function (event) {
+      console.log(event);
       // this.inlineResult = URL.createObjectURL(event.detail.dest);
     },
     actualizarimagen(valor) {

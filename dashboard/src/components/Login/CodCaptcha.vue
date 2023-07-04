@@ -13,6 +13,7 @@ export default {
   },
   methods: {
     onSubmit(token) {
+      console.log(token);
       document.getElementById('demo-form').submit()
     }
   }

@@ -62,56 +62,56 @@ export default {
           id: '2',
           name: 'Nosotros',
           isOpen: false,
-          route: '/dashboard/paginas/inicio',
+          route: '/dashboard/paginas/nosotros',
           routeview: '/pages/view'
         },
         {
           id: '3',
           name: 'Recetario',
           isOpen: false,
-          route: '/dashboard/paginas/inicio',
+          route: '/dashboard/paginas/recetario',
           routeview: '/pages/view'
         },
         {
           id: '4',
           name: 'Noticias',
           isOpen: false,
-          route: '/dashboard/paginas/inicio',
+          route: '/dashboard/paginas/noticia',
           routeview: '/pages/view'
         },
         {
           id: '5',
           name: 'Trabaja con nosotros',
           isOpen: false,
-          route: '/dashboard/paginas/inicio',
+          route: '/dashboard/paginas/work',
           routeview: '/pages/view'
         },
         {
           id: '6',
           name: 'Contactanos',
           isOpen: false,
-          route: '/dashboard/paginas/inicio',
+          route: '/dashboard/paginas/contactanos',
           routeview: '/pages/view'
         },
         {
           id: '7',
           name: 'Codigo de etica',
           isOpen: false,
-          route: '/dashboard/paginas/inicio',
+          route: '/dashboard/paginas/codigoetica',
           routeview: '/pages/view'
         },
         {
           id: '8',
           name: 'Header',
           isOpen: false,
-          route: '/dashboard/paginas/inicio',
+          route: '/dashboard/paginas/header',
           routeview: '/pages/view'
         },
         {
           id: '9',
           name: 'Footer',
           isOpen: false,
-          route: '/dashboard/paginas/inicio',
+          route: '/dashboard/paginas/footer',
           routeview: '/pages/view'
         }
       ]
