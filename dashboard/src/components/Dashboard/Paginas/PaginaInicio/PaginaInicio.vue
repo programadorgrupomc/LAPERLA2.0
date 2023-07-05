@@ -5,7 +5,11 @@
     </div>
     <div class="cont-components w-full h-full">
       <componentHero class="border" />
-      <NuestroPollo1 class="border" :nuestrosPollosData="nuestrosPollos" @dataupdate="actualizarnewdataNp1" />
+      <NuestroPollo1
+        class="border"
+        :nuestrosPollosData="nuestrosPollos"
+        @dataupdate="actualizarnewdataNp1"
+      />
       <NuestroPollo2 class="border" :nuestrosPollosData="nuestrosPollos" />
       <NuestroPollo3 class="border" :nuestrosPollosData="nuestrosPollos" />
       <NuestroPollo4 class="border" :nuestrosPollosData="nuestrosPollos" />
@@ -65,7 +69,7 @@ export default {
         })
     },
     actualizarnewdataNp1(valor) {
-      this.newDataNp1 = valor;
+      this.newDataNp1 = valor
       console.log(this.newDataNp1)
     }
   },

@@ -5,8 +5,15 @@
       <!-- <button v-if="!showEditPopup" @click="showEditPopup = true">Editar</button>
             <button v-if="showEditPopup" @click="showEditPopup = false">Cancelar</button> -->
     </div>
-    <div class="relative h-full z-30 w-full lg:h-full flex justify-center items-center" v-if="!previewUrl">
-      <img class="absolute loadicon" src="../../../assets/Dashboard/General/IconoLoadVideo.svg" alt="" />
+    <div
+      class="relative h-full z-30 w-full lg:h-full flex justify-center items-center"
+      v-if="!previewUrl"
+    >
+      <img
+        class="absolute loadicon"
+        src="../../../assets/Dashboard/General/IconoLoadVideo.svg"
+        alt=""
+      />
       <input type="file" @change="handleFileChange" class="bg-black h-1/4 w-1/4 opacity-0" />
     </div>
 
@@ -95,7 +102,7 @@ export default {
     actualizarimagen(valor) {
       this.previewUrl = valor
       this.showEditPopup = false
-      this.$emit('imgrecortada', this.previewUrl);
+      this.$emit('imgrecortada', this.previewUrl)
     }
   },
   mounted() {

@@ -47,8 +47,7 @@ export default {
 
       //mandar la imagen recortada
       this.$emit('imagecroped', result.canvas.toDataURL('image/jpeg'))
-    },
-  
+    }
   }
 }
 </script>

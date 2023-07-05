@@ -97,7 +97,7 @@ export default {
     actualizarimagen(valor) {
       this.previewUrl = valor
       this.showEditPopup = false
-      this.$emit('imgrecortada', this.previewUrl);
+      this.$emit('imgrecortada', this.previewUrl)
     }
   },
   mounted() {
