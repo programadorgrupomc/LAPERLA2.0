@@ -5,15 +5,8 @@
       <!-- <button v-if="!showEditPopup" @click="showEditPopup = true">Editar</button>
             <button v-if="showEditPopup" @click="showEditPopup = false">Cancelar</button> -->
     </div>
-    <div
-      class="relative h-full z-30 w-full lg:h-full flex justify-center items-center"
-      v-if="!previewUrl"
-    >
-      <img
-        class="absolute loadicon"
-        src="../../../assets/Dashboard/General/IconoLoadVideo.svg"
-        alt=""
-      />
+    <div class="relative h-full z-30 w-full lg:h-full flex justify-center items-center" v-if="!previewUrl">
+      <img class="absolute loadicon" src="../../../assets/Dashboard/General/IconoLoadVideo.svg" alt="" />
       <input type="file" @change="handleFileChange" class="bg-black h-1/4 w-1/4 opacity-0" />
     </div>
     <div v-if="previewUrl" class="h-full w-full">
@@ -43,6 +36,7 @@ export default {
   components: {
     FileUploaderCrect
   },
+  props: ['imagedetbd'],
   methods: {
     handleFileChange(event) {
       // preguntar antes de abrir el input
@@ -97,6 +91,10 @@ export default {
       this.previewUrl = valor
       this.showEditPopup = false
     }
+  },
+  mounted() {
+    this.previewUrl = `http://localhost:3000/uploads/${this.imagedetbd}`
+    this.isImage = true;
   }
 }
 </script>
@@ -128,9 +126,11 @@ export default {
   width: 100%;
   top: 0%;
 }
+
 .loadicon {
   animation: myAnim 2s ease 0s infinite normal forwards;
 }
+
 @keyframes myAnim {
   0% {
     animation-timing-function: ease-out;

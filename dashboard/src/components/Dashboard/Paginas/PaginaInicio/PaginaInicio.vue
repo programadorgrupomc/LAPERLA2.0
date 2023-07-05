@@ -4,12 +4,13 @@
       <BotonesCrud class="btn-crud" />
     </div>
     <div class="cont-components w-full h-full">
-      <componentHero class="border"/>
-      <NuestroPollo1 class="border"/>
-      <NuestroPollo2 class="border"/>
-      <NuestroPollo3 class="border"/>
-      <NuestroPollo4 class="border"/>
-      <NuestroProcesos class="border"/>
+      <h1>{{ heroes }}</h1>
+      <componentHero class="border" />
+      <NuestroPollo1 class="border" :nuestrosPollosData="nuestrosPollos"/>
+      <NuestroPollo2 class="border" />
+      <NuestroPollo3 class="border" />
+      <NuestroPollo4 class="border" />
+      <NuestroProcesos class="border" />
     </div>
   </div>
 </template>
@@ -22,7 +23,17 @@ import NuestroPollo3 from './Componentes/NuestroPollo3.vue'
 import NuestroPollo4 from './Componentes/NuestroPollo4.vue'
 import NuestroProcesos from './Componentes/NuestroProcesos.vue'
 
+//api
+import apiHero from '@/services/Inicio/apiHero.js'
+import apiNuestroPollo from '@/services/Inicio/apiNuestroPollo.js'
+
 export default {
+  data() {
+    return {
+      heroes: [],
+      nuestrosPollos: []
+    };
+  },
   components: {
     BotonesCrud,
     componentHero,
@@ -31,7 +42,32 @@ export default {
     NuestroPollo3,
     NuestroPollo4,
     NuestroProcesos
-  }
+  },
+  methods: {
+    fetchHeroes() {
+      apiHero.getHeroes()
+        .then(response => {
+          this.heroes = response.data;
+        })
+        .catch(error => {
+          console.error('Error fetching heroes:', error);
+        });
+    },
+    fetchNuestrosPollos() {
+      apiNuestroPollo.getNuestroPollos()
+        .then(response => {
+          this.nuestrosPollos = response.data;
+        })
+        .catch(error => {
+          console.log("Hubo un problema con la peticion", error);
+        })
+    }
+  },
+  mounted() {
+    this.fetchHeroes();
+    this.fetchNuestrosPollos();
+  },
+
 }
 </script>
 <style scoped>

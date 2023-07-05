@@ -5,17 +5,11 @@
       <!-- <button v-if="!showEditPopup" @click="showEditPopup = true">Editar</button>
             <button v-if="showEditPopup" @click="showEditPopup = false">Cancelar</button> -->
     </div>
-    <div
-      class="relative h-full z-30 w-full lg:h-full flex justify-center items-center"
-      v-if="!previewUrl"
-    >
-      <img
-        class="absolute loadicon"
-        src="../../../assets/Dashboard/General/IconoLoadVideo.svg"
-        alt=""
-      />
+    <div class="relative h-full z-30 w-full lg:h-full flex justify-center items-center" v-if="!previewUrl">
+      <img class="absolute loadicon" src="../../../assets/Dashboard/General/IconoLoadVideo.svg" alt="" />
       <input type="file" @change="handleFileChange" class="bg-black h-1/4 w-1/4 opacity-0" />
     </div>
+
     <div v-if="previewUrl" class="h-full w-full">
       <img :src="previewUrl" v-if="isImage" class="w-full h-full object-cover rounded-full" />
       <video :src="previewUrl" v-else-if="isVideo" class="h-full w-full" controls></video>
@@ -42,6 +36,7 @@ export default {
       showEditPopup: false
     }
   },
+  props: ['imagebd'],
   components: {
     FileUploader
   },
@@ -100,7 +95,11 @@ export default {
     actualizarimagen(valor) {
       this.previewUrl = valor
       this.showEditPopup = false
-    }
+    },
+  },
+  mounted() {
+    this.previewUrl = `http://localhost:3000/uploads/${this.imagebd}`
+    this.isImage = true;
   }
 }
 </script>
@@ -131,9 +130,11 @@ export default {
   background-color: rgba(255, 255, 255, 0.484);
   border-radius: 2vw;
 }
+
 .loadicon {
   animation: myAnim 2s ease 0s infinite normal forwards;
 }
+
 @keyframes myAnim {
   0% {
     animation-timing-function: ease-out;
