@@ -1,37 +1,37 @@
-import axios from 'axios';
-import { BASE_URL } from '../config.js';
+import axios from 'axios'
+import { BASE_URL } from '../config.js'
 
 const apiHero = axios.create({
-  baseURL: BASE_URL , // Reemplaza esta URL con la URL de tu API
+  baseURL: BASE_URL, // Reemplaza esta URL con la URL de tu API
   headers: {
     Accept: 'application/json',
-    'Content-Type': 'application/json',
-  },
-});
+    'Content-Type': 'application/json'
+  }
+})
 
 export default {
   // Obtener todos los héroes
   getHeroes() {
-    return apiHero.get('/heroes');
+    return apiHero.get('/heroes')
   },
 
   // Obtener un héroe por su ID
   getHero(id) {
-    return apiHero.get(`/heroes/${id}`);
+    return apiHero.get(`/heroes/${id}`)
   },
 
   // Crear un nuevo héroe
   createHero(heroData) {
-    return apiHero.post('/heroes', heroData);
+    return apiHero.post('/heroes', heroData)
   },
 
   // Actualizar un héroe
   updateHero(id, heroData) {
-    return apiHero.put(`/heroes/${id}`, heroData);
+    return apiHero.put(`/heroes/${id}`, heroData)
   },
 
   // Eliminar un héroe
   deleteHero(id) {
-    return apiHero.delete(`/heroes/${id}`);
-  },
-};
+    return apiHero.delete(`/heroes/${id}`)
+  }
+}

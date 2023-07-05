@@ -1,11 +1,14 @@
 <template>
-  <div class="np4 flex flex-col lg:flex-row justify-center">
+  <div
+    v-if="nuestrosPollosData && nuestrosPollosData.length > 0"
+    class="np4 flex flex-col lg:flex-row justify-center"
+  >
     <div class="hidden lado2 lg:flex lg:items-center lg:justify-center">
       <div class="np4-contenedor np4-contenedorlg relative lg:flex justify-center items-center">
         <div class="relative">
           <div class="circulo-fondo4"></div>
           <div class="absolute img-circulo4 shadow-2xl">
-            <FileUploaderDef />
+            <FileUploaderDef :imagebd="nuestrosPollosData[3].imgGeneral" />
           </div>
           <!-- <img src="../../assets/Inicio/imgcont2.jpg" class="absolute img-circulo4 shadow-2xl" alt="img-circulo4"> -->
         </div>
@@ -15,16 +18,18 @@
       <div
         class="np4-contenedor contenedor-texto4 flex flex-col justify-center items-center lg:items-end"
       >
-        <p contenteditable="true" class="border titulo text-center lg:text-right">SABOR Y AROMA</p>
+        <p contenteditable="true" class="border titulo text-center lg:text-right">
+          {{ nuestrosPollosData[3].titulo }}
+        </p>
         <p contenteditable="true" class="border texto text-center lg:text-right">
-          Su sabor único permite preparar variedad de potajes deleitando tu paladar.
+          {{ nuestrosPollosData[3].contenido }}
         </p>
       </div>
       <div class="np4-contenedor lg:hidden flex justify-center items-center">
         <div class="relative">
           <div class="circulo-fondo4"></div>
           <div class="absolute img-circulo4 shadow-2xl">
-            <FileUploaderDef />
+            <FileUploaderDef :imagebd="nuestrosPollosData[3].imgGeneral" />
           </div>
           <!-- <img src="../../assets/Inicio/imgcont2.jpg" class="absolute img-circulo4 shadow-2xl" alt="img-circulo4"> -->
         </div>
@@ -38,6 +43,7 @@ export default {
   data() {
     return {}
   },
+  props: ['nuestrosPollosData'],
   components: {
     FileUploaderDef
   },

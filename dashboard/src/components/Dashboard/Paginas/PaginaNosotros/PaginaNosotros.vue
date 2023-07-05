@@ -3,7 +3,7 @@
     <div class="fixed z-40 lg:z-50 cont-btn">
       <BotonesCrud class="btn-crud" />
     </div>
-    <div class="cont-components w-full h-full ">
+    <div class="cont-components w-full h-full">
       <PresentacionNosotros class="border" />
       <LineaDeTiempo class="" />
       <NuestraFilosofia />
@@ -12,10 +12,10 @@
   </div>
 </template>
 <script>
-import PresentacionNosotros from './Componentes/PresentacionNosotros.vue';
+import PresentacionNosotros from './Componentes/PresentacionNosotros.vue'
 import LineaDeTiempo from './Componentes/LineaDeTiempo.vue'
 import BotonesCrud from '../../General/BotonesCrud.vue'
-import CulturaOrganizacional from './Componentes/CulturaOrganizacional.vue';
+import CulturaOrganizacional from './Componentes/CulturaOrganizacional.vue'
 import NuestraFilosofia from './Componentes/NuestraFilosofia.vue'
 export default {
   components: {

@@ -6,10 +6,10 @@
     <div class="cont-components w-full h-full">
       <h1>{{ heroes }}</h1>
       <componentHero class="border" />
-      <NuestroPollo1 class="border" :nuestrosPollosData="nuestrosPollos"/>
-      <NuestroPollo2 class="border" />
-      <NuestroPollo3 class="border" />
-      <NuestroPollo4 class="border" />
+      <NuestroPollo1 class="border" :nuestrosPollosData="nuestrosPollos" />
+      <NuestroPollo2 class="border" :nuestrosPollosData="nuestrosPollos" />
+      <NuestroPollo3 class="border" :nuestrosPollosData="nuestrosPollos" />
+      <NuestroPollo4 class="border" :nuestrosPollosData="nuestrosPollos" />
       <NuestroProcesos class="border" />
     </div>
   </div>
@@ -32,7 +32,7 @@ export default {
     return {
       heroes: [],
       nuestrosPollos: []
-    };
+    }
   },
   components: {
     BotonesCrud,
@@ -45,29 +45,30 @@ export default {
   },
   methods: {
     fetchHeroes() {
-      apiHero.getHeroes()
-        .then(response => {
-          this.heroes = response.data;
+      apiHero
+        .getHeroes()
+        .then((response) => {
+          this.heroes = response.data
         })
-        .catch(error => {
-          console.error('Error fetching heroes:', error);
-        });
+        .catch((error) => {
+          console.error('Error fetching heroes:', error)
+        })
     },
     fetchNuestrosPollos() {
-      apiNuestroPollo.getNuestroPollos()
-        .then(response => {
-          this.nuestrosPollos = response.data;
+      apiNuestroPollo
+        .getNuestroPollos()
+        .then((response) => {
+          this.nuestrosPollos = response.data
         })
-        .catch(error => {
-          console.log("Hubo un problema con la peticion", error);
+        .catch((error) => {
+          console.log('Hubo un problema con la peticion', error)
         })
     }
   },
   mounted() {
-    this.fetchHeroes();
-    this.fetchNuestrosPollos();
-  },
-
+    this.fetchHeroes()
+    this.fetchNuestrosPollos()
+  }
 }
 </script>
 <style scoped>

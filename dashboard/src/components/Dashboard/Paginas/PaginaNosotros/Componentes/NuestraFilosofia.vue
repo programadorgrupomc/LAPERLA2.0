@@ -1,25 +1,50 @@
 <template>
-  <div class="contenedornf bg-FondoPerla h-screen flex flex-col justify-start items-center overflow-hidden w-full">
+  <div
+    class="contenedornf bg-FondoPerla h-screen flex flex-col justify-start items-center overflow-hidden w-full"
+  >
     <div class="ttlnf w-full">
-      <h1 class="text-AzulPerla font-TestKarbonMedium text-center lg:text-left">NUESTRA FILOSOFIA</h1>
+      <h1 class="text-AzulPerla font-TestKarbonMedium text-center lg:text-left">
+        NUESTRA FILOSOFIA
+      </h1>
     </div>
 
     <!-- Para escritorio -->
     <div class="conttrianglegen hidden h-screen md:flex justify-center items-end">
       <div class="imgtrianglenf1 relative flex justify-center items-center">
-        <img loading="lazy" class="w-full h-full object-cover" src="../../../../../assets/Dashboard/Nosotros/nftriangle(1).svg" alt="">
+        <img
+          loading="lazy"
+          class="w-full h-full object-cover"
+          src="../../../../../assets/Dashboard/Nosotros/nftriangle(1).svg"
+          alt=""
+        />
         <div class="absolute conttritem1 w-full h-full flex flex-col justify-center items-center">
-          <img loading="lazy" class="imgtr" src="../../../../../assets/Dashboard/Nosotros/imgnp1(3).png" alt="">
+          <img
+            loading="lazy"
+            class="imgtr"
+            src="../../../../../assets/Dashboard/Nosotros/imgnp1(3).png"
+            alt=""
+          />
           <h1 class="ttlfilosofia font-TestKarbonMedium">VISION</h1>
-          <p class="text-center font-TestKarbonRegular">Ser una empresa líder en el mercado nacional en la producción y
-            comercialización de
-            alimentos, con exigentes estándares de calidad.</p>
+          <p class="text-center font-TestKarbonRegular">
+            Ser una empresa líder en el mercado nacional en la producción y comercialización de
+            alimentos, con exigentes estándares de calidad.
+          </p>
         </div>
       </div>
       <div class="trianglecentral relative flex justify-center items-center">
-        <img loading="lazy" class="w-full h-full object-cover" src="../../../../../assets/Dashboard/Nosotros/nftriangle(3).svg" alt="">
+        <img
+          loading="lazy"
+          class="w-full h-full object-cover"
+          src="../../../../../assets/Dashboard/Nosotros/nftriangle(3).svg"
+          alt=""
+        />
         <div class="absolute conttritem2 w-full h-full flex flex-col justify-center items-center">
-          <img loading="lazy" class="imgtr" src="../../../../../assets/Dashboard/Nosotros/imgnp1(1).png" alt="">
+          <img
+            loading="lazy"
+            class="imgtr"
+            src="../../../../../assets/Dashboard/Nosotros/imgnp1(1).png"
+            alt=""
+          />
           <h1 class="ttlfilosofia font-TestKarbonMedium">VALORES</h1>
           <ul class="text-center font-TestKarbonRegular">
             <li>Integridad</li>
@@ -32,13 +57,25 @@
       </div>
 
       <div class="imgtrianglenf2 relative flex justify-center items-center">
-        <img loading="lazy" class="w-full h-full object-cover" src="../../../../../assets/Dashboard/Nosotros/nftriangle(2).svg" alt="">
+        <img
+          loading="lazy"
+          class="w-full h-full object-cover"
+          src="../../../../../assets/Dashboard/Nosotros/nftriangle(2).svg"
+          alt=""
+        />
         <div class="absolute conttritem3 w-full h-full flex flex-col justify-center items-center">
-          <img loading="lazy" class="imgtr" src="../../../../../assets/Dashboard/Nosotros/imgnp1(2).png" alt="">
+          <img
+            loading="lazy"
+            class="imgtr"
+            src="../../../../../assets/Dashboard/Nosotros/imgnp1(2).png"
+            alt=""
+          />
           <h1 class="ttlfilosofia font-TestKarbonMedium">MISION</h1>
-          <p class="text-center font-TestKarbonRegular">En base a nuestra trayectoria de crianza de aves desde 1962,
-            ofrecer un producto avícola
-            de alta calidad, contribuyendo a una alimentación nutritiva y saludable para nuestros consumidores.</p>
+          <p class="text-center font-TestKarbonRegular">
+            En base a nuestra trayectoria de crianza de aves desde 1962, ofrecer un producto avícola
+            de alta calidad, contribuyendo a una alimentación nutritiva y saludable para nuestros
+            consumidores.
+          </p>
         </div>
       </div>
     </div>
@@ -46,27 +83,57 @@
     <!-- Para mobile -->
     <div class="conttrianglegen md:hidden h-screen flex justify-center items-end">
       <div class="imgtrianglenf1 relative flex justify-center items-center">
-        <img loading="lazy" class="w-full h-full object-cover" src="../../../../../assets/Dashboard/Nosotros/nftriangle(1).svg" alt="">
+        <img
+          loading="lazy"
+          class="w-full h-full object-cover"
+          src="../../../../../assets/Dashboard/Nosotros/nftriangle(1).svg"
+          alt=""
+        />
       </div>
       <div class="trianglecentral relative flex justify-center items-center">
-        <img loading="lazy" class="w-full h-full object-cover" src="../../../../../assets/Dashboard/Nosotros/nftriangle(3).svg" alt="">
+        <img
+          loading="lazy"
+          class="w-full h-full object-cover"
+          src="../../../../../assets/Dashboard/Nosotros/nftriangle(3).svg"
+          alt=""
+        />
       </div>
 
       <div class="imgtrianglenf2 relative flex justify-center items-center">
-        <img loading="lazy" class="w-full h-full object-cover" src="../../../../../assets/Dashboard/Nosotros/nftriangle(2).svg" alt="">
+        <img
+          loading="lazy"
+          class="w-full h-full object-cover"
+          src="../../../../../assets/Dashboard/Nosotros/nftriangle(2).svg"
+          alt=""
+        />
       </div>
     </div>
 
-    <div class="absolute md:hidden conttritem1 w-full h-full flex flex-col justify-center items-center overflow-hidden">
-      <img loading="lazy" class="imgtr" src="../../../../../assets/Dashboard/Nosotros/imgnp1(3).png" alt="">
+    <div
+      class="absolute md:hidden conttritem1 w-full h-full flex flex-col justify-center items-center overflow-hidden"
+    >
+      <img
+        loading="lazy"
+        class="imgtr"
+        src="../../../../../assets/Dashboard/Nosotros/imgnp1(3).png"
+        alt=""
+      />
       <h1 class="ttlfilosofia font-TestKarbonMedium">VISION</h1>
-      <p class="text-center font-TestKarbonRegular">Ser una empresa líder en el mercado nacional en la producción y
-        comercialización de
-        alimentos, con exigentes estándares de calidad.</p>
+      <p class="text-center font-TestKarbonRegular">
+        Ser una empresa líder en el mercado nacional en la producción y comercialización de
+        alimentos, con exigentes estándares de calidad.
+      </p>
     </div>
 
-    <div class="absolute md:hidden conttritem2 w-full h-full flex flex-col justify-center items-center overflow-hidden">
-      <img loading="lazy" class="imgtr" src="../../../../../assets/Dashboard/Nosotros/imgnp1(1).png" alt="">
+    <div
+      class="absolute md:hidden conttritem2 w-full h-full flex flex-col justify-center items-center overflow-hidden"
+    >
+      <img
+        loading="lazy"
+        class="imgtr"
+        src="../../../../../assets/Dashboard/Nosotros/imgnp1(1).png"
+        alt=""
+      />
       <h1 class="ttlfilosofia font-TestKarbonMedium">VALORES</h1>
       <ul class="text-center font-TestKarbonRegular">
         <li>Integridad</li>
@@ -77,27 +144,30 @@
       </ul>
     </div>
 
-    <div class="absolute md:hidden conttritem3 w-full h-full flex flex-col justify-center items-center overflow-hidden">
-      <img loading="lazy" class="imgtr" src="../../../../../assets/Dashboard/Nosotros/imgnp1(2).png" alt="">
+    <div
+      class="absolute md:hidden conttritem3 w-full h-full flex flex-col justify-center items-center overflow-hidden"
+    >
+      <img
+        loading="lazy"
+        class="imgtr"
+        src="../../../../../assets/Dashboard/Nosotros/imgnp1(2).png"
+        alt=""
+      />
       <h1 class="ttlfilosofia font-TestKarbonMedium">MISION</h1>
-      <p class="text-center font-TestKarbonRegular">En base a nuestra trayectoria de crianza de aves desde 1962, ofrecer
-        un producto avícola de
-        alta calidad, contribuyendo a una alimentación nutritiva y saludable para nuestros consumidores.</p>
+      <p class="text-center font-TestKarbonRegular">
+        En base a nuestra trayectoria de crianza de aves desde 1962, ofrecer un producto avícola de
+        alta calidad, contribuyendo a una alimentación nutritiva y saludable para nuestros
+        consumidores.
+      </p>
     </div>
   </div>
 </template>
 
 <script>
-
-
 export default {
-  mounted() {
-  },
-  methods: {
-   
-  },
-
-};
+  mounted() {},
+  methods: {}
+}
 </script>
 
 <style scoped>
@@ -143,7 +213,6 @@ export default {
 .conttritem3 p {
   font-size: 2vw;
   width: 27%;
-
 }
 
 .conttritem1,
@@ -165,7 +234,6 @@ export default {
   }
 
   .ttlnf {
-
     font-size: 8vw;
     font-weight: bold;
   }
@@ -209,7 +277,7 @@ export default {
   }
 
   .conttrianglegen {
-    transform: scale(0.70) translateY(-8vh);
+    transform: scale(0.7) translateY(-8vh);
     /* border: black solid; */
   }
 

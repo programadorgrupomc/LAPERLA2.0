@@ -3,7 +3,7 @@
     <div class="fixed z-40 lg:z-50 cont-btn">
       <BotonesCrud class="btn-crud" />
     </div>
-    <div class="cont-components w-full h-full ">
+    <div class="cont-components w-full h-full">
       <HeroWork />
       <PresentacionWork />
       <PuestosVacantes />
@@ -12,8 +12,8 @@
 </template>
 <script>
 import BotonesCrud from '../../General/BotonesCrud.vue'
-import PresentacionWork from './Componentes/PresentacionWork.vue';
-import HeroWork from './Componentes/HeroWork.vue';
+import PresentacionWork from './Componentes/PresentacionWork.vue'
+import HeroWork from './Componentes/HeroWork.vue'
 import PuestosVacantes from './Componentes/PuestosVacantes.vue'
 export default {
   components: {

@@ -1,8 +1,15 @@
 <template>
-  <div v-if="nuestrosPollosData && nuestrosPollosData.length > 0" class="np1 flex flex-col lg:flex-row justify-center">
+  <div
+    v-if="nuestrosPollosData && nuestrosPollosData.length > 0"
+    class="np1 flex flex-col lg:flex-row justify-center"
+  >
     <div class="lado1 flex flex-col lg:items-center justify-center lg:justify-around">
-      <div class="np1-contenedor contenedor-texto1 flex flex-col justify-center items-center lg:items-start">
-        <p contenteditable="true" class="titulo border text-center lg:text-left">{{ nuestrosPollosData[0].titulo }}</p>
+      <div
+        class="np1-contenedor contenedor-texto1 flex flex-col justify-center items-center lg:items-start"
+      >
+        <p contenteditable="true" class="titulo border text-center lg:text-left">
+          {{ nuestrosPollosData[0].titulo }}
+        </p>
         <p contenteditable="true" class="texto border text-center lg:text-left">
           {{ nuestrosPollosData[0].contenido }}
         </p>
@@ -19,10 +26,14 @@
       <div class="np1-contenedor flex justify-center items-center">
         <div class="contenedor-1 relative">
           <div class="imgNp-1 border relative overflow-hidden">
-            <FileUploaderRect :imagedetbd="nuestrosPollosData[0].imgDetalle"/>
+            <FileUploaderRect :imagedetbd="nuestrosPollosData[0].imgDetalle" />
           </div>
           <!-- <img src="../../assets/Inicio/CarnePollo.png" class="imgNp-1 relative" alt="carne-pollo"> -->
-          <img src="../../../../../assets/Dashboard/Paginas/Inicio/Row1.svg" class="rowNp-1 relative" alt="rowNp-1" />
+          <img
+            src="../../../../../assets/Dashboard/Paginas/Inicio/Row1.svg"
+            class="rowNp-1 relative"
+            alt="rowNp-1"
+          />
           <div class="indicador1 relative flex flex-col justify-center items-center">
             <p>Pechuga</p>
             <p contenteditable="true" class="porcentaje border">35%</p>
@@ -38,7 +49,7 @@
           <!-- <img src="../../assets/Inicio/imgcont1.jpg" class="absolute img-circulo1 shadow-2xl" alt="img-circulo1"> -->
           <div class="absolute img-circulo1 shadow-2xl">
             <!-- <img :src="`http://localhost:3000/uploads/${nuestrosPollosData[0].imgGeneral}`" alt=""> -->
-            <FileUploaderDef class="rounded-full" :imagebd="nuestrosPollosData[0].imgGeneral"/>
+            <FileUploaderDef class="rounded-full" :imagebd="nuestrosPollosData[0].imgGeneral" />
           </div>
         </div>
       </div>
@@ -123,13 +134,14 @@ export default {
 }
 
 .imgNp-1 {
-  height: 80%;
+  height: 50%;
+
   left: -40%;
 }
 
 .rowNp-1 {
   height: 35%;
-  top: -40%;
+  top: -5%;
   right: -25%;
 }
 
@@ -140,7 +152,7 @@ export default {
   color: #471d7c;
   -webkit-text-stroke: #471d7c 0.1vh;
   height: 25%;
-  top: -60%;
+  top: -20%;
   right: -50%;
 }
 
@@ -188,19 +200,19 @@ export default {
   }
 
   .imgNp-1 {
-    height: 26vw;
+    height: 10vw;
   }
 
   .rowNp-1 {
     height: 6vw;
-    top: -12.5vw;
-    right: -20%;
+    top: 2vw;
+    right: -10%;
   }
 
   .indicador1 {
     font-size: 1.5vw;
-    right: -20%;
-    top: -15.5vw;
+    right: -25%;
+    top: -0.5vw;
   }
 
   .porcentaje {

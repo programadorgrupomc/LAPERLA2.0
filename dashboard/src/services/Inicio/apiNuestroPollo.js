@@ -32,5 +32,5 @@ export default {
   //Eliminar nuestro pollo
   deleteNuestroPollo(id) {
     return apiNuestroPollo.delete(`/nuestropollo/${id}`)
-  },
-};
+  }
+}

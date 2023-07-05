@@ -1,5 +1,5 @@
 <template>
-  <div v-if="codigoEtica" class="cont-ce  flex flex-col items-center justify-center">
+  <div v-if="codigoEtica" class="cont-ce flex flex-col items-center justify-center">
     <div class="texto font-KarbonRegular text-center text-white">{{ codigoEtica }}</div>
     <router-link to="/work/ce" custom v-slot="{ navigate }">
       <button type="button" @click="navigate" role="link" class="btn-laperla font-TestKarbonMedium">
@@ -9,25 +9,20 @@
   </div>
 </template>
 <script>
-
 export default {
-
   data() {
     return {
-      codigoEtica: 'Conoce sobre la filosofía de Molino La Perla',
+      codigoEtica: 'Conoce sobre la filosofía de Molino La Perla'
     }
   },
-  methods: {
-  },
-  mounted() {
-
-  },
-};
+  methods: {},
+  mounted() {}
+}
 </script>
 
 <style scoped>
 .cont-ce {
-  background-image: url("@/assets/Work/imgCe.jpg"), linear-gradient(to bottom, #C1B199, #C1B199);
+  background-image: url('@/assets/Work/imgCe.jpg'), linear-gradient(to bottom, #c1b199, #c1b199);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -40,12 +35,11 @@ export default {
   line-height: normal;
   padding: 3%;
   -webkit-text-stroke: white 0.1vw;
-
 }
 
 .btn-laperla {
-  background-color: #FFF7EC;
-  color: #6E5B44;
+  background-color: #fff7ec;
+  color: #6e5b44;
   font-size: 4.5vw;
   margin-top: 2%;
   padding-left: 8%;
@@ -96,4 +90,3 @@ export default {
   }
 }
 </style>
-

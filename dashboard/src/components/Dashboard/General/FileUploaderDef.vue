@@ -5,8 +5,15 @@
       <!-- <button v-if="!showEditPopup" @click="showEditPopup = true">Editar</button>
             <button v-if="showEditPopup" @click="showEditPopup = false">Cancelar</button> -->
     </div>
-    <div class="relative h-full z-30 w-full lg:h-full flex justify-center items-center" v-if="!previewUrl">
-      <img class="absolute loadicon" src="../../../assets/Dashboard/General/IconoLoadVideo.svg" alt="" />
+    <div
+      class="relative h-full z-30 w-full lg:h-full flex justify-center items-center"
+      v-if="!previewUrl"
+    >
+      <img
+        class="absolute loadicon"
+        src="../../../assets/Dashboard/General/IconoLoadVideo.svg"
+        alt=""
+      />
       <input type="file" @change="handleFileChange" class="bg-black h-1/4 w-1/4 opacity-0" />
     </div>
 
@@ -89,17 +96,17 @@ export default {
       }
     },
     handleProcess: function (event) {
-      console.log(event);
+      console.log(event)
       // this.inlineResult = URL.createObjectURL(event.detail.dest);
     },
     actualizarimagen(valor) {
       this.previewUrl = valor
       this.showEditPopup = false
-    },
+    }
   },
   mounted() {
     this.previewUrl = `http://localhost:3000/uploads/${this.imagebd}`
-    this.isImage = true;
+    this.isImage = true
   }
 }
 </script>

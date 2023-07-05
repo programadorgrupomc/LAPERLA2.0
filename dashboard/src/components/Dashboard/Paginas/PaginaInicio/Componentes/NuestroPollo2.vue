@@ -1,11 +1,14 @@
 <template>
-  <div class="np2 flex flex-col lg:flex-row justify-center">
+  <div
+    v-if="nuestrosPollosData && nuestrosPollosData.length > 0"
+    class="np2 flex flex-col lg:flex-row justify-center"
+  >
     <div class="hidden lado2 lg:flex lg:items-center lg:justify-center">
       <div class="np2-contenedor np2-contenedorlg relative lg:flex justify-center items-center">
         <div class="relative">
           <div class="circulo-fondo2"></div>
           <div class="absolute img-circulo2 shadow-2xl">
-            <FileUploaderDef />
+            <FileUploaderDef :imagebd="nuestrosPollosData[1].imgGeneral" />
           </div>
           <!-- <img src="../../assets/Inicio/imgcont2.jpg" class="absolute img-circulo2 shadow-2xl" alt="img-circulo2"> -->
         </div>
@@ -15,16 +18,18 @@
       <div
         class="np2-contenedor contenedor-texto2 flex flex-col justify-center items-center lg:items-end"
       >
-        <p contenteditable="true" class="titulo border text-center lg:text-right">FIRMEZA</p>
+        <p contenteditable="true" class="titulo border text-center lg:text-right">
+          {{ nuestrosPollosData[1].titulo }}
+        </p>
         <p contenteditable="true" class="texto border text-center lg:text-right">
-          Carne de buena consistencia y excelente textura y fibra muscular.
+          {{ nuestrosPollosData[1].contenido }}
         </p>
       </div>
       <div class="np2-contenedor lg:hidden flex justify-center items-center">
         <div class="relative">
           <div class="circulo-fondo2"></div>
           <div class="absolute img-circulo2 shadow-2xl">
-            <FileUploaderDef />
+            <FileUploaderDef :imagebd="nuestrosPollosData[1].imgGeneral" />
           </div>
           <!-- <img src="../../assets/Inicio/imgcont2.jpg" class="absolute img-circulo2 shadow-2xl" alt="img-circulo2"> -->
         </div>
@@ -58,6 +63,7 @@ export default {
   components: {
     FileUploaderDef
   },
+  props: ['nuestrosPollosData'],
   methods: {},
   mounted() {}
 }

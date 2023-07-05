@@ -1,25 +1,30 @@
 <script>
 export default {
-  name: "HeroWork",
+  name: 'HeroWork',
   data() {
     return {
-      herowork: '¡SE PARTE DE NUESTRO EQUIPO!',
+      herowork: '¡SE PARTE DE NUESTRO EQUIPO!'
     }
   },
-  methods: {
-
-  },
-  mounted() {
-
-  }
-};
+  methods: {},
+  mounted() {}
+}
 </script>
 <template>
   <div v-if="herowork" class="contpadding">
     <div class="cont-hero h-auto w-full bg-fondoPerla relative">
-      <img loading="lazy" class="imgherowork object-cover w-full" src="../../../../../assets/Dashboard/Work/imgHeroWork.jpg" alt="hero">
+      <img
+        loading="lazy"
+        class="imgherowork object-cover w-full"
+        src="../../../../../assets/Dashboard/Work/imgHeroWork.jpg"
+        alt="hero"
+      />
       <div class="gradient absolute bottom-0 w-full"></div>
-      <p contenteditable="true" class="border ttl-herowork  absolute font-bold text-white text-right">{{ herowork }}
+      <p
+        contenteditable="true"
+        class="border ttl-herowork absolute font-bold text-white text-right"
+      >
+        {{ herowork }}
       </p>
     </div>
   </div>
@@ -28,7 +33,8 @@ export default {
 <style scoped>
 .gradient {
   height: 40vh;
-  background: transparent linear-gradient(180deg, #46372500 0%, #471D7C 87%, #471D7C 100%) 0% 0% no-repeat padding-box;
+  background: transparent linear-gradient(180deg, #46372500 0%, #471d7c 87%, #471d7c 100%) 0% 0%
+    no-repeat padding-box;
   mix-blend-mode: multiply;
 }
 
@@ -37,7 +43,7 @@ export default {
 }
 
 .ttl-herowork {
-  font-family: "TestKarbonMedium";
+  font-family: 'TestKarbonMedium';
   font-size: 6.5vw;
   right: 5%;
   bottom: 7%;
@@ -58,7 +64,7 @@ export default {
   }
 
   .ttl-herowork {
-    font-family: "TestKarbonMedium";
+    font-family: 'TestKarbonMedium';
     font-size: 5vw;
     right: 5%;
     bottom: 5%;
@@ -71,5 +77,3 @@ export default {
   }
 }
 </style>
-
-
