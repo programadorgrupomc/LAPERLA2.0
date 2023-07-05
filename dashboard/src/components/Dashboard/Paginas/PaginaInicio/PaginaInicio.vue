@@ -4,7 +4,7 @@
       <BotonesCrud class="btn-crud" :dataNuestroPollo1="newDataNp1" />
     </div>
     <div class="cont-components w-full h-full">
-      <componentHero class="border" />
+      <componentHero class="border" :heroesdata="heroes"/>
       <NuestroPollo1
         class="border"
         :nuestrosPollosData="nuestrosPollos"
@@ -53,6 +53,7 @@ export default {
         .getHeroes()
         .then((response) => {
           this.heroes = response.data
+          console.log(this.heroes)
         })
         .catch((error) => {
           console.error('Error fetching heroes:', error)

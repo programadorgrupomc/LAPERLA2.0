@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: 'direcciones',
+
   data() {
     return {
       directions: [

@@ -47,7 +47,7 @@ export default {
         apiNuestroPollo
           .updateNuestroPollo(this.datanp1._id, this.datanp1)
           .then((response) => {
-            alert('Registro Existoso!')
+            alert(response)
           })
           .catch((error) => {
             console.log(`Hubo un error al actualizar ${error}`)

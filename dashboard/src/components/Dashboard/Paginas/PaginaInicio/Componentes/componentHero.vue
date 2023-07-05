@@ -1,6 +1,6 @@
 <template>
-  <div class="cont-ch w-full h-full">
-    <FileUploaderRect />
+  <div v-if="heroesdata && heroesdata.length > 0" class="cont-ch w-full h-full">
+    <FileUploaderRect :imagedetbd="heroesdata[3].imgVisual" />
   </div>
 </template>
 <script>
@@ -14,7 +14,8 @@ export default {
   },
   components: {
     FileUploaderRect
-  }
+  },
+  props: ['heroesdata'],
 }
 </script>
 <style scoped>

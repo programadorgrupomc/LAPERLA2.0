@@ -9,7 +9,7 @@
       <!-- para escritorio -->
       <div class="hidden lg:block">
         <swiper :watchSlidesProgress="true" :slidesPerView="4" class="mySwiper">
-          <swiper-slide v-for="i in recetas" class="swcarrec m-2 lg:m-10 hover:rounded-3xl">
+          <swiper-slide v-for="i in recetas" :key="i.id" class="swcarrec m-2 lg:m-10 hover:rounded-3xl">
             <router-link :to="`/receta/desc/${i.id}`">
               <div class="contenido-iterable relative flex justify-center items-center">
                 <img
@@ -34,7 +34,7 @@
       <!-- para mobile -->
       <div class="lg:hidden bg-FondoNp2 p-10 overflow-hidden">
         <swiper :effect="'cards'" :grabCursor="true" :modules="modules" class="mySwiper">
-          <swiper-slide v-for="i in recetas">
+          <swiper-slide v-for="i in recetas" :key="i.id">
             <router-link :to="`/receta/desc/${i.id}`">
               <div class="rounded-2xl contenido-iterable relative flex justify-center items-center">
                 <img

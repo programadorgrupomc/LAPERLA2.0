@@ -1,6 +1,6 @@
 <script>
 import FiltroVac from './FiltroVac.vue'
-import Search from './search.vue'
+import Search from './searchWork.vue'
 import FileUploaderRect from '../../../General/FileUploaderRect.vue'
 import imagenpuesto from '../../../../../assets/Dashboard/Work/imgwork1 (1).jpg'
 
@@ -96,7 +96,7 @@ export default {
         <filtro-vac />
       </div>
     </div>
-    <div v-for="pv in puestos" class="cont-itempv shadow-2xl lg:flex transition-all">
+    <div v-for="pv in puestos" :key="pv.id" class="cont-itempv shadow-2xl lg:flex transition-all">
       <file-uploader-rect />
       <div class="flex flex-col justify-center">
         <div class="cont-text">
