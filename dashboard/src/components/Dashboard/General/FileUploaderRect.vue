@@ -12,7 +12,7 @@
       <img
         class="absolute loadicon"
         src="../../../assets/Dashboard/General/IconoLoadVideo.svg"
-        alt=""
+        alt="Icon Load"
       />
       <input type="file" @change="handleFileChange" class="bg-black h-1/4 w-1/4 opacity-0" />
     </div>
@@ -97,11 +97,13 @@ export default {
     actualizarimagen(valor) {
       this.previewUrl = valor
       this.showEditPopup = false
+      this.$emit('imgrecortada', this.previewUrl);
     }
   },
   mounted() {
     this.previewUrl = `http://localhost:3000/uploads/${this.imagedetbd}`
     this.isImage = true
+    console.log(this.previewUrl)
   }
 }
 </script>

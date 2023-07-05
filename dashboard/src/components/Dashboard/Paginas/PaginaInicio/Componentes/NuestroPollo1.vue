@@ -1,16 +1,11 @@
 <template>
-  <div
-    v-if="nuestrosPollosData && nuestrosPollosData.length > 0"
-    class="np1 flex flex-col lg:flex-row justify-center"
-  >
+  <div v-if="nuestrosPollosData && nuestrosPollosData.length > 0" class="np1 flex flex-col lg:flex-row justify-center">
     <div class="lado1 flex flex-col lg:items-center justify-center lg:justify-around">
-      <div
-        class="np1-contenedor contenedor-texto1 flex flex-col justify-center items-center lg:items-start"
-      >
-        <p contenteditable="true" class="titulo border text-center lg:text-left">
+      <div class="np1-contenedor contenedor-texto1 flex flex-col justify-center items-center lg:items-start">
+        <p contenteditable="true" class="titulo border text-center lg:text-left" @input="titulo">
           {{ nuestrosPollosData[0].titulo }}
         </p>
-        <p contenteditable="true" class="texto border text-center lg:text-left">
+        <p contenteditable="true" class="texto border text-center lg:text-left" @input="contenido">
           {{ nuestrosPollosData[0].contenido }}
         </p>
       </div>
@@ -19,21 +14,17 @@
           <div class="circulo-fondo1"></div>
           <!-- <img src="../../assets/Inicio/imgcont1.jpg" class="absolute img-circulo1 shadow-2xl" alt="img-circulo1"> -->
           <div class="absolute img-circulo1 shadow-2xl">
-            <FileUploaderDef :imagebd="nuestrosPollosData[0].imgGeneral" />
+            <FileUploaderDef :imagebd="nuestrosPollosData[0].imgGeneral" @imgrecortada="asignarmagen" />
           </div>
         </div>
       </div>
       <div class="np1-contenedor flex justify-center items-center">
         <div class="contenedor-1 relative">
           <div class="imgNp-1 border relative overflow-hidden">
-            <FileUploaderRect :imagedetbd="nuestrosPollosData[0].imgDetalle" />
+            <FileUploaderRect :imagedetbd="nuestrosPollosData[0].imgDetalle" @imgrecortada="asignarmagendetalle" />
           </div>
           <!-- <img src="../../assets/Inicio/CarnePollo.png" class="imgNp-1 relative" alt="carne-pollo"> -->
-          <img
-            src="../../../../../assets/Dashboard/Paginas/Inicio/Row1.svg"
-            class="rowNp-1 relative"
-            alt="rowNp-1"
-          />
+          <img src="../../../../../assets/Dashboard/Paginas/Inicio/Row1.svg" class="rowNp-1 relative" alt="rowNp-1" />
           <div class="indicador1 relative flex flex-col justify-center items-center">
             <p>Pechuga</p>
             <p contenteditable="true" class="porcentaje border">35%</p>
@@ -49,7 +40,8 @@
           <!-- <img src="../../assets/Inicio/imgcont1.jpg" class="absolute img-circulo1 shadow-2xl" alt="img-circulo1"> -->
           <div class="absolute img-circulo1 shadow-2xl">
             <!-- <img :src="`http://localhost:3000/uploads/${nuestrosPollosData[0].imgGeneral}`" alt=""> -->
-            <FileUploaderDef class="rounded-full" :imagebd="nuestrosPollosData[0].imgGeneral" />
+            <FileUploaderDef class="rounded-full" :imagebd="nuestrosPollosData[0].imgGeneral"
+              @imgrecortada="asignarmagen" />
           </div>
         </div>
       </div>
@@ -62,17 +54,50 @@ import FileUploaderRect from '../../../General/FileUploaderRect.vue'
 
 export default {
   data() {
-    return {}
+    return {
+      nuestroPolloLocal: {
+        titulo: '',
+        contenido: '',
+        imgGeneral: '',
+        imgDetalle: '',
+      },
+    }
   },
   components: {
     FileUploaderDef,
     FileUploaderRect
   },
   props: ['nuestrosPollosData'],
-  methods: {},
+  methods: {
+    titulo(event) {
+      this.nuestroPolloLocal.titulo = event.target.innerText;
+      console.log(this.nuestroPolloLocal)
+      this.$emit('dataupdate', this.nuestroPolloLocal);
+    },
+    contenido(event) {
+      this.nuestroPolloLocal.contenido = event.target.innerText;
+      console.log(this.nuestroPolloLocal)
+      this.$emit('dataupdate', this.nuestroPolloLocal);
+    },
+    asignarmagen(valor) {
+      this.nuestroPolloLocal.imgGeneral = valor;
+      console.log(this.nuestroPolloLocal)
+      this.$emit('dataupdate', this.nuestroPolloLocal);
+    },
+    asignarmagendetalle(valor) {
+      this.nuestroPolloLocal.imgDetalle = valor;
+      console.log(this.nuestroPolloLocal)
+      this.$emit('dataupdate', this.nuestroPolloLocal);
+    }
+  },
   mounted() {
-    // console.log(this.nuestrosPollosData)
+
+  },
+  updated() {
+    this.nuestroPolloLocal = this.nuestrosPollosData[0];
+    this.$emit('dataupdate', this.nuestroPolloLocal);
   }
+
 }
 </script>
 <style scoped>
@@ -198,7 +223,7 @@ export default {
     width: 30vw;
     height: 30vw;
   }
-
+/* //mejorar esta mal */
   .imgNp-1 {
     height: 10vw;
   }

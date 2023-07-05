@@ -1,12 +1,11 @@
 <template>
   <div class="h-full w-full overflow-y-auto">
     <div class="fixed z-40 lg:z-50 cont-btn">
-      <BotonesCrud class="btn-crud" />
+      <BotonesCrud class="btn-crud" :dataNuestroPollo1="newDataNp1" />
     </div>
     <div class="cont-components w-full h-full">
-      <h1>{{ heroes }}</h1>
       <componentHero class="border" />
-      <NuestroPollo1 class="border" :nuestrosPollosData="nuestrosPollos" />
+      <NuestroPollo1 class="border" :nuestrosPollosData="nuestrosPollos" @dataupdate="actualizarnewdataNp1" />
       <NuestroPollo2 class="border" :nuestrosPollosData="nuestrosPollos" />
       <NuestroPollo3 class="border" :nuestrosPollosData="nuestrosPollos" />
       <NuestroPollo4 class="border" :nuestrosPollosData="nuestrosPollos" />
@@ -31,7 +30,8 @@ export default {
   data() {
     return {
       heroes: [],
-      nuestrosPollos: []
+      nuestrosPollos: [],
+      newDataNp1: []
     }
   },
   components: {
@@ -63,6 +63,10 @@ export default {
         .catch((error) => {
           console.log('Hubo un problema con la peticion', error)
         })
+    },
+    actualizarnewdataNp1(valor) {
+      this.newDataNp1 = valor;
+      console.log(this.newDataNp1)
     }
   },
   mounted() {
