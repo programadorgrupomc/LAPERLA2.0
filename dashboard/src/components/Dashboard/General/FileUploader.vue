@@ -1,12 +1,8 @@
 <template>
   <v-card width="auto">
     <div class="upload-example">
-      <Cropper
-        ref="cropper"
-        class="upload-example-cropper"
-        :src="image"
-        :stencil-component="$options.components.StencilFup"
-      />
+      <Cropper ref="cropper" class="upload-example-cropper" :src="image"
+        :stencil-component="$options.components.StencilFup" />
       <div class="button-wrapper">
         <!-- <span class="button" @click="$refs.file.click()">
                     <input type="file" ref="file" @change="uploadImage($event)" accept="image/*" />
