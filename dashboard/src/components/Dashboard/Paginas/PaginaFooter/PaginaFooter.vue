@@ -3,7 +3,7 @@
     <div class="fixed z-40 lg:z-50 cont-btn">
       <BotonesCrud class="btn-crud" />
     </div>
-    <div class="cont-components w-full h-full">Sin Conexio!</div>
+    <div class="cont-components w-full h-full">Sin Conexion!</div>
   </div>
 </template>
 <script>

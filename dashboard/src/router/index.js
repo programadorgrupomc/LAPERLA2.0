@@ -18,6 +18,10 @@ import PaginaContactanos from '../components/Dashboard/Paginas/PaginaContactanos
 import PaginaCodigoEtica from '../components/Dashboard/Paginas/PaginaCodigoEtica/PaginaCodigoEtica.vue'
 import PaginaHeader from '../components/Dashboard/Paginas/PaginaHeader/PaginaHeader.vue'
 import PaginaFooter from '../components/Dashboard/Paginas/PaginaFooter/PaginaFooter.vue'
+//children entradas
+import EntradaRecetario from '../components/Dashboard/Entradas/EntradaRecetario/EntradaRecetario.vue'
+import EntradaNoticias from '../components/Dashboard/Entradas/EntradaNoticias/EntradaNoticias.vue'
+import EntradaPuestosVacantes from '../components/Dashboard/Entradas/EntradaPuestosVacantes/EntradaPuestosVacantes.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -86,11 +90,29 @@ const router = createRouter({
           component: PaginaFooter
         },
         //general->Aun nell
+        //rutas de entradas
         {
           path: 'entradas',
           name: 'entradas',
           component: EntradasView
         },
+        {
+          path: 'entradas/recetario',
+          name: 'entradasrecetario',
+          component: EntradaRecetario
+        },
+        {
+          path: 'entradas/noticias',
+          name: 'entradasnoticias',
+          component: EntradaNoticias
+        },
+        {
+          path: 'entradas/puestosvacantes',
+          name: 'entradaspuestosvacantes',
+          component: EntradaPuestosVacantes
+        },
+
+        //solo medios
         {
           path: 'medios',
           name: 'medios',

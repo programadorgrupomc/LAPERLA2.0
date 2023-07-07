@@ -2,15 +2,21 @@
   <div class="cont-inputs">
     <div class="cont-input bg1 flex flex-col justify-center items-center text-white transition-all">
       Recetario
-      <button @click="cambiarestadoRf" class="btn-plus">Ver más</button>
+      <router-link to="/dashboard/entradas/recetario">
+        <button @click="cambiarestadoRf" class="btn-plus">Ver más</button>
+      </router-link>
     </div>
     <div class="cont-input bg2 flex flex-col justify-center items-center text-white transition-all">
       Noticias
-      <button @click="cambiarestadonot" class="btn-plus">Ver más</button>
+      <router-link to="/dashboard/entradas/noticias">
+        <button @click="cambiarestadonot" class="btn-plus">Ver más</button>
+      </router-link>
     </div>
     <div class="cont-input bg3 flex flex-col justify-center items-center text-white transition-all">
       Puestos Vacantes
-      <button @click="cambiarestadopv" class="btn-plus">Ver más</button>
+      <router-link to="/dashboard/entradas/puestosvacantes">
+        <button @click="cambiarestadopv" class="btn-plus">Ver más</button>
+      </router-link>
     </div>
   </div>
 </template>
@@ -112,6 +118,7 @@ export default {
   }
 
   @keyframes animBtn-plus {
+
     0%,
     100% {
       transform: rotate(0deg);

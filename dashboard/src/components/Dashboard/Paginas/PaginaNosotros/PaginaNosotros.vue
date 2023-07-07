@@ -5,7 +5,7 @@
     </div>
     <div class="cont-components w-full h-full">
       <PresentacionNosotros class="border" />
-      <LineaDeTiempo class="" />
+      <LineaDeTiempo class="overflow-y-auto" />
       <NuestraFilosofia />
       <CulturaOrganizacional class="" />
     </div>
