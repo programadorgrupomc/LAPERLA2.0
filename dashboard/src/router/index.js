@@ -23,6 +23,9 @@ import EntradaRecetario from '../components/Dashboard/Entradas/EntradaRecetario/
 import EntradaNoticias from '../components/Dashboard/Entradas/EntradaNoticias/EntradaNoticias.vue'
 import EntradaPuestosVacantes from '../components/Dashboard/Entradas/EntradaPuestosVacantes/EntradaPuestosVacantes.vue'
 
+//children entradas recetario
+import NuevaReceta from '../components/Dashboard/Entradas/EntradaRecetario/Componentes/NuevaReceta.vue'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -101,6 +104,13 @@ const router = createRouter({
           name: 'entradasrecetario',
           component: EntradaRecetario
         },
+        //rutas crud entradas recetario
+        {
+          path: 'entradas/recetario/nuevareceta',
+          name: 'nuevareceta',
+          component: NuevaReceta
+        },
+        //rutas noticias
         {
           path: 'entradas/noticias',
           name: 'entradasnoticias',

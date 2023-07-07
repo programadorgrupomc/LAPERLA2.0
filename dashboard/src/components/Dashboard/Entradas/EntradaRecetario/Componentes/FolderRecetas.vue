@@ -22,8 +22,10 @@ export default {
       <div class="header-folder flex flex-col justify-center items-center lg:flex-row lg:mx-auto">
         <p class="title-folder font-TestKarbonBold">RECETARIO</p>
         <div class="w-full flex flex-col lg:flex-row justify-end items-center">
-          <button @click="cambiarestanuereceta" class="btn-añadirentradda font-TestKarbonSemiBold">
-            Añadir Entrada
+          <button class="btn-añadirentradda font-TestKarbonSemiBold">
+            <router-link to="/dashboard/entradas/recetario/nuevareceta">
+              Añadir Entrada
+            </router-link>
           </button>
           <div class="btn-buscar">
             <!-- <buscador @search="buscar" /> -->
@@ -104,8 +106,7 @@ export default {
   width: 80%;
 }
 
-.items-folder {
-}
+
 
 .itemf {
   overflow: hidden;
@@ -185,8 +186,7 @@ export default {
     width: 80%;
   }
 
-  .items-folder {
-  }
+
 
   .itemf {
     overflow: hidden;
