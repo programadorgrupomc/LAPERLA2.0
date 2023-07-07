@@ -1,8 +1,8 @@
 <script>
-import textalign from '../../cDashboard/textAligin.vue'
-import botonesControl from '../../cDashboard/botonesControl.vue'
+// import textalign from '../../cDashboard/textAligin.vue'
+import BtnBack from '../../../General/BtnBack.vue'
 import Swiper from 'swiper'
-
+import FileUploaderRect from '../../../General/FileUploaderRect.vue'
 export default {
   data() {
     return {
@@ -14,8 +14,9 @@ export default {
     }
   },
   components: {
-    textalign,
-    botonesControl
+    BtnBack,
+    FileUploaderRect
+    // textalign,
   },
   methods: {
     cambiarEstado() {
@@ -79,56 +80,28 @@ export default {
 </script>
 <template>
   <div class="nueva-noticia overflow-hidden">
-    <botonesControl
+    <!-- <botonesControl
       :nuevareceta="this.nuevaRecetaData"
       @recetavacia="actualizarreceta"
       class="hidden lg:block absolute btn-control"
-    />
+    /> -->
     <div class="flex justify-end">
-      <button @click="cambiarEstado" class="btn-back flex items-center">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          fill="currentColor"
-          class="bi bi-chevron-left"
-          viewBox="0 0 16 16"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
-          />
-        </svg>
-        <p>Atras</p>
-      </button>
+     <BtnBack/>
     </div>
     <div class="cont-noticiadata bg-FondoPerla">
       <div class="hero-nuevanoticia relative flex justify-center items-center overflow-hidden">
-        <img
-          src="../../../assets/cDashboard/Iconmaterial-perm-media.svg"
-          alt=""
-          class="absolute w-52"
-        />
-        <input
-          type="file"
-          name=""
-          id=""
-          class="absolute z-50 opacity-0"
-          v-on:change="previewImage"
-        />
-        <img :src="imagenHero" class="object-cover w-full h-full" alt="img-hero" />
-        <video :src="imagenHero" autoplay loop class="object-cover absolute"></video>
+        <FileUploaderRect/>
       </div>
       <div class="cont-titulo">
         <p class="not-pre font-TestKarbonMedium">NOTICIAS</p>
         <p
           contenteditable="true"
           class="titulo-not font-TestKarbonBold text-azulbsPerla"
-          :style="clasetxt + ' ' + clasetxtl"
+          
         >
           TITULO DE LA NOTICIA
         </p>
-        <textalign @clasetxt="asignarclase" />
+        <!-- <textalign @clasetxt="asignarclase" /> -->
         <p class="fecha-not font-TestKarbonMedium text-AzulPerla">02 de mayo de 2023</p>
       </div>
       <div class="cont-notmain lg:grid lg:grid-cols-2 flex flex-col justify-center items-center">

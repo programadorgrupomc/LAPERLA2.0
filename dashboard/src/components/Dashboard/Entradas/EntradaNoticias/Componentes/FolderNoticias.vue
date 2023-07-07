@@ -1,5 +1,6 @@
 <script>
 import BtnBack from '../../../General/BtnBack.vue'
+
 export default {
   data() {
     return {
@@ -8,10 +9,10 @@ export default {
     }
   },
   components: {
-    BtnBack
+    BtnBack,
   },
   methods: {},
-  created() {}
+  created() { }
 }
 </script>
 <template>
@@ -22,46 +23,33 @@ export default {
     <div class="header-folder flex flex-col justify-center items-center lg:flex-row lg:mx-auto">
       <p class="title-folder font-TestKarbonBold">Noticias</p>
       <div class="w-full flex flex-col lg:flex-row justify-end items-center">
-        <button
-          @click="cambiarestadonuevanoicia"
-          class="btn-añadirentradda font-TestKarbonSemiBold"
-        >
-          Añadir Entrada
+        <button @click="cambiarestadonuevanoicia" class="btn-añadirentradda font-TestKarbonSemiBold">
+          <router-link to="/dashboard/entradas/noticias/nuevanoticia">
+            Añadir Entrada
+          </router-link>
         </button>
         <div class="btn-buscar">
           <!-- <buscador /> -->
         </div>
       </div>
     </div>
-    <div
-      class="items-folder flex flex-col justify-center items-center lg:mx-auto lg:grid lg:grid-cols-3"
-    >
+    <div class="items-folder flex flex-col justify-center items-center lg:mx-auto lg:grid lg:grid-cols-3">
       <div v-for="noticia in noticias" class="itemf relative bg-stone-600">
-        <img
-          class="object-cover h-full w-full"
-          loading="lazy"
-          src="@/assets/AssetsNoticias/imgnot1(4).jpg"
-          alt="receta-item"
-        />
+        <img class="object-cover h-full w-full" loading="lazy" src="@/assets/AssetsNoticias/imgnot1(4).jpg"
+          alt="receta-item" />
         <div class="cont-actions absolute flex flex-col justify-center items-center">
           <p class="text-white">{{ noticia.titulo }}</p>
           <div class="cont-btnsaction flex justify-between">
-            <button
-              @click="cambiarestadoeditarnoticia(noticia._id)"
-              class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold"
-            >
+            <button @click="cambiarestadoeditarnoticia(noticia._id)"
+              class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
               Editar
             </button>
-            <button
-              @click="cambiarestadovernoticia(noticia._id)"
-              class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold"
-            >
+            <button @click="cambiarestadovernoticia(noticia._id)"
+              class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
               Ver
             </button>
-            <button
-              @click="deleteNoticia(noticia._id)"
-              class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold"
-            >
+            <button @click="deleteNoticia(noticia._id)"
+              class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
               Eliminar
             </button>
           </div>
@@ -190,8 +178,7 @@ export default {
     width: 80%;
   }
 
-  .items-folder {
-  }
+  .items-folder {}
 
   .itemf {
     overflow: hidden;

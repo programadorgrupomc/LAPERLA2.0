@@ -1,8 +1,8 @@
 <script>
 import form1 from './FormsPostulacion/FormPost1.vue'
 import form2 from './FormsPostulacion/FormPost2.vue'
-import botonesControl from '../../cDashboard/botonesControl.vue'
-
+// import botonesControl from '../../cDashboard/botonesControl.vue'
+import BtnBack from '../../../General/BtnBack.vue'
 export default {
   data() {
     return {
@@ -15,7 +15,8 @@ export default {
   components: {
     form1,
     form2,
-    botonesControl
+    BtnBack
+    // botonesControl
   },
   methods: {
     cambiarestadoseleccionform() {
@@ -44,7 +45,10 @@ export default {
 
 <template>
   <div class="general">
-    <botonesControl class="hidden lg:block absolute btn-control" />
+    <!-- <botonesControl class="hidden lg:block absolute btn-control" /> -->
+    <div class="flex justify-end">
+      <BtnBack />
+    </div>
     <div class="cont-selform transition-all">
       <p>Seleccionar Formulario:</p>
       <div class="cont-forms">
@@ -84,6 +88,7 @@ export default {
   margin-right: 1%;
   font-size: 5vw;
 }
+
 .general {
   padding-bottom: 15vh;
 }

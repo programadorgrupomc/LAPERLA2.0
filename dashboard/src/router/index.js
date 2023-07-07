@@ -25,6 +25,10 @@ import EntradaPuestosVacantes from '../components/Dashboard/Entradas/EntradaPues
 
 //children entradas recetario
 import NuevaReceta from '../components/Dashboard/Entradas/EntradaRecetario/Componentes/NuevaReceta.vue'
+//children entradas noticia
+import NuevaNoticia from '../components/Dashboard/Entradas/EntradaNoticias/Componentes/NuevaNoticia.vue'
+//children entradas puestos vacantes
+import NuevoPv from '../components/Dashboard/Entradas/EntradaPuestosVacantes/Componentes/NuevoPuestoVacante.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -116,12 +120,25 @@ const router = createRouter({
           name: 'entradasnoticias',
           component: EntradaNoticias
         },
+        //rutas crud entrdas noticias
+        {
+          path: 'entradas/noticias/nuevanoticia',
+          name: 'nuevanoticia',
+          component: NuevaNoticia
+        },
+
+        //rutas puestos vacantes
         {
           path: 'entradas/puestosvacantes',
           name: 'entradaspuestosvacantes',
           component: EntradaPuestosVacantes
         },
-
+        //rutas crud entradas puestos vaccanetes
+        {
+          path: 'entradas/puestosvacantes/nuevopuestovacante',
+          name: 'nuevopv',
+          component: NuevoPv
+        },
         //solo medios
         {
           path: 'medios',

@@ -1,7 +1,8 @@
 <script>
-import botonesControl from '../../cDashboard/botonesControl.vue'
+// import botonesControl from '../../cDashboard/botonesControl.vue'
 import seleccionFormPv from './seleccionFormPv.vue'
-
+import BtnBack from '../../../General/BtnBack.vue'
+import FileUploaderDef from '../../../General/FileUploaderDef.vue'
 export default {
   data() {
     return {
@@ -11,8 +12,10 @@ export default {
     }
   },
   components: {
-    botonesControl,
-    seleccionFormPv
+    // botonesControl,
+    seleccionFormPv,
+    BtnBack,
+    FileUploaderDef
   },
   methods: {
     cambiarEstado() {
@@ -42,83 +45,48 @@ export default {
 }
 </script>
 <template>
-  <div v-if="estadonuevopv" class="nuevo-pv">
-    <botonesControl @recetavacia="actualizarreceta" class="hidden lg:block absolute btn-control" />
+  <div v-if="estadonuevopv" class="nuevo-pv overflow-x-hidden">
+    <!-- <botonesControl @recetavacia="actualizarreceta" class="hidden lg:block absolute btn-control" /> -->
     <div class="flex justify-end">
-      <button @click="cambiarEstado" class="btn-back flex items-center">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          fill="currentColor"
-          class="bi bi-chevron-left"
-          viewBox="0 0 16 16"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
-          />
-        </svg>
-        <p>Atras</p>
-      </button>
+      <BtnBack />
     </div>
     <div class="cont-workdes">
       <div class="lg:columns-2 lg:flex lg:items-center cont-text">
-        <div
-          class="imagen-round relative bg-violet-400 rounded-full m-auto flex justify-center items-center"
-        >
-          <img
-            src="../../../assets/cDashboard/Iconmaterial-perm-media.svg"
-            alt=""
-            class="absolute w-52"
-          />
+        <div class="imagen-round relative bg-violet-400 rounded-full m-auto flex justify-center items-center">
+          <FileUploaderDef />
+          <!-- <img src="../../../assets/cDashboard/Iconmaterial-perm-media.svg" alt="" class="absolute w-52" />
           <input class="absolute opacity-0" type="file" v-on:change="previewImage" />
-          <img :src="imagenpv" class="object-cover w-full h-full rounded-full" alt="" />
+          <img :src="imagenpv" class="object-cover w-full h-full rounded-full" alt="" /> -->
         </div>
         <div class="ttl-work lg:w-2/4">
           <div class="font-bold">
-            <h1
-              contenteditable="true"
-              class="ttl-work1 text-center font-TestKarbonSemiBold text-AzulPerla lg:text-right"
-            >
+            <h1 contenteditable="true" class="ttl-work1 text-center font-TestKarbonSemiBold text-AzulPerla lg:text-right">
               Titulo Puesto Vacante
             </h1>
             <div class="lg:flex">
               <div class="ind-tipo flex font-KarbonRegular items-center justify-end">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.25 22.25">
-                  <path
-                    id="Icon_material-watch-later"
-                    data-name="Icon material-watch-later"
+                  <path id="Icon_material-watch-later" data-name="Icon material-watch-later"
                     d="M14.125,3A11.125,11.125,0,1,0,25.25,14.125,11.158,11.158,0,0,0,14.125,3ZM18.8,18.8l-5.785-3.56V8.562h1.669v5.785l5.006,3Z"
-                    transform="translate(-3 -3)"
-                    fill="#df9575"
-                  />
+                    transform="translate(-3 -3)" fill="#df9575" />
                 </svg>
 
                 &nbsp; <span class="spn-ind" contenteditable="true">Experiencia</span>
               </div>
               <div class="ind-tipo flex font-KarbonRegular items-center justify-end">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.25 22.25">
-                  <path
-                    id="Icon_material-watch-later"
-                    data-name="Icon material-watch-later"
+                  <path id="Icon_material-watch-later" data-name="Icon material-watch-later"
                     d="M14.125,3A11.125,11.125,0,1,0,25.25,14.125,11.158,11.158,0,0,0,14.125,3ZM18.8,18.8l-5.785-3.56V8.562h1.669v5.785l5.006,3Z"
-                    transform="translate(-3 -3)"
-                    fill="#df9575"
-                  />
+                    transform="translate(-3 -3)" fill="#df9575" />
                 </svg>
 
                 &nbsp; <span class="spn-ind" contenteditable="true">Departamento</span>
               </div>
               <div class="ind-tipo flex font-KarbonRegular items-center justify-end">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.25 22.25">
-                  <path
-                    id="Icon_material-watch-later"
-                    data-name="Icon material-watch-later"
+                  <path id="Icon_material-watch-later" data-name="Icon material-watch-later"
                     d="M14.125,3A11.125,11.125,0,1,0,25.25,14.125,11.158,11.158,0,0,0,14.125,3ZM18.8,18.8l-5.785-3.56V8.562h1.669v5.785l5.006,3Z"
-                    transform="translate(-3 -3)"
-                    fill="#df9575"
-                  />
+                    transform="translate(-3 -3)" fill="#df9575" />
                 </svg>
 
                 &nbsp; <span class="spn-ind" contenteditable="true">Tipo de empleo</span>
@@ -355,8 +323,7 @@ svg {
     width: 12%;
   }
 
-  .cont-workdes {
-  }
+  .cont-workdes {}
 
   .cont-text {
     padding: 1%;

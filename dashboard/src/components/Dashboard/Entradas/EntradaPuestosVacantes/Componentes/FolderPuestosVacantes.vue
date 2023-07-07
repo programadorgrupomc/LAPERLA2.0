@@ -8,43 +8,32 @@
         <p class="title-folder font-TestKarbonBold">Puestos Vacantes</p>
         <div class="w-full flex flex-col lg:flex-row justify-end items-center">
           <button @click="cambiarestadonuevopv" class="btn-añadirentradda font-TestKarbonSemiBold">
-            Añadir Entrada
+            <router-link to="/dashboard/entradas/puestosvacantes/nuevopuestovacante">
+              Añadir Entrada
+            </router-link>
           </button>
-          <div class="btn-buscar">
-            <!-- <buscador /> -->
+          <div class="btn-buscar"> <!-- <buscador /> -->
           </div>
         </div>
       </div>
-      <div
-        class="items-folder flex flex-col justify-center items-center lg:mx-auto lg:grid lg:grid-cols-3"
-      >
+      <div class="items-folder flex flex-col justify-center items-center lg:mx-auto lg:grid lg:grid-cols-3">
         <div v-for="puesto in puestosVacantes" class="itemf relative bg-stone-600">
           <!-- aca debe ir linkeado la imgen del puesto vacante -->
-          <img
-            class="object-cover h-full w-full"
-            loading="lazy"
-            src="@/assets/AssetsWork/imgwork1(1).jpg "
-            alt="receta-item"
-          />
+          <img class="object-cover h-full w-full" loading="lazy" src="@/assets/AssetsWork/imgwork1(1).jpg "
+            alt="receta-item" />
           <div class="cont-actions absolute flex flex-col justify-center items-center">
             <p class="text-white">{{ puesto.titulo }}</p>
             <div class="cont-btnsaction flex justify-between">
-              <button
-                @click="cambiarestadoeditarpc(puesto._id)"
-                class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold"
-              >
+              <button @click="cambiarestadoeditarpc(puesto._id)"
+                class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
                 Editar
               </button>
-              <button
-                @click="cambiarestadoverpv(puesto._id)"
-                class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold"
-              >
+              <button @click="cambiarestadoverpv(puesto._id)"
+                class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
                 Ver
               </button>
-              <button
-                @click="deletePv(puesto._id)"
-                class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold"
-              >
+              <button @click="deletePv(puesto._id)"
+                class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
                 Eliminar
               </button>
             </div>
@@ -68,7 +57,7 @@ export default {
     BtnBack
   },
   methods: {},
-  created() {}
+  created() { }
 }
 </script>
 
@@ -193,8 +182,7 @@ export default {
     width: 80%;
   }
 
-  .items-folder {
-  }
+  .items-folder {}
 
   .itemf {
     overflow: hidden;
