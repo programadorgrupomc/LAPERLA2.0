@@ -1,5 +1,5 @@
 <template>
-  <v-card width="auto">
+  <div width="auto">
     <div class="upload-example">
       <Cropper ref="cropper" class="upload-example-cropper" :src="image"
         :stencil-component="$options.components.StencilFup" />
@@ -12,7 +12,7 @@
         <button class="button" @click="cropImage">Guardar</button>
       </div>
     </div>
-  </v-card>
+  </div>
 </template>
 
 <script>

@@ -1,17 +1,12 @@
 <template>
-  <v-card width="auto">
+  <div width="auto">
     <div class="upload-example">
       <Cropper ref="cropper" class="upload-example-cropper" :src="image" />
       <div class="button-wrapper">
-        <!-- <span class="button" @click="$refs.file.click()">
-                    <input type="file" ref="file" @change="uploadImage($event)" accept="image/*" />
-                    Upload image
-                </span> -->
-        <!-- <button class="button" @click="">Nuevo</button> -->
         <button class="button" @click="cropImage">Guardar</button>
       </div>
     </div>
-  </v-card>
+  </div>
 </template>
 
 <script>
@@ -32,11 +27,6 @@ export default {
   methods: {
     cropImage() {
       const result = this.$refs.cropper.getResult()
-
-      // const newTab = window.open();
-      // newTab.document.body.innerHTML = `<img src="${result.canvas.toDataURL(
-      //     "image/jpeg"
-      // )}"></img>`;
 
       //mandar la imagen recortada
       this.$emit('imagecroped', result.canvas.toDataURL('image/jpeg'))
