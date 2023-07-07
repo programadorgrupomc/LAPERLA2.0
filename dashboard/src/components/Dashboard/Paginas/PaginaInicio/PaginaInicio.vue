@@ -4,7 +4,7 @@
       <BotonesCrud class="btn-crud" :dataNuestroPollo1="newDataNp1" />
     </div>
     <div class="cont-components w-full h-full">
-      <componentHero class="border" :heroesdata="heroes"/>
+      <componentHero class="border" :heroesdata="heroes" />
       <NuestroPollo1
         class="border"
         :nuestrosPollosData="nuestrosPollos"

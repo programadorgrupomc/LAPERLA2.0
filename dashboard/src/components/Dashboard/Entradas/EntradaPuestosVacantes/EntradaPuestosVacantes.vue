@@ -1,14 +1,14 @@
 <template>
-    <div>
-        <FolderPuestosVacantes />
-    </div>
+  <div>
+    <FolderPuestosVacantes />
+  </div>
 </template>
 <script>
-import FolderPuestosVacantes from './Componentes/FolderPuestosVacantes.vue';
+import FolderPuestosVacantes from './Componentes/FolderPuestosVacantes.vue'
 export default {
-    components: {
-        FolderPuestosVacantes
-    }
+  components: {
+    FolderPuestosVacantes
+  }
 }
 </script>
 <style scoped></style>

@@ -15,7 +15,7 @@ export default {
   components: {
     FileUploaderRect
   },
-  props: ['heroesdata'],
+  props: ['heroesdata']
 }
 </script>
 <style scoped>

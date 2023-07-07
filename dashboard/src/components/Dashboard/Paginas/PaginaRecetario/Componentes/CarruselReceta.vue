@@ -9,7 +9,11 @@
       <!-- para escritorio -->
       <div class="hidden lg:block">
         <swiper :watchSlidesProgress="true" :slidesPerView="4" class="mySwiper">
-          <swiper-slide v-for="i in recetas" :key="i.id" class="swcarrec m-2 lg:m-10 hover:rounded-3xl">
+          <swiper-slide
+            v-for="i in recetas"
+            :key="i.id"
+            class="swcarrec m-2 lg:m-10 hover:rounded-3xl"
+          >
             <router-link :to="`/receta/desc/${i.id}`">
               <div class="contenido-iterable relative flex justify-center items-center">
                 <img

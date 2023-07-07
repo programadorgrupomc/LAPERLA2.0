@@ -15,8 +15,6 @@ app.use(router)
 
 app.mount('#app')
 
-
-
 /*Modelos Base de datos:
 
 Inicio

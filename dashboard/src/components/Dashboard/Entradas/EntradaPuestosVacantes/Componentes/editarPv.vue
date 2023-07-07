@@ -1,463 +1,487 @@
 <script>
-import botonesControl from '../../cDashboard/botonesControl.vue';
-import seleccionFormPv from './seleccionFormPv.vue';
-import { usePuestosVacantesStore } from '../../../stores/StoreWork/storePuestosVacantes.js';
-
+import botonesControl from '../../cDashboard/botonesControl.vue'
+import seleccionFormPv from './seleccionFormPv.vue'
+import { usePuestosVacantesStore } from '../../../stores/StoreWork/storePuestosVacantes.js'
 
 export default {
-    data() {
-        return {
-            estadoeditarpv: true,
-            estadoseleccionform: false,
-            puestosVacantes: '',
-            imagenpv: '',
-        }
-    },
-    components: {
-        botonesControl,
-        seleccionFormPv
-    },
-    props: ['idpv'],
-    methods: {
-        cambiarEstado() {
-            this.estadoeditarpv = !this.estadoeditarpv;
-            this.$emit('estadoeditarpvcam', this.estadoeditarpv);
-        },
-        cambiarestadoseleccionform() {
-            this.estadoseleccionform = !this.estadoseleccionform;
-            this.estadoeditarpv = !this.estadoeditarpv;
-        },
-        actuaizarseleccionform(valor) {
-            this.estadoseleccionform = valor;
-            this.estadoeditarpv = !this.estadoeditarpv;
-        },
-        previewImage(event) {
-            const file = event.target.files[0]; // Obtener el archivo seleccionado
-
-            // Verificar si se seleccionó un archivo
-            if (file) {
-                // Crear una URL local para el archivo seleccionado
-                this.imagenpv = URL.createObjectURL(file);
-            } else {
-                this.imagenpv = ''; // Limpiar la URL de la imagen si no se selecciona ningún archivo
-            }
-        },
-        async obtenerPuestosVacantes() {
-            const puestosvantesstore = usePuestosVacantesStore();
-            try {
-                await puestosvantesstore.obtenerPuestosVacantes();
-                this.puestosVacantes = puestosvantesstore.puestos;
-            } catch (error) {
-                console.error('Error al obtener los puestos vacantes', error);
-            }
-        },
-    },
-    created() {
-        this.obtenerPuestosVacantes();
+  data() {
+    return {
+      estadoeditarpv: true,
+      estadoseleccionform: false,
+      puestosVacantes: '',
+      imagenpv: ''
     }
+  },
+  components: {
+    botonesControl,
+    seleccionFormPv
+  },
+  props: ['idpv'],
+  methods: {
+    cambiarEstado() {
+      this.estadoeditarpv = !this.estadoeditarpv
+      this.$emit('estadoeditarpvcam', this.estadoeditarpv)
+    },
+    cambiarestadoseleccionform() {
+      this.estadoseleccionform = !this.estadoseleccionform
+      this.estadoeditarpv = !this.estadoeditarpv
+    },
+    actuaizarseleccionform(valor) {
+      this.estadoseleccionform = valor
+      this.estadoeditarpv = !this.estadoeditarpv
+    },
+    previewImage(event) {
+      const file = event.target.files[0] // Obtener el archivo seleccionado
+
+      // Verificar si se seleccionó un archivo
+      if (file) {
+        // Crear una URL local para el archivo seleccionado
+        this.imagenpv = URL.createObjectURL(file)
+      } else {
+        this.imagenpv = '' // Limpiar la URL de la imagen si no se selecciona ningún archivo
+      }
+    },
+    async obtenerPuestosVacantes() {
+      const puestosvantesstore = usePuestosVacantesStore()
+      try {
+        await puestosvantesstore.obtenerPuestosVacantes()
+        this.puestosVacantes = puestosvantesstore.puestos
+      } catch (error) {
+        console.error('Error al obtener los puestos vacantes', error)
+      }
+    }
+  },
+  created() {
+    this.obtenerPuestosVacantes()
+  }
 }
 </script>
 <template>
-    <div v-if="estadoeditarpv" class="nuevo-pv">
-        <botonesControl @recetavacia="actualizarreceta" class="hidden lg:block absolute btn-control" />
-        <div class="flex justify-end">
-            <button @click="cambiarEstado" class="btn-back flex items-center"> <svg xmlns="http://www.w3.org/2000/svg"
-                    width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                        d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
-                </svg>
-                <p>Atras</p>
-            </button>
-        </div>
-        <div v-for="puesto in puestosVacantes" class="cont-workdes">
-            <div v-if="puesto._id === idpv" class="lg:columns-2 lg:flex lg:items-center cont-text">
-                <div class="imagen-round relative bg-violet-400 rounded-full m-auto flex justify-center items-center">
-                    <img src="../../../assets/cDashboard/Iconmaterial-perm-media.svg" alt="" class="absolute w-52">
-                    <input class="absolute opacity-0" type="file" v-on:change="previewImage">
-                    <img :src="imagenpv" class="object-cover w-full h-full rounded-full" alt="">
-                </div>
-                <div class="ttl-work lg:w-2/4">
-                    <div class="font-bold ">
-                        <h1 contenteditable="true"
-                            class="ttl-work1  text-center font-TestKarbonSemiBold text-AzulPerla lg:text-right">
-                            {{ puesto.titulo }}</h1>
-                        <div class="lg:flex">
-                            <div class="ind-tipo flex font-KarbonRegular items-center justify-end">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.25 22.25">
-                                    <path id="Icon_material-watch-later" data-name="Iconmaterial-watch-later"
-                                        d="M14.125,3A11.125,11.125,0,1,0,25.25,14.125,11.158,11.158,0,0,0,14.125,3ZM18.8,18.8l-5.785-3.56V8.562h1.669v5.785l5.006,3Z"
-                                        transform="translate(-3 -3)" fill="#df9575" />
-                                </svg>
-
-                                &nbsp; <span class="spn-ind" contenteditable="true">{{ puesto.experiencia }}</span>
-                            </div>
-                            <div class="ind-tipo flex font-KarbonRegular items-center justify-end">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.25 22.25">
-                                    <path id="Icon_material-watch-later" data-name="Iconmaterial-watch-later"
-                                        d="M14.125,3A11.125,11.125,0,1,0,25.25,14.125,11.158,11.158,0,0,0,14.125,3ZM18.8,18.8l-5.785-3.56V8.562h1.669v5.785l5.006,3Z"
-                                        transform="translate(-3 -3)" fill="#df9575" />
-                                </svg>
-
-                                &nbsp; <span class="spn-ind" contenteditable="true">{{ puesto.departamento }}</span>
-                            </div>
-                            <div class="ind-tipo flex font-KarbonRegular items-center justify-end">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.25 22.25">
-                                    <path id="Icon_material-watch-later" data-name="Iconmaterial-watch-later"
-                                        d="M14.125,3A11.125,11.125,0,1,0,25.25,14.125,11.158,11.158,0,0,0,14.125,3ZM18.8,18.8l-5.785-3.56V8.562h1.669v5.785l5.006,3Z"
-                                        transform="translate(-3 -3)" fill="#df9575" />
-                                </svg>
-
-                                &nbsp; <span class="spn-ind" contenteditable="true">{{ puesto.tipoempleo }}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="obj-work">
-                        <h1 class="underline font-KarbonRegular text-AzulPerla text-left">Objetivo del puesto
-                        </h1>
-                        <p contenteditable="true" class="text-justify font-KarbonRegular text-AzulPerla">
-                            {{ puesto.descripcion }}
-                        </p>
-                    </div>
-                    <div class="funciones-work text-AzulPerla">
-                        <h1 class="font-KarbonRegular text-left">Funciones</h1>
-                        <ul contenteditable="true" class="font-KarbonRegular text-left list-disc">
-                            <li v-for="fun in puesto.funciones">
-                                {{ fun.funcion }}
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="requisitos-work text-AzulPerla">
-                        <h1 class="font-KarbonRegular t text-left ">Requisitos</h1>
-                        <ul contenteditable="true" class="font-KarbonRegular text-left list-disc">
-                            <li v-for="rec in puesto.requisitos">
-                                {{ rec.requisito }}
-                            </li>
-
-                        </ul>
-                    </div>
-                    <div class="cont-salary">
-                        <p class="salary-work font-KarbonRegular text-right text-AzulPerla">Sueldo: S/.<span
-                                class="spn-salary" contenteditable="true">{{ puesto.sueldo }}</span></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="flex justify-center">
-            <button @click="cambiarestadoseleccionform" class="btn-nav shadow-2xl">Siguiente</button>
-        </div>
+  <div v-if="estadoeditarpv" class="nuevo-pv">
+    <botonesControl @recetavacia="actualizarreceta" class="hidden lg:block absolute btn-control" />
+    <div class="flex justify-end">
+      <button @click="cambiarEstado" class="btn-back flex items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-chevron-left"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
+          />
+        </svg>
+        <p>Atras</p>
+      </button>
     </div>
-    <seleccionFormPv v-if="estadoseleccionform" @seleccionformcam="actuaizarseleccionform" />
+    <div v-for="puesto in puestosVacantes" class="cont-workdes">
+      <div v-if="puesto._id === idpv" class="lg:columns-2 lg:flex lg:items-center cont-text">
+        <div
+          class="imagen-round relative bg-violet-400 rounded-full m-auto flex justify-center items-center"
+        >
+          <img
+            src="../../../assets/cDashboard/Iconmaterial-perm-media.svg"
+            alt=""
+            class="absolute w-52"
+          />
+          <input class="absolute opacity-0" type="file" v-on:change="previewImage" />
+          <img :src="imagenpv" class="object-cover w-full h-full rounded-full" alt="" />
+        </div>
+        <div class="ttl-work lg:w-2/4">
+          <div class="font-bold">
+            <h1
+              contenteditable="true"
+              class="ttl-work1 text-center font-TestKarbonSemiBold text-AzulPerla lg:text-right"
+            >
+              {{ puesto.titulo }}
+            </h1>
+            <div class="lg:flex">
+              <div class="ind-tipo flex font-KarbonRegular items-center justify-end">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.25 22.25">
+                  <path
+                    id="Icon_material-watch-later"
+                    data-name="Iconmaterial-watch-later"
+                    d="M14.125,3A11.125,11.125,0,1,0,25.25,14.125,11.158,11.158,0,0,0,14.125,3ZM18.8,18.8l-5.785-3.56V8.562h1.669v5.785l5.006,3Z"
+                    transform="translate(-3 -3)"
+                    fill="#df9575"
+                  />
+                </svg>
+
+                &nbsp; <span class="spn-ind" contenteditable="true">{{ puesto.experiencia }}</span>
+              </div>
+              <div class="ind-tipo flex font-KarbonRegular items-center justify-end">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.25 22.25">
+                  <path
+                    id="Icon_material-watch-later"
+                    data-name="Iconmaterial-watch-later"
+                    d="M14.125,3A11.125,11.125,0,1,0,25.25,14.125,11.158,11.158,0,0,0,14.125,3ZM18.8,18.8l-5.785-3.56V8.562h1.669v5.785l5.006,3Z"
+                    transform="translate(-3 -3)"
+                    fill="#df9575"
+                  />
+                </svg>
+
+                &nbsp; <span class="spn-ind" contenteditable="true">{{ puesto.departamento }}</span>
+              </div>
+              <div class="ind-tipo flex font-KarbonRegular items-center justify-end">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.25 22.25">
+                  <path
+                    id="Icon_material-watch-later"
+                    data-name="Iconmaterial-watch-later"
+                    d="M14.125,3A11.125,11.125,0,1,0,25.25,14.125,11.158,11.158,0,0,0,14.125,3ZM18.8,18.8l-5.785-3.56V8.562h1.669v5.785l5.006,3Z"
+                    transform="translate(-3 -3)"
+                    fill="#df9575"
+                  />
+                </svg>
+
+                &nbsp; <span class="spn-ind" contenteditable="true">{{ puesto.tipoempleo }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="obj-work">
+            <h1 class="underline font-KarbonRegular text-AzulPerla text-left">
+              Objetivo del puesto
+            </h1>
+            <p contenteditable="true" class="text-justify font-KarbonRegular text-AzulPerla">
+              {{ puesto.descripcion }}
+            </p>
+          </div>
+          <div class="funciones-work text-AzulPerla">
+            <h1 class="font-KarbonRegular text-left">Funciones</h1>
+            <ul contenteditable="true" class="font-KarbonRegular text-left list-disc">
+              <li v-for="fun in puesto.funciones">
+                {{ fun.funcion }}
+              </li>
+            </ul>
+          </div>
+          <div class="requisitos-work text-AzulPerla">
+            <h1 class="font-KarbonRegular t text-left">Requisitos</h1>
+            <ul contenteditable="true" class="font-KarbonRegular text-left list-disc">
+              <li v-for="rec in puesto.requisitos">
+                {{ rec.requisito }}
+              </li>
+            </ul>
+          </div>
+          <div class="cont-salary">
+            <p class="salary-work font-KarbonRegular text-right text-AzulPerla">
+              Sueldo: S/.<span class="spn-salary" contenteditable="true">{{ puesto.sueldo }}</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-center">
+      <button @click="cambiarestadoseleccionform" class="btn-nav shadow-2xl">Siguiente</button>
+    </div>
+  </div>
+  <seleccionFormPv v-if="estadoseleccionform" @seleccionformcam="actuaizarseleccionform" />
 </template>
 <style scoped>
 .nuevo-pv {
-    padding-bottom: 5vh;
+  padding-bottom: 5vh;
 }
 
 .btn-back {
-    padding: 5%;
-    padding-top: 1%;
-    padding-bottom: 2%;
-    font-size: 4vw;
+  padding: 5%;
+  padding-top: 1%;
+  padding-bottom: 2%;
+  font-size: 4vw;
 }
 
 svg {
-    width: 5%;
+  width: 5%;
 }
 
 .cont-workdes {
-    overflow: hidden;
-    background-color: #FCF5EB;
-    padding: 4%;
+  overflow: hidden;
+  background-color: #fcf5eb;
+  padding: 4%;
 }
 
 .cont-text {
-    padding: 1%;
+  padding: 1%;
 }
 
 .imagen-round {
-    width: 80%;
-    height: auto;
-    min-height: 300px;
-    min-width: 300px;
+  width: 80%;
+  height: auto;
+  min-height: 300px;
+  min-width: 300px;
 }
 
 .ttl-work {
-    padding: 4%;
+  padding: 4%;
 }
 
 .ttl-work1 {
-    font-size: 7vw;
-    padding-bottom: 2%;
-    border: #AEAEAE solid 0.1vw;
-    background-color: #FFFFFF33;
-    border-radius: 5vw;
+  font-size: 7vw;
+  padding-bottom: 2%;
+  border: #aeaeae solid 0.1vw;
+  background-color: #ffffff33;
+  border-radius: 5vw;
 }
 
 .ind-tipo {
-    font-size: 4vw;
-    padding: 2%;
-    padding-bottom: 2%;
-    margin-top: 5%;
-    color: #C95C2D;
-    -webkit-text-stroke: #C95C2D 0.1vw;
-    border: #AEAEAE solid 0.1vw;
-    background-color: #FFFFFF33;
-    border-radius: 4vw;
+  font-size: 4vw;
+  padding: 2%;
+  padding-bottom: 2%;
+  margin-top: 5%;
+  color: #c95c2d;
+  -webkit-text-stroke: #c95c2d 0.1vw;
+  border: #aeaeae solid 0.1vw;
+  background-color: #ffffff33;
+  border-radius: 4vw;
 }
 
 .obj-work {
-    padding-bottom: 2%;
+  padding-bottom: 2%;
 }
 
 .obj-work h1 {
-    font-size: 7vw;
-    -webkit-text-stroke: #471D7C 0.1vw;
-
+  font-size: 7vw;
+  -webkit-text-stroke: #471d7c 0.1vw;
 }
 
 .obj-work p {
-    font-size: 5vw;
-    -webkit-text-stroke: #471D7C 0.05vw;
-    padding-top: 2%;
-    border: #AEAEAE solid 0.1vw;
-    background-color: #FFFFFF33;
-    border-radius: 5vw;
-    padding: 1.5%;
+  font-size: 5vw;
+  -webkit-text-stroke: #471d7c 0.05vw;
+  padding-top: 2%;
+  border: #aeaeae solid 0.1vw;
+  background-color: #ffffff33;
+  border-radius: 5vw;
+  padding: 1.5%;
 }
 
 .funciones-work {
-    padding-left: 6%;
-    padding-bottom: 2%;
+  padding-left: 6%;
+  padding-bottom: 2%;
 }
 
 .funciones-work h1 {
-    font-size: 7vw;
-    -webkit-text-stroke: #471D7C 0.1vw;
+  font-size: 7vw;
+  -webkit-text-stroke: #471d7c 0.1vw;
 }
 
 .funciones-work ul {
-    font-size: 5vw;
-    -webkit-text-stroke: #471D7C 0.05vw;
-    border: #AEAEAE solid 0.1vw;
-    background-color: #FFFFFF33;
-    border-radius: 5vw;
-    padding: 8%;
+  font-size: 5vw;
+  -webkit-text-stroke: #471d7c 0.05vw;
+  border: #aeaeae solid 0.1vw;
+  background-color: #ffffff33;
+  border-radius: 5vw;
+  padding: 8%;
 }
 
 .requisitos-work {
-    padding-left: 6%;
-    padding-top: 2%;
+  padding-left: 6%;
+  padding-top: 2%;
 }
 
 .requisitos-work h1 {
-    font-size: 7vw;
-    -webkit-text-stroke: #471D7C 0.1vw;
+  font-size: 7vw;
+  -webkit-text-stroke: #471d7c 0.1vw;
 }
 
 .requisitos-work ul {
-    font-size: 5vw;
-    -webkit-text-stroke: #471D7C 0.05vw;
-    border: #AEAEAE solid 0.1vw;
-    background-color: #FFFFFF33;
-    border-radius: 5vw;
-    padding: 8%;
+  font-size: 5vw;
+  -webkit-text-stroke: #471d7c 0.05vw;
+  border: #aeaeae solid 0.1vw;
+  background-color: #ffffff33;
+  border-radius: 5vw;
+  padding: 8%;
 }
 
 .cont-salary {
-    padding-top: 2%;
-    padding-bottom: 2%;
+  padding-top: 2%;
+  padding-bottom: 2%;
 }
 
 .salary-work {
-    font-size: 6vw;
-    -webkit-text-stroke: #471D7C 0.15vw;
-    /* border: #AEAEAE solid 0.1vw;
+  font-size: 6vw;
+  -webkit-text-stroke: #471d7c 0.15vw;
+  /* border: #AEAEAE solid 0.1vw;
     background-color: #FFFFFF33;
     border-radius: 5vw; */
-    padding-right: 3%;
-
+  padding-right: 3%;
 }
 
 .spn-salary {
-    border: #AEAEAE solid 0.1vw;
-    background-color: #FFFFFF33;
-    border-radius: 4vw;
-    padding: 1%;
+  border: #aeaeae solid 0.1vw;
+  background-color: #ffffff33;
+  border-radius: 4vw;
+  padding: 1%;
 }
 
-
 @media (min-width: 768px) {
-    .btn-back {
-        padding: 5%;
-        padding-top: 1%;
-        padding-bottom: 2%;
-        font-size: 3vw;
-    }
+  .btn-back {
+    padding: 5%;
+    padding-top: 1%;
+    padding-bottom: 2%;
+    font-size: 3vw;
+  }
 }
 
 @media (min-width: 1024px) {
+  .btn-control {
+    height: 6vh;
+    top: -0%;
+    right: 8vw;
+  }
 
-    .btn-control {
-        height: 6vh;
-        top: -0%;
-        right: 8vw;
-    }
+  .btn-nav {
+    background-color: rgb(89, 35, 140);
+    width: 20%;
+    font-size: 1.2vw;
+    margin: 2%;
+    border-radius: 2vw;
+    font-weight: bold;
+    color: white;
+  }
 
-    .btn-nav {
-        background-color: rgb(89, 35, 140);
-        width: 20%;
-        font-size: 1.2vw;
-        margin: 2%;
-        border-radius: 2vw;
-        font-weight: bold;
-        color: white;
-    }
+  .btn-back {
+    padding: 5%;
+    padding-top: 1%;
+    padding-bottom: 2%;
+    font-size: 1.1vw;
+  }
 
-    .btn-back {
-        padding: 5%;
-        padding-top: 1%;
-        padding-bottom: 2%;
-        font-size: 1.1vw;
-    }
+  svg {
+    width: 12%;
+  }
 
-    svg {
-        width: 12%;
-    }
+  .cont-workdes {
+  }
 
-    .cont-workdes {}
+  .cont-text {
+    padding: 1%;
+  }
 
-    .cont-text {
-        padding: 1%;
-    }
+  .imagen-round {
+    width: 35vw;
+    height: 35vw;
+  }
 
-    .imagen-round {
-        width: 35vw;
-        height: 35vw;
+  .ttl-work {
+    padding: 0%;
+  }
 
-    }
+  .ttl-work1 {
+    font-size: 2.5vw;
+    padding-bottom: 2%;
+    border: #aeaeae solid 0.1vw;
+    background-color: #ffffff33;
+    border-radius: 2vw;
+    padding: 2%;
+  }
 
-    .ttl-work {
-        padding: 0%;
-    }
+  .ind-tipo {
+    font-size: 1.5vw;
+    padding-top: 1%;
+    padding-bottom: 2%;
+    color: #c95c2d;
+    -webkit-text-stroke: #c95c2d 0.09vw;
+    border: #aeaeae solid 0.1vw;
+    background-color: #ffffff33;
+    border-radius: 2vw;
+    padding: 2%;
+    margin: 1%;
+    width: 33.3%;
+  }
 
-    .ttl-work1 {
-        font-size: 2.5vw;
-        padding-bottom: 2%;
-        border: #AEAEAE solid 0.1vw;
-        background-color: #FFFFFF33;
-        border-radius: 2vw;
-        padding: 2%;
-    }
+  .spn-ind {
+    width: 88%;
+    font-size: 1.2vw;
+  }
 
-    .ind-tipo {
-        font-size: 1.5vw;
-        padding-top: 1%;
-        padding-bottom: 2%;
-        color: #C95C2D;
-        -webkit-text-stroke: #C95C2D 0.09vw;
-        border: #AEAEAE solid 0.1vw;
-        background-color: #FFFFFF33;
-        border-radius: 2vw;
-        padding: 2%;
-        margin: 1%;
-        width: 33.3%;
-    }
+  .obj-work {
+    padding-bottom: 2%;
+  }
 
-    .spn-ind {
-        width: 88%;
-        font-size: 1.2vw;
-    }
+  .obj-work h1 {
+    font-size: 3vw;
+    -webkit-text-stroke: #471d7c 0.1vw;
+  }
 
-    .obj-work {
-        padding-bottom: 2%;
-    }
+  .obj-work p {
+    font-size: 2vw;
+    -webkit-text-stroke: #471d7c 0.05vw;
+    padding-top: 2%;
+    border: #aeaeae solid 0.1vw;
+    background-color: #ffffff33;
+    border-radius: 2vw;
+    padding: 2%;
+    min-height: 300px;
+  }
 
-    .obj-work h1 {
-        font-size: 3vw;
-        -webkit-text-stroke: #471D7C 0.1vw;
+  .funciones-work {
+    padding-left: 6%;
+    padding-bottom: 2%;
+  }
 
-    }
+  .funciones-work h1 {
+    font-size: 2.5vw;
+    -webkit-text-stroke: #471d7c 0.1vw;
+  }
 
-    .obj-work p {
-        font-size: 2vw;
-        -webkit-text-stroke: #471D7C 0.05vw;
-        padding-top: 2%;
-        border: #AEAEAE solid 0.1vw;
-        background-color: #FFFFFF33;
-        border-radius: 2vw;
-        padding: 2%;
-        min-height: 300px;
-    }
+  .funciones-work ul {
+    font-size: 1.5vw;
+    -webkit-text-stroke: #471d7c 0.05vw;
+    border: #aeaeae solid 0.1vw;
+    background-color: #ffffff33;
+    border-radius: 2vw;
+    padding: 4%;
+    min-height: 300px;
+  }
 
-    .funciones-work {
-        padding-left: 6%;
-        padding-bottom: 2%;
-    }
+  .requisitos-work {
+    padding-left: 6%;
+    padding-top: 2%;
+  }
 
-    .funciones-work h1 {
-        font-size: 2.5vw;
-        -webkit-text-stroke: #471D7C 0.1vw;
-    }
+  .requisitos-work h1 {
+    font-size: 2.5vw;
+    -webkit-text-stroke: #471d7c 0.1vw;
+  }
 
-    .funciones-work ul {
-        font-size: 1.5vw;
-        -webkit-text-stroke: #471D7C 0.05vw;
-        border: #AEAEAE solid 0.1vw;
-        background-color: #FFFFFF33;
-        border-radius: 2vw;
-        padding: 4%;
-        min-height: 300px;
-    }
+  .requisitos-work ul {
+    font-size: 1.5vw;
+    -webkit-text-stroke: #471d7c 0.05vw;
+    border: #aeaeae solid 0.1vw;
+    background-color: #ffffff33;
+    border-radius: 2vw;
+    padding: 4%;
+    min-height: 300px;
+  }
 
-    .requisitos-work {
-        padding-left: 6%;
-        padding-top: 2%;
-    }
+  .cont-salary {
+    padding-top: 2%;
+    padding-bottom: 2%;
+  }
 
-    .requisitos-work h1 {
-        font-size: 2.5vw;
-        -webkit-text-stroke: #471D7C 0.1vw;
-    }
+  .spn-salary {
+    border: #aeaeae solid 0.1vw;
+    background-color: #ffffff33;
+    border-radius: 2vw;
+    padding: 2%;
+  }
 
-    .requisitos-work ul {
-        font-size: 1.5vw;
-        -webkit-text-stroke: #471D7C 0.05vw;
-        border: #AEAEAE solid 0.1vw;
-        background-color: #FFFFFF33;
-        border-radius: 2vw;
-        padding: 4%;
-        min-height: 300px;
-    }
+  .salary-work {
+    font-size: 2.2vw;
+    -webkit-text-stroke: #471d7c 0.15vw;
+  }
 
-    .cont-salary {
-        padding-top: 2%;
-        padding-bottom: 2%;
-    }
+  .btn-postular {
+    padding: 0.5%;
+    border-radius: 2vw;
+    padding-left: 5%;
+    padding-right: 5%;
+    font-size: 1.4vw;
+  }
 
-    .spn-salary {
-        border: #AEAEAE solid 0.1vw;
-        background-color: #FFFFFF33;
-        border-radius: 2vw;
-        padding: 2%;
-    }
-
-    .salary-work {
-        font-size: 2.2vw;
-        -webkit-text-stroke: #471D7C 0.15vw;
-    }
-
-    .btn-postular {
-        padding: 0.5%;
-        border-radius: 2vw;
-        padding-left: 5%;
-        padding-right: 5%;
-        font-size: 1.4vw;
-    }
-
-    .btn-postular:hover {
-        padding-left: 10%;
-        padding-right: 10%;
-    }
-
+  .btn-postular:hover {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
 }
 </style>

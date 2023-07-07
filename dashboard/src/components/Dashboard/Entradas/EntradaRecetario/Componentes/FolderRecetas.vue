@@ -1,45 +1,51 @@
 <script>
 import BtnBack from '../../../General/BtnBack.vue'
 export default {
-    data() {
-        return {
-            recetas: '',
-            idreceta: ''
-        }
-    },
-    components: {
-        BtnBack
-    },
-    methods: {}
-
+  data() {
+    return {
+      recetas: '',
+      idreceta: ''
+    }
+  },
+  components: {
+    BtnBack
+  },
+  methods: {}
 }
 </script>
 <template>
-    <div>
-        <div class="cont-folder">
-            <div class="flex justify-end">
-                <BtnBack />
-            </div>
-            <div class="header-folder flex flex-col justify-center items-center lg:flex-row lg:mx-auto">
-                <p class="title-folder font-TestKarbonBold">RECETARIO</p>
-                <div class="w-full flex flex-col lg:flex-row justify-end items-center">
-                    <button @click="cambiarestanuereceta" class="btn-añadirentradda font-TestKarbonSemiBold">Añadir
-                        Entrada</button>
-                    <div class="btn-buscar">
-                        <!-- <buscador @search="buscar" /> -->
-                    </div>
-                </div>
-            </div>
-            <div class="items-folder flex flex-col justify-center items-center lg:mx-auto lg:grid lg:grid-cols-3">
-                <div v-for="receta in recetas" class="itemf relative bg-stone-600">
-                    <img class="object-cover h-full w-full" loading="lazy" src="@/assets/AssetsRecetario/receta1.jpg"
-                        alt="receta-item">
-                    <div class="cont-actions absolute flex flex-col justify-center items-center">
-                        <p class="text-white">{{ receta.titulo }}</p>
-                        <div class="cont-btnsaction flex justify-between">
-                            <!-- enviar la data segun el id -->
+  <div>
+    <div class="cont-folder">
+      <div class="flex justify-end">
+        <BtnBack />
+      </div>
+      <div class="header-folder flex flex-col justify-center items-center lg:flex-row lg:mx-auto">
+        <p class="title-folder font-TestKarbonBold">RECETARIO</p>
+        <div class="w-full flex flex-col lg:flex-row justify-end items-center">
+          <button @click="cambiarestanuereceta" class="btn-añadirentradda font-TestKarbonSemiBold">
+            Añadir Entrada
+          </button>
+          <div class="btn-buscar">
+            <!-- <buscador @search="buscar" /> -->
+          </div>
+        </div>
+      </div>
+      <div
+        class="items-folder flex flex-col justify-center items-center lg:mx-auto lg:grid lg:grid-cols-3"
+      >
+        <div v-for="receta in recetas" class="itemf relative bg-stone-600">
+          <img
+            class="object-cover h-full w-full"
+            loading="lazy"
+            src="@/assets/AssetsRecetario/receta1.jpg"
+            alt="receta-item"
+          />
+          <div class="cont-actions absolute flex flex-col justify-center items-center">
+            <p class="text-white">{{ receta.titulo }}</p>
+            <div class="cont-btnsaction flex justify-between">
+              <!-- enviar la data segun el id -->
 
-                            <!-- <button @click="cambiarestadoeditarreceta(receta._id)"
+              <!-- <button @click="cambiarestadoeditarreceta(receta._id)"
                                 class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
                                 Editar
                             </button>
@@ -51,39 +57,120 @@ export default {
                                 class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
                                 Eliminar
                             </button> -->
-                        </div>
-                    </div>
-                </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </template>
 <style scoped>
 .btn-back {
-    padding: 5%;
-    padding-bottom: 0%;
-    font-size: 5vw;
+  padding: 5%;
+  padding-bottom: 0%;
+  font-size: 5vw;
 }
 
 .cont-folder {
-    padding: 1%;
-    margin-bottom: 6%;
-    padding-bottom: 10vh;
+  padding: 1%;
+  margin-bottom: 6%;
+  padding-bottom: 10vh;
 }
 
 .header-folder {
-    padding-top: 2%;
-    padding-bottom: 2%;
-    width: 100%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  width: 100%;
 }
 
 .title-folder {
-    padding: 1%;
-    font-size: 8vw;
+  padding: 1%;
+  font-size: 8vw;
 }
 
 .btn-añadirentradda {
-    background-color: #FF8F33;
+  background-color: #ff8f33;
+  width: 80%;
+  padding: 1%;
+  border-radius: 3vw;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  color: white;
+  border: solid #606060 0.1vw;
+  font-size: 5vw;
+}
+
+.btn-buscar {
+  width: 80%;
+}
+
+.items-folder {
+}
+
+.itemf {
+  overflow: hidden;
+  width: 85%;
+  margin: 1%;
+  border-radius: 4vw;
+  height: 85%;
+  min-height: 250px;
+}
+
+.cont-actions {
+  transform: translateY(-100%);
+  width: 100%;
+  height: auto;
+  padding-bottom: 4%;
+}
+
+.cont-actions p {
+  padding: 2%;
+  font-size: 5vw;
+  text-align: center;
+  font-weight: bold;
+  -webkit-text-stroke: #606060 0.2vw;
+}
+
+.cont-btnsaction {
+  width: 90%;
+}
+
+.btn-action {
+  background-color: #ff8f33;
+  width: 30%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  border-radius: 2vw;
+  font-size: 5vw;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .btn-back {
+    padding: 5%;
+    padding-bottom: 0%;
+    font-size: 4vw;
+  }
+
+  .cont-folder {
+    padding: 1%;
+    margin-bottom: 6%;
+    padding-bottom: 5vh;
+  }
+
+  .header-folder {
+    padding-top: 2%;
+    padding-bottom: 2%;
+    width: 100%;
+  }
+
+  .title-folder {
+    padding: 1%;
+    font-size: 7vw;
+  }
+
+  .btn-añadirentradda {
+    background-color: #ff8f33;
     width: 80%;
     padding: 1%;
     border-radius: 3vw;
@@ -91,216 +178,137 @@ export default {
     margin-bottom: 2%;
     color: white;
     border: solid #606060 0.1vw;
-    font-size: 5vw;
-}
+    font-size: 4vw;
+  }
 
-.btn-buscar {
+  .btn-buscar {
     width: 80%;
-}
+  }
 
-.items-folder {}
+  .items-folder {
+  }
 
-.itemf {
+  .itemf {
     overflow: hidden;
     width: 85%;
     margin: 1%;
     border-radius: 4vw;
-    height: 85%;
-    min-height: 250px;
-}
+    height: 50vh;
+    min-height: 450px;
+  }
 
-.cont-actions {
+  .cont-actions {
     transform: translateY(-100%);
     width: 100%;
     height: auto;
     padding-bottom: 4%;
-}
+  }
 
-.cont-actions p {
+  .cont-actions p {
     padding: 2%;
-    font-size: 5vw;
+    font-size: 4.5vw;
     text-align: center;
     font-weight: bold;
     -webkit-text-stroke: #606060 0.2vw;
-}
+  }
 
-.cont-btnsaction {
+  .cont-btnsaction {
     width: 90%;
-}
+  }
 
-.btn-action {
-    background-color: #FF8F33;
+  .btn-action {
+    background-color: #ff8f33;
     width: 30%;
     margin-top: 2%;
     margin-bottom: 2%;
     border-radius: 2vw;
-    font-size: 5vw;
+    font-size: 4vw;
     color: white;
-}
-
-@media (min-width: 768px) {
-    .btn-back {
-        padding: 5%;
-        padding-bottom: 0%;
-        font-size: 4vw;
-    }
-
-    .cont-folder {
-        padding: 1%;
-        margin-bottom: 6%;
-        padding-bottom: 5vh;
-    }
-
-    .header-folder {
-        padding-top: 2%;
-        padding-bottom: 2%;
-        width: 100%;
-    }
-
-    .title-folder {
-        padding: 1%;
-        font-size: 7vw;
-    }
-
-    .btn-añadirentradda {
-        background-color: #FF8F33;
-        width: 80%;
-        padding: 1%;
-        border-radius: 3vw;
-        margin-top: 2%;
-        margin-bottom: 2%;
-        color: white;
-        border: solid #606060 0.1vw;
-        font-size: 4vw;
-    }
-
-    .btn-buscar {
-        width: 80%;
-    }
-
-    .items-folder {}
-
-    .itemf {
-        overflow: hidden;
-        width: 85%;
-        margin: 1%;
-        border-radius: 4vw;
-        height: 50vh;
-        min-height: 450px;
-    }
-
-    .cont-actions {
-        transform: translateY(-100%);
-        width: 100%;
-        height: auto;
-        padding-bottom: 4%;
-    }
-
-    .cont-actions p {
-        padding: 2%;
-        font-size: 4.5vw;
-        text-align: center;
-        font-weight: bold;
-        -webkit-text-stroke: #606060 0.2vw;
-    }
-
-    .cont-btnsaction {
-        width: 90%;
-    }
-
-    .btn-action {
-        background-color: #FF8F33;
-        width: 30%;
-        margin-top: 2%;
-        margin-bottom: 2%;
-        border-radius: 2vw;
-        font-size: 4vw;
-        color: white;
-    }
+  }
 }
 
 @media (min-width: 1024px) {
-    .btn-back {
-        padding: 5%;
-        padding-bottom: 0%;
-        font-size: 1vw;
-    }
+  .btn-back {
+    padding: 5%;
+    padding-bottom: 0%;
+    font-size: 1vw;
+  }
 
-    .cont-folder {
-        padding: 1%;
-        margin-bottom: 6%;
-        height: 100%;
-    }
+  .cont-folder {
+    padding: 1%;
+    margin-bottom: 6%;
+    height: 100%;
+  }
 
-    .header-folder {
-        padding-top: 2%;
-        padding-bottom: 2%;
-        width: 80%;
-    }
+  .header-folder {
+    padding-top: 2%;
+    padding-bottom: 2%;
+    width: 80%;
+  }
 
-    .title-folder {
-        padding: 1%;
-        font-size: 2vw;
-    }
+  .title-folder {
+    padding: 1%;
+    font-size: 2vw;
+  }
 
-    .btn-añadirentradda {
-        background-color: #FF8F33;
-        width: 25%;
-        padding: 0.5%;
-        border-radius: 3vw;
-        margin-top: 2%;
-        margin-bottom: 2%;
-        color: white;
-        border: solid #606060 0.1vw;
-        font-size: 1.2vw;
-        margin-right: 2%;
-    }
+  .btn-añadirentradda {
+    background-color: #ff8f33;
+    width: 25%;
+    padding: 0.5%;
+    border-radius: 3vw;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    color: white;
+    border: solid #606060 0.1vw;
+    font-size: 1.2vw;
+    margin-right: 2%;
+  }
 
-    .btn-buscar {
-        width: 25%;
-    }
+  .btn-buscar {
+    width: 25%;
+  }
 
-    .items-folder {
-        width: 80%;
-        height: auto;
-    }
+  .items-folder {
+    width: 80%;
+    height: auto;
+  }
 
-    .itemf {
-        overflow: hidden;
-        width: 95%;
-        margin: 1%;
-        border-radius: 1.5vw;
-        height: 95%;
-        min-height: 150px;
-    }
+  .itemf {
+    overflow: hidden;
+    width: 95%;
+    margin: 1%;
+    border-radius: 1.5vw;
+    height: 95%;
+    min-height: 150px;
+  }
 
-    .cont-actions {
-        transform: translateY(-100%);
-        width: 100%;
-        height: auto;
-        padding-bottom: 4%;
-    }
+  .cont-actions {
+    transform: translateY(-100%);
+    width: 100%;
+    height: auto;
+    padding-bottom: 4%;
+  }
 
-    .cont-actions p {
-        padding: 2%;
-        font-size: 1.5vw;
-        text-align: center;
-        font-weight: bold;
-        -webkit-text-stroke: #606060 0.02vw;
-    }
+  .cont-actions p {
+    padding: 2%;
+    font-size: 1.5vw;
+    text-align: center;
+    font-weight: bold;
+    -webkit-text-stroke: #606060 0.02vw;
+  }
 
-    .cont-btnsaction {
-        width: 90%;
-    }
+  .cont-btnsaction {
+    width: 90%;
+  }
 
-    .btn-action {
-        background-color: #FF8F33;
-        width: 30%;
-        margin-top: 2%;
-        margin-bottom: 2%;
-        border-radius: 2vw;
-        font-size: 1vw;
-        color: white;
-    }
+  .btn-action {
+    background-color: #ff8f33;
+    width: 30%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border-radius: 2vw;
+    font-size: 1vw;
+    color: white;
+  }
 }
 </style>

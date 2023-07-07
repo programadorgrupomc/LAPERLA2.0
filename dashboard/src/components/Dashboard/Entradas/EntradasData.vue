@@ -118,7 +118,6 @@ export default {
   }
 
   @keyframes animBtn-plus {
-
     0%,
     100% {
       transform: rotate(0deg);
