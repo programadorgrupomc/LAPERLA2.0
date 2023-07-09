@@ -66,8 +66,7 @@ router.put('/:id', upload.fields([{ name: 'imgGeneral', maxCount: 1 }, { name: '
   let imgGeneral, imgDetalle;
   console.log(req.body, id, imgGeneral, imgDetalle);
   
-  //estos son el problema 
-  if(req.files){
+  //estos parecen ser el problema 
     if (req.files['imgGeneral']) {
       imgGeneral = req.files['imgGeneral'][0].filename;
     }
@@ -75,7 +74,6 @@ router.put('/:id', upload.fields([{ name: 'imgGeneral', maxCount: 1 }, { name: '
     if (req.files['imgDetalle']) {
       imgDetalle = req.files['imgDetalle'][0].filename;
     }
-  }
 
   try {
     const nuestroPollo = await NuestroPolloModel.findByIdAndUpdate(

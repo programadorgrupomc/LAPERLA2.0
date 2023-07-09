@@ -101,6 +101,7 @@ export default {
       this.nuestroPolloLocal.imgGeneral = valor
       console.log(this.nuestroPolloLocal)
       this.$emit('dataupdate', this.nuestroPolloLocal)
+      console.log(valor);
     },
     asignarmagendetalle(valor) {
       this.nuestroPolloLocal.imgDetalle = valor

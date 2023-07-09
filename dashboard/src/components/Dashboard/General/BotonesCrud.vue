@@ -29,20 +29,21 @@ export default {
       this.$router.go(-1)
     },
     guardar() {
-      
+      const nombreArchivo = "imagen_salida.png";
+      const archivo = this.base64ToFile(this.datanp1.imgGeneral, nombreArchivo);
+      console.log(archivo);
       const formData = new FormData();
       formData.append('titulo', this.datanp1.titulo);
       formData.append('contenido', this.datanp1.contenido);
-      formData.append('imgGeneral', this.datanp1.imgGeneral); // archivoImgGeneral es un objeto File de la imagen general
-      formData.append('imgDetalle', this.datanp1.imgDetalle); // archivoImgDetalle es un objeto
-      console.log(formData)
+      formData.append('imgGeneral', archivo); // archivoImgGeneral es un objeto File de la imagen general
+      formData.append('imgDetalle', archivo); // archivoImgDetalle es un objeto
       const rpta = window.confirm('Esta seguro de guardar los datos!')
 
       if (rpta) {
         apiNuestroPollo
           .updateNuestroPollo(this.datanp1._id, formData)
           .then((response) => {
-            alert(response)
+            alert("Registro Exitoso!");
           })
           .catch((error) => {
             console.log(`Hubo un error al actualizar ${error}`)
@@ -50,6 +51,7 @@ export default {
       } else {
         alert('Error en datos, Revisar!')
       }
+      location.reload();
     },
     restaurar() {
       const rpta = window.confirm('Esta seguro de restaurar los datos!')
@@ -59,7 +61,21 @@ export default {
       } else {
         alert('Error en Funcion, Revisar!')
       }
+    },
+    base64ToFile(base64String, fileName) {
+      var byteCharacters = atob(base64String.split(',')[1]);
+      var byteNumbers = new Array(byteCharacters.length);
+      for (var i = 0; i < byteCharacters.length; i++) {
+        byteNumbers[i] = byteCharacters.charCodeAt(i);
+      }
+      var byteArray = new Uint8Array(byteNumbers);
+      var blob = new Blob([byteArray], { type: 'image/jpeg' }); // Puedes ajustar el tipo de archivo según el formato de la imagen
+
+      var file = new File([blob], fileName, { type: 'image/jpeg' }); // Puedes ajustar el tipo de archivo según el formato de la imagen
+
+      return file;
     }
+
   },
   updated() {
     this.datanp1 = this.dataNuestroPollo1
