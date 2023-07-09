@@ -4,10 +4,9 @@ import { BASE_URL } from '../config.js'
 const apiHero = axios.create({
   baseURL: BASE_URL, // Reemplaza esta URL con la URL de tu API
   headers: {
-    Accept: 'application/json',
-    'Content-Type': 'application/json'
+    'Content-Type': 'multipart/form-data'
   }
-})
+});
 
 export default {
   // Obtener todos los héroes

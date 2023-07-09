@@ -64,13 +64,17 @@ router.put('/:id', upload.fields([{ name: 'imgGeneral', maxCount: 1 }, { name: '
   const { id } = req.params;
   const { titulo, contenido, usuarioUltimaEdicion } = req.body;
   let imgGeneral, imgDetalle;
-
-  if (req.files['imgGeneral']) {
-    imgGeneral = req.files['imgGeneral'][0].filename;
-  }
-
-  if (req.files['imgDetalle']) {
-    imgDetalle = req.files['imgDetalle'][0].filename;
+  console.log(req.body, id, imgGeneral, imgDetalle);
+  
+  //estos son el problema 
+  if(req.files){
+    if (req.files['imgGeneral']) {
+      imgGeneral = req.files['imgGeneral'][0].filename;
+    }
+  
+    if (req.files['imgDetalle']) {
+      imgDetalle = req.files['imgDetalle'][0].filename;
+    }
   }
 
   try {
