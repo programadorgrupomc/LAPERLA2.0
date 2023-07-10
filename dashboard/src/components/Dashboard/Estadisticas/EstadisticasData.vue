@@ -2,11 +2,15 @@
   <div class="cont-inputs">
     <div class="cont-input bg1 flex flex-col justify-center items-center text-white transition-all">
       Base de datos
-      <button @click="cambiarestadoRf" class="btn-plus">Ver mas</button>
+      <router-link to="/dashboard/estadisticas/basededatos">
+        <button @click="cambiarestadoRf" class="btn-plus">Ver mas</button>
+      </router-link>
     </div>
     <div class="cont-input bg2 flex flex-col justify-center items-center text-white transition-all">
       Dashboard
-      <button @click="cambiarestadonot" class="btn-plus">Ver mas</button>
+      <router-link to="/dashboard/estadisticas/dashboard">
+        <button @click="cambiarestadonot" class="btn-plus">Ver mas</button>
+      </router-link>
     </div>
   </div>
 </template>

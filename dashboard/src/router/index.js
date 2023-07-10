@@ -30,6 +30,10 @@ import NuevaNoticia from '../components/Dashboard/Entradas/EntradaNoticias/Compo
 //children entradas puestos vacantes
 import NuevoPv from '../components/Dashboard/Entradas/EntradaPuestosVacantes/Componentes/NuevoPuestoVacante.vue'
 
+//esdisticas {clidren}
+import EstadisticasDB from '../components/Dashboard/Estadisticas/BaseDeDatos/BaseDeDatos.vue'
+import EstadisticasDash from '../components/Dashboard/Estadisticas/Dashboard/DashBoard.vue'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -150,11 +154,24 @@ const router = createRouter({
           name: 'ajustes',
           component: AjustesView
         },
+        //ruta general de estadisticas
         {
           path: 'estadisticas',
           name: 'estadisticas',
           component: EstadisticasView
         },
+        //subrutas estadisticas
+        {
+          path: 'estadisticas/basededatos',
+          name: 'basededatos',
+          component: EstadisticasDB
+        },
+        {
+          path: 'estadisticas/dashboard',
+          name: 'estadisticadash',
+          component: EstadisticasDash
+        },
+        //ruta general de usuarios
         {
           path: 'usuarios',
           name: 'usuarios',

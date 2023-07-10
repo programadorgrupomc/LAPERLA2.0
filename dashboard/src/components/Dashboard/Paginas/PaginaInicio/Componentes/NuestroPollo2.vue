@@ -1,18 +1,26 @@
 <template>
-  <div v-if="nuestrosPollosData && nuestrosPollosData.length > 0" class="np2 flex flex-col lg:flex-row justify-center">
+  <div
+    v-if="nuestrosPollosData && nuestrosPollosData.length > 0"
+    class="np2 flex flex-col lg:flex-row justify-center"
+  >
     <div class="hidden lado2 lg:flex lg:items-center lg:justify-center">
       <div class="np2-contenedor np2-contenedorlg relative lg:flex justify-center items-center">
         <div class="relative">
           <div class="circulo-fondo2"></div>
           <div class="absolute img-circulo2 shadow-2xl">
-            <FileUploaderDef :imagebd="nuestrosPollosData[1].imgGeneral" @imgrecortada="asignarimagen"/>
+            <FileUploaderDef
+              :imagebd="nuestrosPollosData[1].imgGeneral"
+              @imgrecortada="asignarimagen"
+            />
           </div>
           <!-- <img src="../../assets/Inicio/imgcont2.jpg" class="absolute img-circulo2 shadow-2xl" alt="img-circulo2"> -->
         </div>
       </div>
     </div>
     <div class="lado1 flex flex-col lg:items-center justify-center lg:justify-around">
-      <div class="np2-contenedor contenedor-texto2 flex flex-col justify-center items-center lg:items-end">
+      <div
+        class="np2-contenedor contenedor-texto2 flex flex-col justify-center items-center lg:items-end"
+      >
         <p contenteditable="true" class="titulo border text-center lg:text-right" @input="titulo">
           {{ nuestrosPollosData[1].titulo }}
         </p>
@@ -24,16 +32,26 @@
         <div class="relative">
           <div class="circulo-fondo2"></div>
           <div class="absolute img-circulo2 shadow-2xl">
-            <FileUploaderDef :imagebd="nuestrosPollosData[1].imgGeneral" @imgrecortada="asignarimagen"/>
+            <FileUploaderDef
+              :imagebd="nuestrosPollosData[1].imgGeneral"
+              @imgrecortada="asignarimagen"
+            />
           </div>
           <!-- <img src="../../assets/Inicio/imgcont2.jpg" class="absolute img-circulo2 shadow-2xl" alt="img-circulo2"> -->
         </div>
       </div>
       <div class="np2-contenedor flex justify-center items-center">
         <div class="contenedor-2 relative">
-          <img src="../../../../../assets/Dashboard/Paginas/Inicio/ProteinaC2.svg" class="imgNp-2 relative"
-            alt="carne-pollo" />
-          <img src="../../../../../assets/Dashboard/Paginas/Inicio/Row2.svg" class="rowNp-2 relative" alt="rowNp-2" />
+          <img
+            src="../../../../../assets/Dashboard/Paginas/Inicio/ProteinaC2.svg"
+            class="imgNp-2 relative"
+            alt="carne-pollo"
+          />
+          <img
+            src="../../../../../assets/Dashboard/Paginas/Inicio/Row2.svg"
+            class="rowNp-2 relative"
+            alt="rowNp-2"
+          />
           <div class="indicador2 relative flex flex-col justify-center items-center">
             <p contenteditable="true" class="border">Gran fuente proteica.</p>
           </div>
@@ -50,7 +68,7 @@ export default {
       nuestroPolloLocal2: {
         titulo: '',
         contenido: '',
-        imgGeneral: '',
+        imgGeneral: ''
       }
     }
   },
@@ -73,12 +91,10 @@ export default {
       this.nuestroPolloLocal2.imgGeneral = valor
       console.log(this.nuestroPolloLocal2)
       this.$emit('dataupdate2', this.nuestroPolloLocal2)
-      console.log(valor);
-    },
+      console.log(valor)
+    }
   },
-  mounted() { 
-
-  },
+  mounted() {},
   updated() {
     this.nuestroPolloLocal2 = this.nuestrosPollosData[1]
     this.$emit('dataupdate2', this.nuestroPolloLocal2)

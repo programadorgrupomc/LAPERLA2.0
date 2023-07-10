@@ -6,7 +6,7 @@ const apiHero = axios.create({
   headers: {
     'Content-Type': 'multipart/form-data'
   }
-});
+})
 
 export default {
   // Obtener todos los héroes

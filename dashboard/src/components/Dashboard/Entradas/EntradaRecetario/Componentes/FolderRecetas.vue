@@ -106,8 +106,6 @@ export default {
   width: 80%;
 }
 
-
-
 .itemf {
   overflow: hidden;
   width: 85%;
@@ -185,8 +183,6 @@ export default {
   .btn-buscar {
     width: 80%;
   }
-
-
 
   .itemf {
     overflow: hidden;

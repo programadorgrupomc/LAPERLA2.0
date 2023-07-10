@@ -8,7 +8,10 @@
         <div class="relative">
           <div class="circulo-fondo4"></div>
           <div class="absolute img-circulo4 shadow-2xl">
-            <FileUploaderDef :imagebd="nuestrosPollosData[3].imgGeneral" @imgrecortada="asignarimagen"/>
+            <FileUploaderDef
+              :imagebd="nuestrosPollosData[3].imgGeneral"
+              @imgrecortada="asignarimagen"
+            />
           </div>
           <!-- <img src="../../assets/Inicio/imgcont2.jpg" class="absolute img-circulo4 shadow-2xl" alt="img-circulo4"> -->
         </div>
@@ -29,7 +32,10 @@
         <div class="relative">
           <div class="circulo-fondo4"></div>
           <div class="absolute img-circulo4 shadow-2xl">
-            <FileUploaderDef :imagebd="nuestrosPollosData[3].imgGeneral" @imgrecortada="asignarimagen"/>
+            <FileUploaderDef
+              :imagebd="nuestrosPollosData[3].imgGeneral"
+              @imgrecortada="asignarimagen"
+            />
           </div>
           <!-- <img src="../../assets/Inicio/imgcont2.jpg" class="absolute img-circulo4 shadow-2xl" alt="img-circulo4"> -->
         </div>
@@ -45,7 +51,7 @@ export default {
       nuestroPolloLocal4: {
         titulo: '',
         contenido: '',
-        imgGeneral: '',
+        imgGeneral: ''
       }
     }
   },
@@ -68,8 +74,8 @@ export default {
       this.nuestroPolloLocal4.imgGeneral = valor
       console.log(this.nuestroPolloLocal4)
       this.$emit('dataupdate4', this.nuestroPolloLocal4)
-      console.log(valor);
-    },
+      console.log(valor)
+    }
   },
   mounted() {},
   updated() {

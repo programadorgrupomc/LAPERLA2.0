@@ -1,15 +1,42 @@
 <template>
   <div class="h-full w-full overflow-y-auto">
     <div class="fixed z-40 lg:z-50 cont-btn">
-      <BotonesCrud class="btn-crud" :dataNuestroPollo1="newDataNp1" :dataNuestroPollo2="newDataNp2" :dataNuestroPollo3="newDataNp3" :dataNuestroPollo4="newDataNp4"/>
+      <BotonesCrud
+        class="btn-crud"
+        :dataNuestroPollo1="newDataNp1"
+        :dataNuestroPollo2="newDataNp2"
+        :dataNuestroPollo3="newDataNp3"
+        :dataNuestroPollo4="newDataNp4"
+        :newProcesos="newDataProcesos"
+      />
     </div>
     <div class="cont-components w-full h-full">
       <componentHero class="border" :heroesdata="heroes" />
-      <NuestroPollo1 class="border" :nuestrosPollosData="nuestrosPollos" @dataupdate="actualizarnewdataNp1" />
-      <NuestroPollo2 class="border" :nuestrosPollosData="nuestrosPollos" @dataupdate2="actualizarnewdataNp2" />
-      <NuestroPollo3 class="border" :nuestrosPollosData="nuestrosPollos" @dataupdate3="actualizarnewdataNp3"/>
-      <NuestroPollo4 class="border" :nuestrosPollosData="nuestrosPollos" @dataupdate4="actualizarnewdataNp4"/>
-      <NuestroProcesos class="border" />
+      <NuestroPollo1
+        class="border"
+        :nuestrosPollosData="nuestrosPollos"
+        @dataupdate="actualizarnewdataNp1"
+      />
+      <NuestroPollo2
+        class="border"
+        :nuestrosPollosData="nuestrosPollos"
+        @dataupdate2="actualizarnewdataNp2"
+      />
+      <NuestroPollo3
+        class="border"
+        :nuestrosPollosData="nuestrosPollos"
+        @dataupdate3="actualizarnewdataNp3"
+      />
+      <NuestroPollo4
+        class="border"
+        :nuestrosPollosData="nuestrosPollos"
+        @dataupdate4="actualizarnewdataNp4"
+      />
+      <NuestroProcesos
+        class="border"
+        :procesosData="procesos"
+        @procesosupdate="actualizarnewdataprocesos"
+      />
     </div>
   </div>
 </template>
@@ -25,16 +52,20 @@ import NuestroProcesos from './Componentes/NuestroProcesos.vue'
 //api
 import apiHero from '@/services/Inicio/apiHero.js'
 import apiNuestroPollo from '@/services/Inicio/apiNuestroPollo.js'
+import apiProcesos from '@/services/Inicio/apiProcesos.js'
 
 export default {
   data() {
     return {
       heroes: [],
       nuestrosPollos: [],
+      procesos: [],
+
       newDataNp1: [],
       newDataNp2: [],
       newDataNp3: [],
       newDataNp4: [],
+      newDataProcesos: []
     }
   },
   components: {
@@ -68,6 +99,17 @@ export default {
           console.log('Hubo un problema con la peticion', error)
         })
     },
+    fetchProcesos() {
+      apiProcesos
+        .getProcesos()
+        .then((response) => {
+          this.procesos = response.data
+        })
+        .catch((error) => {
+          console.log('Hubo un problema con la peticion', error)
+        })
+    },
+
     actualizarnewdataNp1(valor) {
       this.newDataNp1 = valor
       console.log(this.newDataNp1)
@@ -83,11 +125,16 @@ export default {
     actualizarnewdataNp4(valor) {
       this.newDataNp4 = valor
       console.log(this.newDataNp4)
+    },
+    actualizarnewdataprocesos(valor) {
+      this.newDataProcesos = valor
+      console.log(this.newDataProcesos)
     }
   },
   mounted() {
     this.fetchHeroes()
     this.fetchNuestrosPollos()
+    this.fetchProcesos()
   }
 }
 </script>

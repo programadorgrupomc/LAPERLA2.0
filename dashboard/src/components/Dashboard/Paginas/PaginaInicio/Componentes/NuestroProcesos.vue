@@ -35,7 +35,7 @@
             'lg:pr-0': index % 2 == 1
           }"
         >
-          <FileUploaderRect />
+          <FileUploaderRect :imagedetbd="npro.imagen" @imgrecortada="asignarImagen($event, npro)" />
         </div>
       </div>
       <!-- contenido cuerpo -->
@@ -64,11 +64,13 @@
           contenteditable="true"
           class="border border-black ttlnpp text-AzulPerla text-5xl md:text-8xl py-5 lg:text-7xl break-words"
           :class="{ 'text-right': index % 2 == 0, 'text-left': index % 2 == 1 }"
+          @input="editarTitulo($event, npro)"
         >
-          {{ npro.subtitle }}
+          {{ npro.titulo }}
         </div>
-        <div contenteditable="true" class="border border-black ttlnpd text-AzulPerla text-xl">
+        <div class="border border-black ttlnpd text-AzulPerla text-xl">
           <p
+            contenteditable="true"
             class="text-justify md:text-5xl lg:text-xl"
             :class="{
               'lg:text-right': index % 2 == 0,
@@ -76,8 +78,9 @@
               'lg:pl-28': index % 2 == 0,
               'lg:pr-28': index % 2 == 1
             }"
+            @input="editarContenido($event, npro)"
           >
-            {{ npro.text }}
+            {{ npro.contenido }}
           </p>
         </div>
       </div>
@@ -91,70 +94,43 @@
   </div>
 </template>
 <script>
-// import imagen1 from "@/assets/Inicio/imgnp.jpeg";
-// import imagen2 from "@/assets/Inicio/imgnp (1).jpeg";
-// import imagen3 from "@/assets/Inicio/imgnp (2).jpeg";
-// import imagen4 from "@/assets/Inicio/imgnp (3).jpeg";
-// import imagen5 from "@/assets/Inicio/imgnp (4).jpg";
-// import imagen6 from "@/assets/Inicio/imgnp (4).jpg";
-
 import FileUploaderRect from '../../../General/FileUploaderRect.vue'
 
 export default {
   name: 'NuestrosProcesos',
   data() {
     return {
-      nuestrosPro: [
-        {
-          title: 'Etapa 1',
-          subtitle: 'Reproducción',
-          text: 'Nuestras granjas reproductoras están construidas en lugares ideales, aislados con temperatura moderada y cuentan con alta bioseguridad que ayudarán a tener un huevo fértil de calidad.',
-          image: '',
-          alt: 'imagen 1'
-        },
-        {
-          title: 'Etapa 2',
-          subtitle: 'Incubación',
-          text: 'Contamos con una sala de incubación, en la cual los huevos son colocados en bandejas y supervisados constantemente para su correcto desarrollo.',
-          image: '',
-          alt: 'imagen 2'
-        },
-        {
-          title: 'Etapa 3',
-          subtitle: 'Alimentación',
-          text: 'Producimos su alimento con equipos de alta tecnología, utilizando materias primas e insumos rigurosamente seleccionados.',
-          image: '',
-          alt: 'imagen 3'
-        },
-        {
-          title: 'Etapa 4',
-          subtitle: 'Pollo de Engorde',
-          text: 'Le proveemos a nuestras aves alimentos nutritivos para su crecimiento y desarrollo, obteniendo un pollo de excelente rendimiento y buena calidad.',
-          image: '',
-          alt: 'imagen 4'
-        },
-        {
-          title: 'Etapa 5',
-          subtitle: 'Centro de Beneficio',
-          text: 'El proceso final de nuestras aves es una etapa muy importante para garantizar la calidad de nuestro producto.',
-          image: '',
-          alt: 'imagen 5'
-        },
-        {
-          title: 'Etapa 6',
-          subtitle: 'Distribución',
-          text: 'Contamos con una moderna flota de camiones para la distribución del pollo Perla, para estar siempre atentos a las necesidades de nuestros clientes.',
-          image: '',
-          alt: 'imagen 6'
-        }
-      ]
+      nuestrosPro: [],
+      nuestrosProLocal: []
     }
   },
+  props: ['procesosData'],
   components: {
     FileUploaderRect
   },
-  methods: {},
-  mounted() {}
+  methods: {
+    editarTitulo(event, npro) {
+      npro.titulo = event.target.innerText
+      this.$emit('procesosupdate', this.nuestrosProLocal)
+    },
+    editarContenido(event, npro) {
+      npro.contenido = event.target.innerText
+      this.$emit('procesosupdate', this.nuestrosProLocal)
+    },
+    asignarImagen(valor, npro) {
+      npro.imagen = valor
+      this.$emit('procesosupdate', this.nuestrosProLocal)
+    }
+  },
+  mounted() {
+    this.nuestrosProLocal = this.procesosData
+  },
+  updated() {
+    this.nuestrosPro = this.procesosData
+
+    this.$emit('procesosupdate', this.nuestrosPro)
+    console.log(this.nuestrosPro)
+  }
 }
 </script>
 

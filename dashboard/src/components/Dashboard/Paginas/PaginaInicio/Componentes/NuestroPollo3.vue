@@ -1,7 +1,12 @@
 <template>
-  <div v-if="nuestrosPollosData && nuestrosPollosData.length > 0" class="np3 flex flex-col lg:flex-row justify-center">
+  <div
+    v-if="nuestrosPollosData && nuestrosPollosData.length > 0"
+    class="np3 flex flex-col lg:flex-row justify-center"
+  >
     <div class="lado1 flex flex-col lg:items-center justify-around lg:justify-around">
-      <div class="np3-contenedor contenedor-texto3 flex flex-col justify-center items-center lg:items-start">
+      <div
+        class="np3-contenedor contenedor-texto3 flex flex-col justify-center items-center lg:items-start"
+      >
         <p contenteditable="true" class="border titulo text-center lg:text-left" @input="titulo">
           {{ nuestrosPollosData[2].titulo }}
         </p>
@@ -13,7 +18,10 @@
         <div class="relative">
           <div class="circulo-fondo3"></div>
           <div class="absolute img-circulo3 shadow-2xl">
-            <FileUploaderDef :imagebd="nuestrosPollosData[2].imgGeneral" @imgrecortada="asignarimagen" />
+            <FileUploaderDef
+              :imagebd="nuestrosPollosData[2].imgGeneral"
+              @imgrecortada="asignarimagen"
+            />
           </div>
           <!-- <img src="../../assets/Inicio/imgcont3.jpg" class="absolute img-circulo3 shadow-2xl" alt="img-circulo3"> -->
         </div>
@@ -24,7 +32,10 @@
         <div class="relative">
           <div class="circulo-fondo3"></div>
           <div class="absolute img-circulo3 shadow-2xl">
-            <FileUploaderDef :imagebd="nuestrosPollosData[2].imgGeneral" @imgrecortada="asignarimagen" />
+            <FileUploaderDef
+              :imagebd="nuestrosPollosData[2].imgGeneral"
+              @imgrecortada="asignarimagen"
+            />
           </div>
           <!-- <img src="../../assets/Inicio/imgcont3.jpg" class="absolute img-circulo3 shadow-2xl" alt="img-circulo3"> -->
         </div>
@@ -40,7 +51,7 @@ export default {
       nuestroPolloLocal3: {
         titulo: '',
         contenido: '',
-        imgGeneral: '',
+        imgGeneral: ''
       }
     }
   },
@@ -63,10 +74,10 @@ export default {
       this.nuestroPolloLocal3.imgGeneral = valor
       console.log(this.nuestroPolloLocal3)
       this.$emit('dataupdate3', this.nuestroPolloLocal3)
-      console.log(valor);
-    },
+      console.log(valor)
+    }
   },
-  mounted() { },
+  mounted() {},
   updated() {
     this.nuestroPolloLocal3 = this.nuestrosPollosData[2]
     this.$emit('dataupdate3', this.nuestroPolloLocal3)

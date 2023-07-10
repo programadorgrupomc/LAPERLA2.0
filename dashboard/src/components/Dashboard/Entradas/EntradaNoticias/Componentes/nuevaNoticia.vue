@@ -86,19 +86,15 @@ export default {
       class="hidden lg:block absolute btn-control"
     /> -->
     <div class="flex justify-end">
-     <BtnBack/>
+      <BtnBack />
     </div>
     <div class="cont-noticiadata bg-FondoPerla">
       <div class="hero-nuevanoticia relative flex justify-center items-center overflow-hidden">
-        <FileUploaderRect/>
+        <FileUploaderRect />
       </div>
       <div class="cont-titulo">
         <p class="not-pre font-TestKarbonMedium">NOTICIAS</p>
-        <p
-          contenteditable="true"
-          class="titulo-not font-TestKarbonBold text-azulbsPerla"
-          
-        >
+        <p contenteditable="true" class="titulo-not font-TestKarbonBold text-azulbsPerla">
           TITULO DE LA NOTICIA
         </p>
         <!-- <textalign @clasetxt="asignarclase" /> -->
