@@ -1,6 +1,6 @@
 <template>
   <div class="botones-crud flex flex-col lg:flex-row justify-center items-center">
-    <button @click="guardar" class="flex justify-center items-center">
+    <button @click="guardarDatosCompletos" class="flex justify-center items-center">
       <img class="w-full h-full lg:hidden" src="../../../assets/Dashboard/General/Guardar.svg" alt="" />
       <p class="hidden lg:block">Guardar</p>
     </button>
@@ -20,39 +20,134 @@ import apiNuestroPollo from '@/services/Inicio/apiNuestroPollo.js'
 export default {
   data() {
     return {
-      datanp1: ''
+      datanp1: '',
+      datanp2: '',
+      datanp3: '',
     }
   },
-  props: ['dataNuestroPollo1'],
+  props: ['dataNuestroPollo1', 'dataNuestroPollo2', 'dataNuestroPollo3', 'dataNuestroPollo4'],
   methods: {
-    retroceder() {
-      this.$router.go(-1)
-    },
-    guardar() {
-      const nombreArchivo = "imagen_salida.png";
-      const archivo = this.base64ToFile(this.datanp1.imgGeneral, nombreArchivo);
-      console.log(archivo);
-      const formData = new FormData();
-      formData.append('titulo', this.datanp1.titulo);
-      formData.append('contenido', this.datanp1.contenido);
-      formData.append('imgGeneral', archivo); // archivoImgGeneral es un objeto File de la imagen general
-      formData.append('imgDetalle', archivo); // archivoImgDetalle es un objeto
+    guardarDatosCompletos() {
       const rpta = window.confirm('Esta seguro de guardar los datos!')
 
       if (rpta) {
-        apiNuestroPollo
-          .updateNuestroPollo(this.datanp1._id, formData)
-          .then((response) => {
-            alert("Registro Exitoso!");
-          })
-          .catch((error) => {
-            console.log(`Hubo un error al actualizar ${error}`)
-          })
+        this.guardarnp1();
+        this.guardarnp2();
+        this.guardarnp3();
+        this.guardarnp4();
       } else {
         alert('Error en datos, Revisar!')
       }
       location.reload();
     },
+    retroceder() {
+      this.$router.go(-1)
+    },
+
+
+    guardarnp1() {
+      const nombreArchivo = "imagen_salida.png";
+      let archivo;
+
+      if (this.isBase64(this.datanp1.imgGeneral)) {
+        archivo = this.base64ToFile(this.datanp1.imgGeneral, nombreArchivo);
+      } else {
+        archivo = '';
+      }
+      console.log(archivo);
+      const formData = new FormData();
+      formData.append('titulo', this.datanp1.titulo);
+      formData.append('contenido', this.datanp1.contenido);
+      formData.append('imgGeneral', archivo); // archivoImgGeneral es un objeto File de la imagen general
+      // formData.append('imgDetalle', archivo); // archivoImgDetalle es un objeto
+
+
+      apiNuestroPollo
+        .updateNuestroPollo(this.datanp1._id, formData)
+        .then((response) => {
+          alert("Registro Exitoso!");
+        })
+        .catch((error) => {
+          console.log(`Hubo un error al actualizar ${error}`)
+        })
+
+    },
+    guardarnp2() {
+      const nombreArchivo = "imagen_salida.png";
+      let archivo;
+
+      if (this.isBase64(this.datanp2.imgGeneral)) {
+        archivo = this.base64ToFile(this.datanp2.imgGeneral, nombreArchivo);
+      } else {
+        archivo = '';
+      }
+      console.log(archivo);
+      const formData = new FormData();
+      formData.append('titulo', this.datanp2.titulo);
+      formData.append('contenido', this.datanp2.contenido);
+      formData.append('imgGeneral', archivo); // archivoImgGeneral es un objeto File de la imagen general
+
+      apiNuestroPollo
+        .updateNuestroPollo(this.datanp2._id, formData)
+        .then((response) => {
+          alert("Registro Exitoso!");
+        })
+        .catch((error) => {
+          console.log(`Hubo un error al actualizar ${error}`)
+        })
+
+    },
+    guardarnp3() {
+      const nombreArchivo = "imagen_salida.png";
+      let archivo;
+
+      if (this.isBase64(this.datanp3.imgGeneral)) {
+        archivo = this.base64ToFile(this.datanp3.imgGeneral, nombreArchivo);
+      } else {
+        archivo = '';
+      }
+      console.log(archivo);
+      const formData = new FormData();
+      formData.append('titulo', this.datanp3.titulo);
+      formData.append('contenido', this.datanp3.contenido);
+      formData.append('imgGeneral', archivo); // archivoImgGeneral es un objeto File de la imagen general
+
+      apiNuestroPollo
+        .updateNuestroPollo(this.datanp3._id, formData)
+        .then((response) => {
+          alert("Registro Exitoso!");
+        })
+        .catch((error) => {
+          console.log(`Hubo un error al actualizar ${error}`)
+        })
+
+    },
+    guardarnp4() {
+      const nombreArchivo = "imagen_salida.png";
+      let archivo;
+
+      if (this.isBase64(this.datanp4.imgGeneral)) {
+        archivo = this.base64ToFile(this.datanp4.imgGeneral, nombreArchivo);
+      } else {
+        archivo = '';
+      }
+      console.log(archivo);
+      const formData = new FormData();
+      formData.append('titulo', this.datanp4.titulo);
+      formData.append('contenido', this.datanp4.contenido);
+      formData.append('imgGeneral', archivo); // archivoImgGeneral es un objeto File de la imagen general
+
+      apiNuestroPollo
+        .updateNuestroPollo(this.datanp4._id, formData)
+        .then((response) => {
+          alert("Registro Exitoso!");
+        })
+        .catch((error) => {
+          console.log(`Hubo un error al actualizar ${error}`)
+        })
+
+    },
+
     restaurar() {
       const rpta = window.confirm('Esta seguro de restaurar los datos!')
       if (rpta) {
@@ -74,11 +169,21 @@ export default {
       var file = new File([blob], fileName, { type: 'image/jpeg' }); // Puedes ajustar el tipo de archivo según el formato de la imagen
 
       return file;
+    },
+    isBase64(str) {
+      if (typeof str !== 'string') {
+        return false;
+      }
+      const regex = /^data:image\/[a-z]+;base64,/;
+      return regex.test(str);
     }
 
   },
   updated() {
-    this.datanp1 = this.dataNuestroPollo1
+    this.datanp1 = this.dataNuestroPollo1;
+    this.datanp2 = this.dataNuestroPollo2;
+    this.datanp3 = this.dataNuestroPollo3;
+    this.datanp4 = this.dataNuestroPollo4;
   },
   mounted() { }
 }

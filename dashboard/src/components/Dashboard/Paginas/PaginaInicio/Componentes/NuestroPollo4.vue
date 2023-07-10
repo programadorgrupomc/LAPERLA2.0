@@ -8,7 +8,7 @@
         <div class="relative">
           <div class="circulo-fondo4"></div>
           <div class="absolute img-circulo4 shadow-2xl">
-            <FileUploaderDef :imagebd="nuestrosPollosData[3].imgGeneral" />
+            <FileUploaderDef :imagebd="nuestrosPollosData[3].imgGeneral" @imgrecortada="asignarimagen"/>
           </div>
           <!-- <img src="../../assets/Inicio/imgcont2.jpg" class="absolute img-circulo4 shadow-2xl" alt="img-circulo4"> -->
         </div>
@@ -18,10 +18,10 @@
       <div
         class="np4-contenedor contenedor-texto4 flex flex-col justify-center items-center lg:items-end"
       >
-        <p contenteditable="true" class="border titulo text-center lg:text-right">
+        <p contenteditable="true" class="border titulo text-center lg:text-right" @input="titulo">
           {{ nuestrosPollosData[3].titulo }}
         </p>
-        <p contenteditable="true" class="border texto text-center lg:text-right">
+        <p contenteditable="true" class="border texto text-center lg:text-right" @input="contenido">
           {{ nuestrosPollosData[3].contenido }}
         </p>
       </div>
@@ -29,7 +29,7 @@
         <div class="relative">
           <div class="circulo-fondo4"></div>
           <div class="absolute img-circulo4 shadow-2xl">
-            <FileUploaderDef :imagebd="nuestrosPollosData[3].imgGeneral" />
+            <FileUploaderDef :imagebd="nuestrosPollosData[3].imgGeneral" @imgrecortada="asignarimagen"/>
           </div>
           <!-- <img src="../../assets/Inicio/imgcont2.jpg" class="absolute img-circulo4 shadow-2xl" alt="img-circulo4"> -->
         </div>
@@ -41,14 +41,41 @@
 import FileUploaderDef from '../../../General/FileUploaderDef.vue'
 export default {
   data() {
-    return {}
+    return {
+      nuestroPolloLocal4: {
+        titulo: '',
+        contenido: '',
+        imgGeneral: '',
+      }
+    }
   },
   props: ['nuestrosPollosData'],
   components: {
     FileUploaderDef
   },
-  methods: {},
-  mounted() {}
+  methods: {
+    titulo(event) {
+      this.nuestroPolloLocal4.titulo = event.target.innerText
+      console.log(this.nuestroPolloLocal4)
+      this.$emit('dataupdate4', this.nuestroPolloLocal4)
+    },
+    contenido(event) {
+      this.nuestroPolloLocal4.contenido = event.target.innerText
+      console.log(this.nuestroPolloLocal4)
+      this.$emit('dataupdate4', this.nuestroPolloLocal4)
+    },
+    asignarimagen(valor) {
+      this.nuestroPolloLocal4.imgGeneral = valor
+      console.log(this.nuestroPolloLocal4)
+      this.$emit('dataupdate4', this.nuestroPolloLocal4)
+      console.log(valor);
+    },
+  },
+  mounted() {},
+  updated() {
+    this.nuestroPolloLocal4 = this.nuestrosPollosData[3]
+    this.$emit('dataupdate4', this.nuestroPolloLocal4)
+  }
 }
 </script>
 <style scoped>
