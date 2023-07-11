@@ -1,10 +1,11 @@
 <template>
-  <div class="">
+  <div class="overflow-auto">
     <FolderRecetario />
   </div>
 </template>
 <script>
-import FolderRecetario from './Componentes/folderRecetas.vue'
+import FolderRecetario from './Componentes/FolderRecetas.vue'
+
 export default {
   components: {
     FolderRecetario

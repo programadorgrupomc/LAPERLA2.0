@@ -1,5 +1,8 @@
 <template>
   <div class="cont-nuevarecetagen">
+    <div class="fixed z-40 lg:z-50 cont-btn">
+      <BotonesCrudEntradaRec class="btn-crud" />
+    </div>
     <!-- <botonesControl :nuevareceta="this.nuevaRecetaData" @recetavacia="actualizarreceta"
       class="hidden lg:block absolute btn-control" /> -->
     <div class="flex justify-end">
@@ -390,7 +393,7 @@
 import Swiper from 'swiper'
 import BtnBack from '../../../General/BtnBack.vue'
 import FileUploaderRect from '../../../General/FileUploaderRect.vue'
-
+import BotonesCrudEntradaRec from '../BotonesCrudEntradaRec.vue'
 export default {
   data() {
     return {
@@ -413,7 +416,8 @@ export default {
   },
   components: {
     BtnBack,
-    FileUploaderRect
+    FileUploaderRect,
+    BotonesCrudEntradaRec
   },
   methods: {
     cambiarEstado() {
@@ -534,6 +538,17 @@ export default {
 }
 </script>
 <style scoped>
+.cont-btn {
+  height: auto;
+  width: auto;
+  bottom: 10%;
+  right: 1%;
+}
+
+.btn-crud {
+  height: 10vh;
+  /* background-color: rgba(220, 20, 60, 0.238); */
+}
 .btn-back {
   padding: 5%;
   padding-top: 1%;
@@ -656,6 +671,17 @@ export default {
 }
 
 @media (min-width: 1024px) {
+  .cont-btn {
+    width: 30vh;
+    height: 7vh;
+    top: 0%;
+    right: 15vw;
+  }
+
+  .btn-crud {
+    height: 7vh;
+    /* background-color: rgba(220, 20, 60, 0.238); */
+  }
   .btn-control {
     height: 6vh;
     top: -0%;

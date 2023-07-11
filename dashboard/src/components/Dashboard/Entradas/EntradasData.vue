@@ -21,6 +21,8 @@
   </div>
 </template>
 <script>
+import BotonesCrudEntradaRec from './EntradaRecetario/BotonesCrudEntradaRec.vue';
+
 export default {
   data() {
     return {
@@ -30,7 +32,9 @@ export default {
       estadoviewinputs: true
     }
   },
-  components: {},
+  components: {
+    BotonesCrudEntradaRec
+  },
   methods: {}
 }
 </script>

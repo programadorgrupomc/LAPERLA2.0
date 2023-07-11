@@ -8,12 +8,19 @@ const recetaSchema = new mongoose.Schema({
   infnutricional: { type: String },
   categoria: { type: String },
   imgGeneral: { type: String },
-  ingredientes: [{ type: String }],
-  preparacion: [{ type: String }],
-  imgsCarousel: [{ type: String }],
+  ingredientes: [{
+    nombre: { type: String },
+  }],
+  preparacion: [{
+    paso: { type: String },
+  }],
+  imgCarousel: [{
+    img: { type: String },
+  }],
   usuarioUltimaModificacion: { type: String },
   fechaUltimaModificacion: { type: Date },
 });
 
-const Recetario = mongoose.model("Recetario", recetaSchema);
-export default Recetario;
+const Receta = mongoose.model("Receta", recetaSchema);
+
+export default Receta;

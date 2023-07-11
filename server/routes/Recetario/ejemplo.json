@@ -1,0 +1,39 @@
+{
+    "tittulo": "Receta1",
+    "dificultad": "Media",
+    "porciones": "Dos",
+    "tiempo": "Una Hora",
+    "infnutricional": "124 k/cal",
+    "categoria": "Entradas",
+    "imgGeneral": "imagen1.png",
+    "ingredientes": [
+        {
+            "nombre": "1lt Agua"
+        },
+        {
+            "nombre": "1lt sal"
+        },
+        {
+            "nombre": "1lt azucar"
+        }
+    ],
+    "preparacion": [
+        {
+            "paso": "En este paso se pone a hervir el agua"
+        },
+        {
+            "paso": "En este paso se pone a hecha el sal"
+        },
+        {
+            "paso": "En este paso se pone a hervir el agua"
+        }
+    ],
+    "imgCarousel":[
+        {"img":"imagen1.png"},
+        {"img":"imagen2.png"},
+        {"img":"imagen3.png"},
+        {"img":"imagen4.png"}
+    ],
+    "usuarioUltimaModificacion":"user",
+    "fechaUltimaModificacion":"date"
+}

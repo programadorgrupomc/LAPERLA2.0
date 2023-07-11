@@ -23,7 +23,7 @@
           @estadocam="actualizarbarra"
         />
       </div>
-      <div class="contenido">
+      <div class="contenido overflow-y-auto">
         <RouterView />
       </div>
     </div>
