@@ -1,15 +1,27 @@
 <template>
   <div class="botones-crud flex flex-col lg:flex-row justify-center items-center">
     <button @click="guardarDatosCompletos" class="flex justify-center items-center">
-      <img class="w-full h-full lg:hidden" src="../../../assets/Dashboard/General/Guardar.svg" alt="" />
+      <img
+        class="w-full h-full lg:hidden"
+        src="../../../assets/Dashboard/General/Guardar.svg"
+        alt=""
+      />
       <p class="hidden lg:block">Guardar</p>
     </button>
     <button @click="restaurar" class="flex justify-center items-center">
-      <img class="w-full h-full lg:hidden" src="../../../assets/Dashboard/General/escoba.svg" alt="" />
+      <img
+        class="w-full h-full lg:hidden"
+        src="../../../assets/Dashboard/General/escoba.svg"
+        alt=""
+      />
       <p class="hidden lg:block">Restaurar</p>
     </button>
     <button class="flex justify-center items-center" @click="retroceder">
-      <img class="w-full h-full lg:hidden" src="../../../assets/Dashboard/General/deshacer.svg" alt="" />
+      <img
+        class="w-full h-full lg:hidden"
+        src="../../../assets/Dashboard/General/deshacer.svg"
+        alt=""
+      />
       <p class="hidden lg:block">Atras</p>
     </button>
   </div>
@@ -43,7 +55,7 @@ export default {
       const rpta = window.confirm('Esta seguro de guardar los datos!')
 
       if (rpta) {
-        this.guardarhero();
+        this.guardarhero()
         // this.guardarnp1();
         // this.guardarnp2();
         // this.guardarnp3();
@@ -81,8 +93,7 @@ export default {
         .catch((error) => {
           console.log(`Hubo un error al actualizar ${error}`)
         })
-    }
-    ,
+    },
     guardarnp1() {
       const nombreArchivo = 'imagen_salida.png'
       let archivo
@@ -245,7 +256,7 @@ export default {
     this.dataproceso = this.newProcesos
     this.datahero = this.newhero
   },
-  mounted() { }
+  mounted() {}
 }
 </script>
 <style scoped>

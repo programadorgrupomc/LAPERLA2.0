@@ -1,26 +1,26 @@
 <template>
-    <div class="vista-recetario">
-        <RecetasRecetario />
-    </div>
+  <div class="vista-recetario">
+    <RecetasRecetario />
+  </div>
 </template>
 
 <script>
-import RecetasRecetario from '../components/Recetario/RecetasRecetario.vue';
+import RecetasRecetario from '../components/Recetario/RecetasRecetario.vue'
 
 export default {
-    components: {
-        RecetasRecetario,
-    }
+  components: {
+    RecetasRecetario
+  }
 }
 </script>
 
 <style scoped>
-.vista-recetario{
-    background-color: #FCF5EB;
+.vista-recetario {
+  background-color: #fcf5eb;
 }
 @media (min-width: 1024px) {
-    .vista-recetario {
-        padding-top: 12vh;
-    }
+  .vista-recetario {
+    padding-top: 12vh;
+  }
 }
 </style>

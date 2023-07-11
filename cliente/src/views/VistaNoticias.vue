@@ -1,23 +1,23 @@
 <template>
-    <div class="vista-noticias">
-        <NoticiasNoticia />
-    </div>
+  <div class="vista-noticias">
+    <NoticiasNoticia />
+  </div>
 </template>
 <script>
-import NoticiasNoticia from '../components/Noticias/NoticiasNoticia.vue';
+import NoticiasNoticia from '../components/Noticias/NoticiasNoticia.vue'
 export default {
-    components: {
-        NoticiasNoticia,
-    }
+  components: {
+    NoticiasNoticia
+  }
 }
 </script>
 <style scoped>
-.vista-noticias{
-    background-color: #FCF5EB;
+.vista-noticias {
+  background-color: #fcf5eb;
 }
 @media (min-width: 1024px) {
-    .vista-noticias {
-        padding-top: 12vh;
-    }
+  .vista-noticias {
+    padding-top: 12vh;
+  }
 }
 </style>

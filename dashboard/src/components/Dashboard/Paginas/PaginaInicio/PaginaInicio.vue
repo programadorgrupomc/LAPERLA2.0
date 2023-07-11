@@ -1,16 +1,43 @@
 <template>
   <div class="h-full w-full overflow-y-auto">
     <div class="fixed z-40 lg:z-50 cont-btn">
-      <BotonesCrud class="btn-crud" :dataNuestroPollo1="newDataNp1" :dataNuestroPollo2="newDataNp2"
-        :dataNuestroPollo3="newDataNp3" :dataNuestroPollo4="newDataNp4" :newProcesos="newDataProcesos" :newhero="newdatahero"/>
+      <BotonesCrud
+        class="btn-crud"
+        :dataNuestroPollo1="newDataNp1"
+        :dataNuestroPollo2="newDataNp2"
+        :dataNuestroPollo3="newDataNp3"
+        :dataNuestroPollo4="newDataNp4"
+        :newProcesos="newDataProcesos"
+        :newhero="newdatahero"
+      />
     </div>
     <div class="cont-components w-full h-full">
       <componentHero class="border" :heroesdata="heroes" @dataupdatehero="actualizarnewDataHero" />
-      <NuestroPollo1 class="border" :nuestrosPollosData="nuestrosPollos" @dataupdate="actualizarnewdataNp1" />
-      <NuestroPollo2 class="border" :nuestrosPollosData="nuestrosPollos" @dataupdate2="actualizarnewdataNp2" />
-      <NuestroPollo3 class="border" :nuestrosPollosData="nuestrosPollos" @dataupdate3="actualizarnewdataNp3" />
-      <NuestroPollo4 class="border" :nuestrosPollosData="nuestrosPollos" @dataupdate4="actualizarnewdataNp4" />
-      <NuestroProcesos class="border" :procesosData="procesos" @procesosupdate="actualizarnewdataprocesos" />
+      <NuestroPollo1
+        class="border"
+        :nuestrosPollosData="nuestrosPollos"
+        @dataupdate="actualizarnewdataNp1"
+      />
+      <NuestroPollo2
+        class="border"
+        :nuestrosPollosData="nuestrosPollos"
+        @dataupdate2="actualizarnewdataNp2"
+      />
+      <NuestroPollo3
+        class="border"
+        :nuestrosPollosData="nuestrosPollos"
+        @dataupdate3="actualizarnewdataNp3"
+      />
+      <NuestroPollo4
+        class="border"
+        :nuestrosPollosData="nuestrosPollos"
+        @dataupdate4="actualizarnewdataNp4"
+      />
+      <NuestroProcesos
+        class="border"
+        :procesosData="procesos"
+        @procesosupdate="actualizarnewdataprocesos"
+      />
     </div>
   </div>
 </template>

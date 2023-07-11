@@ -24,7 +24,7 @@ import BotonHeader from './Header/BotonHeader.vue'
 export default {
   data() {
     return {
-      estadoMenu: false,
+      estadoMenu: false
     }
   },
   components: {
@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     manejarMenu(valor) {
-      this.estadoMenu = valor;
+      this.estadoMenu = valor
     }
   }
 }

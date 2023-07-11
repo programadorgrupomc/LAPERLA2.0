@@ -21,7 +21,7 @@
   </div>
 </template>
 <script>
-import BotonesCrudEntradaRec from './EntradaRecetario/BotonesCrudEntradaRec.vue';
+import BotonesCrudEntradaRec from './EntradaRecetario/BotonesCrudEntradaRec.vue'
 
 export default {
   data() {

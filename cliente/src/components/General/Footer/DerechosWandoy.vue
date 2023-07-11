@@ -1,33 +1,31 @@
 <template>
-    <div class="derechos flex justify-center items-center">
-        <p>&copy; Wandoy 2023</p>
-    </div>
+  <div class="derechos flex justify-center items-center">
+    <p>&copy; Wandoy 2023</p>
+  </div>
 </template>
 <script>
-export default {
-
-}
+export default {}
 </script>
 <style scoped>
 .derechos {
-    background-color: #DEDEDE;
-    height: 7vh;
+  background-color: #dedede;
+  height: 7vh;
 }
 
 .derechos p {
-    color: #471D7C;
-    font-size: 2vh;
+  color: #471d7c;
+  font-size: 2vh;
 }
 
 @media (min-width: 1024px) {
-    .derechos {
-        background-color: #DEDEDE;
-        height: 5vw;
-    }
+  .derechos {
+    background-color: #dedede;
+    height: 5vw;
+  }
 
-    .derechos p {
-        color: #471D7C;
-        font-size: 1.5vw;
-    }
+  .derechos p {
+    color: #471d7c;
+    font-size: 1.5vw;
+  }
 }
 </style>

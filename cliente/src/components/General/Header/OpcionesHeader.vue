@@ -1,14 +1,17 @@
 <template>
   <div class="opciones lg:flex">
     <div v-for="opcion in opciones" :key="opcion.id" class="opciones-opcion flex">
-      <img src="../../../assets/General/circle.svg" class="opcion-circle hidden lg:block" alt="circle-svg" />
+      <img
+        src="../../../assets/General/circle.svg"
+        class="opcion-circle hidden lg:block"
+        alt="circle-svg"
+      />
       <p class="opcion">{{ opcion.opcion }}</p>
     </div>
   </div>
 </template>
 
 <script>
-
 export default {
   data() {
     return {
@@ -22,9 +25,7 @@ export default {
       ]
     }
   },
-  components: {
-
-  }
+  components: {}
 }
 </script>
 
