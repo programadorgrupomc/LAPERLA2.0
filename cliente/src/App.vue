@@ -11,7 +11,7 @@ import footerPerla from './components/General/headerold/footerPerla.vue';
     <headerPerla />
   </header>
 
-  <main>
+  <main class="viewgen">
     <RouterView />
   </main>
 
@@ -21,4 +21,8 @@ import footerPerla from './components/General/headerold/footerPerla.vue';
   </footer>
 </template>
 
-<style scoped></style>
+<style scoped>
+@media (min-width: 1024px) {
+  
+}
+</style>

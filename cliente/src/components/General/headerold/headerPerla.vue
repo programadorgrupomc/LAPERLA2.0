@@ -25,12 +25,14 @@ export default {
             const showAnim = gsap.from('.escritorio', {
                 yPercent: -150,
                 paused: true,
-                duration: 0.2
+                duration: 0.2,
+
             }).progress(1);
 
             ScrollTrigger.create({
-                start: "top top",
+                start: "+=0vh top",
                 end: 99999,
+                // markers: true,
                 onUpdate: (self) => {
                     self.direction === -1 ? showAnim.play() : showAnim.reverse()
                 }
@@ -45,9 +47,9 @@ export default {
 <style scoped>
 .escritorio {
     display: none;
-    box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.50);
-    -webkit-box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.50);
-    -moz-box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.50);
+    box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.030);
+    -webkit-box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.030);
+    -moz-box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.030);
 }
 
 .mobile {

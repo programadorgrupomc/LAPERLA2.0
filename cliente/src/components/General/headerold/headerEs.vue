@@ -53,6 +53,8 @@
 <script>
 import logoHeader from "./logoHeader.vue";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 export default {
     data() {
@@ -63,13 +65,20 @@ export default {
             titulo4: 'NOTICIAS',
             titulo5: 'TRABAJA CON NOSOTROS',
             titulo6: 'CONTACTANOS',
+            Scrollg: '',
         }
     },
     components: {
         logoHeader,
     },
     mounted() {
+        window.addEventListener('scroll', () => {
+            this.Scrollg = window.scrollY; // Actualizar la variable con la altura de scroll
+             // Mostrar la altura de scroll en la consola (puedes hacer cualquier otra operación con la variable)
+        });
         this.animacionHeaderEs();
+        this.color();
+
     },
     methods: {
         animacionHeaderEs() {
@@ -194,12 +203,51 @@ export default {
             i6.addEventListener("mouseenter", () => animation61.play());
             i6.addEventListener("mouseleave", () => animation61.reverse());
         },
+        color() {
+
+            const showAnim1 = gsap.to('.cont-navbar', {
+                backgroundColor: "#FCF5EB"
+            }).progress(1);
+
+            const showAnim2 = gsap.to('.cont-navbar', {
+                backgroundColor: "#fcf5eb13",
+
+            }).progress(1);
+
+            ScrollTrigger.create({
+                start: "+=0vh top",
+                end: 99999,
+                onUpdate: (self) => {
+                    if (this.Scrollg >= 400) {
+                        self.direction === -1 ? showAnim1.play() : showAnim1.reverse()
+                    } else {
+                        self.direction === -1 ? showAnim2.play() : showAnim2.reverse()
+                        // const navbar = document.querySelector('.cont-navbar');
+
+                        // navbar.addEventListener('mouseenter', () => {
+                        //     gsap.to(navbar, {
+                        //         backgroundColor: "#fcf5ebae",
+                        //         duration: 1
+                        //     });
+                        // });
+
+                        // navbar.addEventListener('mouseleave', () => {
+                        //     gsap.to(navbar, {
+                        //         backgroundColor: "#fcf5eb1b",
+                        //         duration: 1
+                        //     });
+                        // });
+                    }
+                }
+            });
+        }
     },
 };
 </script>
 <style scoped>
 .cont-navbar {
-    background-color: #FCF5EB;
+    background-color: #fcf5eb13;
+    backdrop-filter: blur(2px);
     width: 100%;
     height: 12vh;
     display: flex;
@@ -218,7 +266,6 @@ export default {
     width: 15%;
     display: flex;
     justify-content: center;
-
 }
 
 .itemH {

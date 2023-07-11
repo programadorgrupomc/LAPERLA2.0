@@ -12,6 +12,9 @@ export default {
 }
 </script>
 <style scoped>
+.vista-noticias{
+    background-color: #FCF5EB;
+}
 @media (min-width: 1024px) {
     .vista-noticias {
         padding-top: 12vh;

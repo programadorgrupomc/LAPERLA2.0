@@ -24,21 +24,18 @@ export default {
 <style scoped>
 .video-es {
     width: 100%;
-    height: 90vh;
     object-fit: fill;
     display: none;
 }
 
 .video-ta {
     width: 100%;
-    height: 90vh;
     object-fit: fill;
     display: none;
 }
 
 .video-mo {
     width: 100%;
-    height: 90vh;
     object-fit: fill;
 }
 

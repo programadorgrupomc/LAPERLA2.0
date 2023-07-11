@@ -32,7 +32,7 @@ import ButtomDesliza from '../components/General/ButtomDesliza.vue';
 
 @media (min-width: 1024px) {
   .vista-inicio {
-    padding-top: 12vh;
+/* padding-top: 12vh; */
   }
   
 }

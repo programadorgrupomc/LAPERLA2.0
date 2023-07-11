@@ -16,7 +16,6 @@ router.get("/", async (req, res) => {
 //obtener receta por Id
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
-
   try {
     const receta = await RecetarioModel.findById(id);
     if (receta) {

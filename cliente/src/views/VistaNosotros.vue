@@ -24,6 +24,7 @@ export default {
 <style scoped>
 .vista-nosotros {
     overflow: hidden;
+    background-color: #FCF5EB;
 }
 
 @media (min-width: 1024px) {

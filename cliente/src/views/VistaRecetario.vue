@@ -15,6 +15,9 @@ export default {
 </script>
 
 <style scoped>
+.vista-recetario{
+    background-color: #FCF5EB;
+}
 @media (min-width: 1024px) {
     .vista-recetario {
         padding-top: 12vh;
