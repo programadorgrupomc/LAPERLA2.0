@@ -63,6 +63,7 @@ export default {
             this.isImage = false
             this.isVideo = true
             this.isPDF = false
+            this.$emit('imgrecortada', file)
           } else if (file.type.includes('pdf')) {
             this.isImage = false
             this.isVideo = false

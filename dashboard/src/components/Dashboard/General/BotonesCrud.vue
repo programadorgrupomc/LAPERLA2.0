@@ -1,27 +1,15 @@
 <template>
   <div class="botones-crud flex flex-col lg:flex-row justify-center items-center">
     <button @click="guardarDatosCompletos" class="flex justify-center items-center">
-      <img
-        class="w-full h-full lg:hidden"
-        src="../../../assets/Dashboard/General/Guardar.svg"
-        alt=""
-      />
+      <img class="w-full h-full lg:hidden" src="../../../assets/Dashboard/General/Guardar.svg" alt="" />
       <p class="hidden lg:block">Guardar</p>
     </button>
     <button @click="restaurar" class="flex justify-center items-center">
-      <img
-        class="w-full h-full lg:hidden"
-        src="../../../assets/Dashboard/General/escoba.svg"
-        alt=""
-      />
+      <img class="w-full h-full lg:hidden" src="../../../assets/Dashboard/General/escoba.svg" alt="" />
       <p class="hidden lg:block">Restaurar</p>
     </button>
     <button class="flex justify-center items-center" @click="retroceder">
-      <img
-        class="w-full h-full lg:hidden"
-        src="../../../assets/Dashboard/General/deshacer.svg"
-        alt=""
-      />
+      <img class="w-full h-full lg:hidden" src="../../../assets/Dashboard/General/deshacer.svg" alt="" />
       <p class="hidden lg:block">Atras</p>
     </button>
   </div>
@@ -29,9 +17,12 @@
 <script>
 import apiNuestroPollo from '@/services/Inicio/apiNuestroPollo.js'
 import apiProcesos from '@/services/Inicio/apiProcesos.js'
+import apiHero from '@/services/Inicio/apiHero.js'
+
 export default {
   data() {
     return {
+      datahero: '',
       datanp1: '',
       datanp2: '',
       datanp3: '',
@@ -44,18 +35,20 @@ export default {
     'dataNuestroPollo2',
     'dataNuestroPollo3',
     'dataNuestroPollo4',
-    'newProcesos'
+    'newProcesos',
+    'newhero'
   ],
   methods: {
     guardarDatosCompletos() {
       const rpta = window.confirm('Esta seguro de guardar los datos!')
 
       if (rpta) {
+        this.guardarhero();
         // this.guardarnp1();
         // this.guardarnp2();
         // this.guardarnp3();
         // this.guardarnp4();
-        this.guardarprocesos()
+        //this.guardarprocesos()
       } else {
         alert('Error en datos, Revisar!')
       }
@@ -65,6 +58,31 @@ export default {
       this.$router.go(-1)
     },
 
+    guardarhero() {
+      const nombreArchivo = 'imagen_salida.png'
+      let archivo
+      const formData = new FormData()
+
+      if (this.isBase64(this.datahero.imgVisual)) {
+        archivo = this.base64ToFile(this.datahero.imgVisual, nombreArchivo)
+        formData.append('contenido', this.datahero.contenido)
+        formData.append('imgVisual', archivo)
+      } else {
+        formData.append('contenido', this.datahero.contenido)
+        formData.append('imgVisual', this.datahero.imgVisual)
+      }
+
+      console.log(archivo)
+      apiHero
+        .updateHero(this.datahero._id, formData)
+        .then((response) => {
+          alert('Registro Exitoso!')
+        })
+        .catch((error) => {
+          console.log(`Hubo un error al actualizar ${error}`)
+        })
+    }
+    ,
     guardarnp1() {
       const nombreArchivo = 'imagen_salida.png'
       let archivo
@@ -225,8 +243,9 @@ export default {
     this.datanp3 = this.dataNuestroPollo3
     this.datanp4 = this.dataNuestroPollo4
     this.dataproceso = this.newProcesos
+    this.datahero = this.newhero
   },
-  mounted() {}
+  mounted() { }
 }
 </script>
 <style scoped>
