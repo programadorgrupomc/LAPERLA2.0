@@ -1,15 +1,19 @@
 <template>
   <div class="vista-login flex flex-col justify-center items-center">
-    <logo-login />
+    <!-- <logo-login />
     <transition name="fade" appear>
       <login-form v-show="showform" />
-    </transition>
+    </transition> -->
+    <file-uploader-carousel/>
   </div>
 </template>
 
 <script>
 import LogoLogin from '../components/Login/LogoLogin.vue'
 import LoginForm from '../components/Login/LoginForm.vue'
+
+import FileUploaderCarousel from '../components/Dashboard/General/FileUploaderCarousel.vue'
+
 export default {
   data() {
     return {
@@ -18,7 +22,8 @@ export default {
   },
   components: {
     LogoLogin,
-    LoginForm
+    LoginForm,
+    FileUploaderCarousel
   },
   methods: {
     showformf() {
