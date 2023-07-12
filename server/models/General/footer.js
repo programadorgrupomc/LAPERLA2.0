@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-const opcionesheaderSchema = new mongoose.Schema({
+const footerSchema = new mongoose.Schema({
   telefono: { type: String },
   email: { type: String },
   direccion: { type: String },
@@ -7,5 +7,5 @@ const opcionesheaderSchema = new mongoose.Schema({
   fechaUltimaModificacion: { type: Date },
 });
 
-const OpcionesHeader = mongoose.model("OpcionesHeader", opcionesheaderSchema);
-export default OpcionesHeader;
+const footer = mongoose.model("footer", footerSchema);
+export default footer;
