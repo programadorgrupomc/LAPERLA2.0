@@ -3,19 +3,22 @@ import seleccionFormPv from './seleccionFormPv.vue'
 import apiPuestosVacantes from '../../../../../services/Work/apiPuestosVacantes';
 import BtnBack from '../../../General/BtnBack.vue'
 import FileUploaderDef from '../../../General/FileUploaderDef.vue'
+import BotonesCrudActualizar from '../BotonesCrudActualizar.vue'
 export default {
   data() {
     return {
       estadoeditarpv: true,
       estadoseleccionform: false,
       puestosVacantes: '',
-      imagenpv: ''
+      imagenpv: '',
+      newDatapv: ''
     }
   },
   components: {
     FileUploaderDef,
     seleccionFormPv,
-    BtnBack
+    BtnBack,
+    BotonesCrudActualizar
   },
   props: ['idpv'],
   methods: {
@@ -42,10 +45,45 @@ export default {
         this.imagenpv = '' // Limpiar la URL de la imagen si no se selecciona ningún archivo
       }
     },
+
+    asignarmagen(valor) {
+      this.newDatapv.imgPuesto = valor
+      console.log(this.newDatapv)
+      this.$emit('newDatapv', this.newDatapv)
+      console.log(valor)
+    },
+    titulo(event) {
+      this.newDatapv.titulo = event.target.innerText
+      console.log(this.newDatapv)
+      this.$emit('newDatapv', this.newDatapv)
+    },
+    experiencia(event) {
+      this.newDatapv.experiencia = event.target.innerText
+      console.log(this.newDatapv)
+      this.$emit('newDatapv', this.newDatapv)
+    },
+    departamento(event) {
+      this.newDatapv.departamento = event.target.innerText
+      console.log(this.newDatapv)
+      this.$emit('newDatapv', this.newDatapv)
+    },
+    tipoempleo(event) {
+      this.newDatapv.tipoempleo = event.target.innerText
+      console.log(this.newDatapv)
+      this.$emit('newDatapv', this.newDatapv)
+    },
+    objetivoPuesto(event) {
+      this.newDatapv.objetivoPuesto = event.target.innerText
+      console.log(this.newDatapv)
+      this.$emit('newDatapv', this.newDatapv)
+    },
+
     fetchPv() {
       apiPuestosVacantes.getPuestosVacantes()
         .then((response) => {
           this.puestosVacantes = response.data;
+          this.newDatapv = this.puestosVacantes.find((puesto) => puesto._id === this.idpv)
+          this.$emit('newDatapv', this.newDatapv)
         })
         .catch((error) => {
           console.log('Hubo un problema con la peticion', error)
@@ -55,15 +93,18 @@ export default {
   },
   created() {
     this.fetchPv();
+
   }
 }
 </script>
 <template>
   <div v-if="estadoeditarpv" class="nuevo-pv">
-    <botonesControl @recetavacia="actualizarreceta" class="hidden lg:block absolute btn-control" />
+    <div class="fixed z-40 lg:z-50 cont-btn">
+      <BotonesCrudActualizar class="btn-crud" :newDatapv="newDatapv" />
+    </div>
     <div class="flex justify-end">
       <button @click="cambiarEstado" class="btn-back flex items-center">
-        <BtnBack disabled/>
+        <BtnBack disabled />
       </button>
     </div>
     <div v-for="puesto in puestosVacantes" class="cont-workdes">
@@ -76,7 +117,7 @@ export default {
         </div>
         <div class="ttl-work lg:w-2/4">
           <div class="font-bold">
-            <h1 contenteditable="true" class="ttl-work1 text-center font-TestKarbonSemiBold text-AzulPerla lg:text-right">
+            <h1 contenteditable="true" class="ttl-work1 text-center font-TestKarbonSemiBold text-AzulPerla lg:text-right" @input="titulo">
               {{ puesto.titulo }}
             </h1>
             <div class="lg:flex">
@@ -87,7 +128,7 @@ export default {
                     transform="translate(-3 -3)" fill="#df9575" />
                 </svg>
 
-                &nbsp; <span class="spn-ind" contenteditable="true">{{ puesto.experiencia }}</span>
+                &nbsp; <span class="spn-ind" contenteditable="true" @input="experiencia">{{ puesto.experiencia }}</span>
               </div>
               <div class="ind-tipo flex font-KarbonRegular items-center justify-end">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.25 22.25">
@@ -96,7 +137,7 @@ export default {
                     transform="translate(-3 -3)" fill="#df9575" />
                 </svg>
 
-                &nbsp; <span class="spn-ind" contenteditable="true">{{ puesto.departamento }}</span>
+                &nbsp; <span class="spn-ind" contenteditable="true" @input="departamento">{{ puesto.departamento }}</span>
               </div>
               <div class="ind-tipo flex font-KarbonRegular items-center justify-end">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.25 22.25">
@@ -104,8 +145,7 @@ export default {
                     d="M14.125,3A11.125,11.125,0,1,0,25.25,14.125,11.158,11.158,0,0,0,14.125,3ZM18.8,18.8l-5.785-3.56V8.562h1.669v5.785l5.006,3Z"
                     transform="translate(-3 -3)" fill="#df9575" />
                 </svg>
-
-                &nbsp; <span class="spn-ind" contenteditable="true">{{ puesto.tipoempleo }}</span>
+                &nbsp; <span class="spn-ind" contenteditable="true" @input="tipoempleo">{{ puesto.tipoempleo }}</span>
               </div>
             </div>
           </div>
@@ -113,7 +153,7 @@ export default {
             <h1 class="underline font-KarbonRegular text-AzulPerla text-left">
               Objetivo del puesto
             </h1>
-            <p contenteditable="true" class="text-justify font-KarbonRegular text-AzulPerla">
+            <p contenteditable="true" class="text-justify font-KarbonRegular text-AzulPerla" @input="objetivoPuesto">
               {{ puesto.objetivoPuesto }}
             </p>
           </div>
@@ -148,6 +188,18 @@ export default {
   <seleccionFormPv v-if="estadoseleccionform" @seleccionformcam="actuaizarseleccionform" />
 </template>
 <style scoped>
+.cont-btn {
+  height: auto;
+  width: auto;
+  bottom: 10%;
+  right: 1%;
+}
+
+.btn-crud {
+  height: 10vh;
+  /* background-color: rgba(220, 20, 60, 0.238); */
+}
+
 .nuevo-pv {
   padding-bottom: 5vh;
 }
@@ -292,6 +344,18 @@ svg {
 }
 
 @media (min-width: 1024px) {
+  .cont-btn {
+    width: 30vh;
+    height: 7vh;
+    top: 0%;
+    right: 15vw;
+  }
+
+  .btn-crud {
+    height: 7vh;
+    /* background-color: rgba(220, 20, 60, 0.238); */
+  }
+
   .btn-control {
     height: 6vh;
     top: -0%;

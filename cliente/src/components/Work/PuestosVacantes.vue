@@ -1,8 +1,9 @@
 <script>
 import FiltroVac from './FiltroVac.vue'
 import Search from './search.vue'
-
 import imagenpuesto from '../../assets/Work/imgwork1 (1).jpg'
+
+import apiPuestosVacantes from '../../../../dashboard/src/services/Work/apiPuestosVacantes.js'
 
 export default {
   components: {
@@ -12,74 +13,27 @@ export default {
   data() {
     return {
       puestos: [
-        {
-          id: '1',
-          titulo: 'Analista Senior de Transformacion de Procesos',
-          experiencia: '',
-          departamento: '',
-          tipoempleo: 'FullTime',
-          descripcion:
-            'Ejecutar procesos y proyectos de transformación del banco, acompañando a las distintas áreas durante el ciclo de vida de la transformación (concepción, diseño, implementación y control), con el objetivo de generar eficiencias y automatizaciones.',
-          funciones:
-            'Liderar proyectos de mejora (mediano plazo) y proyectos de transformación (largo plazo), principalmente de carácter tecnológico, acompañando al negocio durante el todo el ciclo de vida (concepto, propuesta de diseño, implementación, resultados, seguimiento). Se puede tener más de 1 proyecto simultáneamente. Ejecutar relevamientos, entrevistas, medición de tiempos en proyectos de mejora y proyectos de transformación. Ejecutar proyectos de mejora y transformación, de acuerdo a la asignación del jefe. Atender pedidos, formalizaciones o miniproyectos (menor duración). Atender pedidos y formalizaciones. Realizar Mentoring a los Analistas Junior y Middle como guía de proyectos.',
-          requisitos:
-            'Liderar proyectos de mejora (mediano plazo) y proyectos de transformación (largo plazo), principalmente de carácter tecnológico, acompañando al negocio durante el todo el ciclo de vida (concepto, propuesta de diseño, implementación, resultados, seguimiento). Se puede tener más de 1 proyecto simultáneamente. Ejecutar relevamientos, entrevistas, medición de tiempos en proyectos de mejora y proyectos de transformación. Ejecutar proyectos de mejora y transformación, de acuerdo a la asignación del jefe. Atender pedidos, formalizaciones o miniproyectos (menor duración). Atender pedidos y formalizaciones. Realizar Mentoring a los Analistas Junior y Middle como guía de proyectos.',
-          sueldo: '',
-          formulario: '',
-          imagen: imagenpuesto
-        },
-        {
-          id: '2',
-          titulo: 'Analista Junior de Estrategia Comercial',
-          experiencia: '',
-          departamento: '',
-          tipoempleo: 'FullTime',
-          descripcion:
-            'Ejecutar procesos y proyectos de transformación del banco, acompañando a las distintas áreas durante el ciclo de vida de la transformación (concepción, diseño, implementación y control), con el objetivo de generar eficiencias y automatizaciones.',
-          funciones:
-            'Liderar proyectos de mejora (mediano plazo) y proyectos de transformación (largo plazo), principalmente de carácter tecnológico, acompañando al negocio durante el todo el ciclo de vida (concepto, propuesta de diseño, implementación, resultados, seguimiento). Se puede tener más de 1 proyecto simultáneamente. Ejecutar relevamientos, entrevistas, medición de tiempos en proyectos de mejora y proyectos de transformación. Ejecutar proyectos de mejora y transformación, de acuerdo a la asignación del jefe. Atender pedidos, formalizaciones o miniproyectos (menor duración). Atender pedidos y formalizaciones. Realizar Mentoring a los Analistas Junior y Middle como guía de proyectos.',
-          requisitos:
-            'Liderar proyectos de mejora (mediano plazo) y proyectos de transformación (largo plazo), principalmente de carácter tecnológico, acompañando al negocio durante el todo el ciclo de vida (concepto, propuesta de diseño, implementación, resultados, seguimiento). Se puede tener más de 1 proyecto simultáneamente. Ejecutar relevamientos, entrevistas, medición de tiempos en proyectos de mejora y proyectos de transformación. Ejecutar proyectos de mejora y transformación, de acuerdo a la asignación del jefe. Atender pedidos, formalizaciones o miniproyectos (menor duración). Atender pedidos y formalizaciones. Realizar Mentoring a los Analistas Junior y Middle como guía de proyectos.',
-          sueldo: '',
-          formulario: '',
-          imagen: imagenpuesto
-        },
-        {
-          id: '3',
-          titulo: 'Operario de Produccion',
-          experiencia: '',
-          departamento: '',
-          tipoempleo: 'FullTime',
-          descripcion:
-            'Ejecutar procesos y proyectos de transformación del banco, acompañando a las distintas áreas durante el ciclo de vida de la transformación (concepción, diseño, implementación y control), con el objetivo de generar eficiencias y automatizaciones.',
-          funciones:
-            'Liderar proyectos de mejora (mediano plazo) y proyectos de transformación (largo plazo), principalmente de carácter tecnológico, acompañando al negocio durante el todo el ciclo de vida (concepto, propuesta de diseño, implementación, resultados, seguimiento). Se puede tener más de 1 proyecto simultáneamente. Ejecutar relevamientos, entrevistas, medición de tiempos en proyectos de mejora y proyectos de transformación. Ejecutar proyectos de mejora y transformación, de acuerdo a la asignación del jefe. Atender pedidos, formalizaciones o miniproyectos (menor duración). Atender pedidos y formalizaciones. Realizar Mentoring a los Analistas Junior y Middle como guía de proyectos.',
-          requisitos:
-            'Liderar proyectos de mejora (mediano plazo) y proyectos de transformación (largo plazo), principalmente de carácter tecnológico, acompañando al negocio durante el todo el ciclo de vida (concepto, propuesta de diseño, implementación, resultados, seguimiento). Se puede tener más de 1 proyecto simultáneamente. Ejecutar relevamientos, entrevistas, medición de tiempos en proyectos de mejora y proyectos de transformación. Ejecutar proyectos de mejora y transformación, de acuerdo a la asignación del jefe. Atender pedidos, formalizaciones o miniproyectos (menor duración). Atender pedidos y formalizaciones. Realizar Mentoring a los Analistas Junior y Middle como guía de proyectos.',
-          sueldo: '',
-          formulario: '',
-          imagen: imagenpuesto
-        },
-        {
-          id: '4',
-          titulo: 'Practicante de Mesa de Distribución',
-          experiencia: '',
-          departamento: '',
-          tipoempleo: 'FullTime',
-          descripcion:
-            'Ejecutar procesos y proyectos de transformación del banco, acompañando a las distintas áreas durante el ciclo de vida de la transformación (concepción, diseño, implementación y control), con el objetivo de generar eficiencias y automatizaciones.',
-          funciones:
-            'Liderar proyectos de mejora (mediano plazo) y proyectos de transformación (largo plazo), principalmente de carácter tecnológico, acompañando al negocio durante el todo el ciclo de vida (concepto, propuesta de diseño, implementación, resultados, seguimiento). Se puede tener más de 1 proyecto simultáneamente. Ejecutar relevamientos, entrevistas, medición de tiempos en proyectos de mejora y proyectos de transformación. Ejecutar proyectos de mejora y transformación, de acuerdo a la asignación del jefe. Atender pedidos, formalizaciones o miniproyectos (menor duración). Atender pedidos y formalizaciones. Realizar Mentoring a los Analistas Junior y Middle como guía de proyectos.',
-          requisitos:
-            'Liderar proyectos de mejora (mediano plazo) y proyectos de transformación (largo plazo), principalmente de carácter tecnológico, acompañando al negocio durante el todo el ciclo de vida (concepto, propuesta de diseño, implementación, resultados, seguimiento). Se puede tener más de 1 proyecto simultáneamente. Ejecutar relevamientos, entrevistas, medición de tiempos en proyectos de mejora y proyectos de transformación. Ejecutar proyectos de mejora y transformación, de acuerdo a la asignación del jefe. Atender pedidos, formalizaciones o miniproyectos (menor duración). Atender pedidos y formalizaciones. Realizar Mentoring a los Analistas Junior y Middle como guía de proyectos.',
-          sueldo: '',
-          formulario: '',
-          imagen: imagenpuesto
-        }
+
       ]
     }
   },
-  mounted() {}
+  methods: {
+    fetchPuestos() {
+      apiPuestosVacantes.getPuestosVacantes()
+        .then((response) => {
+          this.puestos = response.data;
+        })
+        .catch((error) => {
+          console.log('Hubo un problema con la peticion', error)
+        })
+    }
+  },
+  mounted() {
+    setInterval(() => {
+      this.fetchPuestos();
+      console.log(this.puestos)
+    }, 2000);
+  }
 }
 </script>
 <template>
@@ -88,38 +42,32 @@ export default {
       <div class="cont-encabezado lg:flex justify-between items-center">
         <p class="font-TestKarbonSemiBold titulo-pv">Puestos Vacantes</p>
         <div class="cont-search">
-          <search />
+          <search disabled />
         </div>
       </div>
-      <div class="cont-filttro">
+      <div class="cont-filttro opacity-0">
         <filtro-vac />
       </div>
     </div>
     <div v-for="pv in puestos" class="cont-itempv shadow-2xl lg:flex transition-all">
-      <img class="pvimage object-cover" :src="pv.imagen" :alt="pv.imagen" />
+      <img class="pvimage object-cover" :src="`http://localhost:3000/uploads/${pv.imgPuesto}`" :alt="pv.imagen" />
       <div class="flex flex-col justify-center">
         <div class="cont-text">
           <p class="pvname font-TestKarbonMedium text-AzulPerla">{{ pv.titulo }}</p>
           <div class="pvtype font-TestKarbonRegular text-AzulPerla">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.25 22.25">
-              <path
-                id="Icon_material-watch-later"
-                data-name="Icon material-watch-later"
+              <path id="Icon_material-watch-later" data-name="Icon material-watch-later"
                 d="M14.125,3A11.125,11.125,0,1,0,25.25,14.125,11.158,11.158,0,0,0,14.125,3ZM18.8,18.8l-5.785-3.56V8.562h1.669v5.785l5.006,3Z"
-                transform="translate(-3 -3)"
-                fill="#df9575"
-              />
+                transform="translate(-3 -3)" fill="#df9575" />
             </svg>
             &nbsp; &nbsp;{{ pv.tipoempleo }}
           </div>
-          <p class="pvdescription font-KarbonRegular text-AzulPerla">{{ pv.descripcion }}</p>
+          <p class="pvdescription font-KarbonRegular text-AzulPerla">{{ pv.objetivoPuesto }}</p>
         </div>
         <div class="cont-btn">
-          <router-link :to="`/work/descwork/${pv.id}`" custom v-slot="{ navigate }">
-            <button
-              @click="navigate"
-              class="font-KarbonRegular flex justify-center items-center shadow-2xl transition-all"
-            >
+          <router-link :to="`/work/descwork/${pv._id}`" custom v-slot="{ navigate }">
+            <button @click="navigate"
+              class="font-KarbonRegular flex justify-center items-center shadow-2xl transition-all">
               Postular
             </button>
           </router-link>

@@ -3,6 +3,7 @@
 import BtnBack from '../../../General/BtnBack.vue'
 import Swiper from 'swiper'
 import FileUploaderRect from '../../../General/FileUploaderRect.vue'
+import BotonesCrudNoticias from '../BotonesCrudNoticias.vue'
 export default {
   data() {
     return {
@@ -15,7 +16,8 @@ export default {
   },
   components: {
     BtnBack,
-    FileUploaderRect
+    FileUploaderRect,
+    BotonesCrudNoticias
     // textalign,
   },
   methods: {
@@ -80,11 +82,9 @@ export default {
 </script>
 <template>
   <div class="nueva-noticia overflow-hidden">
-    <!-- <botonesControl
-      :nuevareceta="this.nuevaRecetaData"
-      @recetavacia="actualizarreceta"
-      class="hidden lg:block absolute btn-control"
-    /> -->
+    <div class="fixed z-40 lg:z-50 cont-btn">
+      <BotonesCrudPuestoVacante class="btn-crud" :newpuestoData="newpuesto" />
+    </div>
     <div class="flex justify-end">
       <BtnBack />
     </div>
@@ -137,6 +137,17 @@ export default {
   </div>
 </template>
 <style scoped>
+.cont-btn {
+  height: auto;
+  width: auto;
+  bottom: 10%;
+  right: 1%;
+}
+
+.btn-crud {
+  height: 10vh;
+  /* background-color: rgba(220, 20, 60, 0.238); */
+}
 .btn-back {
   padding: 5%;
   padding-top: 1%;

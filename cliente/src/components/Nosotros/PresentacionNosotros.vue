@@ -17,9 +17,7 @@ export default {}
           Nos destacamos por nuestras instalaciones renovadas y equipadas con tecnología de punta,
           lo que nos permite optimizar nuestros procesos de producción. Contamos con un equipo de
           profesionales altamente capacitados que lideran nuestra línea de producción, asegurando
-          los estándares de calidad que nos caracterizan. Nuestro compromiso es seguir siendo
-          líderes en el mercado avícola, ofreciendo productos de calidad superior para satisfacer
-          las necesidades de nuestros clientes.
+          los estándares de calidad que nos caracterizan.
         </p>
       </div>
       <div class="p-4">
@@ -70,9 +68,7 @@ export default {}
             Nos destacamos por nuestras instalaciones renovadas y equipadas con tecnología de punta,
             lo que nos permite optimizar nuestros procesos de producción. Contamos con un equipo de
             profesionales altamente capacitados que lideran nuestra línea de producción, asegurando
-            los estándares de calidad que nos caracterizan. Nuestro compromiso es seguir siendo
-            líderes en el mercado avícola, ofreciendo productos de calidad superior para satisfacer
-            las necesidades de nuestros clientes.
+            los estándares de calidad que nos caracterizan.
           </p>
           <div
             class="relative textogen text-AzulPerla font-KarbonRegular flex flex-col justify-center items-center"
@@ -106,7 +102,7 @@ export default {}
 .ellipse {
   float: right;
   shape-outside: ellipse();
-  width: 60%;
+  width: 65%;
 }
 
 .ellipse img {
@@ -135,6 +131,7 @@ export default {}
   font-size: 1.6vw;
   line-height: normal;
   padding-bottom: 5%;
+  width: 50%;
 }
 
 .textoyear {
