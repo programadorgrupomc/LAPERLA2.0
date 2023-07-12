@@ -1,65 +1,61 @@
 <template>
   <div class="block overflow-hidden">
-    <!-- contenido del titulo -->
-    <div class="cont-ttlnp bg-AzulPerla flex items-center lg:justify-end">
-      <h1 class="text-FondoPerla text-4xl pl-4 md:text-7xl lg:pr-20 lg:text-8xl xl:text-9xl">
-        NUESTRO PROCESO
-      </h1>
-    </div>
-
-    <!-- items de nuestros procesos -->
-
-    <!-- Items Iteractivos -->
-    <div v-for="(npro, index) in nuestrosPro" :key="index" class="item-np flex flex-col lg:flex lg:flex-row" :class="({
-      'bg-FondoNp1': index % 2 == 0,
-      'bg-FondoNp2': index % 2 == 1
-    },
-      'npani' + index)
-      ">
-      <!-- imagen -->
-      <div class="cont-imgnp h-auto flex justify-center lg:w-1/2" :class="'npimgani' + index">
-        <img class="h-full w-full object-cover imgnpgen py-6" :src="npro.image" :class="{
-          'lg:pl-0': index % 2 == 0,
-          'lg:pr-0': index % 2 == 1
-        }" />
+      <!-- contenido del titulo -->
+      <div class="cont-ttlnp bg-AzulPerla  flex items-center  lg:justify-end">
+          <h1 class="text-FondoPerla text-4xl pl-4 md:text-7xl lg:pr-20 lg:text-8xl xl:text-9xl">
+              NUESTRO PROCESO
+          </h1>
       </div>
-      <!-- contenido cuerpo -->
-      <div class="cont-textnp p-14 flex flex-col justify-center lg:w-2/4 lg:px-24 order-first" :class="({
-        'lg:order-none': index % 2 == 0,
-        'lg:order-first': index % 2 == 1
-      },
-        'nptextani' + index)
-        ">
-        <div class="ttlnpe text-NaranjaPerla text-3xl lg:text-4xl break-words">
-          <p class="md:text-6xl" :class="{
-            'text-right': index % 2 == 0,
-            'text-left': index % 2 == 1
-          }">
-            Etapa {{ index + 1 }}
-          </p>
-        </div>
-        <div class="ttlnpp text-AzulPerla text-5xl md:text-8xl py-5 lg:text-7xl break-words"
-          :class="{ 'text-right': index % 2 == 0, 'text-left': index % 2 == 1 }">
-          {{ npro.subtitle }}
-        </div>
-        <div class="ttlnpd text-AzulPerla text-xl">
-          <p class="text-justify md:text-5xl lg:text-xl" :class="{
-            'lg:text-right': index % 2 == 0,
-            'lg:text-left': index % 2 == 1,
-            'lg:pl-28': index % 2 == 0,
-            'lg:pr-28': index % 2 == 1
-          }">
-            {{ npro.text }}
-          </p>
-        </div>
-      </div>
+      <!-- items de nuestros procesos -->
 
-      <!-- <div class="w-1" :class="{ 'hidden': index != 2, }"><img class="img-decor relative"
-                    src="@/assets/HomeAssets/NpAss/starnpR.png" alt=""></div>
-            <div class="w-1" :class="{ 'hidden': index != 4, }"><img class="img-decor2 relative"
-                    src="@/assets/HomeAssets/NpAss/starnpR.png" alt="">
-            </div> -->
-    </div>
+      <!-- Items Iteractivos -->
+      <div v-for="(npro, index) in nuestrosPro" :key="index" class="item-np flex flex-col lg:flex lg:flex-row" :class="{
+          'bg-FondoNp1': index % 2 == 0,
+          'bg-FondoNp2': index % 2 == 1,
+      }, 'npani' + index">
+          <!-- imagen -->
+          <div class="cont-imgnp h-auto flex justify-center lg:w-1/2" :class="'npimgani' + index">
+              <img class="h-full w-full object-cover imgnpgen py-6" :src="npro.image" :class="{
+                  'lg:pl-0': index % 2 == 0,
+                  'lg:pr-0': index % 2 == 1,
+              }" />
+          </div>
+          <!-- contenido cuerpo -->
+          <div class="cont-textnp p-14 flex flex-col justify-center lg:w-2/4 lg:px-24 order-first" :class="{
+              'lg:order-none': index % 2 == 0,
+              'lg:order-first': index % 2 == 1,
+          }, 'nptextani' + index">
+              <div class="ttlnpe text-NaranjaPerla text-3xl lg:text-4xl break-words">
+                  <p class="md:text-6xl" :class="{
+                      'text-right': index % 2 == 0,
+                      'text-left': index % 2 == 1,
+                  }">
+                      Etapa {{ index + 1 }}
+                  </p>
+              </div>
+              <div class="ttlnpp text-AzulPerla text-5xl md:text-8xl py-5 lg:text-7xl break-words"
+
+                  :class="{ 'text-right': index % 2 == 0, 'text-left': index % 2 == 1 }">
+                  {{ npro.subtitle }}
+              </div>
+              <div class="ttlnpd text-AzulPerla text-xl">
+                  <p class="text-justify md:text-5xl lg:text-xl" :class="{
+                      'lg:text-right': index % 2 == 0,
+                      'lg:text-left': index % 2 == 1,
+                      'lg:pl-28': index % 2 == 0,
+                      'lg:pr-28': index % 2 == 1,
+                  }">
+                      {{ npro.text }}
+                  </p>
+              </div>
+          </div>
+
+          <!-- <div class="w-1" :class="{ 'hidden': index != 2, }"><img class="img-decor relative"
+                  src="@/assets/HomeAssets/NpAss/starnpR.png" alt=""></div>
+          <div class="w-1" :class="{ 'hidden': index != 4, }"><img class="img-decor2 relative"
+                  src="@/assets/HomeAssets/NpAss/starnpR.png" alt="">
+          </div> -->
+      </div>
   </div>
 </template>
 <script>
