@@ -1,22 +1,8 @@
-class nuestroPolloService{
-
-    
-
-create(){
-
-}
-find(){
-
-}
-findOne(){
-
-}
-update(){
-
-}
-delete(){
-
-}
-
+class nuestroPolloService {
+  create() {}
+  find() {}
+  findOne() {}
+  update() {}
+  delete() {}
 }
 export default nuestroPolloService;

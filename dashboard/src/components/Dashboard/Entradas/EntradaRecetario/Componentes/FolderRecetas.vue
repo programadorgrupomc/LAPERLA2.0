@@ -32,16 +32,10 @@ export default {
           </div>
         </div>
       </div>
-      <div
-        class="items-folder flex flex-col justify-center items-center lg:mx-auto lg:grid lg:grid-cols-3"
-      >
+      <div class="items-folder flex flex-col justify-center items-center lg:mx-auto lg:grid lg:grid-cols-3">
         <div v-for="receta in recetas" class="itemf relative bg-stone-600">
-          <img
-            class="object-cover h-full w-full"
-            loading="lazy"
-            src="@/assets/AssetsRecetario/receta1.jpg"
-            alt="receta-item"
-          />
+          <img class="object-cover h-full w-full" loading="lazy" src="@/assets/AssetsRecetario/receta1.jpg"
+            alt="receta-item" />
           <div class="cont-actions absolute flex flex-col justify-center items-center">
             <p class="text-white">{{ receta.titulo }}</p>
             <div class="cont-btnsaction flex justify-between">
