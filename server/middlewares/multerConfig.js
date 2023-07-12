@@ -12,7 +12,7 @@ const storage = multer.diskStorage({
     cb(null, uniqueSuffix + extension); // Nombre de archivo único en el servidor
   },
 });
-
+ 
 // Función para filtrar los tipos de archivos permitidos
 const fileFilter = (req, file, cb) => {
   // Verificar el tipo de archivo permitido (imágenes y videos)

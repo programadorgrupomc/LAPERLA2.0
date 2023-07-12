@@ -223,6 +223,7 @@ export default {
   .linea-titulo {
     padding: 2%;
     height: 10%;
+    padding-bottom: 10%;
     max-height: 10%;
   }
 
@@ -231,6 +232,7 @@ export default {
     color: #463725;
     font-family: 'TestKarbonMedium';
     -webkit-text-stroke: #463725 0.1vw;
+    
   }
 
   .linea-contenido {

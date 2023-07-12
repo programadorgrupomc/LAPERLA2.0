@@ -44,7 +44,7 @@ export default {
     FileUploaderRect
   },
   methods: {},
-  mounted() {}
+  mounted() { }
 }
 </script>
 <template>
@@ -54,33 +54,24 @@ export default {
       <h1 class="text-MarronPerla text-2xl md:text-5xl lg:text-6xl">CULTURA ORGANIZACIONAL</h1>
     </div>
     <!-- contenido de cultura ORGANIZACIONAL -->
-    <div
-      v-for="(cultitm, index) in cultOrg"
-      :key="index"
-      class="cont-cult mx-14 flex items-center flex-col lg:flex-row lg:justify-center lg:px-14 lg:h-96"
-      :class="
-        ({
-          'bg-FondoCul2': index % 2 == 1,
-          'bg-FondoCul1': index % 2 == 0
-        },
+    <div v-for="(cultitm, index) in cultOrg" :key="index"
+      class="cont-cult mx-14 flex items-center flex-col lg:flex-row lg:justify-center lg:px-14 lg:h-96" :class="({
+        'bg-FondoCul2': index % 2 == 1,
+        'bg-FondoCul1': index % 2 == 0
+      },
         'ncoani' + index)
-      "
-    >
+        ">
       <div class="p-2 scale-50">
         <!-- <img loading="lazy" class="img-itemco object-cover md:w-72 lg:w-96" :class="'coimage' + index"
                     :src="cultitm.img" :alt="cultitm.altimg"> -->
         <FileUploaderRect />
       </div>
-      <div
-        class="p-4 lg:w-2/4 text-MarronPerla text-center text-lg md:text-4xl lg:text-2xl lg:px-20"
-        :class="
-          ({
-            'lg:order-first': index % 2 == 1,
-            'lg:order-none': index % 2 == 0
-          },
-          'cotextani' + index)
-        "
-      >
+      <div class="p-4 lg:w-4/4 text-MarronPerla text-center text-lg md:text-4xl lg:text-2xl lg:px-20" :class="({
+        'lg:order-first': index % 2 == 1,
+        'lg:order-none': index % 2 == 0
+      },
+        'cotextani' + index)
+        ">
         <p class="txtcon">{{ cultitm.texto }}</p>
       </div>
     </div>

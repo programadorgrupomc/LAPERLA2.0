@@ -4,7 +4,7 @@
       <BotonesCrudNosotros class="btn-crud" />
     </div>
     <div class="cont-components w-full h-full">
-      <PresentacionNosotros class="border" />
+      <PresentacionNosotros class="border" :nosotrosData="nosotros" />
       <LineaDeTiempo class="overflow-y-auto" />
       <NuestraFilosofia />
       <CulturaOrganizacional class="" />
@@ -17,13 +17,38 @@ import LineaDeTiempo from './Componentes/LineaDeTiempo.vue'
 import BotonesCrudNosotros from './BotonesCrudNosotros.vue'
 import CulturaOrganizacional from './Componentes/CulturaOrganizacional.vue'
 import NuestraFilosofia from './Componentes/NuestraFilosofia.vue'
+
+//api
+import apiNostros from '../../../../services/Nosotros/apiNostros.js'
+
 export default {
+  data() {
+    return {
+      nosotros: [],
+    }
+  },
   components: {
     PresentacionNosotros,
     LineaDeTiempo,
     BotonesCrudNosotros,
     CulturaOrganizacional,
     NuestraFilosofia
+  },
+  methods: {
+    fetchNosotros() {
+      apiNostros.getNosotros()
+        .then((response) => {
+          this.nosotros = response.data
+          console.log(this.nosotros)
+        })
+        .catch((error) => {
+          console.error('Error fetching nosotros:', error)
+        })
+    },
+
+  },
+  mounted() {
+    this.fetchNosotros();
   }
 }
 </script>

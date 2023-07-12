@@ -1,42 +1,26 @@
 <template>
-  <div>
+  <div v-if="nosostroslocal">
     <!-- para mobile -->
     <div class="stark p-2 overflow-hidden font-TestKarbonSemiBold bg-FondoPerla lg:hidden">
       <div class="py-3">
         <p class="ttlmobilepresen text-AzulPerla text-center text-5xl">NOSOTROS</p>
       </div>
       <div class="textopptNosostros">
-        <p
-          contenteditable="true"
-          class="text-MarronPerla font-KarbonRegular p-2 md:p-8 md:text-3xl text-justify border"
-        >
-          Somos una de las empresas de mayor significación del mercado avícola en el norte del país
-          es Molino La Perla S.A.C., venimos acompañando con calidad a las familias peruanas desde
-          hace más de 52 años. <br />
-          <br />
-          Actualmente dicha empresa es una de las más grandes productoras de pollos de carne a nivel
-          nacional. Ésta ha sido continuamente renovada con maquinaria sofisticada y tecnología de
-          punta; a su vez al frente de la línea de producción se encuentran profesionales altamente
-          capacitados.
+        <p contenteditable="true" class="text-MarronPerla font-KarbonRegular p-2 md:p-8 md:text-3xl text-justify border">
+          {{ nosostroslocal.contenido }}
         </p>
       </div>
       <div class="p-4">
-        <FileUploaderRect class="" />
+        <FileUploaderRect class="" :imagedetbd="nosostroslocal.imagen" @imgrecortada="asignarimagen" />
       </div>
-      <div
-        class="font-KarbonRegular det-nnpre flex md:text-4xl flex-col justify-evenly items-center text-AzulPerla py-3"
-      >
+      <div class="font-KarbonRegular det-nnpre flex md:text-4xl flex-col justify-evenly items-center text-AzulPerla py-3">
         MAS DE
         <p class="yearperla text-5xl md:text-6xl font-bold">60 AÑOS</p>
         SIRVIENDO AL PERU
       </div>
       <div class="img-nnpre flex justify-center scale-50 md:scale-90">
-        <img
-          loading="lazy"
-          class="object-cover"
-          src="../../../../../assets/Dashboard/Nosotros/imgLogoNosotros.png"
-          alt="logo"
-        />
+        <img loading="lazy" class="object-cover" src="../../../../../assets/Dashboard/Nosotros/imgLogoNosotros.png"
+          alt="logo" />
       </div>
     </div>
     <!-- para escritorio -->
@@ -48,35 +32,20 @@
         <div class="ellipse lg:flex justify-center items-center">
           <!-- <img loading="lazy" class="object-cover w-full" src="@/assets/Nosotros/imgEllipseNosotros.png"
                         alt="imgEllipse"> -->
-          <FileUploaderRect class="" />
+          <FileUploaderRect class="" :imagedetbd="nosostroslocal.imagen" @imgrecortada="asignarimagen" />
         </div>
         <div class="relative">
-          <p
-            contenteditable="true"
-            class="border relative contenedor-texto text-MarronPerla font-KarbonRegular"
-          >
-            Somos una de las empresas de mayor significación del mercado avícola en el norte del
-            país es Molino La Perla S.A.C., venimos acompañando con calidad a las familias peruanas
-            desde hace más de 52 años. <br />
-            <br />Actualmente dicha empresa es una de las más grandes productoras de pollos de carne
-            a nivel nacional. Ésta ha sido continuamente renovada con maquinaria sofisticada y
-            tecnología de punta; a su vez al frente de la línea de producción se encuentran
-            profesionales altamente capacitados.
+          <p contenteditable="true" class="border relative contenedor-texto text-MarronPerla font-KarbonRegular">
+            {{ nosostroslocal.contenido }}
           </p>
-          <div
-            class="relative textogen text-AzulPerla font-KarbonRegular flex flex-col justify-center items-center"
-          >
+          <div class="relative textogen text-AzulPerla font-KarbonRegular flex flex-col justify-center items-center">
             MAS DE
             <p class="textoyear">60 AÑOS</p>
             SIRVIENDO AL PERU
           </div>
           <div class="imgnpend relative">
-            <img
-              loading="lazy"
-              class="object-cover"
-              src="../../../../../assets/Dashboard/Nosotros/imgLogoNosotros.png"
-              alt="logo"
-            />
+            <img loading="lazy" class="object-cover" src="../../../../../assets/Dashboard/Nosotros/imgLogoNosotros.png"
+              alt="logo" />
           </div>
         </div>
       </div>
@@ -86,8 +55,26 @@
 <script>
 import FileUploaderRect from '../../../General/FileUploaderRect.vue'
 export default {
+  data() {
+    return {
+      nosostroslocal: []
+    }
+  },
   components: {
     FileUploaderRect
+  },
+  methods: {
+
+    asignarimagen(valor) {
+      this.nosostroslocal.imagen = valor
+      console.log(this.nosostroslocal)
+      this.$emit("nosotrosupdate", this.nosostroslocal)
+    }
+  },
+  props: ['nosotrosData'],
+  updated() {
+    this.nosostroslocal = this.nosotrosData[0];
+    console.log(this.nosostroslocal)
   }
 }
 </script>
