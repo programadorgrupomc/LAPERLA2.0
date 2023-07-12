@@ -10,7 +10,7 @@
           {{ nosostroslocal.contenido }}
         </p>
       </div>
-      <div class="p-4">
+      <div class="p-4 ellipse">
         <FileUploaderRect class="" :imagedetbd="nosostroslocal.imagen" @imgrecortada="asignarimagen" />
       </div>
       <div class="font-KarbonRegular det-nnpre flex md:text-4xl flex-col justify-evenly items-center text-AzulPerla py-3">
@@ -32,7 +32,7 @@
         <div class="ellipse lg:flex justify-center items-center">
           <!-- <img loading="lazy" class="object-cover w-full" src="@/assets/Nosotros/imgEllipseNosotros.png"
                         alt="imgEllipse"> -->
-          <FileUploaderRect class="" :imagedetbd="nosostroslocal.imagen" @imgrecortada="asignarimagen" />
+          <FileUploaderRect class="ellipse" :imagedetbd="nosostroslocal.imagen" @imgrecortada="asignarimagen"/>
         </div>
         <div class="relative">
           <p contenteditable="true" class="border relative contenedor-texto text-MarronPerla font-KarbonRegular">

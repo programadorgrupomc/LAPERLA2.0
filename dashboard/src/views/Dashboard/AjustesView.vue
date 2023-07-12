@@ -1,7 +1,15 @@
 <template>
-  <div>Ajustes</div>
+  <div>
+    <viewTools/>
+  </div>
 </template>
 <script>
-export default {}
+import viewTools from '../../components/Dashboard/Ajustes/viewTools.vue'
+export default {
+  components: {
+
+    viewTools
+  },
+}
 </script>
 <style scoped></style>

@@ -1,19 +1,19 @@
 <template>
-  <div class="np3 flex flex-col lg:flex-row justify-center">
+  <div v-if="nuestroPollo3" class="np3 flex flex-col lg:flex-row justify-center">
     <div class="lado1 flex flex-col lg:items-center justify-around lg:justify-around">
       <div
         class="np3-contenedor contenedor-texto3 flex flex-col justify-center items-center lg:items-start"
       >
-        <p class="titulo text-center lg:text-left">JUGOSIDAD</p>
+        <p class="titulo text-center lg:text-left">{{nuestroPollo3.titulo}}</p>
         <p class="texto text-center lg:text-left">
-          Satisfaciendo el gusto más exigente por su suavidad y jugosidad.
+         {{nuestroPollo3.contenido}}
         </p>
       </div>
       <div class="np3-contenedor lg:hidden flex justify-center items-center">
         <div class="relative">
           <div class="circulo-fondo3"></div>
           <img
-            src="../../assets/Inicio/imgcont3.jpg"
+            :src="`http://localhost:3000/uploads/${nuestroPollo3.imgGeneral}`"
             class="absolute img-circulo3 shadow-2xl"
             alt="img-circulo3"
           />
@@ -25,7 +25,7 @@
         <div class="relative">
           <div class="circulo-fondo3"></div>
           <img
-            src="../../assets/Inicio/imgcont3.jpg"
+            :src="`http://localhost:3000/uploads/${nuestroPollo3.imgGeneral}`"
             class="absolute img-circulo3 shadow-2xl"
             alt="img-circulo3"
           />
@@ -37,12 +37,15 @@
 <script>
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import apiNuestroPollo from '../../services/Inicio/apiNuestroPollo.js'
 
 gsap.registerPlugin(ScrollTrigger)
 
 export default {
   data() {
-    return {}
+    return {
+      nuestroPollo3:[]
+    }
   },
   methods: {
     animacionNp3() {
@@ -102,11 +105,27 @@ export default {
       // Actualiza la animación cuando cambie el tamaño de la ventana
       ScrollTrigger.refresh()
       window.addEventListener('resize', this.actualizarAnimacion)
+    },
+    fetchNuestroPollo() {
+      apiNuestroPollo
+        .getNuestroPollos()
+        .then((response) => {
+          this.nuestroPollo3 = response.data[2]
+          // console.log(response.data[0])
+        })
+        .catch((error) => {
+          console.log('Hubo un problema con la peticion', error)
+        })
     }
   },
   mounted() {
     this.animacionNp3()
+    setInterval(() => {
+      this.fetchNuestroPollo();
+      console.log(this.nuestroPollo3)
+    }, 2000);
   },
+  
   beforeUnmount() {
     // Remueve el evento resize al desmontar el componente
     window.removeEventListener('resize', this.actualizarAnimacion)

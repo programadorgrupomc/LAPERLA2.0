@@ -1,43 +1,31 @@
 <template>
-  <div class="np2 flex flex-col lg:flex-row justify-center">
+  <div v-if="nuestroPollo2" class="np2 flex flex-col lg:flex-row justify-center">
     <div class="hidden lado2 lg:flex lg:items-center lg:justify-center">
       <div class="np2-contenedor np2-contenedorlg relative lg:flex justify-center items-center">
         <div class="relative">
           <div class="circulo-fondo2"></div>
-          <img
-            src="../../assets/Inicio/NuestroPolloFirmeza.jpg"
-            class="absolute img-circulo2 shadow-2xl object-cover"
-            alt="img-circulo2"
-          />
+          <img :src="`http://localhost:3000/uploads/${nuestroPollo2.imgGeneral}`" class="absolute img-circulo2 shadow-2xl object-cover"
+            alt="img-circulo2" />
         </div>
       </div>
     </div>
     <div class="lado1 flex flex-col lg:items-center justify-center lg:justify-around">
-      <div
-        class="np2-contenedor contenedor-texto2 flex flex-col justify-center items-center lg:items-end"
-      >
-        <p class="titulo text-center lg:text-right">FIRMEZA</p>
+      <div class="np2-contenedor contenedor-texto2 flex flex-col justify-center items-center lg:items-end">
+        <p class="titulo text-center lg:text-right">{{ nuestroPollo2.titulo }}</p>
         <p class="texto text-center lg:text-right">
-          Carne de buena consistencia y excelente textura y fibra muscular.
+          {{ nuestroPollo2.contenido }}
         </p>
       </div>
       <div class="np2-contenedor lg:hidden flex justify-center items-center">
         <div class="relative">
           <div class="circulo-fondo2"></div>
-          <img
-            src="../../assets/Inicio/NuestroPolloFirmeza.jpg"
-            class="absolute img-circulo2 shadow-2xl object-cover"
-            alt="img-circulo2"
-          />
+          <img :src="`http://localhost:3000/uploads/${nuestroPollo2.imgGeneral}`" class="absolute img-circulo2 shadow-2xl object-cover"
+            alt="img-circulo2" />
         </div>
       </div>
       <div class="np2-contenedor flex justify-center items-center">
         <div class="contenedor-2 relative">
-          <img
-            src="../../assets/Inicio/ProteinaC2.svg"
-            class="imgNp-2 relative"
-            alt="carne-pollo"
-          />
+          <img src="../../assets/Inicio/ProteinaC2.svg" class="imgNp-2 relative" alt="carne-pollo" />
           <img src="../../assets/Inicio/Row2.svg" class="rowNp-2 relative" alt="rowNp-2" />
           <div class="indicador2 relative flex flex-col justify-center items-center">
             <p>Gran fuente proteica.</p>
@@ -50,11 +38,14 @@
 <script>
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import apiNuestroPollo from '../../services/Inicio/apiNuestroPollo.js'
 
 gsap.registerPlugin(ScrollTrigger)
 export default {
   data() {
-    return {}
+    return {
+      nuestroPollo2: []
+    }
   },
   methods: {
     animacionNp2() {
@@ -125,10 +116,25 @@ export default {
       // Actualiza la animación cuando cambie el tamaño de la ventana
       ScrollTrigger.refresh()
       window.addEventListener('resize', this.actualizarAnimacion)
+    },
+    fetchNuestroPollo() {
+      apiNuestroPollo
+        .getNuestroPollos()
+        .then((response) => {
+          this.nuestroPollo2 = response.data[1]
+          // console.log(response.data[0])
+        })
+        .catch((error) => {
+          console.log('Hubo un problema con la peticion', error)
+        })
     }
   },
   mounted() {
     this.animacionNp2()
+    setInterval(() => {
+      this.fetchNuestroPollo();
+      console.log(this.nuestroPollo2)
+    }, 2000);
   },
   beforeUnmount() {
     // Remueve el evento resize al desmontar el componente

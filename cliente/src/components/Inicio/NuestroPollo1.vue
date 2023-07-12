@@ -1,31 +1,22 @@
 <template>
-  <div class="np1 flex flex-col lg:flex-row justify-center">
+  <div v-if="nuestroPollo1" class="np1 flex flex-col lg:flex-row justify-center">
     <div class="lado1 flex flex-col lg:items-center justify-center lg:justify-around">
-      <div
-        class="np1-contenedor contenedor-texto1 flex flex-col justify-center items-center lg:items-start"
-      >
-        <p class="titulo text-center lg:text-left">IDENTIDAD</p>
+      <div class="np1-contenedor contenedor-texto1 flex flex-col justify-center items-center lg:items-start">
+        <p class="titulo text-center lg:text-left">{{ nuestroPollo1.titulo }}</p>
         <p class="texto text-center lg:text-left">
-          Su buen color y voluminosidad es el sello del Pollo Perla.
+          {{ nuestroPollo1.contenido }}
         </p>
       </div>
       <div class="np1-contenedor lg:hidden flex justify-center items-center">
         <div class="relative">
           <div class="circulo-fondo1"></div>
-          <img
-            src="../../assets/Inicio/NuestroPolloIdentidad.jpg"
-            class="absolute img-circulo1 object-cover shadow-2xl"
-            alt="img-circulo1"
-          />
+          <img loading="lazy" :src="`http://localhost:3000/uploads/${nuestroPollo1.imgGeneral}`"
+            class="absolute img-circulo1 object-cover shadow-2xl" alt="img-circulo1" />
         </div>
       </div>
       <div class="np1-contenedor flex justify-center items-center">
         <div class="contenedor-1 relative">
-          <img
-            src="../../assets/Inicio/CarnePollo.png"
-            class="imgNp-1 relative"
-            alt="carne-pollo"
-          />
+          <img src="../../assets/Inicio/CarnePollo.png" class="imgNp-1 relative" alt="carne-pollo" />
           <img src="../../assets/Inicio/Row1.svg" class="rowNp-1 relative" alt="rowNp-1" />
           <div class="indicador1 relative flex flex-col justify-center items-center">
             <p>Pechuga</p>
@@ -39,11 +30,8 @@
       <div class="np1-contenedor np1-contenedorlg relative lg:flex justify-center items-center">
         <div class="relative">
           <div class="circulo-fondo1"></div>
-          <img
-            src="../../assets/Inicio/NuestroPolloIdentidad.jpg"
-            class="absolute img-circulo1 object-cover shadow-2xl"
-            alt="img-circulo1"
-          />
+          <img loading="lazy" :src="`http://localhost:3000/uploads/${nuestroPollo1.imgGeneral}`"
+            class="absolute img-circulo1 object-cover shadow-2xl" alt="img-circulo1" />
         </div>
       </div>
     </div>
@@ -52,12 +40,15 @@
 <script>
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import apiNuestroPollo from '../../services/Inicio/apiNuestroPollo.js'
 
 gsap.registerPlugin(ScrollTrigger)
 
 export default {
   data() {
-    return {}
+    return {
+      nuestroPollo1: []
+    }
   },
   methods: {
     animacionNp1() {
@@ -128,10 +119,25 @@ export default {
       // Actualiza la animación cuando cambie el tamaño de la ventana
       ScrollTrigger.refresh()
       window.addEventListener('resize', this.actualizarAnimacion)
+    },
+    fetchNuestroPollo() {
+      apiNuestroPollo
+        .getNuestroPollos()
+        .then((response) => {
+          this.nuestroPollo1 = response.data[0]
+          // console.log(response.data[0])
+        })
+        .catch((error) => {
+          console.log('Hubo un problema con la peticion', error)
+        })
     }
   },
   mounted() {
     this.animacionNp1()
+    setInterval(() => {
+      this.fetchNuestroPollo();
+      console.log(this.nuestroPollo1)
+    }, 2000);
   },
   beforeUnmount() {
     // Remueve el evento resize al desmontar el componente

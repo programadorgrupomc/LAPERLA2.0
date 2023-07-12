@@ -4,31 +4,23 @@
       <div class="np4-contenedor np4-contenedorlg relative lg:flex justify-center items-center">
         <div class="relative">
           <div class="circulo-fondo4"></div>
-          <img
-            src="../../assets/Inicio/imgcont2.jpg"
-            class="absolute img-circulo4 shadow-2xl"
-            alt="img-circulo4"
-          />
+          <img :src="`http://localhost:3000/uploads/${nuestroPollo4.imgGeneral}`" class="absolute img-circulo4 shadow-2xl"
+            alt="img-circulo4" />
         </div>
       </div>
     </div>
     <div class="lado1 flex flex-col lg:items-center justify-around lg:justify-around">
-      <div
-        class="np4-contenedor contenedor-texto4 flex flex-col justify-center items-center lg:items-end"
-      >
-        <p class="titulo text-center lg:text-right">SABOR Y AROMA</p>
+      <div class="np4-contenedor contenedor-texto4 flex flex-col justify-center items-center lg:items-end">
+        <p class="titulo text-center lg:text-right">{{ nuestroPollo4.titulo }}</p>
         <p class="texto text-center lg:text-right">
-          Su sabor único permite preparar variedad de potajes deleitando tu paladar.
+          {{ nuestroPollo4.contenido }}
         </p>
       </div>
       <div class="np4-contenedor lg:hidden flex justify-center items-center">
         <div class="relative">
           <div class="circulo-fondo4"></div>
-          <img
-            src="../../assets/Inicio/imgcont2.jpg"
-            class="absolute img-circulo4 shadow-2xl"
-            alt="img-circulo4"
-          />
+          <img :src="`http://localhost:3000/uploads/${nuestroPollo4.imgGeneral}`" class="absolute img-circulo4 shadow-2xl"
+            alt="img-circulo4" />
         </div>
       </div>
     </div>
@@ -37,11 +29,14 @@
 <script>
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import apiNuestroPollo from '../../services/Inicio/apiNuestroPollo.js'
 
 gsap.registerPlugin(ScrollTrigger)
 export default {
   data() {
-    return {}
+    return {
+      nuestroPollo4: []
+    }
   },
   methods: {
     animacionNp4() {
@@ -101,10 +96,25 @@ export default {
       // Actualiza la animación cuando cambie el tamaño de la ventana
       ScrollTrigger.refresh()
       window.addEventListener('resize', this.actualizarAnimacion)
+    },
+    fetchNuestroPollo() {
+      apiNuestroPollo
+        .getNuestroPollos()
+        .then((response) => {
+          this.nuestroPollo4 = response.data[3]
+          // console.log(response.data[0])
+        })
+        .catch((error) => {
+          console.log('Hubo un problema con la peticion', error)
+        })
     }
   },
   mounted() {
     this.animacionNp4()
+    setInterval(() => {
+      this.fetchNuestroPollo();
+      console.log(this.nuestroPollo4)
+    }, 2000);
   },
   beforeUnmount() {
     // Remueve el evento resize al desmontar el componente

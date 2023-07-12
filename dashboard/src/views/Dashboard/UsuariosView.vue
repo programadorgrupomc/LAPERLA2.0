@@ -1,7 +1,14 @@
 <template>
-  <div>Usuarios</div>
+  <div>
+    <viewUsers/>
+  </div>
 </template>
 <script>
-export default {}
+import viewUsers from '../../components/Dashboard/Usuarios/viewUsers.vue';
+export default {
+  components:{
+    viewUsers
+  }
+}
 </script>
 <style scoped></style>
