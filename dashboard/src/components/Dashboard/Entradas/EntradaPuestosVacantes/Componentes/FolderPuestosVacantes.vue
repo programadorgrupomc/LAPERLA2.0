@@ -1,6 +1,8 @@
 <template>
   <div>
-    <div class="cont-folder">
+    <ver-pv v-if="estadoverpv" @verpvcam="actualizarpv" :idpv="idpv" />
+    <editar-pv v-if="estadoeditarpv" @estadoeditarpvcam="actualizaretadoeditarpv" :idpv="idpv" />
+    <div v-if="estadofolderPv" class="cont-folder">
       <div class="flex justify-end">
         <BtnBack />
       </div>
@@ -18,8 +20,8 @@
       <div class="items-folder flex flex-col justify-center items-center lg:mx-auto lg:grid lg:grid-cols-3">
         <div v-for="puesto in puestosVacanteslocal" class="itemf relative bg-stone-600">
           <!-- aca debe ir linkeado la imgen del puesto vacante -->
-          <img class="object-cover h-full w-full" loading="lazy" src="@/assets/AssetsWork/imgwork1(1).jpg "
-            alt="receta-item" />
+          <img class="object-cover h-full w-full" loading="lazy"
+            :src="`http://localhost:3000/uploads/${puesto.imgPuesto}`" alt="receta-item" />
           <div class="cont-actions absolute flex flex-col justify-center items-center">
             <p class="text-white">{{ puesto.titulo }}</p>
             <div class="cont-btnsaction flex justify-between">
@@ -44,20 +46,69 @@
 </template>
 <script>
 import BtnBack from '../../../General/BtnBack.vue'
+import apiPuestosVacantes from '../../../../../services/Work/apiPuestosVacantes';
+import verPv from './verPv.vue';
+import editarPv from './editarPv.vue'
 
 export default {
   data() {
     return {
+      estadofolderPv: true,
+      estadonuevopv: false,
+      estadoverpv: false,
+      estadoeditarpv: false,
       puestosVacanteslocal: [],
       idpv: ''
     }
   },
   props: ['puestosVacantesprop'],
   components: {
-    BtnBack
+    BtnBack,
+    verPv,
+    editarPv
   },
   methods: {
-    
+    cambiaestpv() {
+      this.estadofolderPv = !this.estadofolderPv;
+      this.$emit('estadopvcam', this.estadofolderPv)
+    },
+    cambiarestadonuevopv() {
+      this.estadonuevopv = !this.estadonuevopv;
+      this.estadofolderPv = !this.estadofolderPv;
+    },
+    actualizarestadonuevopv(valor) {
+      this.estadonuevopv = valor;
+      this.estadofolderPv = !this.estadofolderPv;
+    },
+    cambiarestadoverpv(id) {
+      this.estadoverpv = !this.estadoverpv;
+      this.idpv = id;
+      this.estadofolderPv = !this.estadofolderPv;
+    },
+    actualizarpv(valor) {
+      this.estadoverpv = valor;
+      this.estadofolderPv = !this.estadofolderPv;
+    },
+
+    cambiarestadoeditarpc(id) {
+      this.estadoeditarpv = !this.estadoeditarpv;
+      this.idpv = id;
+      this.estadofolderPv = !this.estadofolderPv;
+    },
+    actualizaretadoeditarpv(valor) {
+      this.estadoeditarpv = valor;
+      this.estadofolderPv = !this.estadofolderPv
+    },
+    deletePv(id) {
+      apiPuestosVacantes.deletePuestosVacantes(id)
+        .then((response) => {
+          alert('Eliminacion Exitoso!')
+          location.reload();
+        })
+        .catch((error) => {
+          console.log(`Hubo un error al eliminar ${error}`)
+        })
+    }
   },
   created() { },
   updated() {

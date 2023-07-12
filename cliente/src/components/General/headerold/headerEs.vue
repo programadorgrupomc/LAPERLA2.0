@@ -80,7 +80,7 @@ export default {
       // Mostrar la altura de scroll en la consola (puedes hacer cualquier otra operación con la variable)
     })
     this.animacionHeaderEs()
-      // this.color()
+    // this.color()
   },
   methods: {
     animacionHeaderEs() {
@@ -250,7 +250,7 @@ export default {
 </script>
 <style scoped>
 .cont-navbar {
-  background-color: #FCF5EB;
+  background-color: #fcf5eb;
   backdrop-filter: blur(2px);
   width: 100%;
   height: 12vh;

@@ -1,27 +1,15 @@
 <template>
   <div class="botones-crud flex flex-col lg:flex-row justify-center items-center">
     <button @click="guardarDatosCompletos" class="flex justify-center items-center">
-      <img
-        class="w-full h-full lg:hidden"
-        src="../../../assets/Dashboard/General/Guardar.svg"
-        alt=""
-      />
+      <img class="w-full h-full lg:hidden" src="../../../assets/Dashboard/General/Guardar.svg" alt="" />
       <p class="hidden lg:block">Guardar</p>
     </button>
     <button @click="restaurar" class="flex justify-center items-center">
-      <img
-        class="w-full h-full lg:hidden"
-        src="../../../assets/Dashboard/General/escoba.svg"
-        alt=""
-      />
+      <img class="w-full h-full lg:hidden" src="../../../assets/Dashboard/General/escoba.svg" alt="" />
       <p class="hidden lg:block">Restaurar</p>
     </button>
     <button class="flex justify-center items-center" @click="retroceder">
-      <img
-        class="w-full h-full lg:hidden"
-        src="../../../assets/Dashboard/General/deshacer.svg"
-        alt=""
-      />
+      <img class="w-full h-full lg:hidden" src="../../../assets/Dashboard/General/deshacer.svg" alt="" />
       <p class="hidden lg:block">Atras</p>
     </button>
   </div>
@@ -56,11 +44,13 @@ export default {
 
       if (rpta) {
         this.guardarhero()
-        // this.guardarnp1();
-        // this.guardarnp2();
-        // this.guardarnp3();
-        // this.guardarnp4();
-        //this.guardarprocesos()
+        this.guardarnp1();
+        this.guardarnp2();
+        this.guardarnp3();
+        this.guardarnp4();
+        this.guardarprocesos()
+        alert("Actualizacion Exitosa!")
+        location.reload();
       } else {
         alert('Error en datos, Revisar!')
       }
@@ -88,7 +78,7 @@ export default {
       apiHero
         .updateHero(this.datahero._id, formData)
         .then((response) => {
-          alert('Registro Exitoso!')
+
         })
         .catch((error) => {
           console.log(`Hubo un error al actualizar ${error}`)
@@ -113,7 +103,7 @@ export default {
       apiNuestroPollo
         .updateNuestroPollo(this.datanp1._id, formData)
         .then((response) => {
-          alert('Registro Exitoso!')
+
         })
         .catch((error) => {
           console.log(`Hubo un error al actualizar ${error}`)
@@ -137,7 +127,7 @@ export default {
       apiNuestroPollo
         .updateNuestroPollo(this.datanp2._id, formData)
         .then((response) => {
-          alert('Registro Exitoso!')
+
         })
         .catch((error) => {
           console.log(`Hubo un error al actualizar ${error}`)
@@ -161,7 +151,7 @@ export default {
       apiNuestroPollo
         .updateNuestroPollo(this.datanp3._id, formData)
         .then((response) => {
-          alert('Registro Exitoso!')
+
         })
         .catch((error) => {
           console.log(`Hubo un error al actualizar ${error}`)
@@ -185,7 +175,7 @@ export default {
       apiNuestroPollo
         .updateNuestroPollo(this.datanp4._id, formData)
         .then((response) => {
-          alert('Registro Exitoso!')
+
         })
         .catch((error) => {
           console.log(`Hubo un error al actualizar ${error}`)
@@ -210,7 +200,7 @@ export default {
         apiProcesos
           .updateProceso(proceso._id, formData)
           .then((response) => {
-            alert('Registro Exitoso procesos!')
+            // alert('Registro Exitoso procesos!')
           })
           .catch((error) => {
             console.log(`Hubo un error al actualizar ${error}`)
@@ -256,7 +246,7 @@ export default {
     this.dataproceso = this.newProcesos
     this.datahero = this.newhero
   },
-  mounted() {}
+  mounted() { }
 }
 </script>
 <style scoped>

@@ -46,9 +46,9 @@ export default {
 <template>
   <div class="general">
     <!-- <botonesControl class="hidden lg:block absolute btn-control" /> -->
-    <div class="flex justify-end">
-      <BtnBack />
-    </div>
+    <!-- <div class="flex justify-end">
+      <BtnBack disabled/>
+    </div> -->
     <div class="cont-selform transition-all">
       <p>Seleccionar Formulario:</p>
       <div class="cont-forms">
@@ -154,6 +154,7 @@ export default {
     margin: 1%;
     font-size: 1.05vw;
     font-weight: 500;
+    border-radius: 1vw;
     color: rgba(255, 255, 255, 0.929);
   }
 

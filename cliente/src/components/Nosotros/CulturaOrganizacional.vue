@@ -70,7 +70,6 @@ export default {
         ({
           'bg-FondoCul2': index % 2 == 1,
           'bg-FondoCul1': index % 2 == 0
-          // 'border-b-4': index % 2 == 1,
         },
         'ncoani' + index)
       "

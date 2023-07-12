@@ -10,7 +10,8 @@ export default {
     return {
       estadonuevopv: true,
       estadoseleccionform: false,
-      imagenpv: ''
+      imagenpv: '',
+      newpuesto: {}
     }
   },
   components: {
@@ -43,7 +44,38 @@ export default {
       } else {
         this.imagenpv = '' // Limpiar la URL de la imagen si no se selecciona ningún archivo
       }
-    }
+    },
+    asignarmagen(valor) {
+      this.newpuesto.imgPuesto = valor
+      console.log(this.newpuesto)
+      this.$emit('newpuesto', this.newpuesto)
+      console.log(valor)
+    },
+    titulo(event) {
+      this.newpuesto.titulo = event.target.innerText
+      console.log(this.newpuesto)
+      this.$emit('newpuesto', this.newpuesto)
+    },
+    experiencia(event) {
+      this.newpuesto.experiencia = event.target.innerText
+      console.log(this.newpuesto)
+      this.$emit('newpuesto', this.newpuesto)
+    },
+    departamento(event) {
+      this.newpuesto.departamento = event.target.innerText
+      console.log(this.newpuesto)
+      this.$emit('newpuesto', this.newpuesto)
+    },
+    tipoempleo(event) {
+      this.newpuesto.tipoempleo = event.target.innerText
+      console.log(this.newpuesto)
+      this.$emit('newpuesto', this.newpuesto)
+    },
+    objetivoPuesto(event) {
+      this.newpuesto.objetivoPuesto = event.target.innerText
+      console.log(this.newpuesto)
+      this.$emit('newpuesto', this.newpuesto)
+    },
   }
 }
 </script>
@@ -51,22 +83,23 @@ export default {
   <div v-if="estadonuevopv" class="nuevo-pv overflow-x-hidden">
     <!-- <botonesControl @recetavacia="actualizarreceta" class="hidden lg:block absolute btn-control" /> -->
     <div class="fixed z-40 lg:z-50 cont-btn">
-      <BotonesCrudPuestoVacante class="btn-crud" />
+      <BotonesCrudPuestoVacante class="btn-crud" :newpuestoData="newpuesto" />
     </div>
-    <div class="flex justify-end">
+    <div class="flex justify-end pr-5">
       <BtnBack />
     </div>
     <div class="cont-workdes">
       <div class="lg:columns-2 lg:flex lg:items-center cont-text">
         <div class="imagen-round relative bg-violet-400 rounded-full m-auto flex justify-center items-center">
-          <FileUploaderDef />
+          <FileUploaderDef @imgrecortada="asignarmagen" />
           <!-- <img src="../../../assets/cDashboard/Iconmaterial-perm-media.svg" alt="" class="absolute w-52" />
           <input class="absolute opacity-0" type="file" v-on:change="previewImage" />
           <img :src="imagenpv" class="object-cover w-full h-full rounded-full" alt="" /> -->
         </div>
         <div class="ttl-work lg:w-2/4">
           <div class="font-bold">
-            <h1 contenteditable="true" class="ttl-work1 text-center font-TestKarbonSemiBold text-AzulPerla lg:text-right">
+            <h1 contenteditable="true" class="ttl-work1 text-center font-TestKarbonSemiBold text-AzulPerla lg:text-right"
+              @input="titulo">
               Titulo Puesto Vacante
             </h1>
             <div class="lg:flex">
@@ -77,7 +110,7 @@ export default {
                     transform="translate(-3 -3)" fill="#df9575" />
                 </svg>
 
-                &nbsp; <span class="spn-ind" contenteditable="true">Experiencia</span>
+                &nbsp; <span class="spn-ind" contenteditable="true" @input="experiencia">Experiencia</span>
               </div>
               <div class="ind-tipo flex font-KarbonRegular items-center justify-end">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.25 22.25">
@@ -86,7 +119,7 @@ export default {
                     transform="translate(-3 -3)" fill="#df9575" />
                 </svg>
 
-                &nbsp; <span class="spn-ind" contenteditable="true">Departamento</span>
+                &nbsp; <span class="spn-ind" contenteditable="true" @input="departamento">Departamento</span>
               </div>
               <div class="ind-tipo flex font-KarbonRegular items-center justify-end">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.25 22.25">
@@ -95,7 +128,7 @@ export default {
                     transform="translate(-3 -3)" fill="#df9575" />
                 </svg>
 
-                &nbsp; <span class="spn-ind" contenteditable="true">Tipo de empleo</span>
+                &nbsp; <span class="spn-ind" contenteditable="true" @input="tipoempleo">Tipo de empleo</span>
               </div>
             </div>
           </div>
@@ -103,7 +136,7 @@ export default {
             <h1 class="underline font-KarbonRegular text-AzulPerla text-left">
               Objetivo del puesto
             </h1>
-            <p contenteditable="true" class="text-justify font-KarbonRegular text-AzulPerla">
+            <p contenteditable="true" class="text-justify font-KarbonRegular text-AzulPerla" @input="objetivoPuesto">
               Descripcion
             </p>
           </div>
@@ -119,11 +152,11 @@ export default {
               <li>Requisito</li>
             </ul>
           </div>
-          <div class="cont-salary">
+          <!-- <div class="cont-salary">
             <p class="salary-work font-KarbonRegular text-right text-AzulPerla">
               Sueldo: S/.<span class="spn-salary" contenteditable="true">000</span>
             </p>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

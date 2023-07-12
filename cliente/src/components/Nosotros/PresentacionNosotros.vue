@@ -10,27 +10,40 @@ export default {}
       </div>
       <div class="textopptNosostros">
         <p class="text-MarronPerla font-KarbonRegular p-2 md:p-8 md:text-3xl text-justify">
-          Con más de 60 años de experiencia, Molino La Perla S.A.C. se destaca en el mercado avícola del norte del país.
-          Somos reconocidos por brindar calidad a las familias peruanas como una de las principales productoras de pollos
-          de carne a nivel nacional. <br />
+          Con más de 60 años de experiencia, Molino La Perla S.A.C. se destaca en el mercado avícola
+          del norte del país. Somos reconocidos por brindar calidad a las familias peruanas como una
+          de las principales productoras de pollos de carne a nivel nacional. <br />
           <br />
-          Nos destacamos por nuestras instalaciones renovadas y equipadas con tecnología de punta, lo que nos permite
-          optimizar nuestros procesos de producción. Contamos con un equipo de profesionales altamente capacitados que
-          lideran nuestra línea de producción, asegurando los estándares de calidad que nos caracterizan. Nuestro
-          compromiso es seguir siendo líderes en el mercado avícola, ofreciendo productos de calidad superior para
-          satisfacer las necesidades de nuestros clientes.
+          Nos destacamos por nuestras instalaciones renovadas y equipadas con tecnología de punta,
+          lo que nos permite optimizar nuestros procesos de producción. Contamos con un equipo de
+          profesionales altamente capacitados que lideran nuestra línea de producción, asegurando
+          los estándares de calidad que nos caracterizan. Nuestro compromiso es seguir siendo
+          líderes en el mercado avícola, ofreciendo productos de calidad superior para satisfacer
+          las necesidades de nuestros clientes.
         </p>
       </div>
       <div class="p-4">
-        <img loading="lazy" class="object-cover" src="@/assets/Nosotros/NosotrosPrimeraFoto.jpg" alt="imgnn" />
+        <img
+          loading="lazy"
+          class="object-cover"
+          src="@/assets/Nosotros/NosotrosPrimeraFoto.jpg"
+          alt="imgnn"
+        />
       </div>
-      <div class="font-KarbonRegular det-nnpre flex md:text-4xl flex-col justify-evenly items-center text-AzulPerla py-3">
+      <div
+        class="font-KarbonRegular det-nnpre flex md:text-4xl flex-col justify-evenly items-center text-AzulPerla py-3"
+      >
         MAS DE
         <p class="yearperla text-5xl md:text-6xl font-bold">60 AÑOS</p>
         SIRVIENDO AL PERU
       </div>
       <div class="img-nnpre flex justify-center scale-50 md:scale-90">
-        <img loading="lazy" class="object-cover" src="@/assets/Nosotros/imgLogoNosotros.png" alt="logo" />
+        <img
+          loading="lazy"
+          class="object-cover"
+          src="@/assets/Nosotros/imgLogoNosotros.png"
+          alt="logo"
+        />
       </div>
     </div>
     <!-- para escritorio -->
@@ -40,29 +53,41 @@ export default {}
       </div>
       <div class="relative w-full h-full">
         <div class="ellipse">
-          <img loading="lazy" class="object-cover w-full" src="@/assets/Nosotros/NosotrosPrimeraFoto.jpg"
-            alt="imgEllipse" />
+          <img
+            loading="lazy"
+            class="object-cover w-full"
+            src="@/assets/Nosotros/NosotrosPrimeraFoto.jpg"
+            alt="imgEllipse"
+          />
         </div>
         <div class="relative">
           <p class="relative contenedor-texto text-MarronPerla font-KarbonRegular">
-            Con más de 60 años de experiencia, Molino La Perla S.A.C. se destaca en el mercado avícola del norte del país.
-            Somos reconocidos por brindar calidad a las familias peruanas como una de las principales productoras de
-            pollos
-            de carne a nivel nacional. <br />
+            Con más de 60 años de experiencia, Molino La Perla S.A.C. se destaca en el mercado
+            avícola del norte del país. Somos reconocidos por brindar calidad a las familias
+            peruanas como una de las principales productoras de pollos de carne a nivel nacional.
             <br />
-            Nos destacamos por nuestras instalaciones renovadas y equipadas con tecnología de punta, lo que nos permite
-            optimizar nuestros procesos de producción. Contamos con un equipo de profesionales altamente capacitados que
-            lideran nuestra línea de producción, asegurando los estándares de calidad que nos caracterizan. Nuestro
-            compromiso es seguir siendo líderes en el mercado avícola, ofreciendo productos de calidad superior para
-            satisfacer las necesidades de nuestros clientes.
+            <br />
+            Nos destacamos por nuestras instalaciones renovadas y equipadas con tecnología de punta,
+            lo que nos permite optimizar nuestros procesos de producción. Contamos con un equipo de
+            profesionales altamente capacitados que lideran nuestra línea de producción, asegurando
+            los estándares de calidad que nos caracterizan. Nuestro compromiso es seguir siendo
+            líderes en el mercado avícola, ofreciendo productos de calidad superior para satisfacer
+            las necesidades de nuestros clientes.
           </p>
-          <div class="relative textogen text-AzulPerla font-KarbonRegular flex flex-col justify-center items-center">
+          <div
+            class="relative textogen text-AzulPerla font-KarbonRegular flex flex-col justify-center items-center"
+          >
             MAS DE
             <p class="textoyear">60 AÑOS</p>
             SIRVIENDO AL PERU
           </div>
           <div class="imgnpend relative">
-            <img loading="lazy" class="object-cover" src="@/assets/Nosotros/imgLogoNosotros.png" alt="logo" />
+            <img
+              loading="lazy"
+              class="object-cover"
+              src="@/assets/Nosotros/imgLogoNosotros.png"
+              alt="logo"
+            />
           </div>
         </div>
       </div>
