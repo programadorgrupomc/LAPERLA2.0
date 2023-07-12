@@ -7,19 +7,15 @@
       </h1>
     </div>
     <!-- items de nuestros procesos -->
-
     <!-- Items Iteractivos -->
     <div
       v-for="(npro, index) in nuestrosPro"
       :key="index"
       class="item-np flex flex-col lg:flex lg:flex-row"
-      :class="
-        ({
-          'bg-FondoNp1': index % 2 == 0,
-          'bg-FondoNp2': index % 2 == 1
-        },
-        'npani' + index)
-      "
+      :class="[
+        {'bg-FondoNp1': index % 2 == 0, 'bg-FondoNp2': index % 2 == 1},
+        'npani' + index
+      ]"
     >
       <!-- imagen -->
       <div class="cont-imgnp h-auto flex justify-center lg:w-1/2" :class="'npimgani' + index">
@@ -34,14 +30,11 @@
       </div>
       <!-- contenido cuerpo -->
       <div
-        class="cont-textnp p-14 flex flex-col justify-center lg:w-2/4 lg:px-24 order-first"
-        :class="
-          ({
-            'lg:order-none': index % 2 == 0,
-            'lg:order-first': index % 2 == 1
-          },
-          'nptextani' + index)
-        "
+        class="cont-textnp p-14 flex flex-col justify-center lg:w-2/4 lg:px-24"
+        :class="[
+          {'lg:order-none': index % 2 == 0, 'lg:order-first': index % 2 == 1},
+          'nptextani' + index
+        ]"
       >
         <div class="ttlnpe text-NaranjaPerla text-3xl lg:text-4xl break-words">
           <p
@@ -74,12 +67,6 @@
           </p>
         </div>
       </div>
-
-      <!-- <div class="w-1" :class="{ 'hidden': index != 2, }"><img class="img-decor relative"
-                  src="@/assets/HomeAssets/NpAss/starnpR.png" alt=""></div>
-          <div class="w-1" :class="{ 'hidden': index != 4, }"><img class="img-decor2 relative"
-                  src="@/assets/HomeAssets/NpAss/starnpR.png" alt="">
-          </div> -->
     </div>
   </div>
 </template>
@@ -95,6 +82,9 @@ import { gsap } from 'gsap'
 
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
+
+import apiProcesos from '../../services/Inicio/apiProcesos.js'
+
 
 export default {
   name: 'NuestrosProcesos',
@@ -271,6 +261,15 @@ export default {
       // Actualiza la animación cuando cambie el tamaño de la ventana
       ScrollTrigger.refresh()
       window.addEventListener('resize', this.actualizarAnimacion)
+    },
+    fetchProcesos(){
+      apiProcesos.getProcesos()
+      .then((response)=>{
+        this.nuestrosPro=response.data
+      })
+      .catch((error) => {
+          console.log('Hubo un problema con la peticion', error)
+        })
     }
   },
   mounted() {
