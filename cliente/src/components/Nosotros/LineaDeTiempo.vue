@@ -3,64 +3,41 @@
     <div class="linea-titulo">
       <p class="titulo text-right">NUESTRA HISTORIA</p>
     </div>
-    <div
-      v-for="(time, index) in data"
-      :key="index"
-      class="linea-contenido flex flex-col items-start justify-center relative"
-      :class="'linea-contenido' + index"
-    >
+    <div v-for="(time, index) in data" :key="index"
+      class="linea-contenido flex flex-col items-start justify-center relative" :class="'linea-contenido' + index">
       <div class="contenido flex-col flex justify-around lg:flex-row lg:items-center">
         <div class="contenido-txt-img flex flex-col lg:flex-row lg:items-center">
           <div class="txt">
-            <h1
-              class="txt-h1 flex justify-center items-center lg:justify-end"
-              :class="'txt-h1' + index"
-            >
+            <h1 class="txt-h1 flex justify-center items-center lg:justify-end" :class="'txt-h1' + index">
               {{ time.titulo }}
             </h1>
-            <p
-              class="txt-p m-auto lg:m-0 flex justify-center items-center"
-              :class="'txt-p' + index"
-            >
+            <p class="txt-p m-auto lg:m-0 flex justify-center items-center" :class="'txt-p' + index">
               {{ time.contenido }}
             </p>
           </div>
           <div class="img m-auto">
-            <img
-              src="../../assets/Nosotros/imgtimel1.png"
-              class="img-tl"
-              :class="'img-tl' + index"
-              alt=""
-            />
+            <img :src="time.imagen" class="img-tl" :class="'img-tl' + index" alt="" />
           </div>
         </div>
         <div class="year flex justify-center items-center" :class="'year' + index">
           <p class="h-full flex items-center">{{ time.año }}</p>
         </div>
       </div>
-      <div
-        class="linea shadow-2xl absolute flex justify-center items-center"
-        :class="'linea' + index"
-      >
-        <img
-          v-if="index === 0"
-          class="punta absolute top-0"
-          src="../../assets/Nosotros/TriangleTimeLine.svg"
-          alt=""
-        />
+      <div class="linea shadow-2xl absolute flex justify-center items-center" :class="'linea' + index">
+        <img v-if="index === 0" class="punta absolute top-0" src="../../assets/Nosotros/TriangleTimeLine.svg" alt="" />
         <img class="elipse" src="../../assets/Nosotros/ElipseTimeLine.svg" alt="" />
-        <img
-          v-if="index === data.length - 1"
-          class="punta absolute bottom-0"
-          src="../../assets/Nosotros/TriangleTimeLine.svg"
-          alt=""
-        />
+        <img v-if="index === data.length - 1" class="punta absolute bottom-0"
+          src="../../assets/Nosotros/TriangleTimeLine.svg" alt="" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import imagentl1995 from '@/assets/Nosotros/Nosotros1995.jpg';
+import imagentl2018 from '@/assets/Nosotros/Nosotros2018.jpg';
+import imagentlg from '@/assets/Nosotros/imgtimel1.png';
+import imagentl1986 from '@/assets/Nosotros/imgnombretl.jpg';
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
@@ -70,29 +47,33 @@ export default {
     return {
       data: [
         {
-          titulo: 'MEJOR POLLO DEL NORTE',
+          titulo: 'FUNDACIÓN DE LA PERLA',
           contenido:
-            'Todo este esfuerzo permitió convertirnos en el mejor pollo que se produce en Trujillo distribuyéndonos diariamente en las zonas Barranca, Casma, Huarmey, Chimbote, Chiclayo, Piura y Cajamarca. Y también es llevado por compradores particulares hasta la ciudad de Lima.',
-          año: '2018'
-        },
-        {
-          titulo: 'MODERNIZACIÓN DEL AMBIENTE',
-          contenido:
-            'Con el paso del tiempo compra terrenos para instalar una nueva planta de Incubación con maquinaria moderna de esa época, también moderniza su planta de alimento balanceado para una buena elaboración de los alimentos que producían.',
-          año: '1995'
+            'Ingeniero Ramón Ganoza Calderón en el mes de octubre del año 1961 funda la empresa Avícola La Perla, donde con poco capital invierte en la compra de unos pequeños terrenos muy rústicos en esa época, y empieza a criar reproductoras de pollo carne de la línea genética Hubbard de USA.',
+          año: '1961',
+          imagen: imagentlg
         },
         {
           titulo: 'NOMBRE LA PERLA S.A.C.',
           contenido:
             'Allí por el año 1986, después de sobrevivir a las graves crisis avícolas comerciales de esa época, decide cambiar la razón social a Molino La Perla SAC e incursiona en la crianza de pollos de carne; en donde empieza a construir galpones para su crianza en diversas zonas como Santo Domingo, Vía de Evitamiento, Tablazo de Huanchaco.',
-          año: '1986'
+          año: '1986',
+          imagen: imagentl1986
         },
         {
-          titulo: 'FUNDACIÓN DE LA PERLA',
+          titulo: 'MODERNIZACIÓN DEL AMBIENTE',
           contenido:
-            'Ingeniero Ramón Ganoza Calderón en el mes de octubre del año 1961 funda la empresa Avícola La Perla, donde con poco capital invierte en la compra de unos pequeños terrenos muy rústicos en esa época, y empieza a criar reproductoras de pollo carne de la línea genética Hubbard de USA.',
-          año: '1961'
-        }
+            'Con el paso del tiempo compra terrenos para instalar una nueva planta de Incubación con maquinaria moderna de esa época, también moderniza su planta de alimento balanceado para una buena elaboración de los alimentos que producían.',
+          año: '1995',
+          imagen: imagentl1995
+        },
+        {
+          titulo: 'MEJOR POLLO DEL NORTE',
+          contenido:
+            'Todo este esfuerzo permitió convertirnos en el mejor pollo que se produce en Trujillo distribuyéndonos diariamente en las zonas Barranca, Casma, Huarmey, Chimbote, Chiclayo, Piura y Cajamarca. Y también es llevado por compradores particulares hasta la ciudad de Lima.',
+          año: '2018',
+          imagen: imagentl2018
+        },
       ]
     }
   },

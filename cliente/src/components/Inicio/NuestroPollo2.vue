@@ -5,8 +5,8 @@
         <div class="relative">
           <div class="circulo-fondo2"></div>
           <img
-            src="../../assets/Inicio/imgcont2.jpg"
-            class="absolute img-circulo2 shadow-2xl"
+            src="../../assets/Inicio/NuestroPolloFirmeza.jpg"
+            class="absolute img-circulo2 shadow-2xl object-cover"
             alt="img-circulo2"
           />
         </div>
@@ -25,8 +25,8 @@
         <div class="relative">
           <div class="circulo-fondo2"></div>
           <img
-            src="../../assets/Inicio/imgcont2.jpg"
-            class="absolute img-circulo2 shadow-2xl"
+            src="../../assets/Inicio/NuestroPolloFirmeza.jpg"
+            class="absolute img-circulo2 shadow-2xl object-cover"
             alt="img-circulo2"
           />
         </div>

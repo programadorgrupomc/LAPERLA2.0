@@ -12,7 +12,7 @@ export default defineConfig({
     }
   },
   //para activar acceso a toda la red
-  server: {
-    host: true
-  }
+  // server: {
+  //   host: true
+  // }
 })

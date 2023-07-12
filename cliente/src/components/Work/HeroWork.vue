@@ -16,7 +16,7 @@ export default {
       <img
         loading="lazy"
         class="imgherowork object-cover w-full"
-        src="@/assets/Work/imgHeroWork.jpg"
+        src="@/assets/Work/Trabajacon NosotrosFotodePortada.jpg"
         alt="hero"
       />
       <div class="gradient absolute bottom-0 w-full"></div>

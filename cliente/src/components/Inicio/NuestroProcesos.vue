@@ -10,67 +10,45 @@
     <!-- items de nuestros procesos -->
 
     <!-- Items Iteractivos -->
-    <div
-      v-for="(npro, index) in nuestrosPro"
-      :key="index"
-      class="item-np flex flex-col lg:flex lg:flex-row"
-      :class="
-        ({
-          'bg-FondoNp1': index % 2 == 0,
-          'bg-FondoNp2': index % 2 == 1
-        },
-        'npani' + index)
-      "
-    >
+    <div v-for="(npro, index) in nuestrosPro" :key="index" class="item-np flex flex-col lg:flex lg:flex-row" :class="({
+      'bg-FondoNp1': index % 2 == 0,
+      'bg-FondoNp2': index % 2 == 1
+    },
+      'npani' + index)
+      ">
       <!-- imagen -->
       <div class="cont-imgnp h-auto flex justify-center lg:w-1/2" :class="'npimgani' + index">
-        <img
-          class="h-full w-full object-cover imgnpgen py-6"
-          :src="npro.image"
-          :class="{
-            'lg:pl-0': index % 2 == 0,
-            'lg:pr-0': index % 2 == 1
-          }"
-        />
+        <img class="h-full w-full object-cover imgnpgen py-6" :src="npro.image" :class="{
+          'lg:pl-0': index % 2 == 0,
+          'lg:pr-0': index % 2 == 1
+        }" />
       </div>
       <!-- contenido cuerpo -->
-      <div
-        class="cont-textnp p-14 flex flex-col justify-center lg:w-2/4 lg:px-24 order-first"
-        :class="
-          ({
-            'lg:order-none': index % 2 == 0,
-            'lg:order-first': index % 2 == 1
-          },
-          'nptextani' + index)
-        "
-      >
+      <div class="cont-textnp p-14 flex flex-col justify-center lg:w-2/4 lg:px-24 order-first" :class="({
+        'lg:order-none': index % 2 == 0,
+        'lg:order-first': index % 2 == 1
+      },
+        'nptextani' + index)
+        ">
         <div class="ttlnpe text-NaranjaPerla text-3xl lg:text-4xl break-words">
-          <p
-            class="md:text-6xl"
-            :class="{
-              'text-right': index % 2 == 0,
-              'text-left': index % 2 == 1
-            }"
-          >
+          <p class="md:text-6xl" :class="{
+            'text-right': index % 2 == 0,
+            'text-left': index % 2 == 1
+          }">
             Etapa {{ index + 1 }}
           </p>
         </div>
-        <div
-          class="ttlnpp text-AzulPerla text-5xl md:text-8xl py-5 lg:text-7xl break-words"
-          :class="{ 'text-right': index % 2 == 0, 'text-left': index % 2 == 1 }"
-        >
+        <div class="ttlnpp text-AzulPerla text-5xl md:text-8xl py-5 lg:text-7xl break-words"
+          :class="{ 'text-right': index % 2 == 0, 'text-left': index % 2 == 1 }">
           {{ npro.subtitle }}
         </div>
         <div class="ttlnpd text-AzulPerla text-xl">
-          <p
-            class="text-justify md:text-5xl lg:text-xl"
-            :class="{
-              'lg:text-right': index % 2 == 0,
-              'lg:text-left': index % 2 == 1,
-              'lg:pl-28': index % 2 == 0,
-              'lg:pr-28': index % 2 == 1
-            }"
-          >
+          <p class="text-justify md:text-5xl lg:text-xl" :class="{
+            'lg:text-right': index % 2 == 0,
+            'lg:text-left': index % 2 == 1,
+            'lg:pl-28': index % 2 == 0,
+            'lg:pr-28': index % 2 == 1
+          }">
             {{ npro.text }}
           </p>
         </div>
@@ -85,12 +63,12 @@
   </div>
 </template>
 <script>
-import imagen1 from '@/assets/Inicio/imgnp.jpeg'
+import imagen1 from '@/assets/Inicio/NuestroProcesoEtapa1.jpg'
 import imagen2 from '@/assets/Inicio/imgnp (1).jpeg'
-import imagen3 from '@/assets/Inicio/imgnp (2).jpeg'
-import imagen4 from '@/assets/Inicio/imgnp (3).jpeg'
-import imagen5 from '@/assets/Inicio/imgnp (4).jpg'
-import imagen6 from '@/assets/Inicio/imgnp (4).jpg'
+import imagen3 from '@/assets/Inicio/NuestroProcesoEtapa3.jpg'
+import imagen4 from '@/assets/Inicio/NuestroProcesoEtapa4.jpg'
+import imagen5 from '@/assets/Inicio/NuestroProcesoEtapa5.jpg'
+import imagen6 from '@/assets/Inicio/NuestroProcesoEtapa6.jpg'
 
 import { gsap } from 'gsap'
 

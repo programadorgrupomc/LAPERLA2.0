@@ -13,8 +13,8 @@
         <div class="relative">
           <div class="circulo-fondo1"></div>
           <img
-            src="../../assets/Inicio/imgcont1.jpg"
-            class="absolute img-circulo1 shadow-2xl"
+            src="../../assets/Inicio/NuestroPolloIdentidad.jpg"
+            class="absolute img-circulo1 object-cover shadow-2xl"
             alt="img-circulo1"
           />
         </div>
@@ -40,8 +40,8 @@
         <div class="relative">
           <div class="circulo-fondo1"></div>
           <img
-            src="../../assets/Inicio/imgcont1.jpg"
-            class="absolute img-circulo1 shadow-2xl"
+            src="../../assets/Inicio/NuestroPolloIdentidad.jpg"
+            class="absolute img-circulo1 object-cover shadow-2xl"
             alt="img-circulo1"
           />
         </div>

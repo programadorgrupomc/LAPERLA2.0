@@ -28,7 +28,7 @@ export default {
 
 @media (min-width: 1024px) {
   .vista-work {
-    /* padding-top: 12vh; */
+    padding-top: 12vh;
   }
 }
 </style>
