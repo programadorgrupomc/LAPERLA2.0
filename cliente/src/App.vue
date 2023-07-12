@@ -23,5 +23,6 @@ import footerPerla from './components/General/headerold/footerPerla.vue'
 
 <style scoped>
 @media (min-width: 1024px) {
+  
 }
 </style>

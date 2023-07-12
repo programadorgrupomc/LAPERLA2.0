@@ -34,7 +34,7 @@ export default {
     <div v-if="viewdocs" class="cont-gallery flex justify-center">
         <div class="gallery grid grid-cols-2 lg:grid-cols-5 gap-10 mx-auto">
             <div v-for="i in 5" class="item-gallery w-full rounded">
-                <img src="@/assets/AssetsRecetario/receta1.jpg" alt="image">
+                <img src="@/assets/Dashboard/Recetario/receta1.jpg" alt="image">
             </div>
         </div>
     </div>

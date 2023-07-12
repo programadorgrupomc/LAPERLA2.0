@@ -41,8 +41,8 @@ export default {
         <!-- imagenes -->
         <div v-if="viewimagenes" class="cont-gallery flex justify-center">
             <div class="gallery grid grid-cols-2 lg:grid-cols-5 gap-10 mx-auto">
-                <div v-for="i in 7" class="item-gallery w-full rounded">
-                    <img src="@/assets/AssetsRecetario/receta1.jpg" alt="image">
+                <div v-for="i in 4" class="item-gallery w-full rounded">
+                    <img src="@/assets/Dashboard/Recetario/receta1.jpg" alt="image">
                     <p class="text-center">Imagen{{ i }}.jpeg</p>
                 </div>
             </div>
@@ -107,4 +107,5 @@ export default {
       .item-gallery img {
           border-radius: 0.5vw;
       }
-  }</style>
+  }
+</style>
