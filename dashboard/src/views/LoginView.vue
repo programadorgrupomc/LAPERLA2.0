@@ -1,10 +1,10 @@
 <template>
   <div class="vista-login flex flex-col justify-center items-center">
-    <!-- <logo-login />
+    <logo-login />
     <transition name="fade" appear>
       <login-form v-show="showform" />
-    </transition> -->
-    <file-uploader-carousel/>
+    </transition>
+    <!-- <file-uploader-carousel/> -->
   </div>
 </template>
 

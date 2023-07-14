@@ -18,45 +18,18 @@
         <div class="indicator1">
           <p>DIFICULTAD</p>
           <div class="flex">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="21.399"
-              height="16.752"
-              viewBox="0 0 21.399 16.752"
-            >
-              <path
-                id="Icon_metro-spoon-fork"
-                data-name="Icon metro-spoon-fork"
+            <svg xmlns="http://www.w3.org/2000/svg" width="21.399" height="16.752" viewBox="0 0 21.399 16.752">
+              <path id="Icon_metro-spoon-fork" data-name="Icon metro-spoon-fork"
                 d="M7.343,1.928c-2.1,0-3.808,1.989-3.808,4.443A4.359,4.359,0,0,0,6.465,10.7L5.834,20.973A1.182,1.182,0,0,0,7.026,22.24h.635a1.182,1.182,0,0,0,1.192-1.267L8.222,10.7a4.359,4.359,0,0,0,2.93-4.324C11.152,3.917,9.447,1.928,7.343,1.928Z"
-                transform="translate(17.493 -4.025) rotate(60)"
-                fill="#6e5b44"
-              /></svg
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="21.399"
-              height="16.752"
-              viewBox="0 0 21.399 16.752"
-            >
-              <path
-                id="Icon_metro-spoon-fork"
-                data-name="Icon metro-spoon-fork"
+                transform="translate(17.493 -4.025) rotate(60)" fill="#6e5b44" />
+            </svg><svg xmlns="http://www.w3.org/2000/svg" width="21.399" height="16.752" viewBox="0 0 21.399 16.752">
+              <path id="Icon_metro-spoon-fork" data-name="Icon metro-spoon-fork"
                 d="M7.343,1.928c-2.1,0-3.808,1.989-3.808,4.443A4.359,4.359,0,0,0,6.465,10.7L5.834,20.973A1.182,1.182,0,0,0,7.026,22.24h.635a1.182,1.182,0,0,0,1.192-1.267L8.222,10.7a4.359,4.359,0,0,0,2.93-4.324C11.152,3.917,9.447,1.928,7.343,1.928Z"
-                transform="translate(17.493 -4.025) rotate(60)"
-                fill="#6e5b44"
-              /></svg
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="21.399"
-              height="16.752"
-              viewBox="0 0 21.399 16.752"
-            >
-              <path
-                id="Icon_metro-spoon-fork"
-                data-name="Icon metro-spoon-fork"
+                transform="translate(17.493 -4.025) rotate(60)" fill="#6e5b44" />
+            </svg><svg xmlns="http://www.w3.org/2000/svg" width="21.399" height="16.752" viewBox="0 0 21.399 16.752">
+              <path id="Icon_metro-spoon-fork" data-name="Icon metro-spoon-fork"
                 d="M7.343,1.928c-2.1,0-3.808,1.989-3.808,4.443A4.359,4.359,0,0,0,6.465,10.7L5.834,20.973A1.182,1.182,0,0,0,7.026,22.24h.635a1.182,1.182,0,0,0,1.192-1.267L8.222,10.7a4.359,4.359,0,0,0,2.93-4.324C11.152,3.917,9.447,1.928,7.343,1.928Z"
-                transform="translate(17.493 -4.025) rotate(60)"
-                fill="#6e5b44"
-              />
+                transform="translate(17.493 -4.025) rotate(60)" fill="#6e5b44" />
             </svg>
           </div>
           <p contenteditable="true" class="ind-edit text-center">Facil/Media/Avanzada</p>
@@ -64,19 +37,10 @@
         <div class="indicator2">
           <p>PORCIONES</p>
           <div>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="15.23"
-              height="18.051"
-              viewBox="0 0 15.23 18.051"
-            >
-              <path
-                id="Icon_metro-spoon-fork"
-                data-name="Icon metro-spoon-fork"
+            <svg xmlns="http://www.w3.org/2000/svg" width="15.23" height="18.051" viewBox="0 0 15.23 18.051">
+              <path id="Icon_metro-spoon-fork" data-name="Icon metro-spoon-fork"
                 d="M6.919,1.928A3.7,3.7,0,0,0,3.535,5.877a3.874,3.874,0,0,0,2.6,3.843l-.56,9.133a1.051,1.051,0,0,0,1.059,1.126H7.2A1.051,1.051,0,0,0,8.26,18.853L7.7,9.719a3.874,3.874,0,0,0,2.6-3.843A3.7,3.7,0,0,0,6.919,1.928Zm11.376,0-.94,5.641H16.65l-.47-5.641h-.47l-.47,5.641h-.705l-.94-5.641h-.47V9.261a.564.564,0,0,0,.564.564h1.469L14.6,18.853a1.051,1.051,0,0,0,1.059,1.126h.564a1.051,1.051,0,0,0,1.059-1.126l-.554-9.028H18.2a.564.564,0,0,0,.564-.564V1.928Z"
-                transform="translate(-3.535 -1.928)"
-                fill="#6e5b44"
-              />
+                transform="translate(-3.535 -1.928)" fill="#6e5b44" />
             </svg>
           </div>
           <p contenteditable="true" class="ind-edit text-center">Cantidad de porciones</p>
@@ -84,35 +48,15 @@
         <div class="indicator3">
           <p>TIEMPO</p>
           <div>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="23.907"
-              height="23.906"
-              viewBox="0 0 23.907 23.906"
-            >
-              <g
-                id="Icon_ionic-ios-timer"
-                data-name="Icon ionic-ios-timer"
-                transform="translate(16.471 -4.901) rotate(60)"
-              >
-                <path
-                  id="Trazado_59"
-                  data-name="Trazado 59"
+            <svg xmlns="http://www.w3.org/2000/svg" width="23.907" height="23.906" viewBox="0 0 23.907 23.906">
+              <g id="Icon_ionic-ios-timer" data-name="Icon ionic-ios-timer"
+                transform="translate(16.471 -4.901) rotate(60)">
+                <path id="Trazado_59" data-name="Trazado 59"
                   d="M12.339,20.74A8.4,8.4,0,0,1,6.508,6.29a.674.674,0,0,1,.937.97A7.051,7.051,0,1,0,13.011,5.32v2.63a.676.676,0,1,1-1.353,0V4.614a.676.676,0,0,1,.676-.676,8.4,8.4,0,0,1,0,16.8Z"
-                  transform="translate(0 0)"
-                  fill="#6e5b44"
-                  stroke="#6e5b44"
-                  stroke-width="0.7"
-                />
-                <path
-                  id="Trazado_60"
-                  data-name="Trazado 60"
+                  transform="translate(0 0)" fill="#6e5b44" stroke="#6e5b44" stroke-width="0.7" />
+                <path id="Trazado_60" data-name="Trazado 60"
                   d="M11.919,11.331l4.18,3a1.265,1.265,0,0,1-1.47,2.058,1.221,1.221,0,0,1-.294-.294l-3-4.18a.421.421,0,0,1,.588-.588Z"
-                  transform="translate(-2.945 -2.944)"
-                  fill="#6e5b44"
-                  stroke="#6e5b44"
-                  stroke-width="0.7"
-                />
+                  transform="translate(-2.945 -2.944)" fill="#6e5b44" stroke="#6e5b44" stroke-width="0.7" />
               </g>
             </svg>
           </div>
@@ -121,31 +65,14 @@
         <div class="indicator4">
           <p>INF. NUTRICIONAL</p>
           <div>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16.373"
-              height="17.738"
-              viewBox="0 0 16.373 17.738"
-            >
-              <g
-                id="Icon_ionic-ios-nutrition"
-                data-name="Icon ionic-ios-nutrition"
-                transform="translate(-4.5 -3.374)"
-              >
-                <path
-                  id="Trazado_61"
-                  data-name="Trazado 61"
+            <svg xmlns="http://www.w3.org/2000/svg" width="16.373" height="17.738" viewBox="0 0 16.373 17.738">
+              <g id="Icon_ionic-ios-nutrition" data-name="Icon ionic-ios-nutrition" transform="translate(-4.5 -3.374)">
+                <path id="Trazado_61" data-name="Trazado 61"
                   d="M17.082,13.8h0a.133.133,0,0,1-.017-.026L13.7,10.384h0a1.409,1.409,0,0,0-1.006-.435,1.329,1.329,0,0,0-1.181.695h0s-.145.217-.537.844a.345.345,0,0,0,0,.367l1.143,1.757c.124.162.141.341.06.422l0,0c-.1.1-.252.064-.418-.06L10.38,13.1a.344.344,0,0,0-.473.107c-.934,1.5-2,3.185-3.036,4.861a.341.341,0,0,0,0,.354l.6,1.028c.124.162.141.341.06.422l0,0c-.1.1-.252.064-.418-.06L6.4,19.462a.34.34,0,0,0-.443.124C5.2,20.792,4.76,21.491,4.713,21.568h0a1.5,1.5,0,0,0-.213.759A1.364,1.364,0,0,0,5.86,23.7a1.561,1.561,0,0,0,.878-.324l4.456-3.309a.342.342,0,0,0,.085-.456l-.874-1.369c-.124-.162-.141-.341-.06-.422l0,0c.1-.1.252-.064.418.06l1.595,1.092a.339.339,0,0,0,.4-.009c2.26-1.667,4.157-3.078,4.157-3.078h0a1.389,1.389,0,0,0,.554-1.109,1.338,1.338,0,0,0-.388-.968Z"
-                  transform="translate(0 -2.588)"
-                  fill="#6e5b44"
-                />
-                <path
-                  id="Trazado_62"
-                  data-name="Trazado 62"
+                  transform="translate(0 -2.588)" fill="#6e5b44" />
+                <path id="Trazado_62" data-name="Trazado 62"
                   d="M28.008,6.922l-.478-.763a.341.341,0,0,0-.465-.124L24.533,7.6l2.017-3.364a.346.346,0,0,0-.124-.469l-.755-.341a.339.339,0,0,0-.469.128L22.746,8.167,23.966,9.4l3.914-2A.348.348,0,0,0,28.008,6.922Z"
-                  transform="translate(-7.182)"
-                  fill="#6e5b44"
-                />
+                  transform="translate(-7.182)" fill="#6e5b44" />
               </g>
             </svg>
           </div>
@@ -167,165 +94,73 @@
       <div class="cont-nuevareceta shadow-2xl items-center justify-center grid grid-cols-2">
         <div class="parte1">
           <div class="cont-titulo">
-            <p
-              contenteditable="true"
-              class="text-center font-KarbonRegular"
-              @input="capturarTitulo($event)"
-            ></p>
+            <p contenteditable="true" class="text-center font-KarbonRegular" @input="capturarTitulo($event)"></p>
           </div>
 
           <div class="cont-indicadores font-KarbonRegular">
             <div class="indicator1">
               <p>DIFICULTAD</p>
               <div class="flex">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="21.399"
-                  height="16.752"
-                  viewBox="0 0 21.399 16.752"
-                >
-                  <path
-                    id="Icon_metro-spoon-fork"
-                    data-name="Icon metro-spoon-fork"
+                <svg xmlns="http://www.w3.org/2000/svg" width="21.399" height="16.752" viewBox="0 0 21.399 16.752">
+                  <path id="Icon_metro-spoon-fork" data-name="Icon metro-spoon-fork"
                     d="M7.343,1.928c-2.1,0-3.808,1.989-3.808,4.443A4.359,4.359,0,0,0,6.465,10.7L5.834,20.973A1.182,1.182,0,0,0,7.026,22.24h.635a1.182,1.182,0,0,0,1.192-1.267L8.222,10.7a4.359,4.359,0,0,0,2.93-4.324C11.152,3.917,9.447,1.928,7.343,1.928Z"
-                    transform="translate(17.493 -4.025) rotate(60)"
-                    fill="#6e5b44"
-                  /></svg
-                ><svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="21.399"
-                  height="16.752"
-                  viewBox="0 0 21.399 16.752"
-                >
-                  <path
-                    id="Icon_metro-spoon-fork"
-                    data-name="Icon metro-spoon-fork"
+                    transform="translate(17.493 -4.025) rotate(60)" fill="#6e5b44" />
+                </svg><svg xmlns="http://www.w3.org/2000/svg" width="21.399" height="16.752" viewBox="0 0 21.399 16.752">
+                  <path id="Icon_metro-spoon-fork" data-name="Icon metro-spoon-fork"
                     d="M7.343,1.928c-2.1,0-3.808,1.989-3.808,4.443A4.359,4.359,0,0,0,6.465,10.7L5.834,20.973A1.182,1.182,0,0,0,7.026,22.24h.635a1.182,1.182,0,0,0,1.192-1.267L8.222,10.7a4.359,4.359,0,0,0,2.93-4.324C11.152,3.917,9.447,1.928,7.343,1.928Z"
-                    transform="translate(17.493 -4.025) rotate(60)"
-                    fill="#6e5b44"
-                  /></svg
-                ><svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="21.399"
-                  height="16.752"
-                  viewBox="0 0 21.399 16.752"
-                >
-                  <path
-                    id="Icon_metro-spoon-fork"
-                    data-name="Icon metro-spoon-fork"
+                    transform="translate(17.493 -4.025) rotate(60)" fill="#6e5b44" />
+                </svg><svg xmlns="http://www.w3.org/2000/svg" width="21.399" height="16.752" viewBox="0 0 21.399 16.752">
+                  <path id="Icon_metro-spoon-fork" data-name="Icon metro-spoon-fork"
                     d="M7.343,1.928c-2.1,0-3.808,1.989-3.808,4.443A4.359,4.359,0,0,0,6.465,10.7L5.834,20.973A1.182,1.182,0,0,0,7.026,22.24h.635a1.182,1.182,0,0,0,1.192-1.267L8.222,10.7a4.359,4.359,0,0,0,2.93-4.324C11.152,3.917,9.447,1.928,7.343,1.928Z"
-                    transform="translate(17.493 -4.025) rotate(60)"
-                    fill="#6e5b44"
-                  />
+                    transform="translate(17.493 -4.025) rotate(60)" fill="#6e5b44" />
                 </svg>
               </div>
-              <p
-                contenteditable="true"
-                class="ind-edit text-center"
-                @input="capturarDificultad($event)"
-              ></p>
+              <p contenteditable="true" class="ind-edit text-center" @input="capturarDificultad($event)"></p>
             </div>
             <div class="indicator2">
               <p>PORCIONES</p>
               <div>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="15.23"
-                  height="18.051"
-                  viewBox="0 0 15.23 18.051"
-                >
-                  <path
-                    id="Icon_metro-spoon-fork"
-                    data-name="Icon metro-spoon-fork"
+                <svg xmlns="http://www.w3.org/2000/svg" width="15.23" height="18.051" viewBox="0 0 15.23 18.051">
+                  <path id="Icon_metro-spoon-fork" data-name="Icon metro-spoon-fork"
                     d="M6.919,1.928A3.7,3.7,0,0,0,3.535,5.877a3.874,3.874,0,0,0,2.6,3.843l-.56,9.133a1.051,1.051,0,0,0,1.059,1.126H7.2A1.051,1.051,0,0,0,8.26,18.853L7.7,9.719a3.874,3.874,0,0,0,2.6-3.843A3.7,3.7,0,0,0,6.919,1.928Zm11.376,0-.94,5.641H16.65l-.47-5.641h-.47l-.47,5.641h-.705l-.94-5.641h-.47V9.261a.564.564,0,0,0,.564.564h1.469L14.6,18.853a1.051,1.051,0,0,0,1.059,1.126h.564a1.051,1.051,0,0,0,1.059-1.126l-.554-9.028H18.2a.564.564,0,0,0,.564-.564V1.928Z"
-                    transform="translate(-3.535 -1.928)"
-                    fill="#6e5b44"
-                  />
+                    transform="translate(-3.535 -1.928)" fill="#6e5b44" />
                 </svg>
               </div>
-              <p
-                contenteditable="true"
-                class="ind-edit text-center"
-                @input="capturarPorciones($event)"
-              ></p>
+              <p contenteditable="true" class="ind-edit text-center" @input="capturarPorciones($event)"></p>
             </div>
             <div class="indicator3">
               <p>TIEMPO</p>
               <div>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="23.907"
-                  height="23.906"
-                  viewBox="0 0 23.907 23.906"
-                >
-                  <g
-                    id="Icon_ionic-ios-timer"
-                    data-name="Icon ionic-ios-timer"
-                    transform="translate(16.471 -4.901) rotate(60)"
-                  >
-                    <path
-                      id="Trazado_59"
-                      data-name="Trazado 59"
+                <svg xmlns="http://www.w3.org/2000/svg" width="23.907" height="23.906" viewBox="0 0 23.907 23.906">
+                  <g id="Icon_ionic-ios-timer" data-name="Icon ionic-ios-timer"
+                    transform="translate(16.471 -4.901) rotate(60)">
+                    <path id="Trazado_59" data-name="Trazado 59"
                       d="M12.339,20.74A8.4,8.4,0,0,1,6.508,6.29a.674.674,0,0,1,.937.97A7.051,7.051,0,1,0,13.011,5.32v2.63a.676.676,0,1,1-1.353,0V4.614a.676.676,0,0,1,.676-.676,8.4,8.4,0,0,1,0,16.8Z"
-                      transform="translate(0 0)"
-                      fill="#6e5b44"
-                      stroke="#6e5b44"
-                      stroke-width="0.7"
-                    />
-                    <path
-                      id="Trazado_60"
-                      data-name="Trazado 60"
+                      transform="translate(0 0)" fill="#6e5b44" stroke="#6e5b44" stroke-width="0.7" />
+                    <path id="Trazado_60" data-name="Trazado 60"
                       d="M11.919,11.331l4.18,3a1.265,1.265,0,0,1-1.47,2.058,1.221,1.221,0,0,1-.294-.294l-3-4.18a.421.421,0,0,1,.588-.588Z"
-                      transform="translate(-2.945 -2.944)"
-                      fill="#6e5b44"
-                      stroke="#6e5b44"
-                      stroke-width="0.7"
-                    />
+                      transform="translate(-2.945 -2.944)" fill="#6e5b44" stroke="#6e5b44" stroke-width="0.7" />
                   </g>
                 </svg>
               </div>
-              <p
-                contenteditable="true"
-                class="ind-edit text-center"
-                @input="capturarTiempo($event)"
-              ></p>
+              <p contenteditable="true" class="ind-edit text-center" @input="capturarTiempo($event)"></p>
             </div>
             <div class="indicator4">
               <p>INF. NUTRICIONAL</p>
               <div class="">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16.373"
-                  height="17.738"
-                  viewBox="0 0 16.373 17.738"
-                >
-                  <g
-                    id="Icon_ionic-ios-nutrition"
-                    data-name="Icon ionic-ios-nutrition"
-                    transform="translate(-4.5 -3.374)"
-                  >
-                    <path
-                      id="Trazado_61"
-                      data-name="Trazado 61"
+                <svg xmlns="http://www.w3.org/2000/svg" width="16.373" height="17.738" viewBox="0 0 16.373 17.738">
+                  <g id="Icon_ionic-ios-nutrition" data-name="Icon ionic-ios-nutrition"
+                    transform="translate(-4.5 -3.374)">
+                    <path id="Trazado_61" data-name="Trazado 61"
                       d="M17.082,13.8h0a.133.133,0,0,1-.017-.026L13.7,10.384h0a1.409,1.409,0,0,0-1.006-.435,1.329,1.329,0,0,0-1.181.695h0s-.145.217-.537.844a.345.345,0,0,0,0,.367l1.143,1.757c.124.162.141.341.06.422l0,0c-.1.1-.252.064-.418-.06L10.38,13.1a.344.344,0,0,0-.473.107c-.934,1.5-2,3.185-3.036,4.861a.341.341,0,0,0,0,.354l.6,1.028c.124.162.141.341.06.422l0,0c-.1.1-.252.064-.418-.06L6.4,19.462a.34.34,0,0,0-.443.124C5.2,20.792,4.76,21.491,4.713,21.568h0a1.5,1.5,0,0,0-.213.759A1.364,1.364,0,0,0,5.86,23.7a1.561,1.561,0,0,0,.878-.324l4.456-3.309a.342.342,0,0,0,.085-.456l-.874-1.369c-.124-.162-.141-.341-.06-.422l0,0c.1-.1.252-.064.418.06l1.595,1.092a.339.339,0,0,0,.4-.009c2.26-1.667,4.157-3.078,4.157-3.078h0a1.389,1.389,0,0,0,.554-1.109,1.338,1.338,0,0,0-.388-.968Z"
-                      transform="translate(0 -2.588)"
-                      fill="#6e5b44"
-                    />
-                    <path
-                      id="Trazado_62"
-                      data-name="Trazado 62"
+                      transform="translate(0 -2.588)" fill="#6e5b44" />
+                    <path id="Trazado_62" data-name="Trazado 62"
                       d="M28.008,6.922l-.478-.763a.341.341,0,0,0-.465-.124L24.533,7.6l2.017-3.364a.346.346,0,0,0-.124-.469l-.755-.341a.339.339,0,0,0-.469.128L22.746,8.167,23.966,9.4l3.914-2A.348.348,0,0,0,28.008,6.922Z"
-                      transform="translate(-7.182)"
-                      fill="#6e5b44"
-                    />
+                      transform="translate(-7.182)" fill="#6e5b44" />
                   </g>
                 </svg>
               </div>
-              <p
-                contenteditable="true"
-                class="ind-edit text-center"
-                @input="capturarInfoNutricional($event)"
-              ></p>
+              <p contenteditable="true" class="ind-edit text-center" @input="capturarInfoNutricional($event)"></p>
             </div>
           </div>
 
@@ -338,32 +173,7 @@
             </div>
           </div>
           <div class="img-rec2 overflow-hidden relative shadow-2xl">
-            <!-- <img src="../../../assets/cDashboard/Iconmaterial-perm-media.svg" alt="" class="absolute w-52" /> -->
-            <input
-              type="file"
-              multiple
-              class="relative"
-              v-on:change="previewImages"
-              @change="capturarImagenes($event)"
-            />
-            <div class="swiper-container">
-              <div class="swiper-wrapper h-full">
-                <div
-                  class="swiper-slide relative"
-                  v-for="(imageSrc, index) in imageSrcList"
-                  :key="index"
-                >
-                  <button
-                    @click="eliminarimagecarousel(index)"
-                    class="bg-white absolute right-0 m-5 p-2 rounded-2xl hover:bg-red-300"
-                  >
-                    Eliminar
-                  </button>
-                  <img class="object-cover w-full h-full" :src="imageSrc" alt="" />
-                </div>
-              </div>
-              <div class="swiper-pagination"></div>
-            </div>
+            <FileUploaderCarousel class="h-full w-full"/>
           </div>
         </div>
 
@@ -394,6 +204,7 @@ import Swiper from 'swiper'
 import BtnBack from '../../../General/BtnBack.vue'
 import FileUploaderRect from '../../../General/FileUploaderRect.vue'
 import BotonesCrudEntradaRec from '../BotonesCrudEntradaRec.vue'
+import FileUploaderCarousel from '../../../General/FileUploaderCarousel.vue'
 export default {
   data() {
     return {
@@ -417,7 +228,8 @@ export default {
   components: {
     BtnBack,
     FileUploaderRect,
-    BotonesCrudEntradaRec
+    BotonesCrudEntradaRec,
+    FileUploaderCarousel,
   },
   methods: {
     //items normales

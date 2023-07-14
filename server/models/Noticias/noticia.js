@@ -8,6 +8,7 @@ const noticiaSchema = new mongoose.Schema({
   imgsCarouselNoticia: [{ type: String }],
   usuarioUltimaModificacion: { type: String },
   fechaUltimaModificacion: { type: Date },
+  estado: { type: Boolean, default: true }, // Nuevo campo "estado" con valor por defecto en false
 });
 
 const Noticias = mongoose.model("Noticias", noticiaSchema);

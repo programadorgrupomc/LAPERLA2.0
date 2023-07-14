@@ -1,136 +1,138 @@
 <script>
-// import textalign from '../../cDashboard/textAligin.vue'
 import BtnBack from '../../../General/BtnBack.vue'
 import Swiper from 'swiper'
 import FileUploaderRect from '../../../General/FileUploaderRect.vue'
 import BotonesCrudNoticias from '../BotonesCrudNoticias.vue'
+import FileUploaderCarousel from '../../../General/FileUploaderCarousel.vue'
 export default {
   data() {
     return {
+      data: {
+        fechaActual: ""
+      },
       estadonuevanoticia: true,
       hora: '',
       clasetxt: '',
       imagenHero: '',
-      imageSrcList: []
+      imageSrcList: [],
+      newNoticiaData: {
+        titulo: '',
+        contenido: '',
+        imgHeroNoticia: '',
+        imgsCarouselNoticia: [],
+        fecha:''
+      }
     }
   },
   components: {
     BtnBack,
     FileUploaderRect,
-    BotonesCrudNoticias
-    // textalign,
+    BotonesCrudNoticias,
+    FileUploaderCarousel
   },
   methods: {
+    mostrarFecha() {
+      var fecha = new Date();
+      var opciones = { day: "2-digit", month: "long", year: "numeric" };
+      this.data.fechaActual = fecha.toLocaleDateString("es-ES", opciones);
+    },
     cambiarEstado() {
-      this.estadonuevanoticia = !this.estadonuevanoticia
-      this.$emit('estadonuevanoticiacam', this.estadonuevanoticia)
+      this.estadonuevanoticia = !this.estadonuevanoticia;
+      this.$emit('estadonuevanoticiacam', this.estadonuevanoticia);
     },
     asignarclase(valor) {
-      this.clasetxt = valor
+      this.clasetxt = valor;
     },
     previewImage(event) {
-      const file = event.target.files[0] // Obtener el archivo seleccionado
-
-      // Verificar si se seleccionó un archivo
+      const file = event.target.files[0];
       if (file) {
-        // Crear una URL local para el archivo seleccionado
-        this.imagenHero = URL.createObjectURL(file)
+        this.imagenHero = URL.createObjectURL(file);
       } else {
-        this.imagenHero = '' // Limpiar la URL de la imagen si no se selecciona ningún archivo
+        this.imagenHero = '';
       }
     },
     initSwiper() {
       new Swiper('.swiper-container', {
-        // Configuración de Swiper
         slidesPerView: 1,
         pagination: {
           el: '.swiper-pagination',
           clickable: true
         }
-      })
+      });
     },
     previewImages(event) {
-      const files = event.target.files // Obtener los archivos seleccionados
-
-      // Limpiar la lista de URLs de imágenes existentes
-      this.imageSrcList = []
-
-      // Verificar si se seleccionaron archivos
+      const files = event.target.files;
+      this.imageSrcList = [];
       if (files.length > 0) {
-        // Iterar sobre cada archivo seleccionado
         for (let i = 0; i < files.length; i++) {
-          const file = files[i]
-
-          // Crear una URL local para el archivo seleccionado
-          const imageSrc = URL.createObjectURL(file)
-
-          // Agregar la URL a la lista de URLs de imágenes
-          this.imageSrcList.push(imageSrc)
+          const file = files[i];
+          const imageSrc = URL.createObjectURL(file);
+          this.imageSrcList.push(imageSrc);
         }
       }
     },
-
     eliminarimagecarousel(i) {
-      this.imageSrcList.splice(i, 1)
+      this.imageSrcList.splice(i, 1);
+    },
+    titulo(event) {
+      this.newNoticiaData.titulo = event.target.innerText;
+      this.newNoticiaData.fecha = this.data.fechaActual;
+      console.log(this.newNoticiaData);
+      this.$emit('newNoticiaData', this.newNoticiaData);
+    },
+    contenido(event) {
+      this.newNoticiaData.contenido = event.target.innerText;
+      console.log(this.newNoticiaData);
+      this.$emit('newNoticiaData', this.newNoticiaData);
+    },
+    asignarImagen(valor) {
+      this.newNoticiaData.imgHeroNoticia = valor;
+      console.log(this.newNoticiaData);
+      this.$emit('newNoticiaData', this.newNoticiaData);
+    },
+    actualizarCarousel(valor) {
+      if (!Array.isArray(valor)) {
+        valor = [valor];
+      }
+      this.newNoticiaData.imgsCarouselNoticia = valor;
+      console.log(valor);
+      this.$emit('newNoticiaData', this.newNoticiaData);
     }
   },
   mounted() {
-    // Inicializar el carrusel Swiper
-    this.initSwiper()
+    this.mostrarFecha();
+    setInterval(this.mostrarFecha, 1000);
   }
 }
 </script>
 <template>
   <div class="nueva-noticia overflow-hidden">
     <div class="fixed z-40 lg:z-50 cont-btn">
-      <BotonesCrudPuestoVacante class="btn-crud" :newpuestoData="newpuesto" />
+      <BotonesCrudNoticias :newnoticiasdata="newNoticiaData" class="btn-crud" />
     </div>
     <div class="flex justify-end">
       <BtnBack />
     </div>
     <div class="cont-noticiadata bg-FondoPerla">
       <div class="hero-nuevanoticia relative flex justify-center items-center overflow-hidden">
-        <FileUploaderRect />
+        <FileUploaderRect @imgrecortada="asignarImagen" />
       </div>
       <div class="cont-titulo">
         <p class="not-pre font-TestKarbonMedium">NOTICIAS</p>
-        <p contenteditable="true" class="titulo-not font-TestKarbonBold text-azulbsPerla">
+        <p contenteditable="true" class="titulo-not font-TestKarbonBold text-azulbsPerla" @input="titulo">
           TITULO DE LA NOTICIA
         </p>
         <!-- <textalign @clasetxt="asignarclase" /> -->
-        <p class="fecha-not font-TestKarbonMedium text-AzulPerla">02 de mayo de 2023</p>
+        <p class="fecha-not font-TestKarbonMedium text-AzulPerla"><span v-text="data.fechaActual"></span></p>
       </div>
       <div class="cont-notmain lg:grid lg:grid-cols-2 flex flex-col justify-center items-center">
         <div class="desc-noticia flex justify-center items-center">
-          <p contenteditable="true" class="cont-desc font-KarbonRegular text-azulbsPerla">
+          <p contenteditable="true" class="cont-desc font-KarbonRegular text-azulbsPerla" @input="contenido">
             Texto Descriptivo
           </p>
         </div>
         <div class="cont-imgot overflow-hidden relative shadow-2xl">
-          <img
-            src="../../../assets/cDashboard/Iconmaterial-perm-media.svg"
-            alt=""
-            class="absolute w-52"
-          />
-          <input type="file" multiple class="relative" v-on:change="previewImages" />
-          <div class="swiper-container">
-            <div class="swiper-wrapper h-full">
-              <div
-                class="swiper-slide relative"
-                v-for="(imageSrc, index) in imageSrcList"
-                :key="index"
-              >
-                <button
-                  @click="eliminarimagecarousel(index)"
-                  class="bg-white absolute right-0 m-5 p-2 rounded-2xl hover:bg-red-300"
-                >
-                  Eliminar
-                </button>
-                <img class="object-cover w-full h-full" :src="imageSrc" alt="" />
-              </div>
-            </div>
-            <div class="swiper-pagination"></div>
-          </div>
+          <FileUploaderCarousel class="w-full h-full" @imagesCarousel="actualizarCarousel" />
         </div>
       </div>
     </div>
@@ -148,6 +150,7 @@ export default {
   height: 10vh;
   /* background-color: rgba(220, 20, 60, 0.238); */
 }
+
 .btn-back {
   padding: 5%;
   padding-top: 1%;
@@ -204,6 +207,18 @@ export default {
 }
 
 @media (min-width: 1024px) {
+  .cont-btn {
+    width: 30vh;
+    height: 7vh;
+    top: 0%;
+    right: 15vw;
+  }
+
+  .btn-crud {
+    height: 7vh;
+    /* background-color: rgba(220, 20, 60, 0.238); */
+  }
+
   .btn-control {
     height: 6vh;
     top: -0%;

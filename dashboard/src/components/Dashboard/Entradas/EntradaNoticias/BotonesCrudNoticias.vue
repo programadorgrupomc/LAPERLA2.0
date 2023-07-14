@@ -15,34 +15,39 @@
     </div>
 </template>
 <script>
-import apiPuestosVacantes from '../../../../services/Work/apiPuestosVacantes'
+import apiNoticias from '../../../../services/Noticias/apiNoticias'
 export default {
     data() {
         return {
-            datanewpuesto: '',
+            datanewnoticia: '',
         }
     },
-    props: ['newpuestoData'],
+    props: ['newnoticiasdata'],
     methods: {
         guardar() {
+            console.log(this.newnoticiasdata)
             const nombreArchivo = 'imagen_salida.png'
             let archivo
 
-            if (this.isBase64(this.newpuestoData.imgPuesto)) {
-                archivo = this.base64ToFile(this.newpuestoData.imgPuesto, nombreArchivo)
+            if (this.isBase64(this.newnoticiasdata.imgHeroNoticia)) {
+                archivo = this.base64ToFile(this.newnoticiasdata.imgHeroNoticia, nombreArchivo)
             } else {
                 archivo = ''
             }
 
-            const formData = new FormData()
-            formData.append('titulo', this.newpuestoData.titulo)
-            formData.append('experiencia', this.newpuestoData.experiencia)
-            formData.append('departamento', this.newpuestoData.departamento)
-            formData.append('tipoempleo', this.newpuestoData.tipoempleo)
-            formData.append('objetivoPuesto', this.newpuestoData.objetivoPuesto)
-            formData.append('imgPuesto', archivo)
+            const formdata = new FormData()
+            formdata.append('titulo', this.newnoticiasdata.titulo)
+            formdata.append('contenido', this.newnoticiasdata.contenido)
+            formdata.append('imgHeroNoticia', archivo)
+            formdata.append('fecha', this.newnoticiasdata.fecha)
 
-            apiPuestosVacantes.createPuestosVacantes(formData)
+            for (let i = 0; i < this.newnoticiasdata.imgsCarouselNoticia.length; i++) {
+                formdata.append(
+                    "imgsCarouselNoticia",
+                    this.newnoticiasdata.imgsCarouselNoticia[i]
+                );
+            }
+            apiNoticias.createNoticias(formdata)
                 .then((response) => {
                     alert('Registro Exitoso!')
                     this.retroceder();
@@ -50,7 +55,6 @@ export default {
                 .catch((error) => {
                     console.log(`Hubo un error al crear ${error}`)
                 })
-
         },
         retroceder() {
             this.$router.go(-1)
@@ -86,14 +90,16 @@ export default {
         }
     },
     updated() {
-        this.datanewpuesto = this.newpuestoData;
-        console.log(this.datanewpuesto);
+        this.datanewnoticia = this.newnoticiasdata;
+        console.log(this.datanewnoticia)
     },
-    mounted() { },
+    mounted() {
+
+    },
     watch: {
-        newpuesto(newVal) {
-            this.datanewpuesto = newVal;
-            console.log(this.newpuestoData);
+        newnoticiasdata(newVal) {
+            this.datanewnoticia = newVal
+            console.log(this.newnoticiasdata)
         }
     }
 }

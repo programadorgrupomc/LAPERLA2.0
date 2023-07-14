@@ -1,18 +1,31 @@
 <script>
 import BtnBack from '../../../General/BtnBack.vue'
-
+import apiNoticias from '../../../../../services/Noticias/apiNoticias';
 export default {
   data() {
     return {
       noticias: '',
-      idnoticia: ''
+      idnoticia: '',
+      noticiaslocal: ''
     }
   },
+  props: ['noticiasprop'],
   components: {
     BtnBack
   },
   methods: {},
-  created() {}
+  updated() {
+    this.noticiaslocal = this.noticiasprop;
+    console.log(this.noticiaslocal)
+  },
+  watch: {
+    noticiasprop(newVal) {
+      this.noticiaslocal = newVal;
+    }
+  },
+  created() {
+
+  }
 }
 </script>
 <template>
@@ -23,10 +36,7 @@ export default {
     <div class="header-folder flex flex-col justify-center items-center lg:flex-row lg:mx-auto">
       <p class="title-folder font-TestKarbonBold">Noticias</p>
       <div class="w-full flex flex-col lg:flex-row justify-end items-center">
-        <button
-          @click="cambiarestadonuevanoicia"
-          class="btn-añadirentradda font-TestKarbonSemiBold"
-        >
+        <button @click="cambiarestadonuevanoicia" class="btn-añadirentradda font-TestKarbonSemiBold">
           <router-link to="/dashboard/entradas/noticias/nuevanoticia"> Añadir Entrada </router-link>
         </button>
         <div class="btn-buscar">
@@ -34,35 +44,23 @@ export default {
         </div>
       </div>
     </div>
-    <div
-      class="items-folder flex flex-col justify-center items-center lg:mx-auto lg:grid lg:grid-cols-3"
-    >
-      <div v-for="noticia in noticias" class="itemf relative bg-stone-600">
-        <img
-          class="object-cover h-full w-full"
-          loading="lazy"
-          src="@/assets/AssetsNoticias/imgnot1(4).jpg"
-          alt="receta-item"
-        />
+    <div class="items-folder flex flex-col justify-center items-center lg:mx-auto lg:grid lg:grid-cols-3">
+      <div v-for="noticia in noticiaslocal" class="itemf relative bg-stone-600">
+        <img class="object-cover h-full w-full" loading="lazy"
+          :src="`http://localhost:3000/uploads/${noticia.imgsCarouselNoticia[0]}`" alt="receta-item" />
         <div class="cont-actions absolute flex flex-col justify-center items-center">
           <p class="text-white">{{ noticia.titulo }}</p>
           <div class="cont-btnsaction flex justify-between">
-            <button
-              @click="cambiarestadoeditarnoticia(noticia._id)"
-              class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold"
-            >
+            <button @click="cambiarestadoeditarnoticia(noticia._id)"
+              class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
               Editar
             </button>
-            <button
-              @click="cambiarestadovernoticia(noticia._id)"
-              class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold"
-            >
+            <button @click="cambiarestadovernoticia(noticia._id)"
+              class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
               Ver
             </button>
-            <button
-              @click="deleteNoticia(noticia._id)"
-              class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold"
-            >
+            <button @click="deleteNoticia(noticia._id)"
+              class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
               Eliminar
             </button>
           </div>
@@ -191,8 +189,7 @@ export default {
     width: 80%;
   }
 
-  .items-folder {
-  }
+  .items-folder {}
 
   .itemf {
     overflow: hidden;
