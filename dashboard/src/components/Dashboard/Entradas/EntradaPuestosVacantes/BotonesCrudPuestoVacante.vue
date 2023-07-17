@@ -40,6 +40,7 @@ export default {
       formData.append('departamento', this.newpuestoData.departamento)
       formData.append('tipoempleo', this.newpuestoData.tipoempleo)
       formData.append('objetivoPuesto', this.newpuestoData.objetivoPuesto)
+      formData.append('funciones', this.newpuestoData.funciones)
       formData.append('imgPuesto', archivo)
 
       apiPuestosVacantes.createPuestosVacantes(formData)

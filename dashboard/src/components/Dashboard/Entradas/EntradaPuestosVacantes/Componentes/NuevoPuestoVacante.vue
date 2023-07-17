@@ -81,7 +81,9 @@ export default {
       const parser = new DOMParser();
       const htmlDoc = parser.parseFromString(funcionesHTML, 'text/html');
       const elementosLi = htmlDoc.getElementsByTagName('li');
-      const funciones = Array.from(elementosLi).map(li => li.innerText.trim()); // Solo almacenamos el texto de las funciones
+      const funciones = Array.from(elementosLi).map(li => ({
+        funcion: li.innerHTML.trim()
+      })); // Solo almacenamos el texto de las funciones
       this.newpuesto.funciones = funciones;
       console.log(this.newpuesto);
       this.$emit('newpuesto', this.newpuesto);

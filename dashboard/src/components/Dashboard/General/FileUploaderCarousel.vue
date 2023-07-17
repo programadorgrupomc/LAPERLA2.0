@@ -1,14 +1,18 @@
+
 <template>
   <div class="relative cont-general h-2/4 w-2/4">
     <div class="carousel" ref="carousel">
       <div class="slide flex relative" v-for="(item, index) in images" :key="index">
         <div class="w-full h-full" v-if="item.type === 'image'">
+          <FileUploaderCrect v-if="edit && editingIndex === index" :image="item.url"
+            @imagecroped="actualizarImagen(index, $event)" class="absolute w-full h-full" />
           <img class="object-contain w-full h-full" :src="item.url" :alt="item.name" />
         </div>
         <div v-else-if="item.type === 'video'">
           <video class="object-contain w-full h-full" :src="item.url" :alt="item.name" autoplay></video>
         </div>
         <button class="absolute btn-deletefile transition-all button" @click="deleteFile(index)">Eliminar</button>
+        <button class="absolute btn-editar transition-all button" @click="editarImagen(index)">Editar</button>
       </div>
     </div>
     <div class="absolute cont-addfile">
@@ -19,11 +23,19 @@
 </template>
   
 <script>
+import FileUploaderRect from './FileUploaderRect.vue'
+import FileUploaderCrect from './FileUploaderCrect.vue'
 export default {
   data() {
     return {
-      images: []
+      images: [],
+      edit: false,
+      editingIndex: null // Store the index of the image being edited
     };
+  },
+  components: {
+    FileUploaderRect,
+    FileUploaderCrect,
   },
   methods: {
     handleFileUpload(event) {
@@ -60,20 +72,22 @@ export default {
         const file = this.images[index].file;
         URL.revokeObjectURL(this.images[index].url);
         this.images.splice(index, 1);
-        this.$emit("imagesCarousel", convertedFiles);//revisar aca :v
+        this.$emit("imagesCarousel", this.images); // Pass the updated images array
       } else {
         alert('No se eliminó ningún archivo.');
       }
     },
     scrollToActiveImage() {
-      const activeSlide = this.$refs.carousel.querySelector('.slide.active');
-      if (activeSlide) {
-        const containerWidth = this.$refs.carousel.offsetWidth;
-        const slideWidth = activeSlide.offsetWidth;
-        const slideOffsetLeft = activeSlide.offsetLeft;
-        const scrollLeft = slideOffsetLeft - (containerWidth - slideWidth) / 2;
-        this.$refs.carousel.scrollLeft = scrollLeft;
-      }
+      // ...
+    },
+    actualizarImagen(index, updatedUrl) {
+      this.images[index].url = updatedUrl;
+      this.edit = false;
+      this.$emit("imagesCarousel", this.images); // Pass the updated images array
+    },
+    editarImagen(index) {
+      this.edit = true;
+      this.editingIndex = index; // Set the index of the image being edited
     }
   }
 };
@@ -114,8 +128,21 @@ export default {
   border-radius: 1vw;
 }
 
+.btn-editar {
+  top: 2%;
+  left: 15%;
+  background-color: rgba(0, 223, 33, 0.658);
+  padding: 1%;
+  border-radius: 1vw;
+}
+
 .btn-deletefile:hover {
   background-color: rgba(255, 0, 0, 0.459);
+  color: white;
+}
+
+.btn-editar:hover {
+  background-color: green;
   color: white;
 }
 
