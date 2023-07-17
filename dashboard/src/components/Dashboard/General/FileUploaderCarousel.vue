@@ -1,4 +1,3 @@
-
 <template>
   <div class="relative cont-general h-2/4 w-2/4">
     <div class="carousel" ref="carousel">
@@ -21,7 +20,7 @@
     </div>
   </div>
 </template>
-  
+
 <script>
 import FileUploaderRect from './FileUploaderRect.vue'
 import FileUploaderCrect from './FileUploaderCrect.vue'
@@ -78,12 +77,17 @@ export default {
       }
     },
     scrollToActiveImage() {
-      // ...
+      const activeImage = this.$refs.carousel.getElementsByClassName("slide")[this.editingIndex];
+
+      if (activeImage) {
+        this.$refs.carousel.scrollLeft = activeImage.offsetLeft;
+      }
     },
+    //revisar esta maldita funcion aaaaaah
     actualizarImagen(index, updatedUrl) {
-      this.images[index].url = updatedUrl;
+      // this.images[index].url = updatedUrl;
       this.edit = false;
-      this.$emit("imagesCarousel", this.images); // Pass the updated images array
+      // this.$emit("imagesCarousel", this.images); // Pass the updated images array
     },
     editarImagen(index) {
       this.edit = true;
@@ -92,8 +96,7 @@ export default {
   }
 };
 </script>
-  
-  
+
 <style scoped>
 .cont-general {
   border: #9B886F solid;
@@ -104,12 +107,14 @@ export default {
   width: 100%;
   display: flex;
   overflow-x: scroll;
+  scroll-snap-type: x mandatory; /* Enable scroll snapping */
 }
 
 .slide {
   flex-shrink: 0;
   width: 100%;
   height: 100%;
+  scroll-snap-align: start; /* Snap each slide to the start of the container */
 }
 
 .cont-addfile {

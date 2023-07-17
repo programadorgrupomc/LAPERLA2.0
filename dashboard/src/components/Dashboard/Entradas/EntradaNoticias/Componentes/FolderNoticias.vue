@@ -13,7 +13,21 @@ export default {
   components: {
     BtnBack
   },
-  methods: {},
+  methods: {
+    deleteNoticia(id) {
+      const rpta = window.confirm('Seguro que desea eliminar La Publicacion?')
+      if (rpta) {
+        apiNoticias.deleteNoticias(id)
+          .then((response) => {
+            alert('Eliminacion Exitoso!')
+            location.reload();
+          })
+          .catch((error) => {
+            console.log(`Hubo un error al eliminar ${error}`)
+          })
+      }
+    }
+  },
   updated() {
     this.noticiaslocal = this.noticiasprop;
     console.log(this.noticiaslocal)

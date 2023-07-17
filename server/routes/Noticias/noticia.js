@@ -40,7 +40,7 @@ router.post(
     { name: "imgsCarouselNoticia", maxCount: 10 },
   ]),
   async (req, res) => {
-    console.log(req.body)
+    console.log(req.body);
     try {
       const {
         titulo,
@@ -51,11 +51,15 @@ router.post(
         estado,
       } = req.body;
 
-      const imgHeroNoticia = req.files["imgHeroNoticia"] ? req.files["imgHeroNoticia"][0].filename : "";
+      const imgHeroNoticia = req.files["imgHeroNoticia"]
+        ? req.files["imgHeroNoticia"][0].filename
+        : "";
 
       let imgsCarouselNoticia = [];
       if (req.files["imgsCarouselNoticia"]) {
-        imgsCarouselNoticia = req.files["imgsCarouselNoticia"].map((file) => file.filename);
+        imgsCarouselNoticia = req.files["imgsCarouselNoticia"].map(
+          (file) => file.filename
+        );
       }
 
       const nuevaNoticia = new Noticias({
@@ -97,11 +101,15 @@ router.put(
         estado,
       } = req.body;
 
-      const imgHeroNoticia = req.files["imgHeroNoticia"] ? req.files["imgHeroNoticia"][0].filename : "";
+      const imgHeroNoticia = req.files["imgHeroNoticia"]
+        ? req.files["imgHeroNoticia"][0].filename
+        : "";
 
       let imgsCarouselNoticia = [];
       if (req.files["imgsCarouselNoticia"]) {
-        imgsCarouselNoticia = req.files["imgsCarouselNoticia"].map((file) => file.filename);
+        imgsCarouselNoticia = req.files["imgsCarouselNoticia"].map(
+          (file) => file.filename
+        );
       }
 
       const noticia = await Noticias.findById(req.params.id);
@@ -121,30 +129,27 @@ router.put(
         res.status(404).json({ message: "Noticia no encontrada" });
       }
     } catch (error) {
-      res
-        .status(400)
-        .json({
-          error: "Error al actualizar la noticia",
-          details: error.message,
-        });
+      res.status(400).json({
+        error: "Error al actualizar la noticia",
+        details: error.message,
+      });
     }
   }
 );
 
 // Ruta para eliminar una noticia por su ID
 router.delete("/:id", async (req, res) => {
+  const { id } = req.params;
+
   try {
-    const noticia = await Noticias.findById(req.params.id);
+    const noticia = await Noticias.findByIdAndDelete(id);
     if (noticia) {
-      await noticia.remove();
-      res.json({ message: "Noticia eliminada" });
+      res.json({ message: "noticia vacante eliminado correctamente" });
     } else {
-      res.status(404).json({ message: "Noticia no encontrada" });
+      res.status(404).json({ error: "noticia  no encontrado" });
     }
   } catch (error) {
-    res
-      .status(500)
-      .json({ error: "Error al eliminar la noticia", details: error.message });
+    res.status(500).json({ error: "Error al eliminar el noticia " });
   }
 });
 
