@@ -1,19 +1,57 @@
 <script>
 import BtnBack from '../../../General/BtnBack.vue'
 import apiNoticias from '../../../../../services/Noticias/apiNoticias';
+import verNoticia from './verNoticia.vue';
+import editarNoticia from './editarNoticia.vue';
 export default {
   data() {
     return {
+      estadofolderNoticias: true,
+      estadonuevanoticia: false,
+      estadovernoticia: false,
+      estadoeditarnoticia: false,
       noticias: '',
       idnoticia: '',
-      noticiaslocal: ''
+      noticiaslocal: '',
     }
   },
   props: ['noticiasprop'],
   components: {
-    BtnBack
+    BtnBack,
+    verNoticia,
+    editarNoticia
   },
   methods: {
+    cambiaestnot() {
+      this.estadofolderNoticias = !this.estadofolderNoticias;
+      this.$emit('estadonotcam', this.estadofolderNoticias)
+    },
+    cambiarestadonuevanoicia() {
+      this.estadonuevanoticia = !this.estadonuevanoticia;
+      this.estadofolderNoticias = !this.estadofolderNoticias;
+    },
+    actuaizarestadonuevanot(valor) {
+      this.estadonuevanoticia = valor;
+      this.estadofolderNoticias = !this.estadofolderNoticias;
+    },
+    cambiarestadovernoticia(id) {
+      this.estadovernoticia = !this.estadovernoticia;
+      this.idnoticia = id;
+      this.estadofolderNoticias = !this.estadofolderNoticias;
+    },
+    actualizarvernoticia(valor) {
+      this.estadovernoticia = valor;
+      this.estadofolderNoticias = !this.estadofolderNoticias;
+    },
+    cambiarestadoeditarnoticia(id) {
+      this.estadoeditarnoticia = !this.estadoeditarnoticia;
+      this.idnoticia = id;
+      this.estadofolderNoticias = !this.estadofolderNoticias;
+    },
+    actualizareditarnoticia(valor) {
+      this.estadoeditarnoticia = valor;
+      this.estadofolderNoticias = !this.estadofolderNoticias;
+    },
     deleteNoticia(id) {
       const rpta = window.confirm('Seguro que desea eliminar La Publicacion?')
       if (rpta) {
@@ -43,7 +81,9 @@ export default {
 }
 </script>
 <template>
-  <div class="cont-folder">
+  <verNoticia v-if="estadovernoticia" @vernoticiacam="actualizarvernoticia" :idnoticia="idnoticia" />
+  <editarNoticia v-if="estadoeditarnoticia" @estadoeditarnoticiacam="actualizareditarnoticia" :idnoticia="idnoticia" />
+  <div v-if="estadofolderNoticias" class="cont-folder">
     <div class="flex justify-end">
       <BtnBack />
     </div>

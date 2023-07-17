@@ -1,20 +1,21 @@
 <script>
-import { useNoticiasStore } from '../../../stores/StoreNoticias/storeNoticias'
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import '../../../../../../node_modules/swiper/swiper-bundle.css';
 
-import { Swiper, SwiperSlide } from 'swiper/vue'
-import 'swiper/swiper-bundle.css'
-
+import BtnBack from '../../../General/BtnBack.vue'
+import apiNoticias from '../../../../../services/Noticias/apiNoticias'
 export default {
   data() {
     return {
       estadovernoticia: true,
-      noticias: '',
+      noticiaslocal: [],
       modules: [Swiper]
     }
   },
   components: {
     Swiper,
-    SwiperSlide
+    SwiperSlide,
+    BtnBack
   },
   props: ['idnoticia'],
   methods: {
@@ -22,18 +23,18 @@ export default {
       this.estadovernoticia = !this.estadovernoticia
       this.$emit('vernoticiacam', this.estadovernoticia)
     },
-    async obtenerNoticiasf() {
-      const noticiasstore = useNoticiasStore()
-      try {
-        await noticiasstore.obtenernoticias()
-        this.noticias = noticiasstore.noticias
-      } catch (error) {
-        console.log('Error al obtener usuarios')
-      }
+    fetchNoticias() {
+      apiNoticias.getNoticias()
+        .then((response) => {
+          this.noticiaslocal = response.data
+        })
+        .catch((error) => {
+          console.log('Hubo un problema con la peticion', error)
+        })
     }
   },
   created() {
-    this.obtenerNoticiasf()
+    this.fetchNoticias();
   }
 }
 </script>
@@ -41,33 +42,15 @@ export default {
   <div>
     <div class="flex justify-end">
       <button @click="cambiarestadovernoticia" class="btn-back flex items-center">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          fill="currentColor"
-          class="bi bi-chevron-left"
-          viewBox="0 0 16 16"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
-          />
-        </svg>
-        <p>Atras</p>
+        <BtnBack disabled />
       </button>
     </div>
-
-    <div v-for="noticia in noticias">
+    <div v-for="noticia in noticiaslocal">
       <div v-if="noticia._id === idnoticia" class="overflow-hidden cont-des bg-FondoPerla">
         <!-- hero -->
         <div class="descnot">
-          <img
-            loading="lazy"
-            class="object-cover w-full h-full"
-            src="../../../assets/AssetsNoticias/imgHeroDescNotica.jpg"
-            alt="imgnotid"
-          />
+          <img loading="lazy" class="object-cover w-full h-full"
+            :src="`http://localhost:3000/uploads/${noticia.imgHeroNoticia}`" alt="imgnotid" />
         </div>
         <!-- desc -->
         <div class="dscnot5k">
@@ -79,26 +62,15 @@ export default {
           </div>
           <div class="lg:flex lg:items-center">
             <!-- texto centrado -->
-            <div
-              class="textodesnot text-justify text-AzulPerla break-inside-avoid lg:text-left lg:w-2/4"
-            >
-              <p>{{ noticia.descripcion }}</p>
+            <div class="textodesnot text-justify text-AzulPerla break-inside-avoid lg:text-left lg:w-2/4">
+              <p>{{ noticia.contenido }}</p>
             </div>
             <!-- swiper -->
             <div class="flex justify-center items-center lg:w-2/4">
-              <swiper
-                :space-between="30"
-                :centered-slides="true"
-                :pagination="{ clickable: true }"
-                class="mySwiper"
-              >
-                <swiper-slide v-for="i in 5" :key="i">
-                  <img
-                    loading="lazy"
-                    class="ncrr object-cover w-full"
-                    src="../../../assets/AssetsNoticias/imgnot1(4).jpg"
-                    alt="noticia"
-                  />
+              <swiper :space-between="30" :centered-slides="true" :pagination="{ clickable: true }" class="mySwiper">
+                <swiper-slide v-for="i in noticia.imgsCarouselNoticia" class="" :key="i">
+                  <img loading="lazy" class="ncrr object-cover w-full" :src="`http://localhost:3000/uploads/${i}`"
+                    alt="noticia" />
                 </swiper-slide>
               </swiper>
             </div>
@@ -168,6 +140,8 @@ export default {
 @media (min-width: 1024px) {
   .btn-back {
     padding: 5%;
+    padding-top: 1%;
+    padding-right: 1%;
     padding-bottom: 0%;
     font-size: 1vw;
   }

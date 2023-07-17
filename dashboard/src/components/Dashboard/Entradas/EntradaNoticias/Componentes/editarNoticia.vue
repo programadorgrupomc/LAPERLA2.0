@@ -1,9 +1,5 @@
 <script>
-import textalign from '../../cDashboard/textAligin.vue'
-import botonesControl from '../../cDashboard/botonesControl.vue'
 import Swiper from 'swiper'
-import { useNoticiasStore } from '../../../stores/StoreNoticias/storeNoticias'
-
 export default {
   data() {
     return {
@@ -17,8 +13,7 @@ export default {
   },
   props: ['idnoticia'],
   components: {
-    textalign,
-    botonesControl
+
   },
   methods: {
     cambiarEstado() {
