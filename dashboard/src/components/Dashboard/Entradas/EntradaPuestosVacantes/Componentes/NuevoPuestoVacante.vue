@@ -76,8 +76,34 @@ export default {
       console.log(this.newpuesto)
       this.$emit('newpuesto', this.newpuesto)
     },
+    capturarFunciones(event) {
+      const funcionesHTML = event.target.innerHTML;
+      const parser = new DOMParser();
+      const htmlDoc = parser.parseFromString(funcionesHTML, 'text/html');
+      const elementosLi = htmlDoc.getElementsByTagName('li');
+      const funciones = Array.from(elementosLi).map(li => li.innerText.trim()); // Solo almacenamos el texto de las funciones
+      this.newpuesto.funciones = funciones;
+      console.log(this.newpuesto);
+      this.$emit('newpuesto', this.newpuesto);
+    },
+    capturarRequisitos(event) {
+      const requisitosHTML = event.target.innerHTML;
+      const parser = new DOMParser();
+      const htmlDoc = parser.parseFromString(requisitosHTML, 'text/html');
+      const elementosLi = htmlDoc.getElementsByTagName('li');
+      const requisitos = Array.from(elementosLi).map(li => li.innerText.trim()); // Solo almacenamos el texto de las requisitos
+      this.newpuesto.requisitos = requisitos;
+      console.log(this.newpuesto);
+      this.$emit('newpuesto', this.newpuesto);
+    },
+    actualizarformulario(valor) {
+      this.newpuesto._idformulario = valor;
+      console.log(this.newpuesto)
+      this.$emit('newpuesto', this.newpuesto);
+    }
+
   }
-}
+} 
 </script>
 <template>
   <div v-if="estadonuevopv" class="nuevo-pv overflow-x-hidden">
@@ -142,16 +168,19 @@ export default {
           </div>
           <div class="funciones-work text-AzulPerla">
             <h1 class="font-KarbonRegular text-left">Funciones</h1>
-            <ul contenteditable="true" class="font-KarbonRegular text-left list-disc">
+            <ul contenteditable="true" class="font-KarbonRegular text-left list-disc" @input="capturarFunciones($event)">
               <li>Funciones</li>
             </ul>
           </div>
           <div class="requisitos-work text-AzulPerla">
             <h1 class="font-KarbonRegular t text-left">Requisitos</h1>
-            <ul contenteditable="true" class="font-KarbonRegular text-left list-disc">
+            <ul contenteditable="true" class="font-KarbonRegular text-left list-disc" @input="capturarRequisitos($event)">
               <li>Requisito</li>
             </ul>
           </div>
+
+          <!-- salario quitado -->
+
           <!-- <div class="cont-salary">
             <p class="salary-work font-KarbonRegular text-right text-AzulPerla">
               Sueldo: S/.<span class="spn-salary" contenteditable="true">000</span>
@@ -164,7 +193,8 @@ export default {
       <button @click="cambiarestadoseleccionform" class="btn-nav shadow-2xl">Siguiente</button>
     </div>
   </div>
-  <seleccionFormPv v-if="estadoseleccionform" @seleccionformcam="actuaizarseleccionform" />
+  <seleccionFormPv v-if="estadoseleccionform" @seleccionformcam="actuaizarseleccionform"
+    @seleccionado="actualizarformulario" />
 </template>
 <style scoped>
 .cont-btn {

@@ -43,6 +43,7 @@ router.post('/', upload.single('imgPuesto'), async (req, res) => {
     sueldo,
     _idformulario,
     usuarioUltimaModificacion,
+    activo, // Added the 'activo' field to the request body for creation.
   } = req.body;
   let imgPuesto;
 
@@ -64,6 +65,7 @@ router.post('/', upload.single('imgPuesto'), async (req, res) => {
       imgPuesto,
       usuarioUltimaModificacion,
       fechaUltimaModificacion: Date.now(),
+      activo, // Set the 'activo' field to the provided value.
     });
     await nuevoPuesto.save();
     res.json(nuevoPuesto);
@@ -86,6 +88,7 @@ router.put('/:id', upload.single('imgPuesto'), async (req, res) => {
     sueldo,
     _idformulario,
     usuarioUltimaModificacion,
+    activo, // Added the 'activo' field to the request body for update.
   } = req.body;
   let imgPuesto;
 
@@ -111,6 +114,7 @@ router.put('/:id', upload.single('imgPuesto'), async (req, res) => {
     puesto._idformulario = _idformulario;
     puesto.usuarioUltimaModificacion = usuarioUltimaModificacion;
     puesto.fechaUltimaModificacion = Date.now();
+    puesto.activo = activo; // Update the 'activo' field with the provided value.
 
     if (imgPuesto) {
       puesto.imgPuesto = imgPuesto;
@@ -120,6 +124,26 @@ router.put('/:id', upload.single('imgPuesto'), async (req, res) => {
     res.json(puesto);
   } catch (error) {
     res.status(500).json({ error: 'Error al actualizar el puesto vacante' });
+  }
+});
+
+// Toggle Activation/Deactivation of a puesto vacante
+router.patch('/:id/activar', async (req, res) => {
+  const { id } = req.params;
+  const { activo } = req.body;
+
+  try {
+    const puesto = await PuestosVacantes.findById(id);
+
+    if (!puesto) {
+      return res.status(404).json({ error: 'Puesto vacante no encontrado' });
+    }
+
+    puesto.activo = activo;
+    await puesto.save();
+    res.json(puesto);
+  } catch (error) {
+    res.status(500).json({ error: 'Error al actualizar el estado del puesto vacante' });
   }
 });
 

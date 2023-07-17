@@ -34,9 +34,11 @@ export default {
       if (ind == 'form1') {
         document.getElementById('btn1').style.backgroundColor = 'green'
         document.getElementById('btn2').style.backgroundColor = '#FCAB88'
+        this.$emit('seleccionado', this.seleccionado)
       } else if (ind == 'form2') {
         document.getElementById('btn2').style.backgroundColor = 'green'
         document.getElementById('btn1').style.backgroundColor = '#FCAB88'
+        this.$emit('seleccionado', this.seleccionado)
       }
     }
   }
@@ -111,6 +113,8 @@ export default {
   font-size: 3.05vw;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.929);
+  width: 100%;
+  height: 100%;
 }
 
 .btn-nav {

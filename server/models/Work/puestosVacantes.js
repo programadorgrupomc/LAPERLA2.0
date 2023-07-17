@@ -12,6 +12,7 @@ const puestosVacantesSchema = new mongoose.Schema({
   imgPuesto: { type: String },
   usuarioUltimaModificacion: { type: String },
   fechaUltimaModificacion: { type: Date },
+  activo: { type: Boolean, default: true },
 });
 
 const PuestosVacantes = mongoose.model(
