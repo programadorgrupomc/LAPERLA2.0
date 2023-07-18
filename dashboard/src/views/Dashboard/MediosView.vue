@@ -7,7 +7,7 @@
 import viewFiles from '../../components/Dashboard/Medios/viewFiles.vue'
 export default {
   components: {
-    viewFiles,
+    viewFiles
   }
 }
 </script>

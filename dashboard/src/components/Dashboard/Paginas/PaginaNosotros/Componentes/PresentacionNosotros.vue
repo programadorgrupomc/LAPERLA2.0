@@ -6,21 +6,34 @@
         <p class="ttlmobilepresen text-AzulPerla text-center text-5xl">NOSOTROS</p>
       </div>
       <div class="textopptNosostros">
-        <p contenteditable="true" class="text-MarronPerla font-KarbonRegular p-2 md:p-8 md:text-3xl text-justify border">
+        <p
+          contenteditable="true"
+          class="text-MarronPerla font-KarbonRegular p-2 md:p-8 md:text-3xl text-justify border"
+        >
           {{ nosostroslocal.contenido }}
         </p>
       </div>
       <div class="p-4 ellipse">
-        <FileUploaderRect class="" :imagedetbd="nosostroslocal.imagen" @imgrecortada="asignarimagen" />
+        <FileUploaderRect
+          class=""
+          :imagedetbd="nosostroslocal.imagen"
+          @imgrecortada="asignarimagen"
+        />
       </div>
-      <div class="font-KarbonRegular det-nnpre flex md:text-4xl flex-col justify-evenly items-center text-AzulPerla py-3">
+      <div
+        class="font-KarbonRegular det-nnpre flex md:text-4xl flex-col justify-evenly items-center text-AzulPerla py-3"
+      >
         MAS DE
         <p class="yearperla text-5xl md:text-6xl font-bold">60 AÑOS</p>
         SIRVIENDO AL PERU
       </div>
       <div class="img-nnpre flex justify-center scale-50 md:scale-90">
-        <img loading="lazy" class="object-cover" src="../../../../../assets/Dashboard/Nosotros/imgLogoNosotros.png"
-          alt="logo" />
+        <img
+          loading="lazy"
+          class="object-cover"
+          src="../../../../../assets/Dashboard/Nosotros/imgLogoNosotros.png"
+          alt="logo"
+        />
       </div>
     </div>
     <!-- para escritorio -->
@@ -32,20 +45,33 @@
         <div class="ellipse lg:flex justify-center items-center">
           <!-- <img loading="lazy" class="object-cover w-full" src="@/assets/Nosotros/imgEllipseNosotros.png"
                         alt="imgEllipse"> -->
-          <FileUploaderRect class="ellipse" :imagedetbd="nosostroslocal.imagen" @imgrecortada="asignarimagen"/>
+          <FileUploaderRect
+            class="ellipse"
+            :imagedetbd="nosostroslocal.imagen"
+            @imgrecortada="asignarimagen"
+          />
         </div>
         <div class="relative">
-          <p contenteditable="true" class="border relative contenedor-texto text-MarronPerla font-KarbonRegular">
+          <p
+            contenteditable="true"
+            class="border relative contenedor-texto text-MarronPerla font-KarbonRegular"
+          >
             {{ nosostroslocal.contenido }}
           </p>
-          <div class="relative textogen text-AzulPerla font-KarbonRegular flex flex-col justify-center items-center">
+          <div
+            class="relative textogen text-AzulPerla font-KarbonRegular flex flex-col justify-center items-center"
+          >
             MAS DE
             <p class="textoyear">60 AÑOS</p>
             SIRVIENDO AL PERU
           </div>
           <div class="imgnpend relative">
-            <img loading="lazy" class="object-cover" src="../../../../../assets/Dashboard/Nosotros/imgLogoNosotros.png"
-              alt="logo" />
+            <img
+              loading="lazy"
+              class="object-cover"
+              src="../../../../../assets/Dashboard/Nosotros/imgLogoNosotros.png"
+              alt="logo"
+            />
           </div>
         </div>
       </div>
@@ -64,16 +90,15 @@ export default {
     FileUploaderRect
   },
   methods: {
-
     asignarimagen(valor) {
       this.nosostroslocal.imagen = valor
       console.log(this.nosostroslocal)
-      this.$emit("nosotrosupdate", this.nosostroslocal)
+      this.$emit('nosotrosupdate', this.nosostroslocal)
     }
   },
   props: ['nosotrosData'],
   updated() {
-    this.nosostroslocal = this.nosotrosData[0];
+    this.nosostroslocal = this.nosotrosData[0]
     console.log(this.nosostroslocal)
   }
 }

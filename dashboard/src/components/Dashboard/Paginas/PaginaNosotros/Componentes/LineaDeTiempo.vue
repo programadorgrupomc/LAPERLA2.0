@@ -232,7 +232,6 @@ export default {
     color: #463725;
     font-family: 'TestKarbonMedium';
     -webkit-text-stroke: #463725 0.1vw;
-    
   }
 
   .linea-contenido {

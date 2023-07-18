@@ -1,12 +1,12 @@
 <template>
   <div>
-    <viewUsers/>
+    <viewUsers />
   </div>
 </template>
 <script>
-import viewUsers from '../../components/Dashboard/Usuarios/viewUsers.vue';
+import viewUsers from '../../components/Dashboard/Usuarios/viewUsers.vue'
 export default {
-  components:{
+  components: {
     viewUsers
   }
 }

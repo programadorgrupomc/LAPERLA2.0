@@ -1,12 +1,12 @@
 <script>
-import apiPuestosVacantes from '../../../../../services/Work/apiPuestosVacantes';
+import apiPuestosVacantes from '../../../../../services/Work/apiPuestosVacantes'
 import BtnBack from '../../../General/BtnBack.vue'
 
 export default {
   data() {
     return {
       estadoverpv: true,
-      puestosVacanteslocal: [],
+      puestosVacanteslocal: []
     }
   },
   components: {
@@ -19,18 +19,18 @@ export default {
       this.$emit('verpvcam', this.estadoverpv)
     },
     fetchPv() {
-      apiPuestosVacantes.getPuestosVacantes()
+      apiPuestosVacantes
+        .getPuestosVacantes()
         .then((response) => {
-          this.puestosVacanteslocal = response.data;
+          this.puestosVacanteslocal = response.data
         })
         .catch((error) => {
           console.log('Hubo un problema con la peticion', error)
         })
     }
-
   },
   created() {
-    this.fetchPv();
+    this.fetchPv()
   }
 }
 </script>
@@ -44,8 +44,12 @@ export default {
     <div v-for="pv in puestosVacanteslocal" class="cont-workdes">
       <div v-if="pv._id === idpv" class="lg:columns-2 lg:flex lg:items-center cont-text">
         <div class="imagen-round bg-violet-400 rounded-full m-auto">
-          <img loading="lazy" class="h-full w-full rounded-full" :src="`http://localhost:3000/uploads/${pv.imgPuesto}`"
-            alt="imagen circular" />
+          <img
+            loading="lazy"
+            class="h-full w-full rounded-full"
+            :src="`http://localhost:3000/uploads/${pv.imgPuesto}`"
+            alt="imagen circular"
+          />
         </div>
         <div class="ttl-work lg:w-2/4">
           <div class="font-bold">
@@ -54,9 +58,13 @@ export default {
             </h1>
             <div class="ind-tipo flex font-KarbonRegular items-center justify-end">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.25 22.25">
-                <path id="Icon_material-watch-later" data-name="Icon material-watch-later"
+                <path
+                  id="Icon_material-watch-later"
+                  data-name="Icon material-watch-later"
                   d="M14.125,3A11.125,11.125,0,1,0,25.25,14.125,11.158,11.158,0,0,0,14.125,3ZM18.8,18.8l-5.785-3.56V8.562h1.669v5.785l5.006,3Z"
-                  transform="translate(-3 -3)" fill="#df9575" />
+                  transform="translate(-3 -3)"
+                  fill="#df9575"
+                />
               </svg>
               &nbsp; {{ pv.tipoempleo }}
             </div>

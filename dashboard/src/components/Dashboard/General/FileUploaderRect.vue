@@ -23,7 +23,11 @@
       <div v-else>Archivo no compatible</div>
     </div>
     <div class="popup absolute z-50" v-if="showEditPopup && !isVideo && !isPDF">
-      <FileUploaderCrect :image="this.previewUrl" class=" w-full h-full" @imagecroped="actualizarimagen" />
+      <FileUploaderCrect
+        :image="this.previewUrl"
+        class="w-full h-full"
+        @imagecroped="actualizarimagen"
+      />
     </div>
   </div>
 </template>
@@ -131,8 +135,8 @@ export default {
 }
 
 .popup {
-height: 100%;
-width: 100%;
+  height: 100%;
+  width: 100%;
   top: 0%;
 }
 

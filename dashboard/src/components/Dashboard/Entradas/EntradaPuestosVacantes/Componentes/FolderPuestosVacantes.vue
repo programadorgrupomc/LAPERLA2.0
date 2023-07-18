@@ -17,24 +17,36 @@
           <div class="btn-buscar"><!-- <buscador /> --></div>
         </div>
       </div>
-      <div class="items-folder flex flex-col justify-center items-center lg:mx-auto lg:grid lg:grid-cols-3">
+      <div
+        class="items-folder flex flex-col justify-center items-center lg:mx-auto lg:grid lg:grid-cols-3"
+      >
         <div v-for="puesto in puestosVacanteslocal" class="itemf relative bg-stone-600">
           <!-- aca debe ir linkeado la imgen del puesto vacante -->
-          <img class="object-cover h-full w-full" loading="lazy"
-            :src="`http://localhost:3000/uploads/${puesto.imgPuesto}`" alt="receta-item" />
+          <img
+            class="object-cover h-full w-full"
+            loading="lazy"
+            :src="`http://localhost:3000/uploads/${puesto.imgPuesto}`"
+            alt="receta-item"
+          />
           <div class="cont-actions absolute flex flex-col justify-center items-center">
             <p class="text-white">{{ puesto.titulo }}</p>
             <div class="cont-btnsaction flex justify-between">
-              <button @click="cambiarestadoeditarpc(puesto._id)"
-                class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
+              <button
+                @click="cambiarestadoeditarpc(puesto._id)"
+                class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold"
+              >
                 Editar
               </button>
-              <button @click="cambiarestadoverpv(puesto._id)"
-                class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
+              <button
+                @click="cambiarestadoverpv(puesto._id)"
+                class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold"
+              >
                 Ver
               </button>
-              <button @click="deletePv(puesto._id)"
-                class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
+              <button
+                @click="deletePv(puesto._id)"
+                class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold"
+              >
                 Eliminar
               </button>
             </div>
@@ -46,8 +58,8 @@
 </template>
 <script>
 import BtnBack from '../../../General/BtnBack.vue'
-import apiPuestosVacantes from '../../../../../services/Work/apiPuestosVacantes';
-import verPv from './verPv.vue';
+import apiPuestosVacantes from '../../../../../services/Work/apiPuestosVacantes'
+import verPv from './verPv.vue'
 import editarPv from './editarPv.vue'
 
 export default {
@@ -69,55 +81,56 @@ export default {
   },
   methods: {
     cambiaestpv() {
-      this.estadofolderPv = !this.estadofolderPv;
+      this.estadofolderPv = !this.estadofolderPv
       this.$emit('estadopvcam', this.estadofolderPv)
     },
     cambiarestadonuevopv() {
-      this.estadonuevopv = !this.estadonuevopv;
-      this.estadofolderPv = !this.estadofolderPv;
+      this.estadonuevopv = !this.estadonuevopv
+      this.estadofolderPv = !this.estadofolderPv
     },
     actualizarestadonuevopv(valor) {
-      this.estadonuevopv = valor;
-      this.estadofolderPv = !this.estadofolderPv;
+      this.estadonuevopv = valor
+      this.estadofolderPv = !this.estadofolderPv
     },
     cambiarestadoverpv(id) {
-      this.estadoverpv = !this.estadoverpv;
-      this.idpv = id;
-      this.estadofolderPv = !this.estadofolderPv;
+      this.estadoverpv = !this.estadoverpv
+      this.idpv = id
+      this.estadofolderPv = !this.estadofolderPv
     },
     actualizarpv(valor) {
-      this.estadoverpv = valor;
-      this.estadofolderPv = !this.estadofolderPv;
+      this.estadoverpv = valor
+      this.estadofolderPv = !this.estadofolderPv
     },
 
     cambiarestadoeditarpc(id) {
-      this.estadoeditarpv = !this.estadoeditarpv;
-      this.idpv = id;
-      this.estadofolderPv = !this.estadofolderPv;
+      this.estadoeditarpv = !this.estadoeditarpv
+      this.idpv = id
+      this.estadofolderPv = !this.estadofolderPv
     },
     actualizaretadoeditarpv(valor) {
-      this.estadoeditarpv = valor;
+      this.estadoeditarpv = valor
       this.estadofolderPv = !this.estadofolderPv
     },
     deletePv(id) {
-      apiPuestosVacantes.deletePuestosVacantes(id)
+      apiPuestosVacantes
+        .deletePuestosVacantes(id)
         .then((response) => {
           alert('Eliminacion Exitoso!')
-          location.reload();
+          location.reload()
         })
         .catch((error) => {
           console.log(`Hubo un error al eliminar ${error}`)
         })
     }
   },
-  created() { },
+  created() {},
   updated() {
-    this.puestosVacanteslocal = this.puestosVacantesprop;
+    this.puestosVacanteslocal = this.puestosVacantesprop
     console.log(this.puestosVacantesprop)
   },
   watch: {
     puestosVacantesprop(newVal) {
-      this.puestosVacanteslocal = newVal;
+      this.puestosVacanteslocal = newVal
     }
   }
 }
@@ -244,7 +257,8 @@ export default {
     width: 80%;
   }
 
-  .items-folder {}
+  .items-folder {
+  }
 
   .itemf {
     overflow: hidden;

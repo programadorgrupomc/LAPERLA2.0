@@ -53,7 +53,7 @@ export default {
       </div>
       <div class="cont-input flex flex-col w-full lg:flex-row lg:items-center lg:justify-end">
         <label for="">Contraseña</label>
-        <input v-model="usuario.pass" type="password" @input="validarContraseña" />
+        <input v-model="usuario.pass" type="password" @input="validarContraseña;" />
       </div>
       <div class="cont-recuperacion flex justify-end">
         <p>Olvidaste tu contraseña?</p>

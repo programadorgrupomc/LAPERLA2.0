@@ -1,43 +1,39 @@
-import { defineStore } from "pinia";
-import axios from "axios";
+import { defineStore } from 'pinia'
+import axios from 'axios'
 
-export const useNoticiasStore = defineStore("noticias", {
+export const useNoticiasStore = defineStore('noticias', {
   state: () => ({
     noticias: [],
-    noticiaSeleccionada: null,
+    noticiaSeleccionada: null
   }),
   actions: {
     async crearNoticia(nuevoNoticia) {
       try {
         const response = await axios.post(
-          "https://api-perla.onrender.com/api/v1/noticias",
+          'https://api-perla.onrender.com/api/v1/noticias',
           nuevoNoticia
-        );
-        return response.data;
+        )
+        return response.data
       } catch (error) {
-        throw new Error("Error al crear el noticia");
+        throw new Error('Error al crear el noticia')
       }
     },
 
     async obtenernoticias() {
       try {
-        const response = await axios.get(
-          "https://api-perla.onrender.com/api/v1/noticias"
-        );
-        this.noticias = response.data;
+        const response = await axios.get('https://api-perla.onrender.com/api/v1/noticias')
+        this.noticias = response.data
       } catch (error) {
-        throw new Error("Error al obtener los noticias");
+        throw new Error('Error al obtener los noticias')
       }
     },
 
     async obtenerNoticia(id) {
       try {
-        const response = await axios.get(
-          `https://api-perla.onrender.com/api/v1/noticias/${id}`
-        );
-        this.noticiaSeleccionada = response.data;
+        const response = await axios.get(`https://api-perla.onrender.com/api/v1/noticias/${id}`)
+        this.noticiaSeleccionada = response.data
       } catch (error) {
-        throw new Error("Error al obtener el noticia");
+        throw new Error('Error al obtener el noticia')
       }
     },
 
@@ -46,19 +42,19 @@ export const useNoticiasStore = defineStore("noticias", {
         const response = await axios.put(
           `https://api-perla.onrender.com/api/v1/noticias/${id}`,
           datosActualizados
-        );
-        this.noticiaSeleccionada = response.data;
+        )
+        this.noticiaSeleccionada = response.data
       } catch (error) {
-        throw new Error("Error al actualizar el noticia");
+        throw new Error('Error al actualizar el noticia')
       }
     },
 
     async eliminarNoticia(id) {
       try {
-        await axios.delete(`https://api-perla.onrender.com/api/v1/noticias/${id}`);
+        await axios.delete(`https://api-perla.onrender.com/api/v1/noticias/${id}`)
       } catch (error) {
-        throw new Error("Error al eliminar el noticia");
+        throw new Error('Error al eliminar el noticia')
       }
-    },
-  },
-});
+    }
+  }
+})

@@ -24,7 +24,7 @@ import apiNostros from '../../../../services/Nosotros/apiNostros.js'
 export default {
   data() {
     return {
-      nosotros: [],
+      nosotros: []
     }
   },
   components: {
@@ -36,7 +36,8 @@ export default {
   },
   methods: {
     fetchNosotros() {
-      apiNostros.getNosotros()
+      apiNostros
+        .getNosotros()
         .then((response) => {
           this.nosotros = response.data
           console.log(this.nosotros)
@@ -44,11 +45,10 @@ export default {
         .catch((error) => {
           console.error('Error fetching nosotros:', error)
         })
-    },
-
+    }
   },
   mounted() {
-    this.fetchNosotros();
+    this.fetchNosotros()
   }
 }
 </script>

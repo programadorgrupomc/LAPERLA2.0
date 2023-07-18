@@ -1,7 +1,12 @@
 <template>
   <div>
     <div class="upload-example">
-      <Cropper ref="cropper" class="upload-example-cropper" :src="image" :options="cropperOptions" />
+      <Cropper
+        ref="cropper"
+        class="upload-example-cropper"
+        :src="image"
+        :options="cropperOptions"
+      />
       <div class="button-wrapper">
         <button class="button" @click="cropImage">Guardar</button>
       </div>

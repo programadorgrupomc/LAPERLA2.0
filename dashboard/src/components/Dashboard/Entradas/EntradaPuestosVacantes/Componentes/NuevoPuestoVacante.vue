@@ -77,39 +77,39 @@ export default {
       this.$emit('newpuesto', this.newpuesto)
     },
     capturarFunciones(event) {
-      const funcionesHTML = event.target.innerHTML;
-      const parser = new DOMParser();
-      const htmlDoc = parser.parseFromString(funcionesHTML, 'text/html');
-      const elementosLi = htmlDoc.getElementsByTagName('li');
-      const funciones = Array.from(elementosLi).map(li => li.innerHTML.trim());
+      const funcionesHTML = event.target.innerHTML
+      const parser = new DOMParser()
+      const htmlDoc = parser.parseFromString(funcionesHTML, 'text/html')
+      const elementosLi = htmlDoc.getElementsByTagName('li')
+      const funciones = Array.from(elementosLi).map((li) => li.innerHTML.trim())
 
       // Asigna directamente el arreglo de funciones a this.newpuesto.funciones
-      this.newpuesto.funciones = funciones;
+      this.newpuesto.funciones = funciones
 
-      console.log(this.newpuesto);
-      this.$emit('newpuesto', this.newpuesto);
+      console.log(this.newpuesto)
+      this.$emit('newpuesto', this.newpuesto)
     },
     capturarRequisitos(event) {
-      const requisitosHTML = event.target.innerHTML;
-      const parser = new DOMParser();
-      const htmlDoc = parser.parseFromString(requisitosHTML, 'text/html');
-      const elementosLi = htmlDoc.getElementsByTagName('li');
-      const requisitos = Array.from(elementosLi).map(li => li.innerText.trim());
+      const requisitosHTML = event.target.innerHTML
+      const parser = new DOMParser()
+      const htmlDoc = parser.parseFromString(requisitosHTML, 'text/html')
+      const elementosLi = htmlDoc.getElementsByTagName('li')
+      const requisitos = Array.from(elementosLi).map((li) => li.innerText.trim())
 
       // Asigna directamente el arreglo de requisitos a this.newpuesto.requisitos
-      this.newpuesto.requisitos = requisitos;
+      this.newpuesto.requisitos = requisitos
 
-      console.log(this.newpuesto);
-      this.$emit('newpuesto', this.newpuesto);
+      console.log(this.newpuesto)
+      this.$emit('newpuesto', this.newpuesto)
     },
 
     actualizarformulario(valor) {
-      this.newpuesto._idformulario = valor;
+      this.newpuesto._idformulario = valor
       console.log(this.newpuesto)
-      this.$emit('newpuesto', this.newpuesto);
+      this.$emit('newpuesto', this.newpuesto)
     }
   }
-} 
+}
 </script>
 <template>
   <div v-if="estadonuevopv" class="nuevo-pv overflow-x-hidden">
@@ -122,7 +122,9 @@ export default {
     </div>
     <div class="cont-workdes">
       <div class="lg:columns-2 lg:flex lg:items-center cont-text">
-        <div class="imagen-round relative bg-violet-400 rounded-full m-auto flex justify-center items-center">
+        <div
+          class="imagen-round relative bg-violet-400 rounded-full m-auto flex justify-center items-center"
+        >
           <FileUploaderDef @imgrecortada="asignarmagen" />
           <!-- <img src="../../../assets/cDashboard/Iconmaterial-perm-media.svg" alt="" class="absolute w-52" />
           <input class="absolute opacity-0" type="file" v-on:change="previewImage" />
@@ -130,37 +132,59 @@ export default {
         </div>
         <div class="ttl-work lg:w-2/4">
           <div class="font-bold">
-            <h1 contenteditable="true" class="ttl-work1 text-center font-TestKarbonSemiBold text-AzulPerla lg:text-right"
-              @input="titulo">
+            <h1
+              contenteditable="true"
+              class="ttl-work1 text-center font-TestKarbonSemiBold text-AzulPerla lg:text-right"
+              @input="titulo"
+            >
               Titulo Puesto Vacante
             </h1>
             <div class="lg:flex">
               <div class="ind-tipo flex font-KarbonRegular items-center justify-end">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.25 22.25">
-                  <path id="Icon_material-watch-later" data-name="Icon material-watch-later"
+                  <path
+                    id="Icon_material-watch-later"
+                    data-name="Icon material-watch-later"
                     d="M14.125,3A11.125,11.125,0,1,0,25.25,14.125,11.158,11.158,0,0,0,14.125,3ZM18.8,18.8l-5.785-3.56V8.562h1.669v5.785l5.006,3Z"
-                    transform="translate(-3 -3)" fill="#df9575" />
+                    transform="translate(-3 -3)"
+                    fill="#df9575"
+                  />
                 </svg>
 
-                &nbsp; <span class="spn-ind" contenteditable="true" @input="experiencia">Experiencia</span>
+                &nbsp;
+                <span class="spn-ind" contenteditable="true" @input="experiencia">Experiencia</span>
               </div>
               <div class="ind-tipo flex font-KarbonRegular items-center justify-end">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.25 22.25">
-                  <path id="Icon_material-watch-later" data-name="Icon material-watch-later"
+                  <path
+                    id="Icon_material-watch-later"
+                    data-name="Icon material-watch-later"
                     d="M14.125,3A11.125,11.125,0,1,0,25.25,14.125,11.158,11.158,0,0,0,14.125,3ZM18.8,18.8l-5.785-3.56V8.562h1.669v5.785l5.006,3Z"
-                    transform="translate(-3 -3)" fill="#df9575" />
+                    transform="translate(-3 -3)"
+                    fill="#df9575"
+                  />
                 </svg>
 
-                &nbsp; <span class="spn-ind" contenteditable="true" @input="departamento">Departamento</span>
+                &nbsp;
+                <span class="spn-ind" contenteditable="true" @input="departamento"
+                  >Departamento</span
+                >
               </div>
               <div class="ind-tipo flex font-KarbonRegular items-center justify-end">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.25 22.25">
-                  <path id="Icon_material-watch-later" data-name="Icon material-watch-later"
+                  <path
+                    id="Icon_material-watch-later"
+                    data-name="Icon material-watch-later"
                     d="M14.125,3A11.125,11.125,0,1,0,25.25,14.125,11.158,11.158,0,0,0,14.125,3ZM18.8,18.8l-5.785-3.56V8.562h1.669v5.785l5.006,3Z"
-                    transform="translate(-3 -3)" fill="#df9575" />
+                    transform="translate(-3 -3)"
+                    fill="#df9575"
+                  />
                 </svg>
 
-                &nbsp; <span class="spn-ind" contenteditable="true" @input="tipoempleo">Tipo de empleo</span>
+                &nbsp;
+                <span class="spn-ind" contenteditable="true" @input="tipoempleo"
+                  >Tipo de empleo</span
+                >
               </div>
             </div>
           </div>
@@ -168,19 +192,31 @@ export default {
             <h1 class="underline font-KarbonRegular text-AzulPerla text-left">
               Objetivo del puesto
             </h1>
-            <p contenteditable="true" class="text-justify font-KarbonRegular text-AzulPerla" @input="objetivoPuesto">
+            <p
+              contenteditable="true"
+              class="text-justify font-KarbonRegular text-AzulPerla"
+              @input="objetivoPuesto"
+            >
               Descripcion
             </p>
           </div>
           <div class="funciones-work text-AzulPerla">
             <h1 class="font-KarbonRegular text-left">Funciones</h1>
-            <ul contenteditable="true" class="font-KarbonRegular text-left list-disc" @input="capturarFunciones($event)">
+            <ul
+              contenteditable="true"
+              class="font-KarbonRegular text-left list-disc"
+              @input="capturarFunciones($event)"
+            >
               <li>Funciones</li>
             </ul>
           </div>
           <div class="requisitos-work text-AzulPerla">
             <h1 class="font-KarbonRegular t text-left">Requisitos</h1>
-            <ul contenteditable="true" class="font-KarbonRegular text-left list-disc" @input="capturarRequisitos($event)">
+            <ul
+              contenteditable="true"
+              class="font-KarbonRegular text-left list-disc"
+              @input="capturarRequisitos($event)"
+            >
               <li>Requisito</li>
             </ul>
           </div>
@@ -199,8 +235,11 @@ export default {
       <button @click="cambiarestadoseleccionform" class="btn-nav shadow-2xl">Siguiente</button>
     </div>
   </div>
-  <seleccionFormPv v-if="estadoseleccionform" @seleccionformcam="actuaizarseleccionform"
-    @seleccionado="actualizarformulario" />
+  <seleccionFormPv
+    v-if="estadoseleccionform"
+    @seleccionformcam="actuaizarseleccionform"
+    @seleccionado="actualizarformulario"
+  />
 </template>
 <style scoped>
 .cont-btn {
@@ -422,7 +461,8 @@ svg {
     width: 12%;
   }
 
-  .cont-workdes {}
+  .cont-workdes {
+  }
 
   .cont-text {
     padding: 1%;

@@ -3,20 +3,42 @@
     <div class="carousel" ref="carousel">
       <div class="slide flex relative" v-for="(item, index) in images" :key="index">
         <div class="w-full h-full" v-if="item.type === 'image'">
-          <FileUploaderCrect v-if="edit && editingIndex === index" :image="item.url"
-            @imagecroped="actualizarImagen(index, $event)" class="absolute w-full h-full" />
+          <FileUploaderCrect
+            v-if="edit && editingIndex === index"
+            :image="item.url"
+            @imagecroped="actualizarImagen(index, $event)"
+            class="absolute w-full h-full"
+          />
           <img class="object-contain w-full h-full" :src="item.url" :alt="item.name" />
         </div>
         <div v-else-if="item.type === 'video'">
-          <video class="object-contain w-full h-full" :src="item.url" :alt="item.name" autoplay></video>
+          <video
+            class="object-contain w-full h-full"
+            :src="item.url"
+            :alt="item.name"
+            autoplay
+          ></video>
         </div>
-        <button class="absolute btn-deletefile transition-all button" @click="deleteFile(index)">Eliminar</button>
-        <button class="absolute btn-editar transition-all button" @click="editarImagen(index)">Editar</button>
+        <button class="absolute btn-deletefile transition-all button" @click="deleteFile(index)">
+          Eliminar
+        </button>
+        <button class="absolute btn-editar transition-all button" @click="editarImagen(index)">
+          Editar
+        </button>
       </div>
     </div>
     <div class="absolute cont-addfile">
-      <img class="w-full h-full" src="../../../assets/Dashboard/General/IconoLoadVideo.svg" alt="" />
-      <input class="absolute w-full h-full top-0 opacity-0" multiple type="file" @change="handleFileUpload" />
+      <img
+        class="w-full h-full"
+        src="../../../assets/Dashboard/General/IconoLoadVideo.svg"
+        alt=""
+      />
+      <input
+        class="absolute w-full h-full top-0 opacity-0"
+        multiple
+        type="file"
+        @change="handleFileUpload"
+      />
     </div>
   </div>
 </template>
@@ -30,76 +52,76 @@ export default {
       images: [],
       edit: false,
       editingIndex: null // Store the index of the image being edited
-    };
+    }
   },
   components: {
     FileUploaderRect,
-    FileUploaderCrect,
+    FileUploaderCrect
   },
   methods: {
     handleFileUpload(event) {
-      const files = event.target.files;
-      const convertedFiles = [];
+      const files = event.target.files
+      const convertedFiles = []
       for (let i = 0; i < files.length; i++) {
-        const file = files[i];
-        const type = this.getFileType(file);
-        convertedFiles.push(file);
+        const file = files[i]
+        const type = this.getFileType(file)
+        convertedFiles.push(file)
         this.images.push({
           name: file.name,
           url: URL.createObjectURL(file),
           type: type
-        });
+        })
       }
-      console.log(this.images);
-      this.$emit("imagesCarousel", convertedFiles);
+      console.log(this.images)
+      this.$emit('imagesCarousel', convertedFiles)
       this.$nextTick(() => {
-        this.scrollToActiveImage();
-      });
+        this.scrollToActiveImage()
+      })
     },
     getFileType(file) {
-      const type = file.type.split('/')[0];
+      const type = file.type.split('/')[0]
       if (type === 'image') {
-        return 'image';
+        return 'image'
       } else if (type === 'video') {
-        return 'video';
+        return 'video'
       }
-      return 'unknown';
+      return 'unknown'
     },
     deleteFile(index) {
-      const decision = window.confirm("¿Desea eliminar el archivo?");
+      const decision = window.confirm('¿Desea eliminar el archivo?')
       if (decision) {
-        const file = this.images[index].file;
-        URL.revokeObjectURL(this.images[index].url);
-        this.images.splice(index, 1);
-        this.$emit("imagesCarousel", this.images); // Pass the updated images array
+        const file = this.images[index].file
+        URL.revokeObjectURL(this.images[index].url)
+        this.images.splice(index, 1)
+        this.$emit('imagesCarousel', this.images) // Pass the updated images array
       } else {
-        alert('No se eliminó ningún archivo.');
+        alert('No se eliminó ningún archivo.')
       }
     },
     scrollToActiveImage() {
-      const activeImage = this.$refs.carousel.getElementsByClassName("slide")[this.editingIndex];
+      const activeImage = this.$refs.carousel.getElementsByClassName('slide')[this.editingIndex]
 
       if (activeImage) {
-        this.$refs.carousel.scrollLeft = activeImage.offsetLeft;
+        this.$refs.carousel.scrollLeft = activeImage.offsetLeft
       }
     },
     //revisar esta maldita funcion aaaaaah
     actualizarImagen(index, updatedUrl) {
       // this.images[index].url = updatedUrl;
-      this.edit = false;
+      this.edit = false
       // this.$emit("imagesCarousel", this.images); // Pass the updated images array
     },
     editarImagen(index) {
-      this.edit = true;
-      this.editingIndex = index; // Set the index of the image being edited
+      this.edit = true
+      this.editingIndex = index // Set the index of the image being edited
     }
   }
-};
+}
 </script>
 
 <style scoped>
 .cont-general {
-  border: #9B886F solid;
+  border: #9b886f solid;
 }
 
 .carousel {
@@ -179,4 +201,3 @@ export default {
   }
 }
 </style>
-  

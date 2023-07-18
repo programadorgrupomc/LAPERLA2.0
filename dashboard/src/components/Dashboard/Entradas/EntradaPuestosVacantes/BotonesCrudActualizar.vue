@@ -1,146 +1,145 @@
 <template>
-    <div class="botones-crud flex flex-col lg:flex-row justify-center items-center">
-        <button @click="guardar" class="flex justify-center items-center">
-            <img class="w-full h-full lg:hidden" src="@/assets/Dashboard/General/Guardar.svg" alt="" />
-            <p class="hidden lg:block">Actualizar</p>
-        </button>
-        <button @click="restaurar" class="flex justify-center items-center">
-            <img class="w-full h-full lg:hidden" src="@/assets/Dashboard/General/escoba.svg" alt="" />
-            <p class="hidden lg:block">Restaurar</p>
-        </button>
-        <button class="flex justify-center items-center" @click="retroceder">
-            <img class="w-full h-full lg:hidden" src="@/assets/Dashboard/General/deshacer.svg" alt="" />
-            <p class="hidden lg:block">Atras</p>
-        </button>
-    </div>
+  <div class="botones-crud flex flex-col lg:flex-row justify-center items-center">
+    <button @click="guardar" class="flex justify-center items-center">
+      <img class="w-full h-full lg:hidden" src="@/assets/Dashboard/General/Guardar.svg" alt="" />
+      <p class="hidden lg:block">Actualizar</p>
+    </button>
+    <button @click="restaurar" class="flex justify-center items-center">
+      <img class="w-full h-full lg:hidden" src="@/assets/Dashboard/General/escoba.svg" alt="" />
+      <p class="hidden lg:block">Restaurar</p>
+    </button>
+    <button class="flex justify-center items-center" @click="retroceder">
+      <img class="w-full h-full lg:hidden" src="@/assets/Dashboard/General/deshacer.svg" alt="" />
+      <p class="hidden lg:block">Atras</p>
+    </button>
+  </div>
 </template>
-  
+
 <script>
-import apiPuestosVacantes from '../../../../services/Work/apiPuestosVacantes';
+import apiPuestosVacantes from '../../../../services/Work/apiPuestosVacantes'
 
 export default {
-    data() {
-        return {
-            datanewpuesto: {},
-        };
-    },
-    props: ['newDatapv'],
-    methods: {
-        async guardar() {
-            const rpta = window.confirm('Desea Actualizar el Puesto?');
-            if (rpta) {
-                const nombreArchivo = 'imagen_salida.png';
-                let archivo = '';
+  data() {
+    return {
+      datanewpuesto: {}
+    }
+  },
+  props: ['newDatapv'],
+  methods: {
+    async guardar() {
+      const rpta = window.confirm('Desea Actualizar el Puesto?')
+      if (rpta) {
+        const nombreArchivo = 'imagen_salida.png'
+        let archivo = ''
 
-                if (this.isBase64(this.newDatapv.imgPuesto)) {
-                    archivo = this.base64ToFile(this.newDatapv.imgPuesto, nombreArchivo);
-                }
+        if (this.isBase64(this.newDatapv.imgPuesto)) {
+          archivo = this.base64ToFile(this.newDatapv.imgPuesto, nombreArchivo)
+        }
 
-                const formData = new FormData();
-                formData.append('titulo', this.newDatapv.titulo);
-                formData.append('experiencia', this.newDatapv.experiencia);
-                formData.append('departamento', this.newDatapv.departamento);
-                formData.append('tipoempleo', this.newDatapv.tipoempleo);
-                formData.append('objetivoPuesto', this.newDatapv.objetivoPuesto);
-                formData.append('imgPuesto', archivo);
+        const formData = new FormData()
+        formData.append('titulo', this.newDatapv.titulo)
+        formData.append('experiencia', this.newDatapv.experiencia)
+        formData.append('departamento', this.newDatapv.departamento)
+        formData.append('tipoempleo', this.newDatapv.tipoempleo)
+        formData.append('objetivoPuesto', this.newDatapv.objetivoPuesto)
+        formData.append('imgPuesto', archivo)
 
-                try {
-                    const response = await apiPuestosVacantes.updatePuestosVacantes(
-                        this.newDatapv._id,
-                        formData
-                    );
-                    alert('Actualización Exitosa!');
-                    this.retroceder();
-                } catch (error) {
-                    console.log('Hubo un error al Actualizar', error);
-                }
-            }
-        },
-        retroceder() {
-            this.$router.go(-1);
-        },
-        restaurar() {
-            const rpta = window.confirm('¿Está seguro de restaurar los datos?');
-            if (rpta) {
-                location.reload();
-                alert('No se encontró el servidor!');
-            } else {
-                alert('Error en Función, Revisar!');
-            }
-        },
-        base64ToFile(base64String, fileName) {
-            const byteCharacters = atob(base64String.split(',')[1]);
-            const byteNumbers = new Array(byteCharacters.length);
-            for (let i = 0; i < byteCharacters.length; i++) {
-                byteNumbers[i] = byteCharacters.charCodeAt(i);
-            }
-            const byteArray = new Uint8Array(byteNumbers);
-            const blob = new Blob([byteArray], { type: 'image/jpeg' });
-            const file = new File([blob], fileName, { type: 'image/jpeg' });
-            return file;
-        },
-        isBase64(str) {
-            if (typeof str !== 'string') {
-                return false;
-            }
-            const regex = /^data:image\/[a-z]+;base64,/;
-            return regex.test(str);
-        },
+        try {
+          const response = await apiPuestosVacantes.updatePuestosVacantes(
+            this.newDatapv._id,
+            formData
+          )
+          alert('Actualización Exitosa!')
+          this.retroceder()
+        } catch (error) {
+          console.log('Hubo un error al Actualizar', error)
+        }
+      }
     },
-    watch: {
-        newDatapv(newVal) {
-            this.datanewpuesto = newVal;
-            console.log(this.newDatapv);
-        },
+    retroceder() {
+      this.$router.go(-1)
     },
-};
+    restaurar() {
+      const rpta = window.confirm('¿Está seguro de restaurar los datos?')
+      if (rpta) {
+        location.reload()
+        alert('No se encontró el servidor!')
+      } else {
+        alert('Error en Función, Revisar!')
+      }
+    },
+    base64ToFile(base64String, fileName) {
+      const byteCharacters = atob(base64String.split(',')[1])
+      const byteNumbers = new Array(byteCharacters.length)
+      for (let i = 0; i < byteCharacters.length; i++) {
+        byteNumbers[i] = byteCharacters.charCodeAt(i)
+      }
+      const byteArray = new Uint8Array(byteNumbers)
+      const blob = new Blob([byteArray], { type: 'image/jpeg' })
+      const file = new File([blob], fileName, { type: 'image/jpeg' })
+      return file
+    },
+    isBase64(str) {
+      if (typeof str !== 'string') {
+        return false
+      }
+      const regex = /^data:image\/[a-z]+;base64,/
+      return regex.test(str)
+    }
+  },
+  watch: {
+    newDatapv(newVal) {
+      this.datanewpuesto = newVal
+      console.log(this.newDatapv)
+    }
+  }
+}
 </script>
-  
+
 <style scoped>
 .botones-crud {
-    height: 100%;
+  height: 100%;
 }
 
 .botones-crud button {
-    background-color: #4d3b77;
-    height: 70%;
-    width: 100%;
-    border: white solid;
-    border-radius: 2vh;
-    margin-top: 1vh;
-    margin-bottom: 1vh;
-    margin-left: 1vh;
-    margin-right: 1vh;
-    padding: 1vh;
-    color: white;
-    font-size: 2vh;
-    font-family: 'TahomaRegular';
+  background-color: #4d3b77;
+  height: 70%;
+  width: 100%;
+  border: white solid;
+  border-radius: 2vh;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  margin-left: 1vh;
+  margin-right: 1vh;
+  padding: 1vh;
+  color: white;
+  font-size: 2vh;
+  font-family: 'TahomaRegular';
 }
 
 .botones-crud button:hover {
-    background-color: #9b886f;
-    transform: scale(1.1);
+  background-color: #9b886f;
+  transform: scale(1.1);
 }
 
 @media (min-width: 1024px) {
-    .botones-crud {
-        height: 100%;
-    }
+  .botones-crud {
+    height: 100%;
+  }
 
-    .botones-crud button {
-        background-color: transparent;
-        height: 70%;
-        width: 100%;
-        border: white solid;
-        border-radius: 3vh;
-        margin-left: 1vh;
-        margin-right: 1vh;
-        padding: 1vh;
-        padding-left: 2vh;
-        padding-right: 2vh;
-        color: white;
-        font-family: 'TahomaRegular';
-    }
+  .botones-crud button {
+    background-color: transparent;
+    height: 70%;
+    width: 100%;
+    border: white solid;
+    border-radius: 3vh;
+    margin-left: 1vh;
+    margin-right: 1vh;
+    padding: 1vh;
+    padding-left: 2vh;
+    padding-right: 2vh;
+    color: white;
+    font-family: 'TahomaRegular';
+  }
 }
 </style>
-  

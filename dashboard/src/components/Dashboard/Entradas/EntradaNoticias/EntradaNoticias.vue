@@ -5,11 +5,11 @@
 </template>
 <script>
 import FolderNoticias from './Componentes/FolderNoticias.vue'
-import apiNoticias from '../../../../services/Noticias/apiNoticias';
+import apiNoticias from '../../../../services/Noticias/apiNoticias'
 export default {
   data() {
     return {
-      noticias: [],
+      noticias: []
     }
   },
   components: {
@@ -17,9 +17,10 @@ export default {
   },
   methods: {
     fetchNoticias() {
-      apiNoticias.getNoticias()
+      apiNoticias
+        .getNoticias()
         .then((response) => {
-          this.noticias = response.data;
+          this.noticias = response.data
           console.log(this.noticias)
         })
         .catch((error) => {
@@ -28,7 +29,7 @@ export default {
     }
   },
   mounted() {
-    this.fetchNoticias();
+    this.fetchNoticias()
   }
 }
 </script>

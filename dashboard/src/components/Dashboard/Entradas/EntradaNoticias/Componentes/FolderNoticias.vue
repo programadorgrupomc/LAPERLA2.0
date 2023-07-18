@@ -1,8 +1,8 @@
 <script>
 import BtnBack from '../../../General/BtnBack.vue'
-import apiNoticias from '../../../../../services/Noticias/apiNoticias';
-import verNoticia from './verNoticia.vue';
-import editarNoticia from './editarNoticia.vue';
+import apiNoticias from '../../../../../services/Noticias/apiNoticias'
+import verNoticia from './verNoticia.vue'
+import editarNoticia from './editarNoticia.vue'
 export default {
   data() {
     return {
@@ -12,7 +12,7 @@ export default {
       estadoeditarnoticia: false,
       noticias: '',
       idnoticia: '',
-      noticiaslocal: '',
+      noticiaslocal: ''
     }
   },
   props: ['noticiasprop'],
@@ -23,42 +23,43 @@ export default {
   },
   methods: {
     cambiaestnot() {
-      this.estadofolderNoticias = !this.estadofolderNoticias;
+      this.estadofolderNoticias = !this.estadofolderNoticias
       this.$emit('estadonotcam', this.estadofolderNoticias)
     },
     cambiarestadonuevanoicia() {
-      this.estadonuevanoticia = !this.estadonuevanoticia;
-      this.estadofolderNoticias = !this.estadofolderNoticias;
+      this.estadonuevanoticia = !this.estadonuevanoticia
+      this.estadofolderNoticias = !this.estadofolderNoticias
     },
     actuaizarestadonuevanot(valor) {
-      this.estadonuevanoticia = valor;
-      this.estadofolderNoticias = !this.estadofolderNoticias;
+      this.estadonuevanoticia = valor
+      this.estadofolderNoticias = !this.estadofolderNoticias
     },
     cambiarestadovernoticia(id) {
-      this.estadovernoticia = !this.estadovernoticia;
-      this.idnoticia = id;
-      this.estadofolderNoticias = !this.estadofolderNoticias;
+      this.estadovernoticia = !this.estadovernoticia
+      this.idnoticia = id
+      this.estadofolderNoticias = !this.estadofolderNoticias
     },
     actualizarvernoticia(valor) {
-      this.estadovernoticia = valor;
-      this.estadofolderNoticias = !this.estadofolderNoticias;
+      this.estadovernoticia = valor
+      this.estadofolderNoticias = !this.estadofolderNoticias
     },
     cambiarestadoeditarnoticia(id) {
-      this.estadoeditarnoticia = !this.estadoeditarnoticia;
-      this.idnoticia = id;
-      this.estadofolderNoticias = !this.estadofolderNoticias;
+      this.estadoeditarnoticia = !this.estadoeditarnoticia
+      this.idnoticia = id
+      this.estadofolderNoticias = !this.estadofolderNoticias
     },
     actualizareditarnoticia(valor) {
-      this.estadoeditarnoticia = valor;
-      this.estadofolderNoticias = !this.estadofolderNoticias;
+      this.estadoeditarnoticia = valor
+      this.estadofolderNoticias = !this.estadofolderNoticias
     },
     deleteNoticia(id) {
       const rpta = window.confirm('Seguro que desea eliminar La Publicacion?')
       if (rpta) {
-        apiNoticias.deleteNoticias(id)
+        apiNoticias
+          .deleteNoticias(id)
           .then((response) => {
             alert('Eliminacion Exitoso!')
-            location.reload();
+            location.reload()
           })
           .catch((error) => {
             console.log(`Hubo un error al eliminar ${error}`)
@@ -67,22 +68,28 @@ export default {
     }
   },
   updated() {
-    this.noticiaslocal = this.noticiasprop;
+    this.noticiaslocal = this.noticiasprop
     console.log(this.noticiaslocal)
   },
   watch: {
     noticiasprop(newVal) {
-      this.noticiaslocal = newVal;
+      this.noticiaslocal = newVal
     }
   },
-  created() {
-
-  }
+  created() {}
 }
 </script>
 <template>
-  <verNoticia v-if="estadovernoticia" @vernoticiacam="actualizarvernoticia" :idnoticia="idnoticia" />
-  <editarNoticia v-if="estadoeditarnoticia" @estadoeditarnoticiacam="actualizareditarnoticia" :idnoticia="idnoticia" />
+  <verNoticia
+    v-if="estadovernoticia"
+    @vernoticiacam="actualizarvernoticia"
+    :idnoticia="idnoticia"
+  />
+  <editarNoticia
+    v-if="estadoeditarnoticia"
+    @estadoeditarnoticiacam="actualizareditarnoticia"
+    :idnoticia="idnoticia"
+  />
   <div v-if="estadofolderNoticias" class="cont-folder">
     <div class="flex justify-end">
       <BtnBack />
@@ -90,7 +97,10 @@ export default {
     <div class="header-folder flex flex-col justify-center items-center lg:flex-row lg:mx-auto">
       <p class="title-folder font-TestKarbonBold">Noticias</p>
       <div class="w-full flex flex-col lg:flex-row justify-end items-center">
-        <button @click="cambiarestadonuevanoicia" class="btn-añadirentradda font-TestKarbonSemiBold">
+        <button
+          @click="cambiarestadonuevanoicia"
+          class="btn-añadirentradda font-TestKarbonSemiBold"
+        >
           <router-link to="/dashboard/entradas/noticias/nuevanoticia"> Añadir Entrada </router-link>
         </button>
         <div class="btn-buscar">
@@ -98,23 +108,35 @@ export default {
         </div>
       </div>
     </div>
-    <div class="items-folder flex flex-col justify-center items-center lg:mx-auto lg:grid lg:grid-cols-3">
+    <div
+      class="items-folder flex flex-col justify-center items-center lg:mx-auto lg:grid lg:grid-cols-3"
+    >
       <div v-for="noticia in noticiaslocal" class="itemf relative bg-stone-600">
-        <img class="object-cover h-full w-full" loading="lazy"
-          :src="`http://localhost:3000/uploads/${noticia.imgsCarouselNoticia[0]}`" alt="receta-item" />
+        <img
+          class="object-cover h-full w-full"
+          loading="lazy"
+          :src="`http://localhost:3000/uploads/${noticia.imgsCarouselNoticia[0]}`"
+          alt="receta-item"
+        />
         <div class="cont-actions absolute flex flex-col justify-center items-center">
           <p class="text-white">{{ noticia.titulo }}</p>
           <div class="cont-btnsaction flex justify-between">
-            <button @click="cambiarestadoeditarnoticia(noticia._id)"
-              class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
+            <button
+              @click="cambiarestadoeditarnoticia(noticia._id)"
+              class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold"
+            >
               Editar
             </button>
-            <button @click="cambiarestadovernoticia(noticia._id)"
-              class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
+            <button
+              @click="cambiarestadovernoticia(noticia._id)"
+              class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold"
+            >
               Ver
             </button>
-            <button @click="deleteNoticia(noticia._id)"
-              class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
+            <button
+              @click="deleteNoticia(noticia._id)"
+              class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold"
+            >
               Eliminar
             </button>
           </div>
@@ -243,7 +265,8 @@ export default {
     width: 80%;
   }
 
-  .items-folder {}
+  .items-folder {
+  }
 
   .itemf {
     overflow: hidden;

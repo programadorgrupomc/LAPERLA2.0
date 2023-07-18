@@ -39,15 +39,15 @@ export default {
   methods: {
     cambiarestadoRf() {
       // Implementa el código necesario para cambiar el estado de Recetario
-      this.estadofolderRec = !this.estadofolderRec;
+      this.estadofolderRec = !this.estadofolderRec
     },
     cambiarestadonot() {
       // Implementa el código necesario para cambiar el estado de Noticias
-      this.estadonot = !this.estadonot;
+      this.estadonot = !this.estadonot
     },
     cambiarestadopv() {
       // Implementa el código necesario para cambiar el estado de Puestos Vacantes
-      this.estadopv = !this.estadopv;
+      this.estadopv = !this.estadopv
     }
   }
 }

@@ -1,6 +1,6 @@
 <script>
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import '../../../../../../node_modules/swiper/swiper-bundle.css';
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import '../../../../../../node_modules/swiper/swiper-bundle.css'
 
 import BtnBack from '../../../General/BtnBack.vue'
 import apiNoticias from '../../../../../services/Noticias/apiNoticias'
@@ -24,7 +24,8 @@ export default {
       this.$emit('vernoticiacam', this.estadovernoticia)
     },
     fetchNoticias() {
-      apiNoticias.getNoticias()
+      apiNoticias
+        .getNoticias()
         .then((response) => {
           this.noticiaslocal = response.data
         })
@@ -34,7 +35,7 @@ export default {
     }
   },
   created() {
-    this.fetchNoticias();
+    this.fetchNoticias()
   }
 }
 </script>
@@ -49,8 +50,12 @@ export default {
       <div v-if="noticia._id === idnoticia" class="overflow-hidden cont-des bg-FondoPerla">
         <!-- hero -->
         <div class="descnot">
-          <img loading="lazy" class="object-cover w-full h-full"
-            :src="`http://localhost:3000/uploads/${noticia.imgHeroNoticia}`" alt="imgnotid" />
+          <img
+            loading="lazy"
+            class="object-cover w-full h-full"
+            :src="`http://localhost:3000/uploads/${noticia.imgHeroNoticia}`"
+            alt="imgnotid"
+          />
         </div>
         <!-- desc -->
         <div class="dscnot5k">
@@ -62,15 +67,26 @@ export default {
           </div>
           <div class="lg:flex lg:items-center">
             <!-- texto centrado -->
-            <div class="textodesnot text-justify text-AzulPerla break-inside-avoid lg:text-left lg:w-2/4">
+            <div
+              class="textodesnot text-justify text-AzulPerla break-inside-avoid lg:text-left lg:w-2/4"
+            >
               <p>{{ noticia.contenido }}</p>
             </div>
             <!-- swiper -->
             <div class="flex justify-center items-center lg:w-2/4">
-              <swiper :space-between="30" :centered-slides="true" :pagination="{ clickable: true }" class="mySwiper">
+              <swiper
+                :space-between="30"
+                :centered-slides="true"
+                :pagination="{ clickable: true }"
+                class="mySwiper"
+              >
                 <swiper-slide v-for="i in noticia.imgsCarouselNoticia" class="" :key="i">
-                  <img loading="lazy" class="ncrr object-cover w-full" :src="`http://localhost:3000/uploads/${i}`"
-                    alt="noticia" />
+                  <img
+                    loading="lazy"
+                    class="ncrr object-cover w-full"
+                    :src="`http://localhost:3000/uploads/${i}`"
+                    alt="noticia"
+                  />
                 </swiper-slide>
               </swiper>
             </div>

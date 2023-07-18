@@ -13,6 +13,7 @@
     "@pqina/vue-pintura": "^9.0.1",
     "axios": "^1.4.0",
     "boxicons": "^2.1.4",
+    "chart.js": "^4.3.0",
     "emailjs-com": "^3.2.0",
     "gsap": "^3.12.2",
     "jwt-decode": "^3.1.2",

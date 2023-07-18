@@ -14,7 +14,7 @@ export default {
       imagenHero: '',
       imageSrcList: [],
       noticias: '',
-      newDataNot: null, // Initialize newDataNot to null
+      newDataNot: null // Initialize newDataNot to null
     }
   },
   props: ['idnoticia'],
@@ -22,7 +22,7 @@ export default {
     BtnBack,
     BotonesCrudActualizar,
     FileUploaderRect,
-    FileUploaderCarousel,
+    FileUploaderCarousel
   },
   methods: {
     cambiarEstado() {
@@ -69,11 +69,11 @@ export default {
     },
     actualizarCarousel(images) {
       // Implementar la lógica para actualizar el carrusel de imágenes recibidas desde el componente FileUploaderCarousel
-    },
+    }
   },
   created() {
     this.fetchNoticias()
-  },
+  }
 }
 </script>
 
@@ -87,12 +87,11 @@ export default {
     </div>
     <div v-if="newDataNot" class="cont-noticiadata bg-FondoPerla">
       <div class="hero-nuevanoticia relative flex justify-center items-center">
-        <FileUploaderRect @imgrecortada="asignarImagen" :imagedetbd="newDataNot.imgHeroNoticia"/>
+        <FileUploaderRect @imgrecortada="asignarImagen" :imagedetbd="newDataNot.imgHeroNoticia" />
       </div>
       <div class="cont-titulo">
         <p class="not-pre font-TestKarbonMedium">NOTICIAS</p>
-        <p contenteditable="true" class="titulo-not font-TestKarbonBold text-azulbsPerla"
-          >
+        <p contenteditable="true" class="titulo-not font-TestKarbonBold text-azulbsPerla">
           {{ newDataNot.titulo }}
         </p>
         <p class="fecha-not font-TestKarbonMedium text-AzulPerla">02 de mayo de 2023</p>

@@ -9,7 +9,7 @@ export default {
   data() {
     return {
       data: {
-        fechaActual: ""
+        fechaActual: ''
       },
       estadonuevanoticia: true,
       hora: '',
@@ -33,23 +33,23 @@ export default {
   },
   methods: {
     mostrarFecha() {
-      var fecha = new Date();
-      var opciones = { day: "2-digit", month: "long", year: "numeric" };
-      this.data.fechaActual = fecha.toLocaleDateString("es-ES", opciones);
+      var fecha = new Date()
+      var opciones = { day: '2-digit', month: 'long', year: 'numeric' }
+      this.data.fechaActual = fecha.toLocaleDateString('es-ES', opciones)
     },
     cambiarEstado() {
-      this.estadonuevanoticia = !this.estadonuevanoticia;
-      this.$emit('estadonuevanoticiacam', this.estadonuevanoticia);
+      this.estadonuevanoticia = !this.estadonuevanoticia
+      this.$emit('estadonuevanoticiacam', this.estadonuevanoticia)
     },
     asignarclase(valor) {
-      this.clasetxt = valor;
+      this.clasetxt = valor
     },
     previewImage(event) {
-      const file = event.target.files[0];
+      const file = event.target.files[0]
       if (file) {
-        this.imagenHero = URL.createObjectURL(file);
+        this.imagenHero = URL.createObjectURL(file)
       } else {
-        this.imagenHero = '';
+        this.imagenHero = ''
       }
     },
     initSwiper() {
@@ -59,50 +59,50 @@ export default {
           el: '.swiper-pagination',
           clickable: true
         }
-      });
+      })
     },
     previewImages(event) {
-      const files = event.target.files;
-      this.imageSrcList = [];
+      const files = event.target.files
+      this.imageSrcList = []
       if (files.length > 0) {
         for (let i = 0; i < files.length; i++) {
-          const file = files[i];
-          const imageSrc = URL.createObjectURL(file);
-          this.imageSrcList.push(imageSrc);
+          const file = files[i]
+          const imageSrc = URL.createObjectURL(file)
+          this.imageSrcList.push(imageSrc)
         }
       }
     },
     eliminarimagecarousel(i) {
-      this.imageSrcList.splice(i, 1);
+      this.imageSrcList.splice(i, 1)
     },
     titulo(event) {
-      this.newNoticiaData.titulo = event.target.innerText;
-      this.newNoticiaData.fecha = this.data.fechaActual;
-      console.log(this.newNoticiaData);
-      this.$emit('newNoticiaData', this.newNoticiaData);
+      this.newNoticiaData.titulo = event.target.innerText
+      this.newNoticiaData.fecha = this.data.fechaActual
+      console.log(this.newNoticiaData)
+      this.$emit('newNoticiaData', this.newNoticiaData)
     },
     contenido(event) {
-      this.newNoticiaData.contenido = event.target.innerText;
-      console.log(this.newNoticiaData);
-      this.$emit('newNoticiaData', this.newNoticiaData);
+      this.newNoticiaData.contenido = event.target.innerText
+      console.log(this.newNoticiaData)
+      this.$emit('newNoticiaData', this.newNoticiaData)
     },
     asignarImagen(valor) {
-      this.newNoticiaData.imgHeroNoticia = valor;
-      console.log(this.newNoticiaData);
-      this.$emit('newNoticiaData', this.newNoticiaData);
+      this.newNoticiaData.imgHeroNoticia = valor
+      console.log(this.newNoticiaData)
+      this.$emit('newNoticiaData', this.newNoticiaData)
     },
     actualizarCarousel(valor) {
       if (!Array.isArray(valor)) {
-        valor = [valor];
+        valor = [valor]
       }
-      this.newNoticiaData.imgsCarouselNoticia = valor;
-      console.log(valor);
-      this.$emit('newNoticiaData', this.newNoticiaData);
+      this.newNoticiaData.imgsCarouselNoticia = valor
+      console.log(valor)
+      this.$emit('newNoticiaData', this.newNoticiaData)
     }
   },
   mounted() {
-    this.mostrarFecha();
-    setInterval(this.mostrarFecha, 1000);
+    this.mostrarFecha()
+    setInterval(this.mostrarFecha, 1000)
   }
 }
 </script>
@@ -120,14 +120,22 @@ export default {
       </div>
       <div class="cont-titulo">
         <p class="not-pre font-TestKarbonMedium">NOTICIAS</p>
-        <p contenteditable="true" class="titulo-not font-TestKarbonBold text-azulbsPerla" @input="titulo">
+        <p
+          contenteditable="true"
+          class="titulo-not font-TestKarbonBold text-azulbsPerla"
+          @input="titulo"
+        >
           TITULO DE LA NOTICIA
         </p>
         <p class="fecha-not font-TestKarbonMedium text-AzulPerla">{{ data.fechaActual }}</p>
       </div>
       <div class="cont-notmain lg:grid lg:grid-cols-2 flex flex-col justify-center items-center">
         <div class="desc-noticia flex justify-center items-center">
-          <p contenteditable="true" class="cont-desc font-KarbonRegular text-azulbsPerla" @input="contenido">
+          <p
+            contenteditable="true"
+            class="cont-desc font-KarbonRegular text-azulbsPerla"
+            @input="contenido"
+          >
             Texto Descriptivo
           </p>
         </div>
