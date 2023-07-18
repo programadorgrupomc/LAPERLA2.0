@@ -47,7 +47,6 @@ export default {
   methods: {
     handleFileChange(event) {
       // preguntar antes de abrir el input
-
       const file = event.target.files[0]
 
       if (file) {

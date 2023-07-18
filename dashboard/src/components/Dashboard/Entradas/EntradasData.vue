@@ -1,25 +1,26 @@
 <template>
   <div class="cont-inputs">
     <div class="cont-input bg1 flex flex-col justify-center items-center text-white transition-all">
-      Recetario
+      <h1>Recetario</h1>
       <router-link to="/dashboard/entradas/recetario">
         <button @click="cambiarestadoRf" class="btn-plus">Ver más</button>
       </router-link>
     </div>
     <div class="cont-input bg2 flex flex-col justify-center items-center text-white transition-all">
-      Noticias
+      <h1>Noticias</h1>
       <router-link to="/dashboard/entradas/noticias">
         <button @click="cambiarestadonot" class="btn-plus">Ver más</button>
       </router-link>
     </div>
     <div class="cont-input bg3 flex flex-col justify-center items-center text-white transition-all">
-      Puestos Vacantes
+      <h1>Puestos Vacantes</h1>
       <router-link to="/dashboard/entradas/puestosvacantes">
         <button @click="cambiarestadopv" class="btn-plus">Ver más</button>
       </router-link>
     </div>
   </div>
 </template>
+
 <script>
 import BotonesCrudEntradaRec from './EntradaRecetario/BotonesCrudEntradaRec.vue'
 
@@ -35,9 +36,23 @@ export default {
   components: {
     BotonesCrudEntradaRec
   },
-  methods: {}
+  methods: {
+    cambiarestadoRf() {
+      // Implementa el código necesario para cambiar el estado de Recetario
+      this.estadofolderRec = !this.estadofolderRec;
+    },
+    cambiarestadonot() {
+      // Implementa el código necesario para cambiar el estado de Noticias
+      this.estadonot = !this.estadonot;
+    },
+    cambiarestadopv() {
+      // Implementa el código necesario para cambiar el estado de Puestos Vacantes
+      this.estadopv = !this.estadopv;
+    }
+  }
 }
 </script>
+
 <style scoped>
 .cont-input {
   height: 30%;

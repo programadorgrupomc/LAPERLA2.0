@@ -1,7 +1,7 @@
 <template>
-  <div width="auto">
+  <div>
     <div class="upload-example">
-      <Cropper ref="cropper" class="upload-example-cropper" :src="image" />
+      <Cropper ref="cropper" class="upload-example-cropper" :src="image" :options="cropperOptions" />
       <div class="button-wrapper">
         <button class="button" @click="cropImage">Guardar</button>
       </div>
@@ -20,7 +20,7 @@ export default {
   },
   data() {
     return {
-      cropperOptions: {}
+      cropperOptions: {} // You can set specific options for the cropper here
     }
   },
   props: ['image'],
@@ -28,7 +28,7 @@ export default {
     cropImage() {
       const result = this.$refs.cropper.getResult()
 
-      //mandar la imagen recortada
+      // emit the cropped image data
       this.$emit('imagecroped', result.canvas.toDataURL('image/jpeg'))
     }
   }

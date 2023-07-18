@@ -4,6 +4,7 @@ import Swiper from 'swiper'
 import FileUploaderRect from '../../../General/FileUploaderRect.vue'
 import BotonesCrudNoticias from '../BotonesCrudNoticias.vue'
 import FileUploaderCarousel from '../../../General/FileUploaderCarousel.vue'
+
 export default {
   data() {
     return {
@@ -122,8 +123,7 @@ export default {
         <p contenteditable="true" class="titulo-not font-TestKarbonBold text-azulbsPerla" @input="titulo">
           TITULO DE LA NOTICIA
         </p>
-        <!-- <textalign @clasetxt="asignarclase" /> -->
-        <p class="fecha-not font-TestKarbonMedium text-AzulPerla"><span v-text="data.fechaActual"></span></p>
+        <p class="fecha-not font-TestKarbonMedium text-AzulPerla">{{ data.fechaActual }}</p>
       </div>
       <div class="cont-notmain lg:grid lg:grid-cols-2 flex flex-col justify-center items-center">
         <div class="desc-noticia flex justify-center items-center">
@@ -138,6 +138,7 @@ export default {
     </div>
   </div>
 </template>
+
 <style scoped>
 .cont-btn {
   height: auto;

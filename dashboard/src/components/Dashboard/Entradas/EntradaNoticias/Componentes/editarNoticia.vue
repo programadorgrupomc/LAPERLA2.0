@@ -1,7 +1,10 @@
 <script>
-import apiNoticias from '../../../../../services/Noticias/apiNoticias'
 import BtnBack from '../../../../../components/Dashboard/General/BtnBack.vue'
 import BotonesCrudActualizar from '../BotonesCrudActualizarNoticias.vue'
+import FileUploaderRect from '../../../General/FileUploaderRect.vue'
+import FileUploaderCarousel from '../../../General/FileUploaderCarousel.vue'
+import apiNoticias from '../../../../../services/Noticias/apiNoticias'
+
 export default {
   data() {
     return {
@@ -11,13 +14,15 @@ export default {
       imagenHero: '',
       imageSrcList: [],
       noticias: '',
-      newDataNot: []
+      newDataNot: null, // Initialize newDataNot to null
     }
   },
   props: ['idnoticia'],
   components: {
     BtnBack,
     BotonesCrudActualizar,
+    FileUploaderRect,
+    FileUploaderCarousel,
   },
   methods: {
     cambiarEstado() {
@@ -48,26 +53,30 @@ export default {
       }
     },
     fetchNoticias() {
-      apiNoticias.getNoticias()
+      apiNoticias
+        .getNoticias()
         .then((response) => {
-          this.noticias = response.data;
+          this.noticias = response.data
           this.newDataNot = this.noticias.find((noticia) => noticia._id === this.idnoticia)
           this.$emit('newDataNot', this.newDataNot)
         })
         .catch((error) => {
           console.log('Hubo un problema con la peticion', error)
         })
-    }
-
+    },
+    asignarImagen(imagen) {
+      // Implementar la lógica para asignar la imagen recibida desde el componente FileUploaderRect
+    },
+    actualizarCarousel(images) {
+      // Implementar la lógica para actualizar el carrusel de imágenes recibidas desde el componente FileUploaderCarousel
+    },
   },
   created() {
     this.fetchNoticias()
   },
-  mounted() {
-
-  }
 }
 </script>
+
 <template>
   <div class="nueva-noticia">
     <div class="fixed z-40 lg:z-50 cont-btn">
@@ -76,49 +85,32 @@ export default {
     <div class="flex justify-end">
       <BtnBack />
     </div>
-    <div v-for="noticia in noticias">
-      <div v-if="noticia._id === idnoticia" class="cont-noticiadata bg-FondoPerla">
-        <div class="hero-nuevanoticia relative flex justify-center items-center">
-          <img src="../../../assets/cDashboard/Iconmaterial-perm-media.svg" alt="" class="absolute w-52" />
-          <input type="file" name="" id="" class="absolute opacity-0" v-on:change="previewImage" />
-          <img :src="imagenHero" class="object-cover w-full h-full" alt="img-hero" />
-        </div>
-        <div class="cont-titulo">
-          <p class="not-pre font-TestKarbonMedium">NOTICIAS</p>
-          <p contenteditable="true" class="titulo-not font-TestKarbonBold text-azulbsPerla"
-            :style="clasetxt + ' ' + clasetxtl">
-            {{ noticia.titulo }}
+    <div v-if="newDataNot" class="cont-noticiadata bg-FondoPerla">
+      <div class="hero-nuevanoticia relative flex justify-center items-center">
+        <FileUploaderRect @imgrecortada="asignarImagen" :imagedetbd="newDataNot.imgHeroNoticia"/>
+      </div>
+      <div class="cont-titulo">
+        <p class="not-pre font-TestKarbonMedium">NOTICIAS</p>
+        <p contenteditable="true" class="titulo-not font-TestKarbonBold text-azulbsPerla"
+          >
+          {{ newDataNot.titulo }}
+        </p>
+        <p class="fecha-not font-TestKarbonMedium text-AzulPerla">02 de mayo de 2023</p>
+      </div>
+      <div class="cont-notmain lg:grid lg:grid-cols-2 flex flex-col justify-center items-center">
+        <div class="desc-noticia flex justify-center items-center">
+          <p contenteditable="true" class="cont-desc font-KarbonRegular text-azulbsPerla">
+            {{ newDataNot.contenido }}
           </p>
-          <textalign @clasetxt="asignarclase" />
-          <p class="fecha-not font-TestKarbonMedium text-AzulPerla">02 de mayo de 2023</p>
         </div>
-        <div class="cont-notmain lg:grid lg:grid-cols-2 flex flex-col justify-center items-center">
-          <div class="desc-noticia flex justify-center items-center">
-            <p contenteditable="true" class="cont-desc font-KarbonRegular text-azulbsPerla">
-              {{ noticia.descripcion }}
-            </p>
-          </div>
-          <div class="cont-imgot overflow-hidden relative shadow-2xl">
-            <img src="../../../assets/cDashboard/Iconmaterial-perm-media.svg" alt="" class="absolute w-52" />
-            <input type="file" multiple class="relative" v-on:change="previewImages" />
-            <div class="swiper-container">
-              <div class="swiper-wrapper h-full">
-                <div class="swiper-slide relative" v-for="(imageSrc, index) in imageSrcList" :key="index">
-                  <button @click="eliminarimagecarousel(index)"
-                    class="bg-white absolute right-0 m-5 p-2 rounded-2xl hover:bg-red-300">
-                    Eliminar
-                  </button>
-                  <img class="object-cover w-full h-full" :src="imageSrc" alt="" />
-                </div>
-              </div>
-              <div class="swiper-pagination"></div>
-            </div>
-          </div>
+        <div class="cont-imgot overflow-hidden relative shadow-2xl">
+          <FileUploaderCarousel class="w-full h-full" @imagesCarousel="actualizarCarousel" />
         </div>
       </div>
     </div>
   </div>
 </template>
+
 <style scoped>
 .cont-btn {
   height: auto;
@@ -261,6 +253,7 @@ export default {
     min-height: 200px;
     background-color: #cbcbcb;
     height: 70%;
+    width: 100%;
   }
 
   .cont-notmain {
