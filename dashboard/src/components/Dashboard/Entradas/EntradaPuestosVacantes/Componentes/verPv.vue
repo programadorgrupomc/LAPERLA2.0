@@ -9,8 +9,8 @@ export default {
       puestosVacanteslocal: [],
     }
   },
-  components:{
-BtnBack
+  components: {
+    BtnBack
   },
   props: ['idpv'],
   methods: {
@@ -38,7 +38,7 @@ BtnBack
   <div>
     <div class="flex justify-end">
       <button @click="cambiarestadopv" class="btn-back flex items-center">
-        <BtnBack disabled/>
+        <BtnBack disabled />
       </button>
     </div>
     <div v-for="pv in puestosVacanteslocal" class="cont-workdes">
@@ -72,38 +72,19 @@ BtnBack
           <div class="funciones-work text-AzulPerla">
             <h1 class="font-KarbonRegular text-left">Funciones</h1>
             <ul class="font-KarbonRegular text-left list-disc">
-              <li>
-                Liderar proyectos de mejora (mediano plazo) y proyectos de transformación (largo
-                plazo), principalmente de carácter tecnológico, acompañando al negocio durante el
-                todo el ciclo de vida (concepto, propuesta de diseño, implementación, resultados,
-                seguimiento). Se puede tener más de 1 proyecto simultáneamente.
+              <li v-for="i in pv.funciones">
+                {{ i }}
               </li>
-              <li>
-                Ejecutar relevamientos, entrevistas, medición de tiempos en proyectos de mejora y
-                proyectos de transformación.
-              </li>
-              <li>
-                Ejecutar proyectos de mejora y transformación, de acuerdo a la asignación del jefe.
-              </li>
-              <li>Atender pedidos, formalizaciones o miniproyectos (menor duración).</li>
-              <li>Atender pedidos y formalizaciones.</li>
-              <li>Realizar Mentoring a los Analistas Junior y Middle como guía de proyectos.</li>
+              <li v-if="!pv.funciones || pv.funciones.length === 0">No Hay Funciones...</li>
             </ul>
           </div>
           <div class="requisitos-work text-AzulPerla">
             <h1 class="font-KarbonRegular t text-left">Requisitos</h1>
             <ul class="font-KarbonRegular text-left list-disc">
-              <li>
-                Bachiller de Ingeniería Industrial, Ingeniería empresarial, Ingeniería de sistemas,
-                Administración o carreras afines.
+              <li v-for="i in pv.requisitos">
+                {{ i }}
               </li>
-              <li>
-                Mínimo 3 años de experiencia realizando funciones similares en áreas de procesos,
-                proyectos, innovación, transformación, producto o tecnología.
-              </li>
-              <li>Conocimientos en Lean Six Sigma y PMI.</li>
-              <li>Conocimientos en Scrum, Agile, Design Thinking y Design Sprint.</li>
-              <li>Manejo de Microsoft Office a nivel avanzado.</li>
+              <li v-if="!pv.requisitos || pv.requisitos.length === 0">No Hay Requisitos...</li>
             </ul>
           </div>
           <!-- <div class="cont-salary">
@@ -256,6 +237,7 @@ svg {
   }
 
   .cont-workdes {
+    padding-top: 0%;
     margin-top: 0vh;
   }
 

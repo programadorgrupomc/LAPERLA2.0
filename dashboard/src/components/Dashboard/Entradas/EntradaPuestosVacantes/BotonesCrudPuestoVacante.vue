@@ -25,33 +25,42 @@ export default {
   props: ['newpuestoData'],
   methods: {
     guardar() {
-      const nombreArchivo = 'imagen_salida.png'
-      let archivo
+      const rpta = window.confirm("Desea Guardar La Publicacion?")
+      if (rpta) {
+        if (this.newpuestoData._idformulario === null) {
+          alert("Debe Selleccionar un Tipo de Formulario!")
+        } else {
+          const nombreArchivo = 'imagen_salida.png'
+          let archivo
 
-      if (this.isBase64(this.newpuestoData.imgPuesto)) {
-        archivo = this.base64ToFile(this.newpuestoData.imgPuesto, nombreArchivo)
-      } else {
-        archivo = ''
+          if (this.isBase64(this.newpuestoData.imgPuesto)) {
+            archivo = this.base64ToFile(this.newpuestoData.imgPuesto, nombreArchivo)
+          } else {
+            archivo = ''
+          }
+
+          const formData = new FormData()
+          formData.append('titulo', this.newpuestoData.titulo)
+          formData.append('experiencia', this.newpuestoData.experiencia)
+          formData.append('departamento', this.newpuestoData.departamento)
+          formData.append('tipoempleo', this.newpuestoData.tipoempleo)
+          formData.append('objetivoPuesto', this.newpuestoData.objetivoPuesto)
+          formData.append('funciones', this.newpuestoData.funciones)
+          formData.append('requisitos', this.newpuestoData.requisitos)
+          formData.append('_idformulario', this.newpuestoData._idformulario)
+          formData.append('imgPuesto', archivo)
+
+          apiPuestosVacantes.createPuestosVacantes(formData)
+            .then((response) => {
+              alert('Registro Exitoso!')
+              this.retroceder();
+            })
+            .catch((error) => {
+              console.log(`Hubo un error al crear ${error}`)
+            })
+        }
+
       }
-
-      const formData = new FormData()
-      formData.append('titulo', this.newpuestoData.titulo)
-      formData.append('experiencia', this.newpuestoData.experiencia)
-      formData.append('departamento', this.newpuestoData.departamento)
-      formData.append('tipoempleo', this.newpuestoData.tipoempleo)
-      formData.append('objetivoPuesto', this.newpuestoData.objetivoPuesto)
-      formData.append('funciones', this.newpuestoData.funciones)
-      formData.append('imgPuesto', archivo)
-
-      apiPuestosVacantes.createPuestosVacantes(formData)
-        .then((response) => {
-          alert('Registro Exitoso!')
-          this.retroceder();
-        })
-        .catch((error) => {
-          console.log(`Hubo un error al crear ${error}`)
-        })
-
     },
     retroceder() {
       this.$router.go(-1)

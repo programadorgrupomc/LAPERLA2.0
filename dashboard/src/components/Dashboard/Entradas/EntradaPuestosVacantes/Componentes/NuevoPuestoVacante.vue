@@ -81,10 +81,11 @@ export default {
       const parser = new DOMParser();
       const htmlDoc = parser.parseFromString(funcionesHTML, 'text/html');
       const elementosLi = htmlDoc.getElementsByTagName('li');
-      const funciones = Array.from(elementosLi).map(li => ({
-        funcion: li.innerHTML.trim()
-      })); // Solo almacenamos el texto de las funciones
+      const funciones = Array.from(elementosLi).map(li => li.innerHTML.trim());
+
+      // Asigna directamente el arreglo de funciones a this.newpuesto.funciones
       this.newpuesto.funciones = funciones;
+
       console.log(this.newpuesto);
       this.$emit('newpuesto', this.newpuesto);
     },
@@ -93,17 +94,20 @@ export default {
       const parser = new DOMParser();
       const htmlDoc = parser.parseFromString(requisitosHTML, 'text/html');
       const elementosLi = htmlDoc.getElementsByTagName('li');
-      const requisitos = Array.from(elementosLi).map(li => li.innerText.trim()); // Solo almacenamos el texto de las requisitos
+      const requisitos = Array.from(elementosLi).map(li => li.innerText.trim());
+
+      // Asigna directamente el arreglo de requisitos a this.newpuesto.requisitos
       this.newpuesto.requisitos = requisitos;
+
       console.log(this.newpuesto);
       this.$emit('newpuesto', this.newpuesto);
     },
+
     actualizarformulario(valor) {
       this.newpuesto._idformulario = valor;
       console.log(this.newpuesto)
       this.$emit('newpuesto', this.newpuesto);
     }
-
   }
 } 
 </script>

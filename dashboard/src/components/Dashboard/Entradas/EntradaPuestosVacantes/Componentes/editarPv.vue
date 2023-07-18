@@ -77,6 +77,33 @@ export default {
       console.log(this.newDatapv)
       this.$emit('newDatapv', this.newDatapv)
     },
+    capturarFunciones(event) {
+      const funcionesHTML = event.target.innerHTML;
+      const parser = new DOMParser();
+      const htmlDoc = parser.parseFromString(funcionesHTML, 'text/html');
+      const elementosLi = htmlDoc.getElementsByTagName('li');
+      const funciones = Array.from(elementosLi).map(li => li.innerHTML.trim());
+
+      // Asigna directamente el arreglo de funciones a this.newpuesto.funciones
+      this.newDatapv.funciones = funciones;
+
+      console.log(this.newDatapv);
+      this.$emit('newDatapv', this.newDatapv);
+    },
+    capturarRequisitos(event) {
+      const requisitosHTML = event.target.innerHTML;
+      const parser = new DOMParser();
+      const htmlDoc = parser.parseFromString(requisitosHTML, 'text/html');
+      const elementosLi = htmlDoc.getElementsByTagName('li');
+      const requisitos = Array.from(elementosLi).map(li => li.innerText.trim());
+
+      // Asigna directamente el arreglo de requisitos a this.newDatapv.requisitos
+      this.newDatapv.requisitos = requisitos;
+
+      console.log(this.newDatapv);
+      this.$emit('newDatapv', this.newDatapv);
+    },
+
 
     fetchPv() {
       apiPuestosVacantes.getPuestosVacantes()
@@ -117,7 +144,8 @@ export default {
         </div>
         <div class="ttl-work lg:w-2/4">
           <div class="font-bold">
-            <h1 contenteditable="true" class="ttl-work1 text-center font-TestKarbonSemiBold text-AzulPerla lg:text-right" @input="titulo">
+            <h1 contenteditable="true" class="ttl-work1 text-center font-TestKarbonSemiBold text-AzulPerla lg:text-right"
+              @input="titulo">
               {{ puesto.titulo }}
             </h1>
             <div class="lg:flex">
@@ -159,18 +187,20 @@ export default {
           </div>
           <div class="funciones-work text-AzulPerla">
             <h1 class="font-KarbonRegular text-left">Funciones</h1>
-            <ul contenteditable="true" class="font-KarbonRegular text-left list-disc">
+            <ul contenteditable="true" class="font-KarbonRegular text-left list-disc" @input="capturarFunciones($event)">
               <li v-for="fun in puesto.funciones">
-                {{ fun.funcion }}
+                {{ fun }}
               </li>
+              <li v-if="!puesto.funciones || puesto.funciones.length === 0">No Hay Funciones...</li>
             </ul>
           </div>
           <div class="requisitos-work text-AzulPerla">
             <h1 class="font-KarbonRegular t text-left">Requisitos</h1>
-            <ul contenteditable="true" class="font-KarbonRegular text-left list-disc">
+            <ul contenteditable="true" class="font-KarbonRegular text-left list-disc" @input="capturarRequisitos($event)">
               <li v-for="rec in puesto.requisitos">
-                {{ rec.requisito }}
+                {{ rec }}
               </li>
+              <li v-if="!puesto.requisitos || puesto.requisitos.length === 0">No Hay Requisitos...</li>
             </ul>
           </div>
           <!-- <div class="cont-salary">
@@ -185,7 +215,8 @@ export default {
       <button @click="cambiarestadoseleccionform" class="btn-nav shadow-2xl">Siguiente</button>
     </div>
   </div>
-  <seleccionFormPv v-if="estadoseleccionform" @seleccionformcam="actuaizarseleccionform" />
+  <seleccionFormPv v-if="estadoseleccionform" @seleccionformcam="actuaizarseleccionform"
+    @seleccionado="actualizarformulario" />
 </template>
 <style scoped>
 .cont-btn {
@@ -383,7 +414,9 @@ svg {
     width: 12%;
   }
 
-  .cont-workdes {}
+  .cont-workdes {
+    padding-top: 1%;
+  }
 
   .cont-text {
     padding: 1%;
