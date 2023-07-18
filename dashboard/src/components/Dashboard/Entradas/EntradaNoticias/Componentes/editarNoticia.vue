@@ -1,5 +1,7 @@
 <script>
-import Swiper from 'swiper'
+import apiNoticias from '../../../../../services/Noticias/apiNoticias'
+import BtnBack from '../../../../../components/Dashboard/General/BtnBack.vue'
+import BotonesCrudActualizar from '../BotonesCrudActualizarNoticias.vue'
 export default {
   data() {
     return {
@@ -8,12 +10,14 @@ export default {
       clasetxt: '',
       imagenHero: '',
       imageSrcList: [],
-      noticias: ''
+      noticias: '',
+      newDataNot: []
     }
   },
   props: ['idnoticia'],
   components: {
-
+    BtnBack,
+    BotonesCrudActualizar,
   },
   methods: {
     cambiarEstado() {
@@ -22,27 +26,6 @@ export default {
     },
     asignarclase(valor) {
       this.clasetxt = valor
-    },
-    previewImage(event) {
-      const file = event.target.files[0] // Obtener el archivo seleccionado
-
-      // Verificar si se seleccionó un archivo
-      if (file) {
-        // Crear una URL local para el archivo seleccionado
-        this.imagenHero = URL.createObjectURL(file)
-      } else {
-        this.imagenHero = '' // Limpiar la URL de la imagen si no se selecciona ningún archivo
-      }
-    },
-    initSwiper() {
-      new Swiper('.swiper-container', {
-        // Configuración de Swiper
-        slidesPerView: 1,
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true
-        }
-      })
     },
     previewImages(event) {
       const files = event.target.files // Obtener los archivos seleccionados
@@ -64,71 +47,46 @@ export default {
         }
       }
     },
-    async obtenerNoticias() {
-      const noticiasstore = useNoticiasStore()
-      try {
-        await noticiasstore.obtenernoticias()
-        this.noticias = noticiasstore.noticias
-      } catch (error) {
-        console.error('Error al obtener las noticias', error)
-      }
-    },
-    eliminarimagecarousel(i) {
-      this.imageSrcList.splice(i, 1)
+    fetchNoticias() {
+      apiNoticias.getNoticias()
+        .then((response) => {
+          this.noticias = response.data;
+          this.newDataNot = this.noticias.find((noticia) => noticia._id === this.idnoticia)
+          this.$emit('newDataNot', this.newDataNot)
+        })
+        .catch((error) => {
+          console.log('Hubo un problema con la peticion', error)
+        })
     }
+
   },
   created() {
-    this.obtenerNoticias()
+    this.fetchNoticias()
   },
   mounted() {
-    // Inicializar el carrusel Swiper
-    this.initSwiper()
+
   }
 }
 </script>
 <template>
   <div class="nueva-noticia">
-    <botonesControl
-      :nuevareceta="this.nuevaRecetaData"
-      @recetavacia="actualizarreceta"
-      class="hidden lg:block absolute btn-control"
-    />
+    <div class="fixed z-40 lg:z-50 cont-btn">
+      <BotonesCrudActualizar :newnoticiasdata="newDataNot" class="btn-crud" />
+    </div>
     <div class="flex justify-end">
-      <button @click="cambiarEstado" class="btn-back flex items-center">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          fill="currentColor"
-          class="bi bi-chevron-left"
-          viewBox="0 0 16 16"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
-          />
-        </svg>
-        <p>Atras</p>
-      </button>
+      <BtnBack />
     </div>
     <div v-for="noticia in noticias">
       <div v-if="noticia._id === idnoticia" class="cont-noticiadata bg-FondoPerla">
         <div class="hero-nuevanoticia relative flex justify-center items-center">
-          <img
-            src="../../../assets/cDashboard/Iconmaterial-perm-media.svg"
-            alt=""
-            class="absolute w-52"
-          />
+          <img src="../../../assets/cDashboard/Iconmaterial-perm-media.svg" alt="" class="absolute w-52" />
           <input type="file" name="" id="" class="absolute opacity-0" v-on:change="previewImage" />
           <img :src="imagenHero" class="object-cover w-full h-full" alt="img-hero" />
         </div>
         <div class="cont-titulo">
           <p class="not-pre font-TestKarbonMedium">NOTICIAS</p>
-          <p
-            contenteditable="true"
-            class="titulo-not font-TestKarbonBold text-azulbsPerla"
-            :style="clasetxt + ' ' + clasetxtl"
-          >
+          <p contenteditable="true" class="titulo-not font-TestKarbonBold text-azulbsPerla"
+            :style="clasetxt + ' ' + clasetxtl">
             {{ noticia.titulo }}
           </p>
           <textalign @clasetxt="asignarclase" />
@@ -141,23 +99,13 @@ export default {
             </p>
           </div>
           <div class="cont-imgot overflow-hidden relative shadow-2xl">
-            <img
-              src="../../../assets/cDashboard/Iconmaterial-perm-media.svg"
-              alt=""
-              class="absolute w-52"
-            />
+            <img src="../../../assets/cDashboard/Iconmaterial-perm-media.svg" alt="" class="absolute w-52" />
             <input type="file" multiple class="relative" v-on:change="previewImages" />
             <div class="swiper-container">
               <div class="swiper-wrapper h-full">
-                <div
-                  class="swiper-slide relative"
-                  v-for="(imageSrc, index) in imageSrcList"
-                  :key="index"
-                >
-                  <button
-                    @click="eliminarimagecarousel(index)"
-                    class="bg-white absolute right-0 m-5 p-2 rounded-2xl hover:bg-red-300"
-                  >
+                <div class="swiper-slide relative" v-for="(imageSrc, index) in imageSrcList" :key="index">
+                  <button @click="eliminarimagecarousel(index)"
+                    class="bg-white absolute right-0 m-5 p-2 rounded-2xl hover:bg-red-300">
                     Eliminar
                   </button>
                   <img class="object-cover w-full h-full" :src="imageSrc" alt="" />
@@ -172,6 +120,18 @@ export default {
   </div>
 </template>
 <style scoped>
+.cont-btn {
+  height: auto;
+  width: auto;
+  bottom: 10%;
+  right: 1%;
+}
+
+.btn-crud {
+  height: 10vh;
+  /* background-color: rgba(220, 20, 60, 0.238); */
+}
+
 .btn-back {
   padding: 5%;
   padding-top: 1%;
@@ -228,6 +188,18 @@ export default {
 }
 
 @media (min-width: 1024px) {
+  .cont-btn {
+    width: 30vh;
+    height: 7vh;
+    top: 0%;
+    right: 15vw;
+  }
+
+  .btn-crud {
+    height: 7vh;
+    /* background-color: rgba(220, 20, 60, 0.238); */
+  }
+
   .btn-control {
     height: 6vh;
     top: -0%;

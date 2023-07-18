@@ -20,7 +20,7 @@ export default {
         contenido: '',
         imgHeroNoticia: '',
         imgsCarouselNoticia: [],
-        fecha:''
+        fecha: ''
       }
     }
   },
