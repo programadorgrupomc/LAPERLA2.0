@@ -1,7 +1,7 @@
 
 <template>
     <div>
-        <div class="gallery">
+        <div class="gallery relative">
             <div v-for="file in fileList" :key="file.name" class="gallery-item m-auto" @click="selectImage(file)">
                 <img loading="lazy" class="bg-slate-700 rounded-3xl" :src="`http://localhost:3000/uploads/${file.name}`"
                     :alt="file.name" />
@@ -66,8 +66,8 @@ export default {
     display: flex;
     position: fixed;
     z-index: 1;
-    left: 0;
-    top: 0;
+    top: 0%;
+    left: 10%;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
@@ -76,10 +76,13 @@ export default {
 }
 
 .modal-content {
-    max-width: 90%;
-    max-height: 90%;
+    max-width: 60%;
+    max-height: 60%;
 }
-
+.modal-content img{
+    object-fit: cover;
+    max-height: 60vh;
+}
 .close {
     color: #fff;
     font-size: 30px;
