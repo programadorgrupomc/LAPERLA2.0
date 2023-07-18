@@ -2,14 +2,16 @@
 <template>
     <div>
         <div class="gallery">
-            <div v-for="file in fileList" :key="file.name" class="gallery-item" @click="selectImage(file)">
-                <img loading="lazy" :src="`http://localhost:3000/uploads/${file.name}`" :alt="file.name" />
+            <div v-for="file in fileList" :key="file.name" class="gallery-item m-auto" @click="selectImage(file)">
+                <img loading="lazy" class="bg-slate-700 rounded-3xl" :src="`http://localhost:3000/uploads/${file.name}`"
+                    :alt="file.name" />
+                <p class="text-center">{{ file.name }}</p>
             </div>
         </div>
         <div v-if="selectedImage" class="modal">
             <div class="modal-content m-auto">
                 <img class=" " :src="`http://localhost:3000/uploads/${selectedImage.name}`" :alt="selectedImage.name" />
-                <button class="close-button" @click="selectedImage = null">Close</button>
+                <button class="close-button" @click="selectedImage = null">Cerrar</button>
             </div>
         </div>
     </div>
