@@ -1,84 +1,103 @@
-<script>
-export default {
-    data() {
-        return {
-            images: '',
-            viewimagenes:'',
-            viewdocs:'',
-            viewvideos:''
-        }
-    },
-    methods: {
-        fetchImages() {
-            const images = '@/uploads/home'
-            for (let i = 0; i < images.length; i++) {
-             //lectura de imagenes de una carpeta 
-             
-            }
-        }
-    }
-}
 
-</script>
 <template>
-    
-    <!-- imagenes -->
-    <div v-if="viewimagenes" class="cont-gallery flex justify-center">
-        <div class="gallery grid grid-cols-2 lg:grid-cols-5 gap-10 mx-auto">
-            <div v-for="i in 7" class="item-gallery w-full rounded">
-                <img src="@/assets/AssetsRecetario/receta1.jpg" alt="image">
+    <div>
+        <div class="gallery">
+            <div v-for="file in fileList" :key="file.name" class="gallery-item" @click="selectImage(file)">
+                <img loading="lazy" :src="`http://localhost:3000/uploads/${file.name}`" :alt="file.name" />
             </div>
         </div>
-    </div>
-    <!-- documentos -->
-    <div v-if="viewdocs" class="cont-gallery flex justify-center">
-        <div class="gallery grid grid-cols-2 lg:grid-cols-5 gap-10 mx-auto">
-            <div v-for="i in 5" class="item-gallery w-full rounded">
-                <img src="@/assets/Dashboard/Recetario/receta1.jpg" alt="image">
-            </div>
-        </div>
-    </div>
-    <!-- videos -->
-    <div v-if="viewvideos" class="cont-gallery flex justify-center">
-        <div class="gallery grid grid-cols-2 lg:grid-cols-5 gap-10 mx-auto">
-            <div v-for="i in 9" class="item-gallery w-full rounded">
-                <img src="@/assets/AssetsRecetario/receta1.jpg" alt="image">
+        <div v-if="selectedImage" class="modal">
+            <div class="modal-content m-auto">
+                <img class=" " :src="`http://localhost:3000/uploads/${selectedImage.name}`" :alt="selectedImage.name" />
+                <button class="close-button" @click="selectedImage = null">Close</button>
             </div>
         </div>
     </div>
 </template>
+<script>
+import axios from 'axios';
+export default {
+    data() {
+        return {
+            fileList: [],
+            selectedImage: null,
+        };
+    },
+    mounted() {
+        this.fetchFiles();
+    },
+    methods: {
+        fetchFiles() {
+            axios
+                .get('http://localhost:3000/files')
+                .then((response) => {
+                    this.fileList = response.data;
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        },
+        selectImage(image) {
+            this.selectedImage = image;
+        },
+    },
+};
+</script>
 <style scoped>
-.cont-gallery {
-    width: 100%;
-}
-
 .gallery {
-    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.item-gallery img {
-    border-radius: 4vw;
+.gallery-item {
+    flex: 0 0 25%;
+    padding: 10px;
+    cursor: pointer;
 }
 
-.item-gallery:hover {
-    filter: brightness(85%);
+.gallery-item img {
+    width: 100%;
+    height: auto;
 }
 
-@media (min-width: 1024px) {
-    .cont-gallery {
-        width: 100%;
-    }
+.modal {
+    display: flex;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
 
-    .gallery {
-        width: 90%;
-    }
+.modal-content {
+    max-width: 90%;
+    max-height: 90%;
+}
 
-    .item-gallery:hover {
-        filter: brightness(85%);
-    }
+.close {
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
 
-    .item-gallery img {
-        border-radius: 0.5vw;
-    }
+.close:hover {
+    color: #ccc;
+}
+
+.close-button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #fff;
+    color: #000;
+    border: none;
+    cursor: pointer;
 }
 </style>
