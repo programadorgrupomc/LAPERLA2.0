@@ -17,6 +17,10 @@ import footer from "./General/footer.js";
 
 import noticia from "./Noticias/noticia.js";
 
+//para formulario
+import formularioEmpleado from "./FormsFront/formularioEmpleados.js";
+import FormularioOperario from "./FormsFront/formularioOperario.js";
+
 const router = express.Router();
 
 //Rutas del proyecto
@@ -34,6 +38,10 @@ router.use("/lineatiempo", lineatiempo);
 router.use("/culturaorganizacional", culturaorganizacional);
 
 router.use("/noticia", noticia);
+
+//formularios
+router.use("/fempleado", formularioEmpleado);
+router.use("/foperario", FormularioOperario);
 
 //export
 export default router;
