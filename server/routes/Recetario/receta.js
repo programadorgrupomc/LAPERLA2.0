@@ -69,7 +69,7 @@ router.post(
         ingredientes,
         preparacion,
         imgCarousel,
-        usuarioUltimaModificacion,
+        fechaUltimaModificacion: Date.now(),
         fechaUltimaModificacion,
         estado,
       });
@@ -82,7 +82,6 @@ router.post(
     }
   }
 );
-// Ruta para actualizar una receta con imágenes por su ID
 router.put(
   "/:id",
   upload.fields([
@@ -91,41 +90,42 @@ router.put(
   ]),
   async (req, res) => {
     try {
-      const {
-        titulo,
-        dificultad,
-        porciones,
-        tiempo,
-        infnutricional,
-        categoria,
-        ingredientes,
-        preparacion,
-        usuarioUltimaModificacion,
-        fechaUltimaModificacion,
-        estado,
-      } = req.body;
-      const imgGeneral = req.files["imgGeneral"]
-        ? req.files["imgGeneral"][0].filename
-        : "";
-      let imgCarousel = [];
-      if (req.files["imgCarousel"]) {
-        imgCarousel = req.files["imgCarousel"].map((file) => file.filename);
-      }
       const receta = await Receta.findById(req.params.id);
       if (receta) {
-        receta.titulo = titulo;
-        receta.dificultad = dificultad;
-        receta.porciones = porciones;
-        receta.tiempo = tiempo;
-        receta.infnutricional = infnutricional;
-        receta.categoria = categoria;
-        receta.imgGeneral = imgGeneral;
-        receta.ingredientes = ingredientes;
-        receta.preparacion = preparacion;
-        receta.imgCarousel = imgCarousel;
-        receta.usuarioUltimaModificacion = usuarioUltimaModificacion;
-        receta.fechaUltimaModificacion = fechaUltimaModificacion;
-        receta.estado = estado;
+        const {
+          titulo,
+          dificultad,
+          porciones,
+          tiempo,
+          infnutricional,
+          categoria,
+          ingredientes,
+          preparacion,
+          usuarioUltimaModificacion,
+          fechaUltimaModificacion,
+          estado,
+        } = req.body;
+
+        if (titulo) receta.titulo = titulo;
+        if (dificultad) receta.dificultad = dificultad;
+        if (porciones) receta.porciones = porciones;
+        if (tiempo) receta.tiempo = tiempo;
+        if (infnutricional) receta.infnutricional = infnutricional;
+        if (categoria) receta.categoria = categoria;
+        if (ingredientes) receta.ingredientes = ingredientes;
+        if (preparacion) receta.preparacion = preparacion;
+        if (usuarioUltimaModificacion)
+          receta.usuarioUltimaModificacion = usuarioUltimaModificacion;
+        receta.fechaUltimaModificacion = Date.now();
+        if (estado) receta.estado = estado;
+
+        const imgGeneral = req.files["imgGeneral"];
+        if (imgGeneral) receta.imgGeneral = imgGeneral[0].filename;
+
+        const imgCarousel = req.files["imgCarousel"];
+        if (imgCarousel)
+          receta.imgCarousel = imgCarousel.map((file) => file.filename);
+
         const recetaActualizada = await receta.save();
         res.json(recetaActualizada);
       } else {
@@ -139,6 +139,7 @@ router.put(
     }
   }
 );
+
 // Ruta para eliminar una receta por su ID
 router.delete("/:id", async (req, res) => {
   const { id } = req.params;
@@ -153,4 +154,5 @@ router.delete("/:id", async (req, res) => {
     res.status(500).json({ error: "Error al eliminar la receta" });
   }
 });
+
 export default router;

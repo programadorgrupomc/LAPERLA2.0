@@ -12,7 +12,7 @@ export default {
       estadoeditarnoticia: false,
       noticias: '',
       idnoticia: '',
-      noticiaslocal: ''
+      noticiaslocal: []
     }
   },
   props: ['noticiasprop'],
@@ -65,7 +65,36 @@ export default {
             console.log(`Hubo un error al eliminar ${error}`)
           })
       }
+    },
+    updateEstadonoticia(id, estado) {
+      const rpta = window.confirm('¿Seguro que desea cambiar la visibilidad de la Publicación?');
+      if (rpta) {
+        const formData = new FormData();
+        if (estado == true) {
+          formData.append('estado', false);
+        } else if (estado == false) {
+          formData.append('estado', true);
+        }
+        apiNoticias.updateNoticias(id, formData)
+          .then((response) => {
+            alert('¡Actualización Exitosa!');
+            location.reload()
+          })
+          .catch((error) => {
+            console.log(`Hubo un error al Actualizar: ${error}`);
+          });
+      }
     }
+  },
+  computed: {
+    noticiasActivas() {
+      // Filtrar las noticias que tienen el estado en true (activas)
+      return this.noticiaslocal.filter((noticia) => noticia.estado === true);
+    },
+    noticiasInactivas() {
+      // Filtrar las noticias que tienen el estado en false (inactivas)
+      return this.noticiaslocal.filter((noticia) => noticia.estado === false);
+    },
   },
   updated() {
     this.noticiaslocal = this.noticiasprop
@@ -74,22 +103,20 @@ export default {
   watch: {
     noticiasprop(newVal) {
       this.noticiaslocal = newVal
+    },
+    noticiaslocal(newVal) {
+      this.$nextTick(() => {
+        // Actualizar los arrays de noticiasActivas y noticiasInactivas después de que recetaslocal cambie
+        this.$forceUpdate();
+      });
     }
   },
-  created() {}
+  created() { }
 }
 </script>
 <template>
-  <verNoticia
-    v-if="estadovernoticia"
-    @vernoticiacam="actualizarvernoticia"
-    :idnoticia="idnoticia"
-  />
-  <editarNoticia
-    v-if="estadoeditarnoticia"
-    @estadoeditarnoticiacam="actualizareditarnoticia"
-    :idnoticia="idnoticia"
-  />
+  <verNoticia v-if="estadovernoticia" @vernoticiacam="actualizarvernoticia" :idnoticia="idnoticia" />
+  <editarNoticia v-if="estadoeditarnoticia" @estadoeditarnoticiacam="actualizareditarnoticia" :idnoticia="idnoticia" />
   <div v-if="estadofolderNoticias" class="cont-folder">
     <div class="flex justify-end">
       <BtnBack />
@@ -97,10 +124,7 @@ export default {
     <div class="header-folder flex flex-col justify-center items-center lg:flex-row lg:mx-auto">
       <p class="title-folder font-TestKarbonBold">Noticias</p>
       <div class="w-full flex flex-col lg:flex-row justify-end items-center">
-        <button
-          @click="cambiarestadonuevanoicia"
-          class="btn-añadirentradda font-TestKarbonSemiBold"
-        >
+        <button @click="cambiarestadonuevanoicia" class="btn-añadirentradda font-TestKarbonSemiBold">
           <router-link to="/dashboard/entradas/noticias/nuevanoticia"> Añadir Entrada </router-link>
         </button>
         <div class="btn-buscar">
@@ -108,37 +132,70 @@ export default {
         </div>
       </div>
     </div>
-    <div
-      class="items-folder flex flex-col justify-center items-center lg:mx-auto lg:grid lg:grid-cols-3"
-    >
-      <div v-for="noticia in noticiaslocal" class="itemf relative bg-stone-600">
-        <img
-          class="object-cover h-full w-full"
-          loading="lazy"
-          :src="`http://localhost:3000/uploads/${noticia.imgsCarouselNoticia[0]}`"
-          alt="receta-item"
-        />
-        <div class="cont-actions absolute flex flex-col justify-center items-center">
-          <p class="text-white">{{ noticia.titulo }}</p>
-          <div class="cont-btnsaction flex justify-between">
-            <button
-              @click="cambiarestadoeditarnoticia(noticia._id)"
-              class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold"
-            >
-              Editar
+    <div>
+      <h2>Noticias Activas:</h2>
+      <div class="items-folder flex flex-col justify-center items-center lg:mx-auto lg:grid lg:grid-cols-3">
+        <div v-for="noticia in noticiasActivas" class="itemf relative bg-stone-600">
+          <div class="absolute w-full flex justify-center transition-all">
+            <button class="button btn-estado transition-all"
+              :class="{ 'bg-red-500': noticia.estado, 'bg-green-500': !noticia.estado }"
+              @click="updateEstadonoticia(noticia._id, noticia.estado)">
+              <p v-if="noticia.estado === false">Activar</p>
+              <p v-if="noticia.estado === true">Desactivar</p>
             </button>
-            <button
-              @click="cambiarestadovernoticia(noticia._id)"
-              class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold"
-            >
-              Ver
+          </div>
+          <img class="object-cover h-full w-full" loading="lazy"
+            :src="`http://localhost:3000/uploads/${noticia.imgsCarouselNoticia[0]}`" alt="receta-item" />
+          <div class="cont-actions absolute flex flex-col justify-center items-center">
+            <p class="text-white">{{ noticia.titulo }}</p>
+            <div class="cont-btnsaction flex justify-between">
+              <button @click="cambiarestadoeditarnoticia(noticia._id)"
+                class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
+                Editar
+              </button>
+              <button @click="cambiarestadovernoticia(noticia._id)"
+                class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
+                Ver
+              </button>
+              <button @click="deleteNoticia(noticia._id)"
+                class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
+                Eliminar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h2>Noticias Inactivas:</h2>
+      <div class="items-folder flex flex-col justify-center items-center lg:mx-auto lg:grid lg:grid-cols-3">
+        <div v-for="noticia in noticiasInactivas" class="itemf relative bg-stone-600">
+          <div class="absolute w-full flex justify-center transition-all">
+            <button class="button btn-estado transition-all"
+              :class="{ 'bg-red-500': noticia.estado, 'bg-green-500': !noticia.estado }"
+              @click="updateEstadonoticia(noticia._id, noticia.estado)">
+              <p v-if="noticia.estado === false">Activar</p>
+              <p v-if="noticia.estado === true">Desactivar</p>
             </button>
-            <button
-              @click="deleteNoticia(noticia._id)"
-              class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold"
-            >
-              Eliminar
-            </button>
+          </div>
+          <img class="object-cover h-full w-full" loading="lazy"
+            :src="`http://localhost:3000/uploads/${noticia.imgsCarouselNoticia[0]}`" alt="receta-item" />
+          <div class="cont-actions absolute flex flex-col justify-center items-center">
+            <p class="text-white">{{ noticia.titulo }}</p>
+            <div class="cont-btnsaction flex justify-between">
+              <button @click="cambiarestadoeditarnoticia(noticia._id)"
+                class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
+                Editar
+              </button>
+              <button @click="cambiarestadovernoticia(noticia._id)"
+                class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
+                Ver
+              </button>
+              <button @click="deleteNoticia(noticia._id)"
+                class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
+                Eliminar
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -226,6 +283,23 @@ export default {
   color: white;
 }
 
+.btn-estado {
+  margin: 2%;
+  border-radius: 2vh;
+  min-width: 100px;
+  font-size: 2vh;
+}
+
+.btn-estado:hover {
+  transform: scale(1.1);
+  filter: brightness(85%);
+}
+
+h2 {
+  margin-left: 5vh;
+  padding: 2%;
+}
+
 @media (min-width: 768px) {
   .btn-back {
     padding: 5%;
@@ -265,8 +339,7 @@ export default {
     width: 80%;
   }
 
-  .items-folder {
-  }
+  .items-folder {}
 
   .itemf {
     overflow: hidden;

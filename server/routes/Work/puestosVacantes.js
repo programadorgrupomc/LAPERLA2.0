@@ -43,7 +43,7 @@ router.post('/', upload.single('imgPuesto'), async (req, res) => {
     sueldo,
     _idformulario,
     usuarioUltimaModificacion,
-    activo, // Added the 'activo' field to the request body for creation.
+    estado, // Added the 'estado' field to the request body for creation.
   } = req.body;
   let imgPuesto;
 
@@ -65,7 +65,7 @@ router.post('/', upload.single('imgPuesto'), async (req, res) => {
       imgPuesto,
       usuarioUltimaModificacion,
       fechaUltimaModificacion: Date.now(),
-      activo, // Set the 'activo' field to the provided value.
+      estado, // Set the 'estado' field to the provided value.
     });
     await nuevoPuesto.save();
     res.json(nuevoPuesto);
@@ -88,7 +88,7 @@ router.put('/:id', upload.single('imgPuesto'), async (req, res) => {
     sueldo,
     _idformulario,
     usuarioUltimaModificacion,
-    activo, // Added the 'activo' field to the request body for update.
+    estado, // Added the 'estado' field to the request body for update.
   } = req.body;
   let imgPuesto;
 
@@ -103,18 +103,18 @@ router.put('/:id', upload.single('imgPuesto'), async (req, res) => {
       return res.status(404).json({ error: 'Puesto vacante no encontrado' });
     }
 
-    puesto.titulo = titulo;
-    puesto.experiencia = experiencia;
-    puesto.departamento = departamento;
-    puesto.tipoempleo = tipoempleo;
-    puesto.objetivoPuesto = objetivoPuesto;
-    puesto.funciones = funciones;
-    puesto.requisitos = requisitos;
-    puesto.sueldo = sueldo;
-    puesto._idformulario = _idformulario;
-    puesto.usuarioUltimaModificacion = usuarioUltimaModificacion;
+    if(titulo) puesto.titulo = titulo;
+    if(experiencia) puesto.experiencia = experiencia;
+    if(departamento) puesto.departamento = departamento;
+    if(puesto) puesto.tipoempleo = tipoempleo;
+    if(objetivoPuesto) puesto.objetivoPuesto = objetivoPuesto;
+    if(funciones) puesto.funciones = funciones;
+    if(requisitos) puesto.requisitos = requisitos;
+    if(sueldo) puesto.sueldo = sueldo;
+    if(_idformulario) puesto._idformulario = _idformulario;
+    if(usuarioUltimaModificacion) puesto.usuarioUltimaModificacion = usuarioUltimaModificacion;
     puesto.fechaUltimaModificacion = Date.now();
-    puesto.activo = activo; // Update the 'activo' field with the provided value.
+    if(estado) puesto.estado = estado; // Update the 'estado' field with the provided value.
 
     if (imgPuesto) {
       puesto.imgPuesto = imgPuesto;
@@ -128,24 +128,24 @@ router.put('/:id', upload.single('imgPuesto'), async (req, res) => {
 });
 
 // Toggle Activation/Deactivation of a puesto vacante
-router.patch('/:id/activar', async (req, res) => {
-  const { id } = req.params;
-  const { activo } = req.body;
+// router.patch('/:id/activar', async (req, res) => {
+//   const { id } = req.params;
+//   const { estado } = req.body;
 
-  try {
-    const puesto = await PuestosVacantes.findById(id);
+//   try {
+//     const puesto = await PuestosVacantes.findById(id);
 
-    if (!puesto) {
-      return res.status(404).json({ error: 'Puesto vacante no encontrado' });
-    }
+//     if (!puesto) {
+//       return res.status(404).json({ error: 'Puesto vacante no encontrado' });
+//     }
 
-    puesto.activo = activo;
-    await puesto.save();
-    res.json(puesto);
-  } catch (error) {
-    res.status(500).json({ error: 'Error al actualizar el estado del puesto vacante' });
-  }
-});
+//     puesto.estado = estado;
+//     await puesto.save();
+//     res.json(puesto);
+//   } catch (error) {
+//     res.status(500).json({ error: 'Error al actualizar el estado del puesto vacante' });
+//   }
+// });
 
 // Eliminar un puesto vacante
 router.delete('/:id', async (req, res) => {

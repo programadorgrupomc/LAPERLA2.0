@@ -6,7 +6,7 @@ export default {
     return {
       recetas: '',
       idreceta: '',
-      recetaslocal: ''
+      recetaslocal: []
     }
   },
   props: ['recetasprop'],
@@ -49,6 +49,16 @@ export default {
     }
 
   },
+  computed: {
+    recetasActivas() {
+      // Filtrar las recetas que tienen el estado en true (activas)
+      return this.recetaslocal.filter((receta) => receta.estado === true);
+    },
+    recetasInactivas() {
+      // Filtrar las recetas que tienen el estado en false (inactivas)
+      return this.recetaslocal.filter((receta) => receta.estado === false);
+    },
+  },
   updated() {
     this.recetaslocal = this.recetasprop
     console.log(this.recetaslocal)
@@ -56,6 +66,12 @@ export default {
   watch: {
     recetasprop(newVal) {
       this.recetaslocal = newVal
+    },
+    recetaslocal(newVal) {
+      this.$nextTick(() => {
+        // Actualizar los arrays de recetasActivas y recetasInactivas después de que recetaslocal cambie
+        this.$forceUpdate();
+      });
     }
   }
 }
@@ -79,35 +95,76 @@ export default {
           </div>
         </div>
       </div>
-      <div class="items-folder flex flex-col justify-center items-center lg:mx-auto lg:grid lg:grid-cols-3">
-        <div v-for="receta in recetaslocal" class="itemf relative bg-stone-600">
-          <div class="absolute w-full flex justify-center transition-all">
-            <button class="button btn-estado transition-all"
-              :class="{ 'bg-red-500': receta.estado, 'bg-green-500': !receta.estado }"
-              @click="updateEstadoReceta(receta._id, receta.estado)">
-              <p v-if="receta.estado === false">Activar</p>
-              <p v-if="receta.estado === true">Desactivar</p>
-            </button>
-          </div>
-          <img class="object-cover h-full w-full" loading="lazy"
-            :src="`http://localhost:3000/uploads/${receta.imgGeneral}`" alt="receta-item" />
-          <div class="cont-actions absolute flex flex-col justify-center items-center">
-            <p class="text-white">{{ receta.titulo }}</p>
-            <div class="cont-btnsaction flex justify-between">
-              <!-- enviar la data segun el id -->
-              <button @click="cambiarestadoeditarreceta(receta._id)"
-                class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
-                Editar
-              </button>
-              <button @click="cambiarestadoverreceta(receta._id)"
-                class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
-                Ver
-              </button>
-              <button @click="deleteReceta(receta._id)"
-                class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
-                Eliminar
+
+      <div>
+        <h2>Recetas Activas:</h2>
+        <div class="items-folder flex flex-col justify-center items-center lg:mx-auto lg:grid lg:grid-cols-3">
+          <div v-for="receta in recetasActivas" class="itemf relative bg-stone-600">
+            <div class="absolute w-full flex justify-center transition-all">
+              <button class="button btn-estado transition-all"
+                :class="{ 'bg-red-500': receta.estado, 'bg-green-500': !receta.estado }"
+                @click="updateEstadoReceta(receta._id, receta.estado)">
+                <p v-if="receta.estado === false">Activar</p>
+                <p v-if="receta.estado === true">Desactivar</p>
               </button>
             </div>
+            <img class="object-cover h-full w-full" loading="lazy"
+              :src="`http://localhost:3000/uploads/${receta.imgGeneral}`" alt="receta-item" />
+            <div class="cont-actions absolute flex flex-col justify-center items-center">
+              <p class="text-white">{{ receta.titulo }}</p>
+              <div class="cont-btnsaction flex justify-between">
+                <!-- enviar la data segun el id -->
+                <button @click="cambiarestadoeditarreceta(receta._id)"
+                  class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
+                  Editar
+                </button>
+                <button @click="cambiarestadoverreceta(receta._id)"
+                  class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
+                  Ver
+                </button>
+                <button @click="deleteReceta(receta._id)"
+                  class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
+                  Eliminar
+                </button>
+              </div>
+            </div>
+            <p v-if="recetasActivas.length === 0">No hay recetas Activas...</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h2>Recetas Inactivas:</h2>
+        <div class="items-folder flex flex-col justify-center items-center lg:mx-auto lg:grid lg:grid-cols-3">
+          <div v-for="receta in recetasInactivas" class="itemf relative bg-stone-600">
+            <div class="absolute w-full flex justify-center transition-all">
+              <button class="button btn-estado transition-all"
+                :class="{ 'bg-red-500': receta.estado, 'bg-green-500': !receta.estado }"
+                @click="updateEstadoReceta(receta._id, receta.estado)">
+                <p v-if="receta.estado === false">Activar</p>
+                <p v-if="receta.estado === true">Desactivar</p>
+              </button>
+            </div>
+            <img class="object-cover h-full w-full" loading="lazy"
+              :src="`http://localhost:3000/uploads/${receta.imgGeneral}`" alt="receta-item" />
+            <div class="cont-actions absolute flex flex-col justify-center items-center">
+              <p class="text-white">{{ receta.titulo }}</p>
+              <div class="cont-btnsaction flex justify-between">
+                <!-- enviar la data segun el id -->
+                <button @click="cambiarestadoeditarreceta(receta._id)"
+                  class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
+                  Editar
+                </button>
+                <button @click="cambiarestadoverreceta(receta._id)"
+                  class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
+                  Ver
+                </button>
+                <button @click="deleteReceta(receta._id)"
+                  class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
+                  Eliminar
+                </button>
+              </div>
+            </div>
+            <p v-if="recetasInactivas.length === 0">No hay recetas Inactivas...</p>
           </div>
         </div>
       </div>
@@ -202,6 +259,11 @@ export default {
 .btn-estado:hover {
   transform: scale(1.1);
   filter: brightness(85%);
+}
+
+h2 {
+  margin-left: 5vh;
+  padding: 2%;
 }
 
 @media (min-width: 768px) {

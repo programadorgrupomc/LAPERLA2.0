@@ -69,7 +69,7 @@ router.post(
         imgHeroNoticia,
         imgsCarouselNoticia,
         usuarioUltimaModificacion,
-        fechaUltimaModificacion,
+        fechaUltimaModificacion: Date.now(),
         estado,
       });
 
@@ -114,14 +114,17 @@ router.put(
 
       const noticia = await Noticias.findById(req.params.id);
       if (noticia) {
-        noticia.titulo = titulo;
-        noticia.fecha = fecha;
-        noticia.contenido = contenido;
-        noticia.imgHeroNoticia = imgHeroNoticia;
-        noticia.imgsCarouselNoticia = imgsCarouselNoticia;
-        noticia.usuarioUltimaModificacion = usuarioUltimaModificacion;
-        noticia.fechaUltimaModificacion = fechaUltimaModificacion;
-        noticia.estado = estado;
+        // Actualizar solo los campos que recibieron datos
+        if (titulo) noticia.titulo = titulo;
+        if (fecha) noticia.fecha = fecha;
+        if (contenido) noticia.contenido = contenido;
+        if (imgHeroNoticia) noticia.imgHeroNoticia = imgHeroNoticia;
+        if (imgsCarouselNoticia.length > 0)
+          noticia.imgsCarouselNoticia = imgsCarouselNoticia;
+        if (usuarioUltimaModificacion)
+          noticia.usuarioUltimaModificacion = usuarioUltimaModificacion;
+        noticia.fechaUltimaModificacion = Date.now();
+        if (estado) noticia.estado = estado;
 
         const noticiaActualizada = await noticia.save();
         res.json(noticiaActualizada);
