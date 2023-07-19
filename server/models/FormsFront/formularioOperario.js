@@ -11,7 +11,7 @@ const formularioOperarioSchema = new mongoose.Schema(
       celular: String,
       lugar: String,
       dosisdevacunacioncovid: String,
-      hastrabajadoconnosotros: Boolean,
+      hastrabajadoconnosotros: String,
     },
     curriculum: {
       documento: String, // Almacenar solo el nombre del archivo, el archivo cargar por multer

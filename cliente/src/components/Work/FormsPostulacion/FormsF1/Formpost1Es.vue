@@ -177,7 +177,7 @@ export default {
           documento: '', // Almacenar solo el nombre del archivo, el archivo cargar por multer
         },
         terminosycondiciones: {
-          acepto: '',
+          acepto: true,
         },
         puestoVacante: 'Admin',
       },
@@ -192,17 +192,18 @@ export default {
     },
     guardarFormOperario() {
       const formData = new FormData();
-      formData.append('datosPersonales.nombre', this.newformOperarioData.datosPersonales.nombre);
-      formData.append('datosPersonales.apellidos', this.newformOperarioData.datosPersonales.apellidos);
       formData.append('datosPersonales.TipoDocumentoDeIdentidad', this.newformOperarioData.datosPersonales.TipoDocumentoDeIdentidad);
       formData.append('datosPersonales.NumeroDocumentoDeIdentidad', this.newformOperarioData.datosPersonales.NumeroDocumentoDeIdentidad);
-      formData.append('fechanacimiento', this.newformOperarioData.datosPersonales.fechanacimiento);
-      formData.append('celular', this.newformOperarioData.datosPersonales.celular);
-      formData.append('lugar', this.newformOperarioData.datosPersonales.lugar);
-      formData.append('dosisdevacunacioncovid', this.newformOperarioData.datosPersonales.dosisdevacunacioncovid);
-      formData.append('hastrabajadoconnosotros', this.newformOperarioData.datosPersonales.hastrabajadoconnosotros);
+      formData.append('datosPersonales.nombre', this.newformOperarioData.datosPersonales.nombre);
+      formData.append('datosPersonales.apellidos', this.newformOperarioData.datosPersonales.apellidos);
+      formData.append('datosPersonales.fechanacimiento', this.newformOperarioData.datosPersonales.fechanacimiento);
+      formData.append('datosPersonales.celular', this.newformOperarioData.datosPersonales.celular);
+      formData.append('datosPersonales.lugar', this.newformOperarioData.datosPersonales.lugar);
+      formData.append('datosPersonales.dosisdevacunacioncovid', this.newformOperarioData.datosPersonales.dosisdevacunacioncovid);
+      formData.append('datosPersonales.hastrabajadoconnosotros', this.newformOperarioData.datosPersonales.hastrabajadoconnosotros);
       formData.append('curriculum', this.newformOperarioData.curriculum.documento);
-      formData.append('puestoVacante', this.newformOperarioData.puestoVacante);
+      // formData.append('terminosycondiciones.acepto', this.newformOperarioData.terminosycondiciones.acepto)
+      // formData.append('puestoVacante', this.newformOperarioData.puestoVacante);
       // console.log(formData)
       apiFormOperario.createFormOperario(formData)
         .then(() => {
