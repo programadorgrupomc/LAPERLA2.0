@@ -1,75 +1,156 @@
 import express from "express";
-import RecetarioModel from "../../models/Recetario/receta.js";
+import Receta from "../../models/Recetario/receta.js";
 import upload from "../../middlewares/multerConfig.js";
-
 const router = express.Router();
-
-//obtener todas las recetas
+// Ruta para obtener todas las recetas
 router.get("/", async (req, res) => {
   try {
-    const recetas = await RecetarioModel.find();
+    const recetas = await Receta.find();
     res.json(recetas);
   } catch (error) {
-    res.status(500).json({ error: "Error al obtener las recetas" });
+    res
+      .status(500)
+      .json({ error: "Error al obtener las recetas", details: error.message });
   }
 });
-//obtener receta por Id
+// Ruta para obtener una receta por su ID
 router.get("/:id", async (req, res) => {
-  const { id } = req.params;
   try {
-    const receta = await RecetarioModel.findById(id);
+    const receta = await Receta.findById(req.params.id);
     if (receta) {
       res.json(receta);
     } else {
-      res.status(404).json({ error: "Receta no encontrado" });
+      res.status(404).json({ message: "Receta no encontrada" });
     }
   } catch (error) {
-    res.status(500).json({ error: "Error al obtener la receta pr Id" });
+    res
+      .status(500)
+      .json({ error: "Error al obtener la receta", details: error.message });
   }
 });
-//crear nueva receta
-router.post("/", upload.fields([
+// Ruta para crear una nueva receta con imágenes
+router.post(
+  "/",
+  upload.fields([
     { name: "imgGeneral", maxCount: 1 },
-    { name: "imgCarousel", maxCount: 4 }
-  ]), async (req, res) => {
+    { name: "imgCarousel", maxCount: 10 },
+  ]),
+  async (req, res) => {
+    console.log(req.body);
     try {
-      const recetaData = req.body;
-      const imgGeneralFiles = req.files["imgGeneral"]; // Archivos de imagen imgGeneral subidos por Multer
-      const imgCarouselFiles = req.files["imgCarousel"]; // Archivos de imagen imgCarousel subidos por Multer
-  
-      // Validar si se subió una imagen imgGeneral
-      let imgGeneralPath = "";
-      if (imgGeneralFiles && imgGeneralFiles.length > 0) {
-        imgGeneralPath = imgGeneralFiles[0].path;
-      }
-  
-      // Validar si se subieron imágenes imgCarousel
-      let imgCarouselPaths = [];
-      if (imgCarouselFiles && imgCarouselFiles.length > 0) {
-        imgCarouselPaths = imgCarouselFiles.map((file) => file.path);
-      }
-  
-      // Obtener los arreglos de ingredientes y preparación del cuerpo de la solicitud
-      const ingredientes = JSON.parse(recetaData.ingredientes);
-      const preparacion = JSON.parse(recetaData.preparacion);
-  
-      // Crear la nueva receta con los datos y las rutas de imágenes, ingredientes y preparación
-      const receta = new RecetarioModel({
-        ...recetaData,
+      const {
+        titulo,
+        dificultad,
+        porciones,
+        tiempo,
+        infnutricional,
+        categoria,
         ingredientes,
         preparacion,
-        imgGeneral: imgGeneralPath,
-        imgCarousel: imgCarouselPaths,
+        usuarioUltimaModificacion,
+        fechaUltimaModificacion,
+        estado,
+      } = req.body;
+      const imgGeneral = req.files["imgGeneral"]
+        ? req.files["imgGeneral"][0].filename
+        : "";
+      let imgCarousel = [];
+      if (req.files["imgCarousel"]) {
+        imgCarousel = req.files["imgCarousel"].map((file) => file.filename);
+      }
+      const nuevaReceta = new Receta({
+        titulo,
+        dificultad,
+        porciones,
+        tiempo,
+        infnutricional,
+        categoria,
+        imgGeneral,
+        ingredientes,
+        preparacion,
+        imgCarousel,
+        usuarioUltimaModificacion,
+        fechaUltimaModificacion,
+        estado,
       });
-  
-      const nuevaReceta = await receta.save();
-      res.status(201).json(nuevaReceta);
+      const recetaGuardada = await nuevaReceta.save();
+      res.status(201).json(recetaGuardada);
     } catch (error) {
-      res.status(400).json({ error: error.message });
+      res
+        .status(400)
+        .json({ error: "Error al crear la receta", details: error.message });
     }
-  });
-  
-//actualizar receta por Id
-//eliminar receta por Id
-
+  }
+);
+// Ruta para actualizar una receta con imágenes por su ID
+router.put(
+  "/:id",
+  upload.fields([
+    { name: "imgGeneral", maxCount: 1 },
+    { name: "imgCarousel", maxCount: 10 },
+  ]),
+  async (req, res) => {
+    try {
+      const {
+        titulo,
+        dificultad,
+        porciones,
+        tiempo,
+        infnutricional,
+        categoria,
+        ingredientes,
+        preparacion,
+        usuarioUltimaModificacion,
+        fechaUltimaModificacion,
+        estado,
+      } = req.body;
+      const imgGeneral = req.files["imgGeneral"]
+        ? req.files["imgGeneral"][0].filename
+        : "";
+      let imgCarousel = [];
+      if (req.files["imgCarousel"]) {
+        imgCarousel = req.files["imgCarousel"].map((file) => file.filename);
+      }
+      const receta = await Receta.findById(req.params.id);
+      if (receta) {
+        receta.titulo = titulo;
+        receta.dificultad = dificultad;
+        receta.porciones = porciones;
+        receta.tiempo = tiempo;
+        receta.infnutricional = infnutricional;
+        receta.categoria = categoria;
+        receta.imgGeneral = imgGeneral;
+        receta.ingredientes = ingredientes;
+        receta.preparacion = preparacion;
+        receta.imgCarousel = imgCarousel;
+        receta.usuarioUltimaModificacion = usuarioUltimaModificacion;
+        receta.fechaUltimaModificacion = fechaUltimaModificacion;
+        receta.estado = estado;
+        const recetaActualizada = await receta.save();
+        res.json(recetaActualizada);
+      } else {
+        res.status(404).json({ message: "Receta no encontrada" });
+      }
+    } catch (error) {
+      res.status(400).json({
+        error: "Error al actualizar la receta",
+        details: error.message,
+      });
+    }
+  }
+);
+// Ruta para eliminar una receta por su ID
+router.delete("/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const receta = await Receta.findByIdAndDelete(id);
+    if (receta) {
+      res.json({ message: "Receta eliminada correctamente" });
+    } else {
+      res.status(404).json({ error: "Receta no encontrada" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: "Error al eliminar la receta" });
+  }
+});
 export default router;

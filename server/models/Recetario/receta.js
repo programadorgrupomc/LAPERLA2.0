@@ -8,17 +8,12 @@ const recetaSchema = new mongoose.Schema({
   infnutricional: { type: String },
   categoria: { type: String },
   imgGeneral: { type: String },
-  ingredientes: [{
-    nombre: { type: String },
-  }],
-  preparacion: [{
-    paso: { type: String },
-  }],
-  imgCarousel: [{
-    img: { type: String },
-  }],
+  ingredientes: [{ type: String }],
+  preparacion: [{ type: String }],
+  imgCarousel: [{ type: String }],
   usuarioUltimaModificacion: { type: String },
   fechaUltimaModificacion: { type: Date },
+  estado: { type: Boolean, default: true }, 
 });
 
 const Receta = mongoose.model("Receta", recetaSchema);
