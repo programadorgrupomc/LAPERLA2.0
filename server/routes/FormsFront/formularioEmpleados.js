@@ -1,98 +1,81 @@
-// routes/formularioEmpleado.js
 import express from "express";
-import multer from "multer";
-
-// Importa el modelo FormularioEmpleado
+import upload from "../../middlewares/multerConfig.js";
 import FormularioEmpleado from "../../models/FormsFront/formularioEmpleados.js";
 
 const router = express.Router();
-const upload = multer({ dest: "uploads/" }); // Directorio donde se guardarán los archivos subidos
 
-// Ruta para obtener todos los formularios de empleados
+
+// Crear un nuevo FormularioEmpleado
+router.post("/", upload.single("curriculum"), async (req, res) => {
+  try {
+    const { nombreDoc, ...rest } = req.body;
+    const formularioEmpleado = new FormularioEmpleado({
+      ...rest,
+      curriculum: { nombreDoc: req.file.filename },
+    });
+    await formularioEmpleado.save();
+    res.status(201).json(formularioEmpleado);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+// Obtener todos los FormularioEmpleados
 router.get("/", async (req, res) => {
   try {
-    const formularios = await FormularioEmpleado.find();
-    res.json(formularios);
+    const formulariosEmpleados = await FormularioEmpleado.find();
+    res.json(formulariosEmpleados);
   } catch (error) {
-    res.status(500).json({ error: "Error al obtener los formularios de empleados" });
+    res.status(400).json({ error: error.message });
   }
 });
 
-// Ruta para obtener un formulario de empleado por su ID
+// Obtener un solo FormularioEmpleado por su ID
 router.get("/:id", async (req, res) => {
-  const { id } = req.params;
   try {
-    const formulario = await FormularioEmpleado.findById(id);
-    if (!formulario) {
-      return res.status(404).json({ error: "Formulario de empleado no encontrado" });
+    const formularioEmpleado = await FormularioEmpleado.findById(req.params.id);
+    if (!formularioEmpleado) {
+      return res.status(404).json({ error: "FormularioEmpleado not found" });
     }
-    res.json(formulario);
+    res.json(formularioEmpleado);
   } catch (error) {
-    res.status(500).json({ error: "Error al obtener el formulario de empleado" });
+    res.status(400).json({ error: error.message });
   }
 });
 
-// Ruta para crear un nuevo formulario de empleado
-router.post("/", async (req, res) => {
-  const nuevoFormulario = req.body;
+// Actualizar un FormularioEmpleado por su ID
+router.put("/:id", upload.single("curriculum"), async (req, res) => {
   try {
-    const formularioCreado = await FormularioEmpleado.create(nuevoFormulario);
-    res.json(formularioCreado);
-  } catch (error) {
-    res.status(500).json({ error: "Error al crear el formulario de empleado" });
-  }
-});
-
-// Ruta para actualizar un formulario de empleado por su ID
-router.put("/:id", async (req, res) => {
-  const { id } = req.params;
-  const formularioActualizado = req.body;
-  try {
-    const formulario = await FormularioEmpleado.findByIdAndUpdate(id, formularioActualizado, {
-      new: true, // Devuelve el formulario actualizado en la respuesta
-    });
-    if (!formulario) {
-      return res.status(404).json({ error: "Formulario de empleado no encontrado" });
-    }
-    res.json(formulario);
-  } catch (error) {
-    res.status(500).json({ error: "Error al actualizar el formulario de empleado" });
-  }
-});
-
-// Ruta para eliminar un formulario de empleado por su ID
-router.delete("/:id", async (req, res) => {
-  const { id } = req.params;
-  try {
-    const formularioEliminado = await FormularioEmpleado.findByIdAndRemove(id);
-    if (!formularioEliminado) {
-      return res.status(404).json({ error: "Formulario de empleado no encontrado" });
-    }
-    res.json({ message: "Formulario de empleado eliminado correctamente" });
-  } catch (error) {
-    res.status(500).json({ error: "Error al eliminar el formulario de empleado" });
-  }
-});
-
-// Ruta para cargar el documento del curriculum usando Multer y actualizar el campo "documento" del formulario
-router.post("/:id/cargar-curriculum", upload.single("documento"), async (req, res) => {
-  const { id } = req.params;
-  const nombreDocumento = req.file.filename;
-
-  try {
-    const formulario = await FormularioEmpleado.findByIdAndUpdate(
-      id,
-      { "curriculum.nombreDoc": nombreDocumento },
+    const { nombreDoc, ...rest } = req.body;
+    const formularioEmpleado = await FormularioEmpleado.findByIdAndUpdate(
+      req.params.id,
+      {
+        ...rest,
+        curriculum: { nombreDoc: req.file ? req.file.filename : nombreDoc },
+      },
       { new: true }
     );
-
-    if (!formulario) {
-      return res.status(404).json({ error: "Formulario de empleado no encontrado" });
+    if (!formularioEmpleado) {
+      return res.status(404).json({ error: "FormularioEmpleado not found" });
     }
-
-    res.json(formulario);
+    res.json(formularioEmpleado);
   } catch (error) {
-    res.status(500).json({ error: "Error al cargar el documento del curriculum" });
+    res.status(400).json({ error: error.message });
+  }
+});
+
+// Eliminar un FormularioEmpleado por su ID
+router.delete("/:id", async (req, res) => {
+  try {
+    const formularioEmpleado = await FormularioEmpleado.findByIdAndDelete(
+      req.params.id
+    );
+    if (!formularioEmpleado) {
+      return res.status(404).json({ error: "FormularioEmpleado not found" });
+    }
+    res.sendStatus(204);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
   }
 });
 

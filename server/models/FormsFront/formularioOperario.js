@@ -14,7 +14,7 @@ const formularioOperarioSchema = new mongoose.Schema(
       hastrabajadoconnosotros: Boolean,
     },
     curriculum: {
-      documento: String, // Almacenar solo el nombre del archivo
+      documento: String, // Almacenar solo el nombre del archivo, el archivo cargar por multer
     },
     terminosycondiciones: {
       acepto: Boolean,

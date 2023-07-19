@@ -45,7 +45,7 @@ const formularioEmpleadoSchema = new mongoose.Schema(
     idiomas: [idiomaSchema], // Permite tener varios objetos de Idiomas como un arreglo
     experienciaLaboral: [experienciaLaboralSchema], // Permite tener varios objetos de Experiencia Laboral como un arreglo
     curriculum: {
-      nombreDoc: String, // Almacenar solo el nombre del archivo
+      nombreDoc: String, // Almacenar solo el nombre del archivo, el archivo cargar por multer
     },
     espectativasPersonales: {
       mensaje: String,
