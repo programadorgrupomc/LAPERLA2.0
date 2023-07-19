@@ -7,6 +7,7 @@ const router = express.Router();
 // Crear un nuevo FormularioOperario
 router.post("/", upload.single("curriculum"), async (req, res) => {
   try {
+    console.log(req.body)
     const { documento, ...rest } = req.body;
     const formularioOperario = new FormularioOperario({
       ...rest,

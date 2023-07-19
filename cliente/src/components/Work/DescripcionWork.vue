@@ -77,9 +77,10 @@
         </button>
       </div>
     </div>
-    <!-- <FormPost1Vue v-show="mostrarform" /> -->
-    <form-post-2 v-show="mostrarform" id="form2" />
+    <FormPost1Vue v-show="mostrarform" />
+    <!-- <form-post-2 v-show="mostrarform" id="form2" /> -->
   </div>
+  
 </template>
 
 <script>

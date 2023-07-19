@@ -8,41 +8,22 @@ export default {}
       <div class="inpsel">
         <label for="">Adjuntar archivo desde</label>
         <div class="flex w-full justify-between">
-          <button
-            type="button"
-            class="perlaselect w-full flex justify-center lg:items-center"
-            onclick="document.getElementById('fileInput').click();"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              class="bi bi-house-fill"
-              viewBox="0 0 16 16"
-            >
+          <button type="button" class="perlaselect w-full flex justify-center lg:items-center"
+            onclick="document.getElementById('fileInput').click();">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-fill"
+              viewBox="0 0 16 16">
               <path
-                d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z"
-              />
-              <path
-                d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z"
-              /></svg
-            >&nbsp;Mis Archivos
+                d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z" />
+              <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z" />
+            </svg>&nbsp;Mis Archivos
           </button>
           <input type="file" id="fileInput" style="display: none" />
           <button class="perlaselect w-full flex justify-center lg:items-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              class="bi bi-dropbox"
-              viewBox="0 0 16 16"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dropbox"
+              viewBox="0 0 16 16">
               <path
-                d="M8.01 4.555 4.005 7.11 8.01 9.665 4.005 12.22 0 9.651l4.005-2.555L0 4.555 4.005 2 8.01 4.555Zm-4.026 8.487 4.006-2.555 4.005 2.555-4.005 2.555-4.006-2.555Zm4.026-3.39 4.005-2.556L8.01 4.555 11.995 2 16 4.555 11.995 7.11 16 9.665l-4.005 2.555L8.01 9.651Z"
-              /></svg
-            >&nbsp;Dropbox
+                d="M8.01 4.555 4.005 7.11 8.01 9.665 4.005 12.22 0 9.651l4.005-2.555L0 4.555 4.005 2 8.01 4.555Zm-4.026 8.487 4.006-2.555 4.005 2.555-4.005 2.555-4.006-2.555Zm4.026-3.39 4.005-2.556L8.01 4.555 11.995 2 16 4.555 11.995 7.11 16 9.665l-4.005 2.555L8.01 9.651Z" />
+            </svg>&nbsp;Dropbox
           </button>
           <button class="perlaselect w-full">&nbsp;Drive</button>
         </div>
@@ -52,25 +33,13 @@ export default {}
         <!-- arrastrar -->
         <div>
           <div class="flex items-center justify-center w-full">
-            <label
-              for="dropzone-file"
-              class="bg-FondoPerla flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
-            >
+            <label for="dropzone-file"
+              class="bg-FondoPerla flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
               <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                <svg
-                  aria-hidden="true"
-                  class="w-10 h-10 mb-3 text-gray-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                  ></path>
+                <svg aria-hidden="true" class="w-10 h-10 mb-3 text-gray-400" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
                 </svg>
                 <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
                   <span class="font-semibold">Click to upload</span> or drag and drop
@@ -95,6 +64,7 @@ export default {}
   transition: all;
   background-color: #6e5b4423;
 }
+
 .indicadorf4 {
   padding-top: 1%;
   font-size: 4vw;
@@ -144,6 +114,7 @@ export default {}
   background-color: #f5ede1;
   border: solid #6e5b44 0.1vw;
 }
+
 .perlaselect:hover {
   background-color: #6e5b4446;
 }
