@@ -49,31 +49,34 @@ export default {
         <filtro-vac />
       </div>
     </div>
-    <div v-for="pv in puestos" class="cont-itempv shadow-2xl lg:flex transition-all">
-      <img class="pvimage object-cover" :src="`http://localhost:3000/uploads/${pv.imgPuesto}`" :alt="pv.imagen" />
-      <div class="flex flex-col justify-center">
-        <div class="cont-text">
-          <p class="pvname font-TestKarbonMedium text-AzulPerla">{{ pv.titulo }}</p>
-          <div class="pvtype font-TestKarbonRegular text-AzulPerla">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.25 22.25">
-              <path id="Icon_material-watch-later" data-name="Icon material-watch-later"
-                d="M14.125,3A11.125,11.125,0,1,0,25.25,14.125,11.158,11.158,0,0,0,14.125,3ZM18.8,18.8l-5.785-3.56V8.562h1.669v5.785l5.006,3Z"
-                transform="translate(-3 -3)" fill="#df9575" />
-            </svg>
-            &nbsp; &nbsp;{{ pv.tipoempleo }}
+    <div v-for="pv in puestos">
+      <div v-if="pv.estado === true" class="cont-itempv shadow-2xl lg:flex transition-all">
+        <img class="pvimage object-cover" :src="`http://localhost:3000/uploads/${pv.imgPuesto}`" :alt="pv.imagen" />
+        <div class="flex flex-col justify-center">
+          <div class="cont-text">
+            <p class="pvname font-TestKarbonMedium text-AzulPerla">{{ pv.titulo }}</p>
+            <div class="pvtype font-TestKarbonRegular text-AzulPerla">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.25 22.25">
+                <path id="Icon_material-watch-later" data-name="Icon material-watch-later"
+                  d="M14.125,3A11.125,11.125,0,1,0,25.25,14.125,11.158,11.158,0,0,0,14.125,3ZM18.8,18.8l-5.785-3.56V8.562h1.669v5.785l5.006,3Z"
+                  transform="translate(-3 -3)" fill="#df9575" />
+              </svg>
+              &nbsp; &nbsp;{{ pv.tipoempleo }}
+            </div>
+            <p class="pvdescription font-KarbonRegular text-AzulPerla">{{ pv.objetivoPuesto }}</p>
           </div>
-          <p class="pvdescription font-KarbonRegular text-AzulPerla">{{ pv.objetivoPuesto }}</p>
-        </div>
-        <div class="cont-btn">
-          <router-link :to="`/work/descwork/${pv._id}`" custom v-slot="{ navigate }">
-            <button @click="navigate"
-              class="font-KarbonRegular flex justify-center items-center shadow-2xl transition-all">
-              Postular
-            </button>
-          </router-link>
+          <div class="cont-btn">
+            <router-link :to="`/work/descwork/${pv._id}`" custom v-slot="{ navigate }">
+              <button @click="navigate"
+                class="font-KarbonRegular flex justify-center items-center shadow-2xl transition-all">
+                Postular
+              </button>
+            </router-link>
+          </div>
         </div>
       </div>
     </div>
+
   </div>
 </template>
 <style scoped>
