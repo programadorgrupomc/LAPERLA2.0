@@ -1,16 +1,63 @@
 <script>
 import BtnBack from '../../../General/BtnBack.vue'
+import apiRecetario from '../../../../../services/Recetario/apiRecetario'
 export default {
   data() {
     return {
       recetas: '',
-      idreceta: ''
+      idreceta: '',
+      recetaslocal: ''
     }
   },
+  props: ['recetasprop'],
   components: {
     BtnBack
   },
-  methods: {}
+  methods: {
+
+    deleteReceta(id) {
+      const rpta = window.confirm('Seguro que desea eliminar La Publicacion?')
+      if (rpta) {
+        apiRecetario.deleteRecetas(id)
+          .then(() => {
+            alert('Eliminacion Exitoso!')
+            location.reload()
+          })
+          .catch((error) => {
+            console.log(`Hubo un error al eliminar ${error}`)
+          })
+      }
+    },
+    updateEstadoReceta(id, estado) {
+      const rpta = window.confirm('¿Seguro que desea cambiar la visibilidad de la Publicación?');
+      if (rpta) {
+        const formData = new FormData();
+        if (estado == true) {
+          formData.append('estado', false);
+        } else if (estado == false) {
+          formData.append('estado', true);
+        }
+        apiRecetario.updateReceta(id, formData)
+          .then((response) => {
+            alert('¡Actualización Exitosa!');
+            location.reload()
+          })
+          .catch((error) => {
+            console.log(`Hubo un error al Actualizar: ${error}`);
+          });
+      }
+    }
+
+  },
+  updated() {
+    this.recetaslocal = this.recetasprop
+    console.log(this.recetaslocal)
+  },
+  watch: {
+    recetasprop(newVal) {
+      this.recetaslocal = newVal
+    }
+  }
 }
 </script>
 <template>
@@ -32,33 +79,34 @@ export default {
           </div>
         </div>
       </div>
-      <div
-        class="items-folder flex flex-col justify-center items-center lg:mx-auto lg:grid lg:grid-cols-3"
-      >
-        <div v-for="receta in recetas" class="itemf relative bg-stone-600">
-          <img
-            class="object-cover h-full w-full"
-            loading="lazy"
-            src="@/assets/AssetsRecetario/receta1.jpg"
-            alt="receta-item"
-          />
+      <div class="items-folder flex flex-col justify-center items-center lg:mx-auto lg:grid lg:grid-cols-3">
+        <div v-for="receta in recetaslocal" class="itemf relative bg-stone-600">
+          <div class="absolute w-full flex justify-center transition-all">
+            <button class="button btn-estado transition-all"
+              :class="{ 'bg-red-500': receta.estado, 'bg-green-500': !receta.estado }"
+              @click="updateEstadoReceta(receta._id, receta.estado)">
+              <p v-if="receta.estado === false">Activar</p>
+              <p v-if="receta.estado === true">Desactivar</p>
+            </button>
+          </div>
+          <img class="object-cover h-full w-full" loading="lazy"
+            :src="`http://localhost:3000/uploads/${receta.imgGeneral}`" alt="receta-item" />
           <div class="cont-actions absolute flex flex-col justify-center items-center">
             <p class="text-white">{{ receta.titulo }}</p>
             <div class="cont-btnsaction flex justify-between">
               <!-- enviar la data segun el id -->
-
-              <!-- <button @click="cambiarestadoeditarreceta(receta._id)"
-                                class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
-                                Editar
-                            </button>
-                            <button @click="cambiarestadoverreceta(receta._id)"
-                                class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
-                                Ver
-                            </button>
-                            <button @click="deleteReceta(receta._id)"
-                                class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
-                                Eliminar
-                            </button> -->
+              <button @click="cambiarestadoeditarreceta(receta._id)"
+                class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
+                Editar
+              </button>
+              <button @click="cambiarestadoverreceta(receta._id)"
+                class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
+                Ver
+              </button>
+              <button @click="deleteReceta(receta._id)"
+                class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
+                Eliminar
+              </button>
             </div>
           </div>
         </div>
@@ -142,6 +190,18 @@ export default {
   border-radius: 2vw;
   font-size: 5vw;
   color: white;
+}
+
+.btn-estado {
+  margin: 2%;
+  border-radius: 2vh;
+  min-width: 100px;
+  font-size: 2vh;
+}
+
+.btn-estado:hover {
+  transform: scale(1.1);
+  filter: brightness(85%);
 }
 
 @media (min-width: 768px) {
