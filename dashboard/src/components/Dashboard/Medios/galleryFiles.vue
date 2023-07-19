@@ -10,7 +10,7 @@
         <img
           loading="lazy"
           class="bg-slate-700 rounded-3xl"
-          :src="`http://localhost:3000/uploads/${file.name}`"
+          :src="`http://localhost:3000/uploads/images/${file.name}`"
           :alt="file.name"
         />
         <p class="text-center">{{ file.name }}</p>
@@ -20,7 +20,7 @@
       <div class="modal-content m-auto">
         <img
           class=" "
-          :src="`http://localhost:3000/uploads/${selectedImage.name}`"
+          :src="`http://localhost:3000/uploads/images/${selectedImage.name}`"
           :alt="selectedImage.name"
         />
         <button class="close-button" @click="selectedImage = null">Cerrar</button>

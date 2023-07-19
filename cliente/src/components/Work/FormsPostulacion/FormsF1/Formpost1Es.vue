@@ -1,5 +1,31 @@
 <script>
-export default {}
+
+export default {
+  data() {
+    return {
+      newformOperarioData: {
+        datosPersonales: {
+          TipoDocumentoDeIdentidad: '',
+          NumeroDocumentoDeIdentidad: '',
+          nombre: '',
+          apellidos: '',
+          fechanacimiento: '',
+          celular: '',
+          lugar: '',
+          dosisdevacunacioncovid: '',
+          hastrabajadoconnosotros: '',
+        },
+      },
+      curriculum: {
+        documento: '', // Almacenar solo el nombre del archivo, el archivo cargar por multer
+      },
+      terminosycondiciones: {
+        acepto: '',
+      },
+      puestoVacante: 'Admin',
+    }
+  }
+}
 </script>
 <template>
   <div class="contenedorformEs bg-FondoPerla">
@@ -9,7 +35,7 @@ export default {}
         <div class="flex flex-col break-inside-avoid">
           <div class="inpsel">
             <label for="">Documento de indentidad</label>
-            <select class="perlaselect" name="docid" id="docid">
+            <select class="perlaselect" name="docid" id="docid" v-model="newformOperarioData.datosPersonales.TipoDocumentoDeIdentidad">
               <option value="dni">DNI</option>
               <option value="ce">CARNET DE EXTRAJERIA</option>
             </select>
@@ -58,11 +84,7 @@ export default {}
           </div>
         </div>
         <div class="flex flex-col break-inside-avoid columna2">
-          <input
-            class="perlainput inptdt"
-            type="text"
-            placeholder="Número de documento de indentidad"
-          />
+          <input class="perlainput inptdt" type="text" placeholder="Número de documento de indentidad" />
           <input class="perlainput inptdt" type="text" placeholder="Apellidos" />
           <div class="inpsel">
             <label for="">Celular</label>
@@ -107,6 +129,7 @@ export default {}
   transition: all;
   background-color: #6e5b4423;
 }
+
 .perlaselect:hover {
   background-color: #6e5b4446;
 }

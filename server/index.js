@@ -22,7 +22,7 @@ app.use(routes);
 
 //para files Beta
 app.get("/files", (req, res) => {
-  const uploadsFolder = path.join(process.cwd(), "public", "uploads");
+  const uploadsFolder = path.join(process.cwd(), "public", "uploads", "images", "videos", "documents");
 
   fs.readdir(uploadsFolder, (err, files) => {
     if (err) {

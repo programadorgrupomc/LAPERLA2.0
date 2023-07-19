@@ -47,7 +47,7 @@ export default {
           <img
             loading="lazy"
             class="h-full w-full rounded-full"
-            :src="`http://localhost:3000/uploads/${pv.imgPuesto}`"
+            :src="`http://localhost:3000/uploads/images/${pv.imgPuesto}`"
             alt="imagen circular"
           />
         </div>

@@ -32,7 +32,7 @@
             </div>
             <!-- aca debe ir linkeado la imgen del puesto vacante -->
             <img class="object-cover h-full w-full" loading="lazy"
-              :src="`http://localhost:3000/uploads/${puesto.imgPuesto}`" alt="receta-item" />
+              :src="`http://localhost:3000/uploads/images/${puesto.imgPuesto}`" alt="receta-item" />
             <div class="cont-actions absolute flex flex-col justify-center items-center">
               <p class="text-white">{{ puesto.titulo }}</p>
               <div class="cont-btnsaction flex justify-between">
@@ -67,7 +67,7 @@
             </div>
             <!-- aca debe ir linkeado la imgen del puesto vacante -->
             <img class="object-cover h-full w-full" loading="lazy"
-              :src="`http://localhost:3000/uploads/${puesto.imgPuesto}`" alt="receta-item" />
+              :src="`http://localhost:3000/uploads/images/${puesto.imgPuesto}`" alt="receta-item" />
             <div class="cont-actions absolute flex flex-col justify-center items-center">
               <p class="text-white">{{ puesto.titulo }}</p>
               <div class="cont-btnsaction flex justify-between">
