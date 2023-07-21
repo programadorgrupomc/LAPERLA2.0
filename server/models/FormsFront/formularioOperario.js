@@ -7,7 +7,7 @@ const formularioOperarioSchema = new mongoose.Schema(
       NumeroDocumentoDeIdentidad: String,
       nombre: String,
       apellidos: String,
-      fechanacimiento: Date,
+      fechanacimiento: String,
       celular: String,
       lugar: String,
       dosisdevacunacioncovid: String,
