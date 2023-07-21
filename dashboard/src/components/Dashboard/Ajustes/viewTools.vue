@@ -78,9 +78,21 @@ export default {
       <div class="flex flex-col lg:flex-row items-center apt2">
         <div class="break-inside-avoid lg:w-1/4">
           <p>Icono Del Sitio</p>
-          <div class="cont-upload flex justify-center items-center p-2 object-cover w-40 border-2 relative">
-            <img src="../../assets/cDashboard/Iconmaterial-perm-media.svg" alt="" class="absolute w-full h-full" />
-            <input type="file" name="" id="" class="absolute w-full h-full z-50 opacity-0" v-on:change="previewImage" />
+          <div
+            class="cont-upload flex justify-center items-center p-2 object-cover w-40 border-2 relative"
+          >
+            <img
+              src="../../assets/cDashboard/Iconmaterial-perm-media.svg"
+              alt=""
+              class="absolute w-full h-full"
+            />
+            <input
+              type="file"
+              name=""
+              id=""
+              class="absolute w-full h-full z-50 opacity-0"
+              v-on:change="previewImage"
+            />
             <img :src="imagenHero" class="object-cover w-full h-full" alt="img-hero" />
           </div>
         </div>
@@ -107,7 +119,10 @@ export default {
           <p class="w-3/4 lg:w-full">Publicar Cambios Realizados</p>
           <!-- <p>............................</p> -->
         </div>
-        <button @click="() => alert('Cambios Guardados!')" class="btn-publicar bg-NaranjaPerla text-white">
+        <button
+          @click="() => alert('Cambios Guardados!')"
+          class="btn-publicar bg-NaranjaPerla text-white"
+        >
           Publicar
         </button>
       </div>
@@ -234,12 +249,12 @@ label:after {
   transition: 0.3s;
 }
 
-input:checked+label {
+input:checked + label {
   /* capas no es necesario */
   background: rgba(172, 255, 47, 0.24);
 }
 
-input:checked+label:after {
+input:checked + label:after {
   left: calc(100% - 5px);
   transform: translateX(-100%);
   background: #ff8629;

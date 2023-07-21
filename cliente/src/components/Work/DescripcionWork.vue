@@ -77,10 +77,9 @@
         </button>
       </div>
     </div>
-    <FormPost1Vue v-show="mostrarform" />
+    <FormPost1Vue v-show="mostrarform" :puestocanteprop="puestoMostrar" />
     <!-- <form-post-2 v-show="mostrarform" id="form2" /> -->
   </div>
-  
 </template>
 
 <script>
@@ -129,13 +128,13 @@ export default {
   mounted() {
     setInterval(() => {
       this.fetchPuestos();
-      console.log(this.puestos)
+      // console.log(this.puestos)
       const puestoId = this.$route.params.id
       this.idpuesto = puestoId
       this.puestoMostrar = this.puestos.find((puesto) => puesto._id === puestoId)
-      console.log(puestoId)
-      console.log(this.puestoMostrar)
-    }, 2000);
+      // console.log(puestoId)
+      // console.log(this.puestoMostrar)
+    }, 100);
     //resulta que no es necesario coventir a numero xd
 
   }

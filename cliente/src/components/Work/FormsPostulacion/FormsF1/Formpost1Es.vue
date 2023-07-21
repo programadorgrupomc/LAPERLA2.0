@@ -99,7 +99,18 @@
           <!-- arrastrar -->
           <div>
             <div class="flex items-center justify-center w-full">
-              <label for="dropzone-file"
+              <div class="w-full relative" v-if="fileUrl">
+                <div class="flex justify-end w-full"><button type="button"
+                    class="button bg-orange-200 rounded-3xl px-4 m-1 hover:bg-orange-400 hover:scale-105 transition-all"
+                    @click="replaceDocument">Reemplazar</button>
+                </div>
+                <object :data="fileUrl" type="application/pdf" width="100%" height="400px">
+                  <!-- Si el archivo no es un PDF, muestra un mensaje -->
+                  <p>Este navegador no admite la visualización del archivo seleccionado.</p>
+                </object>
+
+              </div>
+              <label v-if="!fileUrl" for="dropzone-file"
                 class="bg-FondoPerla flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                 <div class="flex flex-col items-center justify-center pt-5 pb-6">
                   <svg aria-hidden="true" class="w-10 h-10 mb-3 text-gray-400" fill="none" stroke="currentColor"
@@ -108,10 +119,10 @@
                       d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
                   </svg>
                   <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                    <span class="font-semibold">Click to upload</span> or drag and drop
+                    <span class="font-semibold">Click Para Subir Archivo</span> o arrastre su archivo
                   </p>
                   <p class="text-xs text-gray-500 dark:text-gray-400">
-                    SVG, PNG, JPG or GIF (MAX. 800x400px)
+                    Tamaño maximo 15MB. Formato: .pdf o .doc o .docx
                   </p>
                 </div>
                 <input id="dropzone-file" type="file" class="hidden" @change="onFileSelected" />
@@ -120,8 +131,9 @@
           </div>
         </div>
       </div>
+
       <div class="flex termsandcon items-center justify-center">
-        <input class="ckboxperla" type="checkbox" />
+        <input class="ckboxperla" type="checkbox" v-model="newformOperarioData.terminosycondiciones.acepto" />
         <p class="texto">
           He leído y acepto los Términos y Condiciones y las Políticas de privacidad
         </p>
@@ -157,20 +169,44 @@ export default {
           documento: '', // Almacenar solo el nombre del archivo, el archivo cargar por multer
         },
         terminosycondiciones: {
-          acepto: true,
+          acepto: '',
         },
-        puestoVacante: 'Admin',
+        puestoVacante: this.puestocantepropes.titulo,
       },
+      fileUrl: ''
     };
   },
+  props: ['puestocantepropes'],
   methods: {
     onFileSelected(event) {
       this.newformOperarioData.curriculum.documento = event.target.files[0];
+      this.fileUrl = URL.createObjectURL(this.newformOperarioData.curriculum.documento);
     },
     handleFileInputClick() {
       this.$refs.fileInput.click();
     },
     guardarFormOperario() {
+      // Check if any field is empty
+      const emptyFields = Object.entries(this.newformOperarioData).reduce((acc, [key, value]) => {
+        if (typeof value === 'object' && value !== null) {
+          // Check for nested object properties (datosPersonales and terminosycondiciones)
+          const nestedEmptyFields = Object.entries(value).filter(([nestedKey, nestedValue]) => nestedValue === '');
+          if (nestedEmptyFields.length > 0) {
+            acc.push(...nestedEmptyFields.map(([nestedKey]) => `${key}.${nestedKey}`));
+          }
+        } else if (value === '') {
+          // Check for non-nested properties
+          acc.push(key);
+        }
+        return acc;
+      }, []);
+
+      if (emptyFields.length > 0) {
+        const missingFields = emptyFields.join(', ');
+        alert(`Por favor Llene Los Siguientes Campos: ${missingFields}`);
+        return;
+      }
+
       const formData = new FormData();
       formData.append('datosPersonales.TipoDocumentoDeIdentidad', this.newformOperarioData.datosPersonales.TipoDocumentoDeIdentidad);
       formData.append('datosPersonales.NumeroDocumentoDeIdentidad', this.newformOperarioData.datosPersonales.NumeroDocumentoDeIdentidad);
@@ -182,18 +218,41 @@ export default {
       formData.append('datosPersonales.dosisdevacunacioncovid', this.newformOperarioData.datosPersonales.dosisdevacunacioncovid);
       formData.append('datosPersonales.hastrabajadoconnosotros', this.newformOperarioData.datosPersonales.hastrabajadoconnosotros);
       formData.append('curriculum', this.newformOperarioData.curriculum.documento);
-      // formData.append('terminosycondiciones.acepto', this.newformOperarioData.terminosycondiciones.acepto)
-      // formData.append('puestoVacante', this.newformOperarioData.puestoVacante);
-      // console.log(formData)
+
+      formData.append('terminosycondiciones.acepto', this.newformOperarioData.terminosycondiciones.acepto)
+      formData.append('puestoVacante', this.newformOperarioData.puestoVacante);
+
       apiFormOperario.createFormOperario(formData)
         .then(() => {
-          console.log("Formulario guardado correctamente");
+          alert("Formulario guardado correctamente");
+          location.reload();
         })
         .catch((error) => {
           console.log(`Error al crear formulario ${JSON.stringify(error)}`);
         });
     },
+    replaceDocument() {
+      // Limpia el archivo actual y la URL del objeto
+      this.newformOperarioData.curriculum.documento = '';
+      this.fileUrl = '';
+
+      // Verificar si el elemento con la referencia existe antes de acceder a él
+      if (this.$refs.fileInput) {
+        this.$refs.fileInput.value = '';
+      }
+    },
   },
+  watch: {
+    // puestocanteprop(newVal) {
+    //   // When the prop value changes, update the nested property in newformOperarioData
+    //   this.newformOperarioData.puestoVacante = newVal;
+    //   console.log(this.newformOperarioData.puestoVacante)
+    // },
+  },
+  mounted() {
+    // this.newformOperarioData.puestoVacante = this.puestocanteprop.titulo;
+    // console.log(this.newformOperarioData.puestoVacante)
+  }
 };
 </script>
 

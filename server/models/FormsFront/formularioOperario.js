@@ -19,10 +19,10 @@ const formularioOperarioSchema = new mongoose.Schema(
     terminosycondiciones: {
       acepto: Boolean,
     },
+    puestoVacante: String,
   },
   {
     timestamps: true, // Agregar timestamps (createdAt y updatedAt)
-    puestoVacante: String,
   }
 );
 

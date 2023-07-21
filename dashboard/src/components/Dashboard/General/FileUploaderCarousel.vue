@@ -107,9 +107,9 @@ export default {
     },
     //revisar esta maldita funcion aaaaaah
     actualizarImagen(index, updatedUrl) {
-      this.images[index].url = updatedUrl;
+      this.images[index].url = updatedUrl
       this.edit = false
-      this.$emit("imagesCarousel", this.images); // Pass the updated images array
+      this.$emit('imagesCarousel', this.images) // Pass the updated images array
     },
     editarImagen(index) {
       this.edit = true

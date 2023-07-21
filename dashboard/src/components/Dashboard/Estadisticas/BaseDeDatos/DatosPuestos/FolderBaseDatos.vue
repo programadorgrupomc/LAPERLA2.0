@@ -3,7 +3,11 @@
     <div class="border puestobd bg-white flex justify-between items-center">
       <p>Analista Senior de Transformación de Procesos</p>
       <div class="desplegar" @click="showTablees">
-        <img class="w-full h-full" src="../../../../../assets/Dashboard/General/desplegar.svg" alt="desplegar" />
+        <img
+          class="w-full h-full"
+          src="../../../../../assets/Dashboard/General/desplegar.svg"
+          alt="desplegar"
+        />
       </div>
     </div>
     <div class="tabla" v-if="showTable">
@@ -30,7 +34,8 @@ export default {
       this.showTable = !this.showTable
     },
     getDataFormOperario() {
-      apiFormOperario.getFormOperario()
+      apiFormOperario
+        .getFormOperario()
         .then((response) => {
           this.formsOperario = response.data
           console.log(this.formsOperario)
@@ -41,7 +46,7 @@ export default {
     }
   },
   mounted() {
-    this.getDataFormOperario();
+    this.getDataFormOperario()
   }
 }
 </script>
@@ -51,6 +56,7 @@ export default {
   border-radius: 5vh;
   padding: 1%;
   font-size: 2vh;
+  margin-bottom: 1%;
 }
 
 .puestobd p {
@@ -65,6 +71,6 @@ export default {
 
 .tabla {
   margin: 5%;
-  background-color: white;
+  margin-top: 0%;
 }
 </style>

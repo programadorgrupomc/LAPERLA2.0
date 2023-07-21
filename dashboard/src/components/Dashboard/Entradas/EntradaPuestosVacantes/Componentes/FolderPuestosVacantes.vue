@@ -20,32 +20,46 @@
 
       <div>
         <h2>Puestos Activos:</h2>
-        <div class="items-folder flex flex-col justify-center items-center lg:mx-auto lg:grid lg:grid-cols-3">
+        <div
+          class="items-folder flex flex-col justify-center items-center lg:mx-auto lg:grid lg:grid-cols-3"
+        >
           <div v-for="puesto in puestosActivas" class="itemf relative bg-stone-600">
             <div class="absolute w-full flex justify-center transition-all">
-              <button class="button btn-estado transition-all"
+              <button
+                class="button btn-estado transition-all"
                 :class="{ 'bg-red-500': puesto.estado, 'bg-green-500': !puesto.estado }"
-                @click="updateEstadopuesto(puesto._id, puesto.estado)">
+                @click="updateEstadopuesto(puesto._id, puesto.estado)"
+              >
                 <p v-if="puesto.estado === false">Activar</p>
                 <p v-if="puesto.estado === true">Desactivar</p>
               </button>
             </div>
             <!-- aca debe ir linkeado la imgen del puesto vacante -->
-            <img class="object-cover h-full w-full" loading="lazy"
-              :src="`http://localhost:3000/uploads/images/${puesto.imgPuesto}`" alt="receta-item" />
+            <img
+              class="object-cover h-full w-full"
+              loading="lazy"
+              :src="`http://localhost:3000/uploads/images/${puesto.imgPuesto}`"
+              alt="receta-item"
+            />
             <div class="cont-actions absolute flex flex-col justify-center items-center">
               <p class="text-white">{{ puesto.titulo }}</p>
               <div class="cont-btnsaction flex justify-between">
-                <button @click="cambiarestadoeditarpc(puesto._id)"
-                  class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
+                <button
+                  @click="cambiarestadoeditarpc(puesto._id)"
+                  class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold"
+                >
                   Editar
                 </button>
-                <button @click="cambiarestadoverpv(puesto._id)"
-                  class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
+                <button
+                  @click="cambiarestadoverpv(puesto._id)"
+                  class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold"
+                >
                   Ver
                 </button>
-                <button @click="deletePv(puesto._id)"
-                  class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
+                <button
+                  @click="deletePv(puesto._id)"
+                  class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold"
+                >
                   Eliminar
                 </button>
               </div>
@@ -55,32 +69,46 @@
       </div>
       <div>
         <h2>Puestos Inactivos:</h2>
-        <div class="items-folder flex flex-col justify-center items-center lg:mx-auto lg:grid lg:grid-cols-3">
+        <div
+          class="items-folder flex flex-col justify-center items-center lg:mx-auto lg:grid lg:grid-cols-3"
+        >
           <div v-for="puesto in puestosInactivas" class="itemf relative bg-stone-600">
             <div class="absolute w-full flex justify-center transition-all">
-              <button class="button btn-estado transition-all"
+              <button
+                class="button btn-estado transition-all"
                 :class="{ 'bg-red-500': puesto.estado, 'bg-green-500': !puesto.estado }"
-                @click="updateEstadopuesto(puesto._id, puesto.estado)">
+                @click="updateEstadopuesto(puesto._id, puesto.estado)"
+              >
                 <p v-if="puesto.estado === false">Activar</p>
                 <p v-if="puesto.estado === true">Desactivar</p>
               </button>
             </div>
             <!-- aca debe ir linkeado la imgen del puesto vacante -->
-            <img class="object-cover h-full w-full" loading="lazy"
-              :src="`http://localhost:3000/uploads/images/${puesto.imgPuesto}`" alt="receta-item" />
+            <img
+              class="object-cover h-full w-full"
+              loading="lazy"
+              :src="`http://localhost:3000/uploads/images/${puesto.imgPuesto}`"
+              alt="receta-item"
+            />
             <div class="cont-actions absolute flex flex-col justify-center items-center">
               <p class="text-white">{{ puesto.titulo }}</p>
               <div class="cont-btnsaction flex justify-between">
-                <button @click="cambiarestadoeditarpc(puesto._id)"
-                  class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
+                <button
+                  @click="cambiarestadoeditarpc(puesto._id)"
+                  class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold"
+                >
                   Editar
                 </button>
-                <button @click="cambiarestadoverpv(puesto._id)"
-                  class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
+                <button
+                  @click="cambiarestadoverpv(puesto._id)"
+                  class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold"
+                >
                   Ver
                 </button>
-                <button @click="deletePv(puesto._id)"
-                  class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold">
+                <button
+                  @click="deletePv(puesto._id)"
+                  class="btn-action shadow-xl flex justify-center items-center font-TestKarbonSemiBold"
+                >
                   Eliminar
                 </button>
               </div>
@@ -88,7 +116,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </template>
@@ -158,37 +185,38 @@ export default {
           console.log(`Hubo un error al eliminar ${error}`)
         })
     },
-    updateEstadopuesto(id, estado){
-      const rpta = window.confirm('¿Seguro que desea cambiar la visibilidad de la Publicación?');
+    updateEstadopuesto(id, estado) {
+      const rpta = window.confirm('¿Seguro que desea cambiar la visibilidad de la Publicación?')
       if (rpta) {
-        const formData = new FormData();
+        const formData = new FormData()
         if (estado == true) {
-          formData.append('estado', false);
+          formData.append('estado', false)
         } else if (estado == false) {
-          formData.append('estado', true);
+          formData.append('estado', true)
         }
-        apiPuestosVacantes.updatePuestosVacantes(id, formData)
+        apiPuestosVacantes
+          .updatePuestosVacantes(id, formData)
           .then((response) => {
-            alert('¡Actualización Exitosa!');
+            alert('¡Actualización Exitosa!')
             location.reload()
           })
           .catch((error) => {
-            console.log(`Hubo un error al Actualizar: ${error}`);
-          });
+            console.log(`Hubo un error al Actualizar: ${error}`)
+          })
       }
     }
   },
   computed: {
     puestosActivas() {
       // Filtrar las puestos que tienen el estado en true (activas)
-      return this.puestosVacanteslocal.filter((puesto) => puesto.estado === true);
+      return this.puestosVacanteslocal.filter((puesto) => puesto.estado === true)
     },
     puestosInactivas() {
       // Filtrar las puestos que tienen el estado en false (inactivas)
-      return this.puestosVacanteslocal.filter((puesto) => puesto.estado === false);
-    },
+      return this.puestosVacanteslocal.filter((puesto) => puesto.estado === false)
+    }
   },
-  created() { },
+  created() {},
   updated() {
     this.puestosVacanteslocal = this.puestosVacantesprop
     console.log(this.puestosVacantesprop)
@@ -200,8 +228,8 @@ export default {
     puestosVacanteslocal(newVal) {
       this.$nextTick(() => {
         // Actualizar los arrays de noticiasActivas y noticiasInactivas después de que recetaslocal cambie
-        this.$forceUpdate();
-      });
+        this.$forceUpdate()
+      })
     }
   }
 }
@@ -305,7 +333,6 @@ h2 {
   padding: 2%;
 }
 
-
 @media (min-width: 768px) {
   .btn-back {
     padding: 5%;
@@ -345,7 +372,8 @@ h2 {
     width: 80%;
   }
 
-  .items-folder {}
+  .items-folder {
+  }
 
   .itemf {
     overflow: hidden;

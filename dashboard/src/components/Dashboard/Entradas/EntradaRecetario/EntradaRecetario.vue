@@ -1,11 +1,11 @@
 <template>
   <div class="overflow-auto">
-    <FolderRecetario :recetasprop="recetas"/>
+    <FolderRecetario :recetasprop="recetas" />
   </div>
 </template>
 <script>
 import FolderRecetario from './Componentes/FolderRecetas.vue'
-import apiRecetario from '../../../../services/Recetario/apiRecetario';
+import apiRecetario from '../../../../services/Recetario/apiRecetario'
 export default {
   data() {
     return {
@@ -17,7 +17,8 @@ export default {
   },
   methods: {
     fetchRecetas() {
-      apiRecetario.getRecetas()
+      apiRecetario
+        .getRecetas()
         .then((response) => {
           this.recetas = response.data
           console.log(this.recetas)
@@ -27,8 +28,8 @@ export default {
         })
     }
   },
-  mounted(){
-    this.fetchRecetas();
+  mounted() {
+    this.fetchRecetas()
   }
 }
 </script>
