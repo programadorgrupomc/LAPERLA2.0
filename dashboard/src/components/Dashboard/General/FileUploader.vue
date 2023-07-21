@@ -6,13 +6,9 @@
         class="upload-example-cropper"
         :src="image"
         :stencil-component="$options.components.StencilFup"
+        :options="cropperOptions"
       />
       <div class="button-wrapper">
-        <!-- <span class="button" @click="$refs.file.click()">
-                    <input type="file" ref="file" @change="uploadImage($event)" accept="image/*" />
-                    Upload image
-                </span> -->
-        <!-- <button class="button" @click="">Nuevo</button> -->
         <button class="button" @click="cropImage">Guardar</button>
       </div>
     </div>
@@ -32,20 +28,15 @@ export default {
   },
   data() {
     return {
-      cropperOptions: {}
+      cropperOptions: {
+        aspectRatio: 16 / 9 // Establecer la relación de aspecto 16:9
+      }
     }
   },
   props: ['image'],
   methods: {
     cropImage() {
       const result = this.$refs.cropper.getResult()
-
-      // const newTab = window.open();
-      // newTab.document.body.innerHTML = `<img src="${result.canvas.toDataURL(
-      //     "image/jpeg"
-      // )}"></img>`;
-
-      //mandar la imagen recortada
       this.$emit('imagecroped', result.canvas.toDataURL('image/jpeg'))
     }
   }
