@@ -106,7 +106,7 @@ export default {
     }
   },
   mounted() {
-    this.previewUrl = `http://localhost:3000/uploads/${this.imagebd}`
+    this.previewUrl = `http://localhost:3000/uploads/images/${this.imagebd}`
     this.isImage = true
   }
 }

@@ -109,7 +109,7 @@ export default {
               </button>
             </div>
             <img class="object-cover h-full w-full" loading="lazy"
-              :src="`http://localhost:3000/uploads/${receta.imgGeneral}`" alt="receta-item" />
+              :src="`http://localhost:3000/uploads/images/${receta.imgGeneral}`" alt="receta-item" />
             <div class="cont-actions absolute flex flex-col justify-center items-center">
               <p class="text-white">{{ receta.titulo }}</p>
               <div class="cont-btnsaction flex justify-between">
@@ -145,7 +145,7 @@ export default {
               </button>
             </div>
             <img class="object-cover h-full w-full" loading="lazy"
-              :src="`http://localhost:3000/uploads/${receta.imgGeneral}`" alt="receta-item" />
+              :src="`http://localhost:3000/uploads/images/${receta.imgGeneral}`" alt="receta-item" />
             <div class="cont-actions absolute flex flex-col justify-center items-center">
               <p class="text-white">{{ receta.titulo }}</p>
               <div class="cont-btnsaction flex justify-between">

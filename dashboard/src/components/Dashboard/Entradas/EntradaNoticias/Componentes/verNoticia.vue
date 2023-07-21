@@ -53,7 +53,7 @@ export default {
           <img
             loading="lazy"
             class="object-cover w-full h-full"
-            :src="`http://localhost:3000/uploads/${noticia.imgHeroNoticia}`"
+            :src="`http://localhost:3000/uploads/images/${noticia.imgHeroNoticia}`"
             alt="imgnotid"
           />
         </div>
@@ -84,7 +84,7 @@ export default {
                   <img
                     loading="lazy"
                     class="ncrr object-cover w-full"
-                    :src="`http://localhost:3000/uploads/${i}`"
+                    :src="`http://localhost:3000/uploads/images/${i}`"
                     alt="noticia"
                   />
                 </swiper-slide>

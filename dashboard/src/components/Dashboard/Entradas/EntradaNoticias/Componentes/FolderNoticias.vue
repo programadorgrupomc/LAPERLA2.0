@@ -145,7 +145,7 @@ export default {
             </button>
           </div>
           <img class="object-cover h-full w-full" loading="lazy"
-            :src="`http://localhost:3000/uploads/${noticia.imgsCarouselNoticia[0]}`" alt="receta-item" />
+            :src="`http://localhost:3000/uploads/images/${noticia.imgsCarouselNoticia[0]}`" alt="receta-item" />
           <div class="cont-actions absolute flex flex-col justify-center items-center">
             <p class="text-white">{{ noticia.titulo }}</p>
             <div class="cont-btnsaction flex justify-between">
@@ -179,7 +179,7 @@ export default {
             </button>
           </div>
           <img class="object-cover h-full w-full" loading="lazy"
-            :src="`http://localhost:3000/uploads/${noticia.imgsCarouselNoticia[0]}`" alt="receta-item" />
+            :src="`http://localhost:3000/uploads/images/${noticia.imgsCarouselNoticia[0]}`" alt="receta-item" />
           <div class="cont-actions absolute flex flex-col justify-center items-center">
             <p class="text-white">{{ noticia.titulo }}</p>
             <div class="cont-btnsaction flex justify-between">

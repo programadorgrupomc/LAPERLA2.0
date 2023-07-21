@@ -4,12 +4,12 @@ import "./database/connectdb.js";
 import express from "express";
 import cors from "cors";
 
-//para file beta
+// para file beta
 import path from "path";
 import fs from "fs";
 import "esm";
 
-//todas las rutas
+// todas las rutas
 import routes from "./routes/routes.js";
 
 const app = express();
@@ -20,21 +20,45 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 app.use(routes);
 
-//para files Beta
-app.get("/files", (req, res) => {
-  const uploadsFolder = path.join(process.cwd(), "public", "uploads", "images", "videos", "documents");
+// Assuming you have separate folders for images, videos, and documents under "public/uploads"
+const imagesFolder = path.join(process.cwd(), "public", "uploads", "images");
+const videosFolder = path.join(process.cwd(), "public", "uploads", "videos");
+const documentsFolder = path.join(process.cwd(), "public", "uploads", "documents");
 
-  fs.readdir(uploadsFolder, (err, files) => {
+// Function to read files from a folder and add them to the fileList array
+const readFilesFromFolder = (folderPath, fileCategory, callback) => {
+  fs.readdir(folderPath, (err, files) => {
     if (err) {
       console.error(err);
-      res.status(500).json({ error: "Error reading files" });
+      callback([]);
     } else {
       const fileList = files.map((file) => ({
         name: file,
-        url: `/uploads/${file}`, // Assuming you have a route to serve the files from the "public/uploads" folder
+        url: `/uploads/${fileCategory}/${file}`, // Assuming you have a route to serve the files from the respective subfolder
       }));
-      res.json(fileList);
+      callback(fileList);
     }
+  });
+};
+
+// Route to show image files
+app.get("/files/images", (req, res) => {
+  readFilesFromFolder(imagesFolder, "images", (imageFiles) => {
+    res.json(imageFiles);
+  });
+});
+
+// Route to show video files
+app.get("/files/videos", (req, res) => {
+  readFilesFromFolder(videosFolder, "videos", (videoFiles) => {
+    res.json(videoFiles);
+  });
+});
+
+// Route to show document files
+app.get("/files/documents", (req, res) => {
+  readFilesFromFolder(documentsFolder, "documents", (documentFiles) => {
+    res.json(documentFiles);
   });
 });
 

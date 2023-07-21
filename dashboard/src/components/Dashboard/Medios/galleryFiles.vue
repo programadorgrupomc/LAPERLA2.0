@@ -1,28 +1,15 @@
 <template>
   <div>
     <div class="gallery relative">
-      <div
-        v-for="file in fileList"
-        :key="file.name"
-        class="gallery-item m-auto"
-        @click="selectImage(file)"
-      >
-        <img
-          loading="lazy"
-          class="bg-slate-700 rounded-3xl"
-          :src="`http://localhost:3000/uploads/images/${file.name}`"
-          :alt="file.name"
-        />
+      <div v-for="file in fileList" :key="file.name" class="gallery-item m-auto" @click="selectImage(file)">
+        <img loading="lazy" class="bg-slate-700 rounded-3xl" :src="`http://localhost:3000/uploads/images/${file.name}`"
+          :alt="file.name" />
         <p class="text-center">{{ file.name }}</p>
       </div>
     </div>
     <div v-if="selectedImage" class="modal">
       <div class="modal-content m-auto">
-        <img
-          class=" "
-          :src="`http://localhost:3000/uploads/images/${selectedImage.name}`"
-          :alt="selectedImage.name"
-        />
+        <img class=" " :src="`http://localhost:3000/uploads/images/${selectedImage.name}`" :alt="selectedImage.name" />
         <button class="close-button" @click="selectedImage = null">Cerrar</button>
       </div>
     </div>
@@ -43,7 +30,7 @@ export default {
   methods: {
     fetchFiles() {
       axios
-        .get('http://localhost:3000/files')
+        .get('http://localhost:3000/files/images')
         .then((response) => {
           this.fileList = response.data
         })
