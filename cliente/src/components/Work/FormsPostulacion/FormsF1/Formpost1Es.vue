@@ -8,6 +8,7 @@
             <label for="docid">Documento de identidad</label>
             <select class="perlaselect" name="TipoDocumentoDeIdentidad" id="docid"
               v-model="newformOperarioData.datosPersonales.TipoDocumentoDeIdentidad">
+              <option value="">Seleccionar</option>
               <option value="dni">DNI</option>
               <option value="ce">CARNET DE EXTRAJERIA</option>
             </select>
@@ -16,28 +17,7 @@
             v-model="newformOperarioData.datosPersonales.nombre" />
           <div class="inpsel">
             <label for="fechanacimiento">Fecha de nacimiento</label>
-            <div class="flex w-full justify-between">
-              <select class="perlaselect w-full" name="day" id="day">
-                <option v-for="i in 31" :value="i">{{ i }}</option>
-              </select>
-              <select class="perlaselect w-full" name="month" id="month">
-                <option value="1">Enero</option>
-                <option value="2">Febrero</option>
-                <option value="3">Marzo</option>
-                <option value="4">Abril</option>
-                <option value="5">Mayo</option>
-                <option value="6">Junio</option>
-                <option value="7">Julio</option>
-                <option value="8">Agosto</option>
-                <option value="9">Septiembre</option>
-                <option value="10">Octubre</option>
-                <option value="11">Noviembre</option>
-                <option value="12">Diciembre</option>>
-              </select>
-              <select class="perlaselect w-full" name="year" id="year">
-                <option v-for="i in 80" :value="i + 1940">{{ i + 1940 }}</option>
-              </select>
-            </div>
+            <input class="perlaselect" type="date" v-model="newformOperarioData.datosPersonales.fechanacimiento">
           </div>
           <div class="inpsel">
             <label for="lugar">¿De dónde eres?</label>
