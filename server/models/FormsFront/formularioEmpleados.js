@@ -53,8 +53,9 @@ const formularioEmpleadoSchema = new mongoose.Schema(
     terminosYcondiciones: {
       acepto: Boolean,
     },
+    puestoVacante: String,
   },
-  { timestamps: true, puestoVacante: String }
+  { timestamps: true }
 );
 
 const FormularioEmpleado = mongoose.model(
